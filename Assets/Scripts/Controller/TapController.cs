@@ -32,7 +32,7 @@ public class TapController : MonoBehaviour
 		//Vector3 touchAt = Camera.main.ScreenToWorldPoint(new Vector3(position.x, position.y, 10));
 		GameObject instBullet = (GameObject)Instantiate (rawBulletObject);
 		instBullet.transform.localPosition = GameManager.Instance.PlayerObject.transform.localPosition;
-		instBullet.GetComponent<Rigidbody> ().AddForce (new Vector3 (2000.0f, 0.0f, 0.0f));
+		instBullet.GetComponent<Rigidbody> ().AddForce (new Vector3 (instBullet.GetComponent<BulletObject>().Velocity, 0.0f, 0.0f));
     }
 
     private void touchesBeganHandler(object sender, TouchEventArgs e)
