@@ -19,7 +19,8 @@ public class GunObject : AbstractWeaponObject {
 	public void Fire() {
 		GameObject instBullet = (GameObject)Instantiate (_bulletObject.gameObject);
 		instBullet.GetComponent<BulletObject> ().GunObject = this;
-		instBullet.transform.localPosition = transform.localPosition;
+		instBullet.transform.SetParent (transform);
+		instBullet.transform.localPosition = Vector3.zero;
 		instBullet.GetComponent<Rigidbody> ().AddForce (new Vector3 (instBullet.GetComponent<BulletObject>().Velocity, 0.0f, 0.0f));
 	}
 
