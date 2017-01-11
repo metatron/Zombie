@@ -4,16 +4,10 @@ using UnityEngine;
 
 public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 	[SerializeField]
-	private GameObject playerObject;
-	public GameObject PlayerObject { get { return playerObject; } set { playerObject = value; } }
+	private PlayerObject _playerObject;
+	public PlayerObject PlayerObject { get {return _playerObject; } set { _playerObject = value; } }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	void Start() {
+		_playerObject.initPlayerGunObject ("Prefabs/Gun01");
 	}
 }

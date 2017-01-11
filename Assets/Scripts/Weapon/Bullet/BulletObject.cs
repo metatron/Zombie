@@ -8,8 +8,8 @@ public class BulletObject : MonoBehaviour {
 	public float Velocity { get { return velocity; } set { velocity = value; } }
 
 	[SerializeField]
-	private float damage = 1.0f;
-	public float Damage { get { return damage; } set { damage = value; } }
+	private GunObject _gunObject;
+	public GunObject GunObject { get { return _gunObject; } set { _gunObject = value; } }
 
 	void Start() {
 		Destroy (gameObject, 3.0f);
