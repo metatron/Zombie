@@ -11,6 +11,8 @@ public class PlayerObject : MonoBehaviour {
 	private Animator _animator;
 	private Skeleton _skeleton;
 
+	public GameObject weaponHandObject;
+
 	void Start() {
 	}
 
@@ -28,7 +30,7 @@ public class PlayerObject : MonoBehaviour {
 	}
 
 	public void Play(string anim) {
-		_animator.Play (anim, -1, 0.0f);
+		_animator.Play (anim);
 	}
 
 	public void initPlayerGunObject(string gunPrefabPath) {

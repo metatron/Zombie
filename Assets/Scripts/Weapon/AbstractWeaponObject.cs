@@ -12,6 +12,14 @@ public abstract class AbstractWeaponObject : MonoBehaviour {
 	public double Damage { get { return _damage; } set { _damage = value; } }
 
 	[SerializeField]
-	private GameObject _owner;
+	protected GameObject _owner;
 	public GameObject Owner { get { return _owner; } set { _owner = value; } }
+
+	/**
+	 * 
+	 * GunObject、SwordObjectのアニメーション
+	 * 
+	 */
+	virtual public void AttackAction() {
+	}
 }

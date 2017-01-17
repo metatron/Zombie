@@ -16,7 +16,8 @@ public class GunObject : AbstractWeaponObject {
 	[SerializeField]
 	private float reloadTime;		//全弾打った後のリロードタイム
 
-	public void Fire() {
+	override public void AttackAction() {
+//		_owner.GetComponent<PlayerObject> ().Play ("fire");
 		GameObject instBullet = (GameObject)Instantiate (_bulletObject.gameObject);
 		instBullet.GetComponent<BulletObject> ().GunObject = this;
 		instBullet.transform.SetParent (transform);
