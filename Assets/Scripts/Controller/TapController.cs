@@ -24,6 +24,7 @@ public class TapController : MonoBehaviour
     {
 		//Vector3 touchAt = Camera.main.ScreenToWorldPoint(new Vector3(position.x, position.y, 10));
 		GameManager.Instance.PlayerObject.GunObject.Fire();
+		GameManager.Instance.PlayerObject.Play ("fire");
     }
 
     private void touchesBeganHandler(object sender, TouchEventArgs e)

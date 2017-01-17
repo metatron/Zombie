@@ -8,6 +8,29 @@ public class PlayerObject : MonoBehaviour {
 	private GunObject _gunObject; //instantiatedオブジェクト
 	public GunObject GunObject { get { return _gunObject; } set { _gunObject = value; } }
 
+	private Animator _animator;
+	private Skeleton _skeleton;
+
+	void Start() {
+	}
+
+	public void initPlayer() {
+		_animator = GetComponentInChildren<Animator> ();
+		if (_animator == null) {
+			Debug.LogError ("PlayerObject.Skeleton does not have Animator attached!");
+			return;
+		}
+		_animator.Play ("stand");
+
+		//ディフォルトは右向き
+		_skeleton = GetComponentInChildren<Skeleton> ();
+		_skeleton.flipY = true;
+	}
+
+	public void Play(string anim) {
+		_animator.Play (anim, -1, 0.0f);
+	}
+
 	public void initPlayerGunObject(string gunPrefabPath) {
 		_gunObject = ((GameObject)Instantiate ((GameObject)Resources.Load (gunPrefabPath))).GetComponent<GunObject>();
 		_gunObject.Owner = gameObject;
