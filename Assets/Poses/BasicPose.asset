@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 980bb06da97c94049ad8eddc924957d9, type: 3}
+  m_Name: BasicPose
+  m_EditorClassIdentifier: 
+  rotations:
+  - name: Body
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+  - name: Head
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+  - name: Arm_L
+    rotation: {x: 0, y: 0, z: 0.9771296, w: -0.21264482}
+  - name: Forarm_L
+    rotation: {x: 0, y: 0, z: 0.17998439, w: -0.98366946}
+  - name: Arm_R
+    rotation: {x: 0, y: 0, z: 0.9838577, w: 0.17895254}
+  - name: Forarm_R
+    rotation: {x: 0, y: 0, z: 0.12425483, w: 0.9922503}
+  - name: Leg_L
+    rotation: {x: 0, y: 0, z: 0.98891366, w: -0.1484917}
+  - name: Foot_L
+    rotation: {x: 0, y: 0, z: 0.103794135, w: 0.9945988}
+  - name: Leg_R
+    rotation: {x: 0, y: 0, z: 0.98011243, w: 0.1984429}
+  - name: Foot_R
+    rotation: {x: 0, y: 0, z: 0.014998024, w: -0.9998875}
+  positions:
+  - name: Body
+    position: {x: 0, y: 0, z: 0}
+  - name: Head
+    position: {x: 0, y: 0.4030546, z: 0}
+  - name: Arm_L
+    position: {x: 0.269, y: 0.385, z: 0}
+  - name: Forarm_L
+    position: {x: 0, y: 0.27754712, z: 0}
+  - name: Arm_R
+    position: {x: -0.107, y: 0.371, z: 0}
+  - name: Forarm_R
+    position: {x: 0.000000007450581, y: 0.23352005, z: 0}
+  - name: Leg_L
+    position: {x: 0.153, y: 0.015, z: 0}
+  - name: Foot_L
+    position: {x: 0, y: 0.34666032, z: 0}
+  - name: Leg_R
+    position: {x: -0.111, y: -0.052, z: 0}
+  - name: Foot_R
+    position: {x: 0.000000007450581, y: 0.2237203, z: 0}
+  controlPoints: []
+  targets:
+  - name: Body
+    position: {x: 0, y: 0.9120546, z: 0}
+  - name: Head
+    position: {x: 0, y: 5, z: 0}
+  - name: Arm_L
+    position: {x: 3.8433838, y: -2.7050157, z: 0}
+  - name: Forarm_L
+    position: {x: 3.874054, y: -58.06362, z: 0}
+  - name: Arm_R
+    position: {x: -1.8922889, y: -2.5061817, z: 0}
+  - name: Forarm_R
+    position: {x: -6.005702, y: -54.035244, z: 0}
+  - name: Leg_L
+    position: {x: 2.54811, y: -7.1942735, z: 0}
+  - name: Foot_L
+    position: {x: 19.580336, y: -35.331924, z: 0}
+  - name: Leg_R
+    position: {x: -1.9802558, y: -6.6115484, z: 0}
+  - name: Foot_R
+    position: {x: -18.820286, y: -41.095085, z: 0}
