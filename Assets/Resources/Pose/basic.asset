@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0543fe805424df99fe08ce744cbe49, type: 3}
+  m_Name: basic
+  m_EditorClassIdentifier: 
+  m_PoseEntries:
+  - path: 
+    localPosition: {x: 0, y: 0.55371934, z: 0}
+    localRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Head
+    localPosition: {x: 0.38003552, y: 0, z: 0}
+    localRotation: {x: 0, y: 0, z: 0, w: 1}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: ArmL
+    localPosition: {x: 0.36938894, y: -0.3352024, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.9893791, w: 0.14535798}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: ArmL/ForarmL
+    localPosition: {x: 0.27999994, y: 0.00000010430813, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.13978133, w: 0.9901824}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: ArmL/ForarmL/ArmLIKMark
+    localPosition: {x: 0.24000004, y: 0.000000078231096, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.7072616, w: 0.706952}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: ArmR
+    localPosition: {x: 0.319505, y: 0.07732734, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.9966428, w: 0.081872314}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: ArmR/ForarmR
+    localPosition: {x: 0.30000004, y: -0.000000037252903, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.042789333, w: 0.9990841}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: ArmR/ForarmR/ArmRIKMark
+    localPosition: {x: 0.22, y: -0.000000021354936, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: LegL
+    localPosition: {x: -0.018914657, y: -0.15595132, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.9770152, w: -0.21317005}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: LegL/FootL
+    localPosition: {x: 0.3000001, y: 0.000000014901161, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.042098496, w: 0.9991135}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: LegL/FootL/LegLIKMark
+    localPosition: {x: 0.23000014, y: 0.000000051884854, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.8089255, w: 0.5879112}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: LegR
+    localPosition: {x: -0.026747394, y: 0.15917295, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.9881824, w: 0.15328261}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: LegR/FootR
+    localPosition: {x: 0.31000012, y: -0.000000014901161, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.033058126, w: 0.9994534}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: LegR/FootR/LegRIKMark
+    localPosition: {x: 0.19000001, y: -0.000000063851985, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.5519369, w: 0.83388585}
+    localScale: {x: 1, y: 1, z: 1}

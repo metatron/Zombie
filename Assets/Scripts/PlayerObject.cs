@@ -9,7 +9,11 @@ public class PlayerObject : MonoBehaviour {
 	public GunObject GunObject { get { return _gunObject; } set { _gunObject = value; } }
 
 	private Animator _animator;
-	private Skeleton _skeleton;
+
+	public enum CharDirection : int {
+		LEFT,
+		RIGHT
+	}
 
 	void Start() {
 	}
@@ -23,12 +27,19 @@ public class PlayerObject : MonoBehaviour {
 		_animator.Play ("stand");
 
 		//ディフォルトは右向き
-		_skeleton = GetComponentInChildren<Skeleton> ();
-		_skeleton.flipY = true;
+		FaceTo(CharDirection.RIGHT);
 	}
 
 	public void Play(string anim) {
 		_animator.Play (anim, -1, 0.0f);
+	}
+
+	public void FaceTo(CharDirection dir) {
+		if (dir == CharDirection.LEFT) {
+			transform.localRotation = Quaternion.Euler (new Vector3 (0.0f, 0.0f, 0.0f));
+		} else {
+			transform.localRotation = Quaternion.Euler (new Vector3 (0.0f, 180.0f, 0.0f));
+		}
 	}
 
 	public void initPlayerGunObject(string gunPrefabPath) {

@@ -1,0 +1,238 @@
+fileFormatVersion: 2
+guid: 4c9c5255bf8794a45b6fa40fefba0768
+timeCreated: 1485090871
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: face
+    21300002: foot_l
+    21300004: forarm_l
+    21300006: leg_l
+    21300008: leg_r
+    21300010: arm_l
+    21300012: hair
+    21300014: foot_r
+    21300016: upperbody
+    21300018: arm_r
+    21300020: forarm_r
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: face
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 0
+        width: 59
+        height: 57
+      alignment: 9
+      pivot: {x: 0.46390197, y: 0.07238253}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: foot_l
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 100
+        width: 22
+        height: 26
+      alignment: 9
+      pivot: {x: 0.3816785, y: 0.8549637}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: forarm_l
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 91
+        width: 15
+        height: 30
+      alignment: 9
+      pivot: {x: 0.42111817, y: 0.88651633}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: leg_l
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 0
+        width: 44
+        height: 42
+      alignment: 9
+      pivot: {x: 0.30100492, y: 0.87750125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: leg_r
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 59
+        width: 39
+        height: 54
+      alignment: 9
+      pivot: {x: 0.65169406, y: 0.8856397}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: arm_l
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 0
+        width: 34
+        height: 40
+      alignment: 9
+      pivot: {x: 0.36079857, y: 0.90820855}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hair
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 92
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: foot_r
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 73
+        width: 25
+        height: 25
+      alignment: 9
+      pivot: {x: 0.6230542, y: 0.84076536}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: upperbody
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 73
+        width: 62
+        height: 50
+      alignment: 9
+      pivot: {x: 0.41221318, y: 0.09297455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: arm_r
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 44
+        width: 33
+        height: 39
+      alignment: 9
+      pivot: {x: 0.65059084, y: 0.9004722}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: forarm_r
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 59
+        width: 16
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5147896, y: 0.9022924}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
