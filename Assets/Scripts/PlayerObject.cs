@@ -8,6 +8,10 @@ public class PlayerObject : MonoBehaviour {
 	private GunObject _gunObject; //instantiatedオブジェクト
 	public GunObject GunObject { get { return _gunObject; } set { _gunObject = value; } }
 
+	[SerializeField]
+	private SwordObject _swordObject; //instantiatedオブジェクト
+	public SwordObject SwordObject { get { return _swordObject; } set { _swordObject = value; } }
+
 	private Animator _animator;
 
 	public enum CharDirection : int {
@@ -48,4 +52,12 @@ public class PlayerObject : MonoBehaviour {
 		_gunObject.transform.SetParent (transform);
 		_gunObject.transform.localPosition = Vector3.zero;
 	}
+
+	public void initPlayerSwordObject(string swordPrefabPath) {
+		_swordObject = ((GameObject)Instantiate ((GameObject)Resources.Load (swordPrefabPath))).GetComponent<SwordObject>();
+		_swordObject.Owner = gameObject;
+		_swordObject.transform.SetParent (transform);
+		_swordObject.transform.localPosition = Vector3.zero;
+	}
+
 }
