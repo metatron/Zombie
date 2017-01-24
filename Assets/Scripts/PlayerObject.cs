@@ -57,11 +57,7 @@ public class PlayerObject : MonoBehaviour {
 		//剣の場合はweaponオブジェクトが既にあるのでパラメータのみの受け渡しOwnerだけ設定しておく
 		//パラメータコピー
 		SwordObject srcSwordObject = ((GameObject)Resources.Load (gunPrefabPath)).GetComponent<SwordObject>();
-		System.Type type = srcSwordObject.GetType ();
-		System.Reflection.FieldInfo[] fields = type.GetFields();
-		foreach (System.Reflection.FieldInfo field in fields) {
-			field.SetValue (_swordObject, field.GetValue (srcSwordObject));
-		}
+		AbstractWeaponObject.CopyComponent<AbstractWeaponObject> (srcSwordObject, _swordObject.gameObject);
 
 		//Owerだけ上書き
 		_swordObject.Owner = gameObject;

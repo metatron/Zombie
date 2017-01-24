@@ -14,4 +14,18 @@ public abstract class AbstractWeaponObject : MonoBehaviour {
 	[SerializeField]
 	private GameObject _owner;
 	public GameObject Owner { get { return _owner; } set { _owner = value; } }
-}
+
+	public static T CopyComponent<T>(T original, GameObject destination) where T : Component {
+		System.Type type = original.GetType();
+		Component copy = destination.GetComponent(type);
+		if (copy == null) {
+			copy = destination.AddComponent(type);
+		}
+		System.Reflection.FieldInfo[] fields = type.GetFields();
+		Debug.Log (type + ", " + original + ", " + fields.Length);
+		foreach (System.Reflection.FieldInfo field in fields) {
+			Debug.LogError ("***: " + field);
+			field.SetValue(copy, field.GetValue(original));
+		}
+		return copy as T;
+	}}

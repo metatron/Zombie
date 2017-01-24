@@ -292,7 +292,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4983072692571170}
   - component: {fileID: 212484304094014934}
-  - component: {fileID: 114836228021293854}
+  - component: {fileID: 114143189851855298}
   m_Layer: 0
   m_Name: weapon
   m_TagString: Untagged
@@ -872,6 +872,20 @@ MonoBehaviour:
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4789251072608354}
   m_AttachedIK: {fileID: 114839340236932016}
+--- !u!114 &114143189851855298
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1711629712574116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a76f841c09c4f40b206c827fc9fdef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: 
+  _damage: 1
+  _owner: {fileID: 0}
 --- !u!114 &114146247390556334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -937,7 +951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gunObject: {fileID: 0}
-  _swordObject: {fileID: 114836228021293854}
+  _swordObject: {fileID: 114143189851855298}
 --- !u!114 &114448876060380186
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -967,20 +981,6 @@ MonoBehaviour:
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 0}
   m_AttachedIK: {fileID: 114859384996995324}
---- !u!114 &114836228021293854
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1711629712574116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8a76f841c09c4f40b206c827fc9fdef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _name: DefaultSword
-  _damage: 1
-  _owner: {fileID: 0}
 --- !u!114 &114838241239469624
 MonoBehaviour:
   m_ObjectHideFlags: 1
