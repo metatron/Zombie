@@ -53,11 +53,18 @@ public class PlayerObject : MonoBehaviour {
 		_gunObject.transform.localPosition = Vector3.zero;
 	}
 
-	public void initPlayerSwordObject(string swordPrefabPath) {
-		_swordObject = ((GameObject)Instantiate ((GameObject)Resources.Load (swordPrefabPath))).GetComponent<SwordObject>();
+	public void initPlayerSwordObject(string gunPrefabPath) {
+		//剣の場合はweaponオブジェクトが既にあるのでパラメータのみの受け渡しOwnerだけ設定しておく
+		//パラメータコピー
+		SwordObject srcSwordObject = ((GameObject)Resources.Load (gunPrefabPath)).GetComponent<SwordObject>();
+		System.Type type = srcSwordObject.GetType ();
+		System.Reflection.FieldInfo[] fields = type.GetFields();
+		foreach (System.Reflection.FieldInfo field in fields) {
+			field.SetValue (_swordObject, field.GetValue (srcSwordObject));
+		}
+
+		//Owerだけ上書き
 		_swordObject.Owner = gameObject;
-		_swordObject.transform.SetParent (transform);
-		_swordObject.transform.localPosition = Vector3.zero;
 	}
 
 }

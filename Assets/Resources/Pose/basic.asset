@@ -22,49 +22,33 @@ MonoBehaviour:
     localScale: {x: 1, y: 1, z: 1}
   - path: ArmL
     localPosition: {x: 0.36938894, y: -0.3352024, z: 0}
-    localRotation: {x: 0, y: 0, z: -0.9893791, w: 0.14535798}
+    localRotation: {x: 0, y: 0, z: -0.98937905, w: 0.14535837}
     localScale: {x: 1, y: 1, z: 1}
   - path: ArmL/ForarmL
     localPosition: {x: 0.27999994, y: 0.00000010430813, z: 0}
-    localRotation: {x: 0, y: 0, z: -0.13978133, w: 0.9901824}
-    localScale: {x: 1, y: 1, z: 1}
-  - path: ArmL/ForarmL/ArmLIKMark
-    localPosition: {x: 0.24000004, y: 0.000000078231096, z: 0}
-    localRotation: {x: 0, y: 0, z: -0.7072616, w: 0.706952}
+    localRotation: {x: 0, y: 0, z: -0.13978241, w: 0.9901823}
     localScale: {x: 1, y: 1, z: 1}
   - path: ArmR
     localPosition: {x: 0.319505, y: 0.07732734, z: 0}
-    localRotation: {x: 0, y: 0, z: 0.9966428, w: 0.081872314}
+    localRotation: {x: 0, y: 0, z: 0.99895364, w: 0.045735452}
     localScale: {x: 1, y: 1, z: 1}
   - path: ArmR/ForarmR
     localPosition: {x: 0.30000004, y: -0.000000037252903, z: 0}
-    localRotation: {x: 0, y: 0, z: 0.042789333, w: 0.9990841}
-    localScale: {x: 1, y: 1, z: 1}
-  - path: ArmR/ForarmR/ArmRIKMark
-    localPosition: {x: 0.22, y: -0.000000021354936, z: 0}
-    localRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+    localRotation: {x: 0, y: 0, z: -0.042788386, w: 0.9990842}
     localScale: {x: 1, y: 1, z: 1}
   - path: LegL
     localPosition: {x: -0.018914657, y: -0.15595132, z: 0}
-    localRotation: {x: 0, y: 0, z: 0.9770152, w: -0.21317005}
+    localRotation: {x: 0, y: 0, z: -0.98415184, w: 0.1773279}
     localScale: {x: 1, y: 1, z: 1}
   - path: LegL/FootL
     localPosition: {x: 0.3000001, y: 0.000000014901161, z: 0}
-    localRotation: {x: 0, y: 0, z: -0.042098496, w: 0.9991135}
-    localScale: {x: 1, y: 1, z: 1}
-  - path: LegL/FootL/LegLIKMark
-    localPosition: {x: 0.23000014, y: 0.000000051884854, z: 0}
-    localRotation: {x: 0, y: 0, z: -0.8089255, w: 0.5879112}
+    localRotation: {x: 0, y: 0, z: 0.0421024, w: 0.9991133}
     localScale: {x: 1, y: 1, z: 1}
   - path: LegR
     localPosition: {x: -0.026747394, y: 0.15917295, z: 0}
-    localRotation: {x: 0, y: 0, z: 0.9881824, w: 0.15328261}
+    localRotation: {x: 0, y: 0, z: 0.9840178, w: 0.17807025}
     localScale: {x: 1, y: 1, z: 1}
   - path: LegR/FootR
     localPosition: {x: 0.31000012, y: -0.000000014901161, z: 0}
-    localRotation: {x: 0, y: 0, z: -0.033058126, w: 0.9994534}
-    localScale: {x: 1, y: 1, z: 1}
-  - path: LegR/FootR/LegRIKMark
-    localPosition: {x: 0.19000001, y: -0.000000063851985, z: 0}
-    localRotation: {x: 0, y: 0, z: -0.5519369, w: 0.83388585}
+    localRotation: {x: 0, y: 0, z: 0.03308308, w: 0.9994526}
     localScale: {x: 1, y: 1, z: 1}

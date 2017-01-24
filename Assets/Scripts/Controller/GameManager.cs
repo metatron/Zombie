@@ -10,5 +10,6 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 	void Start() {
 		_playerObject.initPlayer ();
 		_playerObject.initPlayerGunObject ("Prefabs/Gun01");
+		_playerObject.initPlayerSwordObject ("Prefabs/Sword01");
 	}
 }
