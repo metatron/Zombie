@@ -54,8 +54,12 @@ public class PlayerObject : AbstractCharacterObject {
 
 
 	public void Attack() {
-		GameManager.Instance.PlayerObject.GunObject.Fire();
-
+		if (this.SwordObject.CanReachEnemy ()) {
+			this.SwordObject.Slash ();
+		}
+		else {
+			this.GunObject.Fire();
+		}
 	}
 
 }

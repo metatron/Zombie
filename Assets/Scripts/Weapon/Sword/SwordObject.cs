@@ -13,6 +13,19 @@ public class SwordObject : AbstractWeaponObject {
 		((SwordObject)target).ReachLength = _reachLength;
 	}
 
+	public override bool CanReachEnemy () {
+		KeyValuePair<float, EnemyObject> nearestObject = GameManager.Instance.GetClosestEnemyObjectTo (Owner.gameObject);
+		if (nearestObject.Value == null) {
+			return false;
+		}
+
+		if (_reachLength <= nearestObject.Key) {
+			return true;
+		}
+
+		return false;
+	}
+
 	public void Slash() {
 		GameManager.Instance.PlayerObject.Play ("swing1");
 	}
