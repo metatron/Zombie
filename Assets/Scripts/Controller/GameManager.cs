@@ -7,9 +7,11 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 	private PlayerObject _playerObject;
 	public PlayerObject PlayerObject { get {return _playerObject; } set { _playerObject = value; } }
 
+	public Dictionary<string, EnemyObject> crntEnemyDictionary = new Dictionary<string, EnemyObject> ();
+
 	void Start() {
-		_playerObject.initPlayer ();
-		_playerObject.initPlayerGunObject ("Prefabs/Gun01");
-		_playerObject.initPlayerSwordObject ("Prefabs/Sword01");
+		_playerObject.InitPlayer ();
+		_playerObject.InitPlayerGunObject ("Prefabs/Gun01");
+		_playerObject.InitPlayerSwordObject ("Prefabs/Sword01");
 	}
 }

@@ -3,26 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class PlayerObject : MonoBehaviour {
-	[SerializeField]
-	private GunObject _gunObject; //instantiatedオブジェクト
-	public GunObject GunObject { get { return _gunObject; } set { _gunObject = value; } }
-
-	[SerializeField]
-	private SwordObject _swordObject; //instantiatedオブジェクト
-	public SwordObject SwordObject { get { return _swordObject; } set { _swordObject = value; } }
-
-	private Animator _animator;
-
-	public enum CharDirection : int {
-		LEFT,
-		RIGHT
-	}
+public class PlayerObject : AbstractCharacterObject {
 
 	void Start() {
 	}
 
-	public void initPlayer() {
+	public void InitPlayer() {
 		_animator = GetComponentInChildren<Animator> ();
 		if (_animator == null) {
 			Debug.LogError ("PlayerObject.Skeleton does not have Animator attached!");
@@ -31,7 +17,7 @@ public class PlayerObject : MonoBehaviour {
 		_animator.Play ("stand");
 
 		//ディフォルトは右向き
-		FaceTo(CharDirection.RIGHT);
+		FaceTo(AbstractCharacterObject.CharDirection.RIGHT);
 	}
 
 	public void Play(string anim) {
@@ -46,21 +32,30 @@ public class PlayerObject : MonoBehaviour {
 		}
 	}
 
-	public void initPlayerGunObject(string gunPrefabPath) {
+	public void InitPlayerGunObject(string gunPrefabPath) {
 		_gunObject = ((GameObject)Instantiate ((GameObject)Resources.Load (gunPrefabPath))).GetComponent<GunObject>();
 		_gunObject.Owner = gameObject;
 		_gunObject.transform.SetParent (transform);
 		_gunObject.transform.localPosition = Vector3.zero;
 	}
 
-	public void initPlayerSwordObject(string gunPrefabPath) {
+	public void InitPlayerSwordObject(string gunPrefabPath) {
 		//剣の場合はweaponオブジェクトが既にあるのでパラメータのみの受け渡しOwnerだけ設定しておく
 		//パラメータコピー
 		SwordObject srcSwordObject = ((GameObject)Resources.Load (gunPrefabPath)).GetComponent<SwordObject>();
-		AbstractWeaponObject.CopyComponent<AbstractWeaponObject> (srcSwordObject, _swordObject.gameObject);
+		srcSwordObject.CopyParamsTo (_swordObject);
+
+		//コピー後にメモリ解放
+		srcSwordObject = null;
 
 		//Owerだけ上書き
 		_swordObject.Owner = gameObject;
+	}
+
+
+	public void Attack() {
+		GameManager.Instance.PlayerObject.GunObject.Fire();
+
 	}
 
 }

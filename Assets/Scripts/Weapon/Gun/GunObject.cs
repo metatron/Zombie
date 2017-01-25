@@ -17,6 +17,7 @@ public class GunObject : AbstractWeaponObject {
 	private float reloadTime;		//全弾打った後のリロードタイム
 
 	public void Fire() {
+		GameManager.Instance.PlayerObject.Play ("fire");
 		GameObject instBullet = (GameObject)Instantiate (_bulletObject.gameObject);
 		instBullet.GetComponent<BulletObject> ().GunObject = this;
 		instBullet.transform.SetParent (transform);

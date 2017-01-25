@@ -15,17 +15,20 @@ public abstract class AbstractWeaponObject : MonoBehaviour {
 	private GameObject _owner;
 	public GameObject Owner { get { return _owner; } set { _owner = value; } }
 
-	public static T CopyComponent<T>(T original, GameObject destination) where T : Component {
-		System.Type type = original.GetType();
-		Component copy = destination.GetComponent(type);
-		if (copy == null) {
-			copy = destination.AddComponent(type);
-		}
-		System.Reflection.FieldInfo[] fields = type.GetFields();
-		Debug.Log (type + ", " + original + ", " + fields.Length);
-		foreach (System.Reflection.FieldInfo field in fields) {
-			Debug.LogError ("***: " + field);
-			field.SetValue(copy, field.GetValue(original));
-		}
-		return copy as T;
-	}}
+	public virtual void CopyParamsTo(AbstractWeaponObject target) {
+		target.Name		= _name;
+		target.Damage	= _damage;
+	}
+
+	/**
+	 * 
+	 * 銃は常にtrue.
+	 * 剣はリーチ内であればtrue.
+	 * 
+	 * @return bool
+	 * 
+	 */
+	public virtual bool CanReachEnemy() {
+		return true;
+	}
+}
