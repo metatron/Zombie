@@ -52,7 +52,9 @@ public class PlayerObject : AbstractCharacterObject {
 		_swordObject.Owner = gameObject;
 
 		//マーカー移動
-
+		Vector3 markerPos = transform.position;
+		markerPos.x += _swordObject.ReachLength;
+		GameManager.Instance.swordReachMarker.transform.position = markerPos;
 	}
 
 

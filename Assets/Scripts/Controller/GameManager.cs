@@ -35,7 +35,7 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 				continue;
 			}
 
-			float comparingDist = Vector3.Distance (target.transform.position, nearestEnemyObj.transform.position);
+			float comparingDist = Vector3.Distance (target.transform.position, enemyList[i].transform.position);
 
 			if (comparingDist < minDist) {
 				minDist = comparingDist;
