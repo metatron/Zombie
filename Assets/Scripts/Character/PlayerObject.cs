@@ -50,6 +50,9 @@ public class PlayerObject : AbstractCharacterObject {
 
 		//Owerだけ上書き
 		_swordObject.Owner = gameObject;
+
+		//マーカー移動
+
 	}
 
 

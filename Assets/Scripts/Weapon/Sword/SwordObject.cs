@@ -14,12 +14,14 @@ public class SwordObject : AbstractWeaponObject {
 	}
 
 	public override bool CanReachEnemy () {
-		KeyValuePair<float, EnemyObject> nearestObject = GameManager.Instance.GetClosestEnemyObjectTo (Owner.gameObject);
-		if (nearestObject.Value == null) {
+		float distance = 0.0f;
+		EnemyObject nearestObject = GameManager.Instance.GetClosestEnemyObjectTo (Owner.gameObject, ref distance);
+		if (nearestObject == null) {
 			return false;
 		}
 
-		if (_reachLength <= nearestObject.Key) {
+		Debug.LogError (nearestObject + ", " + distance);
+		if (_reachLength <= distance) {
 			return true;
 		}
 

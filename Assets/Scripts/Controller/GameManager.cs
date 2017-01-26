@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+
 
 public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 	[SerializeField]
@@ -9,36 +11,39 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 
 	public Dictionary<string, EnemyObject> crntEnemyDictionary = new Dictionary<string, EnemyObject> ();
 
+	public GameObject swordReachMarker;
+
 	void Start() {
 		_playerObject.InitPlayer ();
 		_playerObject.InitPlayerGunObject ("Prefabs/Gun01");
 		_playerObject.InitPlayerSwordObject ("Prefabs/Sword01");
 	}
 
-
 	/**
 	 * 
 	 * targetと現存する敵の距離
-	 * の中で一番近いものを<距離、EnemyObjectのKeyValueで返す。
+	 * の中で一番近いものを<距離、EnemyObjectを返す。
 	 * 存在しない場合は EnemyObjectはNULL
 	 * 
 	 */
-	public KeyValuePair<float, EnemyObject> GetClosestEnemyObjectTo(GameObject target) {
+	public EnemyObject GetClosestEnemyObjectTo(GameObject target, ref float distance) {
 		float minDist = float.MaxValue;
-		float nearestEnemyObj = null;
-		foreach (KeyValuePair<string, EnemyObject> pair in GameManager.Instance.crntEnemyDictionary) {
-			if (pair.Value == null) {
+		EnemyObject nearestEnemyObj = null;
+		List<EnemyObject> enemyList = GameManager.Instance.crntEnemyDictionary.Values.ToList();
+		for(int i=0; i<enemyList.Count; i++) {
+			if (enemyList [i] == null) {
 				continue;
 			}
 
-			float comparingDist = Vector3.Distance (target.transform.position, pair.Value.transform.position);
+			float comparingDist = Vector3.Distance (target.transform.position, nearestEnemyObj.transform.position);
 
 			if (comparingDist < minDist) {
 				minDist = comparingDist;
-				nearestEnemyObj = pair.Value;
+				nearestEnemyObj = enemyList [i];
 			}
 		}
 
-		return new KeyValuePair<float, EnemyObject>(minDist, nearestEnemyObj);
+		distance = minDist;
+		return nearestEnemyObj;
 	}
 }
