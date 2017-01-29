@@ -14,9 +14,14 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 	public GameObject swordReachMarker;
 
 	void Start() {
+		GameObject playerObj = GameObject.FindGameObjectWithTag ("Player");
+		_playerObject = playerObj.GetComponent<PlayerObject> ();
+		_playerObject.transform.localPosition = new Vector3 (-4.0f, 0.0f, 0.0f);
+
 		_playerObject.InitPlayer ();
 		_playerObject.InitPlayerGunObject ("Prefabs/Gun01");
 		_playerObject.InitPlayerSwordObject ("Prefabs/Sword01");
+
 	}
 
 	/**

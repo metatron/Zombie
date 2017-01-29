@@ -4,6 +4,7 @@ using UnityEngine;
 
 [System.Serializable]
 public class PlayerObject : AbstractCharacterObject {
+	public static bool useSwordWeapon = false;
 
 	void Start() {
 	}
@@ -42,11 +43,14 @@ public class PlayerObject : AbstractCharacterObject {
 	public void InitPlayerSwordObject(string gunPrefabPath) {
 		//剣の場合はweaponオブジェクトが既にあるのでパラメータのみの受け渡しOwnerだけ設定しておく
 		//パラメータコピー
-		SwordObject srcSwordObject = ((GameObject)Resources.Load (gunPrefabPath)).GetComponent<SwordObject>();
-		srcSwordObject.CopyParamsTo (_swordObject);
+		SwordObject srcSwordObjectPrefab = ((GameObject)Resources.Load (gunPrefabPath)).GetComponent<SwordObject>();
+		srcSwordObjectPrefab.CopyParamsTo (_swordObject);
+
+		//swingeffectをロードし、セット
+
 
 		//コピー後にメモリ解放
-		srcSwordObject = null;
+		srcSwordObjectPrefab = null;
 
 		//Owerだけ上書き
 		_swordObject.Owner = gameObject;

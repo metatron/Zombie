@@ -7,10 +7,16 @@ public class SwordObject : AbstractWeaponObject {
 	private float _reachLength = 1.0f;
 	public float ReachLength { get { return _reachLength; } set {_reachLength = value; } }
 
+	[SerializeField]
+	private GameObject _swingEffectPrefab;
+	public GameObject SwingEffectPrefab { get { return _swingEffectPrefab; } set {_swingEffectPrefab = value; } }
+
 	public override void CopyParamsTo(AbstractWeaponObject target) {
 		base.CopyParamsTo (target);
 		((SwordObject)target).GetComponent<SpriteRenderer> ().sprite = GetComponent<SpriteRenderer> ().sprite;
 		((SwordObject)target).ReachLength = _reachLength;
+
+		((SwordObject)target).SwingEffectPrefab = _swingEffectPrefab;
 	}
 
 	public override bool CanReachEnemy () {
@@ -20,7 +26,9 @@ public class SwordObject : AbstractWeaponObject {
 			return false;
 		}
 
-		if (_reachLength <= distance) {
+		//敵の半径もリーチ計算に入れる
+		float extX = nearestObject.GetComponent<BoxCollider>().bounds.extents.x;
+		if (distance <= (_reachLength + extX)) {
 			return true;
 		}
 
@@ -29,5 +37,7 @@ public class SwordObject : AbstractWeaponObject {
 
 	public void Slash() {
 		GameManager.Instance.PlayerObject.Play ("swing1");
+		GameObject swingEffect = (GameObject)Instantiate (_swingEffectPrefab, transform);
+		swingEffect.transform.localPosition = Vector3.zero;
 	}
 }
