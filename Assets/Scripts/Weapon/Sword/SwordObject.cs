@@ -38,6 +38,10 @@ public class SwordObject : AbstractWeaponObject {
 	public void Slash() {
 		GameManager.Instance.PlayerObject.Play ("swing1");
 		GameObject swingEffect = (GameObject)Instantiate (_swingEffectPrefab, transform);
+		swingEffect.GetComponent<AbstractDamageObject> ().WeaponObject = this;
+
 		swingEffect.transform.localPosition = Vector3.zero;
+		//親をグローバルにしておく
+		swingEffect.transform.SetParent(null);
 	}
 }

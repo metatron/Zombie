@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwingEffect : MonoBehaviour {
+public class SwingEffect : AbstractDamageObject {
 	void Start () {
 		iTween.ValueTo(gameObject, 
 			iTween.Hash(
@@ -11,6 +11,16 @@ public class SwingEffect : MonoBehaviour {
 				"time", 0.15f, 
 				"onupdate", "SetValue",
 				"oncomplete", "EffectCompleted"
+			));
+
+		Vector3 moveDestPos = GameManager.Instance.swordReachMarker.transform.position;
+		moveDestPos.x -= transform.localScale.x / 2.0f;
+		Debug.LogError ("@@@@@@@markerPos: " + GameManager.Instance.swordReachMarker.transform.position + ", scale: " + transform.localScale.x + ", distPos: " + moveDestPos);
+		iTween.MoveTo (gameObject, 
+			iTween.Hash (
+				"position", moveDestPos,
+				"islocal", false, 
+				"time", 0.15f
 			));
 	}
 
@@ -22,11 +32,4 @@ public class SwingEffect : MonoBehaviour {
 		Destroy (gameObject);
 	}
 
-	void OnCollisionEnter(Collision other) {
-		EnemyObject enemyObj = other.gameObject.GetComponent<EnemyObject> ();
-		if (enemyObj != null) {
-			Destroy (gameObject);
-			Destroy (other.gameObject);
-		}
-	}
 }

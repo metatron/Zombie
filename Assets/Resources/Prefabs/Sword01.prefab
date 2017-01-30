@@ -53,9 +53,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: DefaultSword
-  _damage: 1
+  _damage: 3
   _owner: {fileID: 0}
-  _reachLength: 1
+  _reachLength: 3
   _swingEffectPrefab: {fileID: 1451157589266302, guid: 1cce9885115de43edb0c9cb1c10ff5f3,
     type: 2}
 --- !u!212 &212767053026869504
