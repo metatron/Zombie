@@ -21,10 +21,6 @@ public class PlayerObject : AbstractCharacterObject {
 		FaceTo(AbstractCharacterObject.CharDirection.RIGHT);
 	}
 
-	public void Play(string anim) {
-		_animator.Play (anim, -1, 0.0f);
-	}
-
 	public void FaceTo(CharDirection dir) {
 		if (dir == CharDirection.LEFT) {
 			transform.localRotation = Quaternion.Euler (new Vector3 (0.0f, 0.0f, 0.0f));
@@ -45,9 +41,6 @@ public class PlayerObject : AbstractCharacterObject {
 		//パラメータコピー
 		SwordObject srcSwordObjectPrefab = ((GameObject)Resources.Load (gunPrefabPath)).GetComponent<SwordObject>();
 		srcSwordObjectPrefab.CopyParamsTo (_swordObject);
-
-		//swingeffectをロードし、セット
-
 
 		//コピー後にメモリ解放
 		srcSwordObjectPrefab = null;

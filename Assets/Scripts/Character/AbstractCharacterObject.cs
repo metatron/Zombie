@@ -17,4 +17,8 @@ public class AbstractCharacterObject : MonoBehaviour {
 	[SerializeField]
 	protected SwordObject _swordObject; //instantiatedオブジェクト
 	public SwordObject SwordObject { get { return _swordObject; } set { _swordObject = value; } }
+
+	public void Play(string anim) {
+		_animator.Play (anim, -1, 0.0f);
+	}
 }

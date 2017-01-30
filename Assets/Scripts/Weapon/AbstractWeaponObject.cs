@@ -31,4 +31,5 @@ public abstract class AbstractWeaponObject : MonoBehaviour {
 	public virtual bool CanReachEnemy() {
 		return true;
 	}
+
 }
