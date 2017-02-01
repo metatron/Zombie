@@ -15,9 +15,6 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 	public GameObject swordReachMarker;
 
 	void Start() {
-		//Cameraのトランジション設定（重そうなのでOFFる）
-		Camera.main.GetComponent<BlurOptimized>().enabled = false;
-
 		GameObject playerObj = GameObject.FindGameObjectWithTag ("Player");
 		_playerObject = playerObj.GetComponent<PlayerObject> ();
 		_playerObject.transform.localPosition = new Vector3 (-4.0f, 0.0f, 0.0f);
