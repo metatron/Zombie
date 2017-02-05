@@ -24,8 +24,16 @@ public class GUITabController : MonoBehaviour {
 		public void SetTabInteractable(bool b) {
 			tab.interactable = b;
 			if (optionals.selectedTab != null) {
-				optionals.selectedTab.gameObject.SetActive(!b);
-				tab.gameObject.SetActive(b);
+				//タブオブジェクトにButtonがアタッチされてるなら半透明にする
+				if (optionals.selectedTab.GetComponent<Button> () != null) {
+					optionals.selectedTab.GetComponent<Button> ().interactable = !b;
+					tab.gameObject.GetComponent<Button> ().interactable = b;
+				}
+				//Buttonがない場合みせなくする
+				else {
+					optionals.selectedTab.gameObject.SetActive (!b);
+					tab.gameObject.SetActive(b);
+				}
 			}
 		}
 	}

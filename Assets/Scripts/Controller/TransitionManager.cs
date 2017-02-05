@@ -25,6 +25,10 @@ public class TransitionManager : SingletonMonoBehaviourFast<TransitionManager> {
 		nextSceneName = sceneName;
 		transitionPanel.color = new Color (0.0f, 0.0f, 0.0f, 0.0f);
 
+		//disable button press
+		transitionPanel.gameObject.SetActive(true);
+		transitionPanel.raycastTarget = true;
+
 		//ブラー効果
 		iTween.ValueTo(gameObject,
 			iTween.Hash(
@@ -59,6 +63,10 @@ public class TransitionManager : SingletonMonoBehaviourFast<TransitionManager> {
 	 * 
 	 */
 	public void CompletingTransition() {
+		transitionPanel.gameObject.SetActive(true);
+		//disable button press
+		transitionPanel.raycastTarget = true;
+
 		//初期化
 		Camera.main.transform.position = destPosition;
 
@@ -82,5 +90,7 @@ public class TransitionManager : SingletonMonoBehaviourFast<TransitionManager> {
 	}
 
 	private void TransitionCompleted() {
+		//enable button press
+		transitionPanel.raycastTarget = false;
 	}
 }
