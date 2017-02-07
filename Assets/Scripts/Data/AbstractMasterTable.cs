@@ -48,6 +48,12 @@ public class AbstractMasterTable<T> where T : AbstractData, new() {
 }
 
 public class AbstractData {
+	//アイテムを作成する場合、何かいくつ必要かを記す為に必要。
+	public struct RequirementData {
+		AbstractData materialData;
+		int numRequired;
+	}
+
 	public void Load(Dictionary<string, string> param) {
 		foreach(string key in param.Keys) SetField (key, param[key]);
 	}
