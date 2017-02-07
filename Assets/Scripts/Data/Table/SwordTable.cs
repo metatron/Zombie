@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwordDataTable : AbstractMasterTable<SwordData> {
-	private static readonly string FilePath = "SwordData";
-	public void Load() { Load(FilePath); }
+public class SwordTable : MonoBehaviour {
+	public class SwordDataTable : AbstractMasterTable<SwordData> {
+		private static readonly string FilePath = "Csv/Sword.csv";
+		public void Load() { Load(FilePath); }
+	}
 }
