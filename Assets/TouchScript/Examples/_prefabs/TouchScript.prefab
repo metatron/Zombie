@@ -46,7 +46,9 @@ MonoBehaviour:
   useSendMessage: 0
   sendMessageEvents: 60
   sendMessageTarget: {fileID: 0}
-  layers: []
+  layers:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

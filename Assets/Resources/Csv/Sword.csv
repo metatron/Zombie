@@ -1,3 +1,3 @@
-ID,Name,Damage,Reach,RequirementStr
+ID,Name,Damage,ReachLength,RequirementStr
 1,Knife,2,1,Metal:3|wood:1|fuel:3
-1,Battle Knife,3,2,Metal:3|wood:1|fuel:3
+2,Battle Knife,3,2,Metal:3|wood:1|fuel:3

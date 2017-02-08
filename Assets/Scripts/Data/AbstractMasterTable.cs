@@ -25,6 +25,7 @@ public class AbstractMasterTable<T> where T : AbstractData, new() {
 		// header
 		var headerElements = lines[0].Split(',');
 		lines.RemoveAt(0); // header
+		Debug.LogError ("headerElements count: " + (headerElements.Length) + ", lines count: " + lines.Count);
 
 		// body
 		masters = new List<T>();
@@ -59,6 +60,7 @@ public class AbstractData {
 	}
 
 	private void SetField(string key, string value) {
+		
 		PropertyInfo propertyInfo = this.GetType().GetProperty(key, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 
 		if(propertyInfo.PropertyType == typeof(int))         propertyInfo.SetValue(this, int.Parse(value), null);
