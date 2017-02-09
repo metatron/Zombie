@@ -17,13 +17,16 @@ public class AbstractMasterTable<T> where T : AbstractData, new() {
 	protected List<T> masters;
 	public List<T> All { get { return masters; } }
 
+	protected string[] headerElements;
+	public string[] HeaderElements { get { return headerElements; } }
+
 	public void Load(string filePath) {
 		var text = ((TextAsset)Resources.Load(filePath, typeof(TextAsset))).text;
 		text = text.Trim().Replace("\r", "") + "\n";
 		var lines = text.Split('\n').ToList();
 
 		// header
-		var headerElements = lines[0].Split(',');
+		headerElements = lines[0].Split(',');
 		lines.RemoveAt(0); // header
 		Debug.LogError ("headerElements count: " + (headerElements.Length) + ", lines count: " + lines.Count);
 

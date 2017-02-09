@@ -6,12 +6,23 @@ using UnityEditor;
 [CustomEditor(typeof(SwordDataTableObject))]
 public class SwordDataObjectWindow : Editor
 {
+	private SwordDataTable swordDataTable;
+	private List<SwordData> swordDataList;
+
 	void OnEnable () {
 		Debug.Log ("@@@@@@");
+		((SwordDataTableObject)target).InitData ();
+		swordDataTable = ((SwordDataTableObject)target).Table;
+		swordDataList = swordDataTable.All;
 	}
 
 	public override void OnInspectorGUI() {
-		Debug.Log ("***: " + target);
-	}
+		if (swordDataList == null || swordDataList.Count == 0) {
+			return;
+		}
 
+		foreach (SwordData swordData in swordDataList) {
+//			EditorGUILayout.BeginHorizontal(GUILayoutOption.Equals
+		}
+	}
 }

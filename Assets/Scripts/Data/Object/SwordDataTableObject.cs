@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SwordDataTableObject : MonoBehaviour {
-	SwordDataTable table = new SwordDataTable();
+	private SwordDataTable _table = new SwordDataTable();
+	public SwordDataTable Table { get { return _table; } set {_table = value; } }
+
+
 	public void InitData() {
-		table.Load ();
-		SwordData swordData = table.All [0];
-		Debug.LogError (swordData.ID + ", " + swordData.Damage);
+		_table.Load ();
 	}
 
-	void Start() {
-		InitData ();
-	}
 
 }
