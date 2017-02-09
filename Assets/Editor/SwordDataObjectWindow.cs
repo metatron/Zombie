@@ -21,8 +21,26 @@ public class SwordDataObjectWindow : Editor
 			return;
 		}
 
-		foreach (SwordData swordData in swordDataList) {
-//			EditorGUILayout.BeginHorizontal(GUILayoutOption.Equals
+		GUILayoutOption[] options = new GUILayoutOption[]{ GUILayout.MaxWidth(100.0f), GUILayout.MinWidth(10.0f)};
+
+		EditorGUILayout.BeginHorizontal( GUI.skin.box );
+		{
+			foreach (string element in swordDataTable.HeaderElements) {
+				EditorGUILayout.LabelField (element, options);
+			}
+		}
+		EditorGUILayout.EndHorizontal ();
+
+		foreach (SwordData data in swordDataList) {
+			EditorGUILayout.BeginHorizontal (GUI.skin.box);
+			{
+				EditorGUILayout.LabelField (""+data.ID, options);
+				EditorGUILayout.LabelField (data.Name, options);
+				EditorGUILayout.LabelField (""+data.Damage, options);
+				EditorGUILayout.LabelField (""+data.ReachLength, options);
+				EditorGUILayout.LabelField (data.RequirementStr, options);
+			}
+			EditorGUILayout.EndHorizontal ();
 		}
 	}
 }

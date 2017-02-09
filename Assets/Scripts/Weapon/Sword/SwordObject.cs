@@ -11,12 +11,19 @@ public class SwordObject : AbstractWeaponObject {
 	private GameObject _swingEffectPrefab;
 	public GameObject SwingEffectPrefab { get { return _swingEffectPrefab; } set {_swingEffectPrefab = value; } }
 
-	public override void CopyParamsTo(AbstractWeaponObject target) {
-		base.CopyParamsTo (target);
-		((SwordObject)target).GetComponent<SpriteRenderer> ().sprite = GetComponent<SpriteRenderer> ().sprite;
-		((SwordObject)target).ReachLength = _reachLength;
+//	public override void CopyParamsTo(AbstractWeaponObject target) {
+//		base.CopyParamsTo (target);
+//		((SwordObject)target).GetComponent<SpriteRenderer> ().sprite = GetComponent<SpriteRenderer> ().sprite;
+//		((SwordObject)target).ReachLength = _reachLength;
+//
+//		((SwordObject)target).SwingEffectPrefab = _swingEffectPrefab;
+//	}
 
-		((SwordObject)target).SwingEffectPrefab = _swingEffectPrefab;
+	public void CopyParamsFrom(string id) {
+		SwordData swordData = SwordDataTableObject.Instance.GetParams (id);
+		Name = swordData.Name;
+		Damage = swordData.Damage;
+		_reachLength = swordData.ReachLength;
 	}
 
 	public override bool CanReachEnemy () {
