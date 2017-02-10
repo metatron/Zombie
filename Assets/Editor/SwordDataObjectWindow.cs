@@ -38,6 +38,7 @@ public class SwordDataObjectWindow : Editor
 				EditorGUILayout.LabelField (data.Name, options);
 				EditorGUILayout.LabelField (""+data.Damage, options);
 				EditorGUILayout.LabelField (""+data.ReachLength, options);
+				EditorGUILayout.LabelField (""+data.Image, options);
 				EditorGUILayout.LabelField (data.RequirementStr, options);
 			}
 			EditorGUILayout.EndHorizontal ();

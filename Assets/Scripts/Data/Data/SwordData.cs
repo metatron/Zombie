@@ -7,6 +7,7 @@ public class SwordData : AbstractData {
 	public string Name { get; private set; }
 	public int Damage { get; private set; }
 	public int ReachLength { get; private set; }
+	public string Image { get; private set; }
 
 	//exp: 
 	//Sword1

@@ -23,6 +23,7 @@ public class SwordObject : AbstractWeaponObject {
 		SwordData swordData = SwordDataTableObject.Instance.GetParams (id);
 		Name = swordData.Name;
 		Damage = swordData.Damage;
+		GetComponent<SpriteRenderer> ().sprite = LoadSprite (swordData.Image);
 		_reachLength = swordData.ReachLength;
 	}
 
