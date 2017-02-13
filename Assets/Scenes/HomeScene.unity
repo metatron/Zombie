@@ -1125,7 +1125,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.00001052022}
+  m_AnchoredPosition: {x: 0, y: 0.000005990267}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &349226751
@@ -1932,6 +1932,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 513329265}
+--- !u!114 &533406850 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114045061724515776, guid: c9aa792331bcf464d9637248e1d85384,
+    type: 2}
+  m_PrefabInternal: {fileID: 788249487}
+  m_Script: {fileID: 11500000, guid: 96d37b60140374959b390c47fe897e9e, type: 3}
 --- !u!1 &573259909
 GameObject:
   m_ObjectHideFlags: 0
@@ -5918,6 +5924,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   craftingPanel: {fileID: 978224069}
+  _swordDataTableObj: {fileID: 533406850}
+  weaponDataTabViewportContent: {fileID: 349226749}
+  itemUIPrefab: {fileID: 114484609377194608, guid: 4393d701e479e44a59a57822dd0e3819,
+    type: 2}
 --- !u!4 &1915034903
 Transform:
   m_ObjectHideFlags: 0

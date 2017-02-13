@@ -22,6 +22,13 @@ public class SwordDataTableObject : SingletonMonoBehaviourFast<SwordDataTableObj
 	}
 		
 
+	public bool isInitialized() {
+		//データがない場合はfalse
+		if (_table.All.Count == null || _table.All.Count == 0) {
+			return false;
+		}
+		return true;
+	}
 
 
 }

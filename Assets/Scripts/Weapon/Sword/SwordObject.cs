@@ -25,6 +25,7 @@ public class SwordObject : AbstractWeaponObject {
 		Damage = swordData.Damage;
 		GetComponent<SpriteRenderer> ().sprite = LoadSprite (swordData.Image);
 		_reachLength = swordData.ReachLength;
+		_swingEffectPrefab = Resources.Load<GameObject> ("Prefabs/Effect/" + swordData.SwingEffect);
 	}
 
 	public override bool CanReachEnemy () {

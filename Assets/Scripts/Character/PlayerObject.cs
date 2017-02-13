@@ -39,12 +39,6 @@ public class PlayerObject : AbstractCharacterObject {
 	public void InitPlayerSwordObject(string gunPrefabPath) {
 		//剣の場合はweaponオブジェクトが既にあるのでパラメータのみの受け渡しOwnerだけ設定しておく
 		//パラメータコピー
-//		SwordObject srcSwordObjectPrefab = ((GameObject)Resources.Load (gunPrefabPath)).GetComponent<SwordObject>();
-//		srcSwordObjectPrefab.CopyParamsTo (_swordObject);
-//
-//		//コピー後にメモリ解放
-//		srcSwordObjectPrefab = null;
-
 		_swordObject.CopyParamsFrom (gunPrefabPath);
 
 		//Owerだけ上書き
