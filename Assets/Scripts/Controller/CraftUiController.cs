@@ -22,6 +22,8 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 		if (!_swordDataTableObj.isInitialized()) {
 			_swordDataTableObj.InitData();
 		}
+
+		InitSwordObjButton ();
 	}
 
 	public void OnOpenCraftMenuPressed() {
@@ -36,9 +38,9 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 	private void InitSwordObjButton() {
 		foreach (SwordData swordData in _swordDataTableObj.Table.All) {
 			ItemUI initedItemUIObj = (ItemUI)Instantiate (itemUIPrefab);
-
-			initedItemUIObj.InitItemMenu ("Atlases/WeaponAtlas", swordData.Image, 1);
-			initedItemUIObj.transform.SetParent (weaponDataTabViewportContent.transform);
+			initedItemUIObj.InitItemMenu ("WeaponAtlas", swordData.Image, 1);
+			initedItemUIObj.transform.SetParent (weaponDataTabViewportContent.transform, false);
+			initedItemUIObj.SetImageSize ();
 		}
 	}
 
