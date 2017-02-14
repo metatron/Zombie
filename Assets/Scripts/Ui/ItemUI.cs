@@ -11,8 +11,8 @@ public class ItemUI : MonoBehaviour {
 	private static Dictionary<string, Sprite[]> loadedSpriteDict = new Dictionary<string, Sprite[]>();
 
 	public void InitItemMenu(string atlas, string itemSpriteName, int numOwned) {
+		nameText.text = itemSpriteName;
 		numText.text = "" + numOwned;
-		this.itemImg = itemImg;
 
 		string weaponImgPath = "Atlases/" + atlas;
 
@@ -26,22 +26,23 @@ public class ItemUI : MonoBehaviour {
 			loadedSprites = loadedSpriteDict [atlas];
 		}
 		itemImg.sprite = System.Array.Find<Sprite> (loadedSprites, (sprite) => sprite.name.Equals (itemSpriteName));
-		Debug.LogError ("*****: " + itemImg.sprite);
 	}
 
-	public void SetImageSize() {
+	public void SetItemImageSize() {
+		//なぜかこれを最初しとかないと修正されない。
 		this.itemImg.SetNativeSize ();
-		Rect rect = this.GetComponent<Image> ().sprite.rect;
-		Debug.LogError ("@@@: " + itemImg + ":" + rect.size + ":" + itemImg.sprite.rect.size);
-
-		float xRatio = rect.size.x/itemImg.sprite.rect.size.x;		//1以下なら画像のXの方がボタンよりでかい
-		float yRatio = itemImg.sprite.rect.size.y / rect.size.y;	//1以下なら画像のYの方がボタンよりでかい
-
-		float adjustRatio = Mathf.Max (xRatio, yRatio);
-		itemImg.GetComponent<RectTransform> ().localScale = Vector3.one * adjustRatio;
+		//preserveAspectはOnなので、xだけ変更してやればyは勝手に修正される。
+		Vector2 imgSize = itemImg.GetComponent<RectTransform>().sizeDelta;
+		imgSize.x = transform.parent.GetComponent<GridLayoutGroup> ().cellSize.x;
+		itemImg.GetComponent<RectTransform> ().sizeDelta = imgSize;
 	}
 
+	/**
+	 * 
+	 * 武器などの場合必要素材などを表示させてクラフトするかどうかを確認。
+	 * 
+	 * 
+	 */
 	public void OnClickItemMenu() {
-		Debug.Log ("*****");
 	}
 }

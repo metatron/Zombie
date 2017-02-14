@@ -40,7 +40,7 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 			ItemUI initedItemUIObj = (ItemUI)Instantiate (itemUIPrefab);
 			initedItemUIObj.InitItemMenu ("WeaponAtlas", swordData.Image, 1);
 			initedItemUIObj.transform.SetParent (weaponDataTabViewportContent.transform, false);
-			initedItemUIObj.SetImageSize ();
+			initedItemUIObj.SetItemImageSize ();
 		}
 	}
 

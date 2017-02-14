@@ -52,6 +52,11 @@ public class AbstractMasterTable<T> where T : AbstractData, new() {
 }
 
 public class AbstractData {
+	//プロジェクト毎に変更する値
+	public string ID { get; protected set; }
+	public string Name { get; protected set; }
+	public string Image { get; protected set; }
+
 	//アイテムを作成する場合、何かいくつ必要かを記す為に必要。
 	public struct RequirementData {
 		AbstractData materialData;
