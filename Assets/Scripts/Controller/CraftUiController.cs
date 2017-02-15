@@ -3,6 +3,7 @@ using TouchScript;
 
 public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 	public GameObject craftingPanel;
+	public GameObject createPanel;
 
 	public SwordDataTableObject _swordDataTableObj;
 //	public FoodDataTableObject _foodDataTableObj;
@@ -17,6 +18,7 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 	void Start() {
 		//最初は消しておく
 		craftingPanel.SetActive (false);
+		createPanel.SetActive (false);
 
 		//GameManagerでやってるが、Uiが出た段階でInitしてなかった場合Initする。
 		if (!_swordDataTableObj.isInitialized()) {
@@ -38,7 +40,7 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 	private void InitSwordObjButton() {
 		foreach (SwordData swordData in _swordDataTableObj.Table.All) {
 			ItemUI initedItemUIObj = (ItemUI)Instantiate (itemUIPrefab);
-			initedItemUIObj.InitItemMenu ("WeaponAtlas", swordData.Image, 1);
+			initedItemUIObj.InitItemMenu ("WeaponAtlas", swordData, 1);
 			initedItemUIObj.transform.SetParent (weaponDataTabViewportContent.transform, false);
 			initedItemUIObj.SetItemImageSize ();
 		}

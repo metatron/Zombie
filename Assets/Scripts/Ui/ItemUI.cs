@@ -8,24 +8,14 @@ public class ItemUI : MonoBehaviour {
 	public Text numText;
 	public Text nameText;
 
-	private static Dictionary<string, Sprite[]> loadedSpriteDict = new Dictionary<string, Sprite[]>();
+	private AbstractData _itemData;
 
-	public void InitItemMenu(string atlas, string itemSpriteName, int numOwned) {
-		nameText.text = itemSpriteName;
+	public void InitItemMenu(string atlas, AbstractData itemData, int numOwned) {
+		_itemData = itemData;
+		nameText.text = _itemData.Image;
 		numText.text = "" + numOwned;
 
-		string weaponImgPath = "Atlases/" + atlas;
-
-		Sprite[] loadedSprites;
-		if (!loadedSpriteDict.ContainsKey (atlas)) {
-			loadedSprites = Resources.LoadAll<Sprite> (weaponImgPath);
-			loadedSpriteDict.Add (atlas, loadedSprites);
-		} 
-		//load from Dictionary
-		else {
-			loadedSprites = loadedSpriteDict [atlas];
-		}
-		itemImg.sprite = System.Array.Find<Sprite> (loadedSprites, (sprite) => sprite.name.Equals (itemSpriteName));
+		itemImg.sprite = GameManager.Instance.GetSpriteFromPath (atlas, itemData.Image);
 	}
 
 	public void SetItemImageSize() {
@@ -44,5 +34,6 @@ public class ItemUI : MonoBehaviour {
 	 * 
 	 */
 	public void OnClickItemMenu() {
+		CraftUiController.Instance.createPanel.GetComponent<CreatePanel> ().InitItemCraftingData (_itemData);
 	}
 }

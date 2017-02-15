@@ -13,23 +13,20 @@ public class SwordData : AbstractData {
 	//Metal:3|Wood:1
 	public string RequirementStr { get; private set; }
 
-	//上記、RequirementListStrをジェネリックリスト化
-	public List<AbstractData.RequirementData> requirementDataList = new List<AbstractData.RequirementData>();
-
-	public void InitRequirementList() {
-		string[] splitRequirementList = RequirementStr.Split ('|');
-		foreach (string tmpMaterial in splitRequirementList) {
-			string[] data = tmpMaterial.Split (':');
-			switch (data [0].ToLower()) {
-			case "metal":
-				break;
-			case "wood":
-				break;
-			case "cloth":
-				break;
-			case "Metal":
-				break;
-			}
+	public Dictionary<AbstractData.DataType, int> ParseRequirementStr() {
+		if (RequirementStr == null || RequirementStr == "" || RequirementStr.Length == 0) {
+			return null;
 		}
+		Dictionary<AbstractData.DataType, int> requirementDict = new Dictionary<AbstractData.DataType, int> ();
+
+		string[] requirementList = RequirementStr.Split ('|');
+		foreach (string requirementNumStr in requirementList) {
+			string[] requirementNum = requirementNumStr.Split (':');
+			AbstractData.DataType type = (AbstractData.DataType)Enum.Parse (typeof(AbstractData.DataType), requirementNum [0], true);
+			int num = Int32.Parse (requirementNum [1]);
+			requirementDict.Add (type, num);
+		}
+
+		return requirementDict;
 	}
 }

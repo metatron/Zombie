@@ -14,6 +14,8 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 
 	public GameObject swordReachMarker;
 
+	private static Dictionary<string, Sprite[]> loadedSpriteDict = new Dictionary<string, Sprite[]>();
+
 	void Start() {
 		SwordDataTableObject.Instance.InitData ();
 
@@ -53,5 +55,20 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 
 		distance = minDist;
 		return nearestEnemyObj;
+	}
+
+
+	public Sprite GetSpriteFromPath(string atlasName, string spriteName) {
+		Sprite[] loadedSprites;
+		if (!loadedSpriteDict.ContainsKey (atlasName)) {
+			loadedSprites = Resources.LoadAll<Sprite> ("Atlases/" + atlasName);
+			loadedSpriteDict.Add (atlasName, loadedSprites);
+		} 
+		//load from Dictionary
+		else {
+			loadedSprites = loadedSpriteDict [atlasName];
+		}
+		Sprite sp = System.Array.Find<Sprite> (loadedSprites, (sprite) => sprite.name.Equals (spriteName));
+		return sp;
 	}
 }
