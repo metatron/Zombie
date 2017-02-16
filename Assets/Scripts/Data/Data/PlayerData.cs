@@ -3,7 +3,11 @@ using System.Collections.Generic;
 
 [System.Serializable]
 public class PlayerData {
-	public int MetalNum = 10;
-	public int WoodNum = 10;
-	public int ClothNum = 10;
+	//プレイヤーの所持するアイテムとその数。<ID, 総数>
+	public static Dictionary<string, int> playerItemDictionary = new Dictionary<string, int>();
+
+	public static void InitPlayerData() {
+		playerItemDictionary ["Wood"] = 10;
+		playerItemDictionary ["Metal"] = 10;
+	}
 }

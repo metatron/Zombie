@@ -15,8 +15,6 @@ public abstract class AbstractWeaponObject : MonoBehaviour {
 	private GameObject _owner;
 	public GameObject Owner { get { return _owner; } set { _owner = value; } }
 
-	//全ての武器の画像を一旦保存
-	private static Sprite[] loadedSprites;
 	protected Sprite weaponSprite;
 
 	public virtual void CopyParamsTo(AbstractWeaponObject target) {
@@ -25,11 +23,7 @@ public abstract class AbstractWeaponObject : MonoBehaviour {
 	}
 
 	protected Sprite LoadSprite(string name) {
-		if (loadedSprites == null || loadedSprites.Length == 0) {
-			string weaponImgPath = "Atlases/WeaponAtlas";
-			loadedSprites = Resources.LoadAll<Sprite> (weaponImgPath);
-		}
-		weaponSprite = GetComponent<SpriteRenderer> ().sprite = System.Array.Find<Sprite> (loadedSprites, (sprite) => sprite.name.Equals (name));
+		weaponSprite = GameManager.Instance.GetSpriteFromPath ("WeaponAtlas", name);
 		return weaponSprite;
 	}
 
