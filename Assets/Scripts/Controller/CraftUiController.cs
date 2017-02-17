@@ -5,6 +5,9 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 	public GameObject craftingPanel;
 	public GameObject createPanel;
 
+	public GameObject characterPanel;
+
+
 	public SwordDataTableObject _swordDataTableObj;
 //	public FoodDataTableObject _foodDataTableObj;
 //	public ToolDataTableObject _toolDataTableObj;
@@ -32,10 +35,15 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 		craftingPanel.SetActive (true);
 	}
 
+	public void OnOpenCharacterMenuPressed() {
+		createPanel.SetActive (true);
+	}
+
+
+
 	public void OnCloseCraftMenuPressed() {
 		craftingPanel.SetActive (false);
 	}
-
 
 	private void InitSwordObjButton() {
 		foreach (SwordData swordData in _swordDataTableObj.Table.All) {
