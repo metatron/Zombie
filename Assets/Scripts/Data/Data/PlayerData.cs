@@ -10,4 +10,14 @@ public class PlayerData {
 		playerItemDictionary ["Wood"] = 10;
 		playerItemDictionary ["Metal"] = 10;
 	}
+
+	public static void AddItem(AbstractData itemData) {
+		//ない場合は新しく1追加
+		if (!playerItemDictionary.ContainsKey (itemData.ID)) {
+			playerItemDictionary [itemData.ID] = 1;
+		}
+		else {
+			playerItemDictionary [itemData.ID] += 1;
+		}
+	}
 }

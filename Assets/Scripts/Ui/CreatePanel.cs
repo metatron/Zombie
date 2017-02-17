@@ -82,6 +82,11 @@ public class CreatePanel : MonoBehaviour {
 				PlayerData.playerItemDictionary[reqData] -= requirementDict [reqDataType];
 				Debug.LogError ("***2" + reqData + ": " + PlayerData.playerItemDictionary [reqData]);
 			}
-		}
+
+			//PlayerDataに追加
+			PlayerData.AddItem(_itemData);
+			Debug.LogError ("***3" + PlayerData.playerItemDictionary [_itemData.ID]);
+
+		}//if
 	}
 }

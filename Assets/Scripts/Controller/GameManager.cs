@@ -25,7 +25,7 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 
 		_playerObject.InitPlayer ();
 		_playerObject.InitPlayerGunObject ("Prefabs/Gun01");
-		_playerObject.InitPlayerSwordObject ("2");
+		_playerObject.InitPlayerSwordObject ("swd1");
 
 		PlayerData.InitPlayerData ();
 	}
