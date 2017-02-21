@@ -6,6 +6,7 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 	public GameObject createPanel;
 
 	public GameObject characterPanel;
+	public GameObject statusPanel;
 
 
 	public SwordDataTableObject _swordDataTableObj;
@@ -22,6 +23,8 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 		//最初は消しておく
 		craftingPanel.SetActive (false);
 		createPanel.SetActive (false);
+		characterPanel.SetActive (false);
+		statusPanel.SetActive (false);
 
 		//GameManagerでやってるが、Uiが出た段階でInitしてなかった場合Initする。
 		if (!_swordDataTableObj.isInitialized()) {
@@ -36,7 +39,7 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 	}
 
 	public void OnOpenCharacterMenuPressed() {
-		createPanel.SetActive (true);
+		characterPanel.SetActive (true);
 	}
 
 

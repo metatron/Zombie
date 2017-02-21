@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0543fe805424df99fe08ce744cbe49, type: 3}
+  m_Name: femalebasic
+  m_EditorClassIdentifier: 
+  m_PoseEntries:
+  - path: 
+    localPosition: {x: 0, y: 0.51146233, z: 0}
+    localRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: spine
+    localPosition: {x: 0.110005245, y: 0, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.09273912, w: 0.99569046}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: spine/head
+    localPosition: {x: 0.2700216, y: 0.000000019557774, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.09593621, w: 0.9953875}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: spine/armLeft
+    localPosition: {x: 0.2660363, y: -0.14339057, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.9209956, w: 0.38957313}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: spine/armLeft/forarmLeft
+    localPosition: {x: 0.20000014, y: 0.000000059604645, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.00097656244, w: 0.9999995}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: spine/armRight
+    localPosition: {x: 0.18402913, y: 0.03106512, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.9752806, w: 0.2209702}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: spine/armRight/forarmRight
+    localPosition: {x: 0.19000003, y: -0.000000044703484, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.0138203865, w: 0.9999045}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: legRight
+    localPosition: {x: 0.04891675, y: 0.13748181, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.97069466, w: 0.24031633}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: legRight/footRight
+    localPosition: {x: 0.2500001, y: -0.000000029802322, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.06267404, w: 0.99803406}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: legLeft
+    localPosition: {x: -0.0031987433, y: -0.13757199, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.99575275, w: 0.09206776}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: legLeft/footLeft
+    localPosition: {x: 0.26000008, y: 0.000000007450581, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.0007117861, w: 0.99999976}
+    localScale: {x: 1, y: 1, z: 1}
