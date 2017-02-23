@@ -22,7 +22,7 @@ public class AbstractCharacterObject : MonoBehaviour {
 		_animator.Play (anim, -1, 0.0f);
 	}
 
-	public void InitChar(AbstractCharacterObject.CharDirection dir=AbstractCharacterObject.CharDirection.RIGHT) {
+	public void InitChar(int sortingLayer, AbstractCharacterObject.CharDirection dir=AbstractCharacterObject.CharDirection.RIGHT) {
 		//Animatorオブジェクトを見つける
 		_animator = GetComponentInChildren<Animator> ();
 		if (_animator == null) {
@@ -36,6 +36,8 @@ public class AbstractCharacterObject : MonoBehaviour {
 
 		//ディフォルトは右向き
 		FaceTo(dir);
+
+		//描画順設定
 	}
 
 	public void FaceTo(CharDirection dir) {
@@ -43,6 +45,12 @@ public class AbstractCharacterObject : MonoBehaviour {
 			transform.localRotation = Quaternion.Euler (new Vector3 (0.0f, 0.0f, 0.0f));
 		} else {
 			transform.localRotation = Quaternion.Euler (new Vector3 (0.0f, 180.0f, 0.0f));
+		}
+	}
+
+	public void SetSortingLayer(string sortingLayerName) {
+		foreach (SpriteRenderer spRenderer in GetComponentsInChildren<SpriteRenderer>()) {
+			spRenderer.sortingLayerName = sortingLayerName;
 		}
 	}
 
