@@ -23,11 +23,13 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		_playerObject = playerObj.GetComponent<PlayerObject> ();
 		_playerObject.transform.localPosition = new Vector3 (-4.0f, 0.0f, 0.0f);
 
-		_playerObject.InitPlayer ();
-		_playerObject.InitPlayerGunObject ("Prefabs/Gun01");
-		_playerObject.InitPlayerSwordObject ("swd1");
+		_playerObject.InitChar ();
+		_playerObject.InitCharGunObject ("Prefabs/Gun01");
+		_playerObject.InitCharSwordObject ("swd2");
 
 		PlayerData.InitPlayerData ();
+
+		InitNpcObject ();
 	}
 
 	/**
@@ -71,5 +73,23 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		}
 		Sprite sp = System.Array.Find<Sprite> (loadedSprites, (sprite) => sprite.name.Equals (spriteName));
 		return sp;
+	}
+
+
+	public void InitNpcObject() {
+		foreach (CharaData charData  in PlayerData.playerNpcDictionary.Values) {
+			GameObject npcObject = (GameObject)Instantiate(Resources.Load(charData.BodyPrefab));
+			npcObject.AddComponent<NpcObject> ();
+			npcObject.GetComponent<NpcObject> ().InitChar();
+		}
+	}
+
+
+
+
+	public static GameObject getChildGameObject(GameObject fromGameObject, string withName) {
+		Transform[] ts = fromGameObject.transform.GetComponentsInChildren<Transform>(true);
+		foreach (Transform t in ts) if (t.gameObject.name == withName) return t.gameObject;
+		return null;
 	}
 }

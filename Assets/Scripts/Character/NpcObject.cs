@@ -2,7 +2,5 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class PlayerObject : AbstractCharacterObject {
-
+public class NpcObject : AbstractCharacterObject {
 }
