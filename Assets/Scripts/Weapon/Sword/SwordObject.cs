@@ -11,14 +11,6 @@ public class SwordObject : AbstractWeaponObject {
 	private GameObject _swingEffectPrefab;
 	public GameObject SwingEffectPrefab { get { return _swingEffectPrefab; } set {_swingEffectPrefab = value; } }
 
-//	public override void CopyParamsTo(AbstractWeaponObject target) {
-//		base.CopyParamsTo (target);
-//		((SwordObject)target).GetComponent<SpriteRenderer> ().sprite = GetComponent<SpriteRenderer> ().sprite;
-//		((SwordObject)target).ReachLength = _reachLength;
-//
-//		((SwordObject)target).SwingEffectPrefab = _swingEffectPrefab;
-//	}
-
 	public void CopyParamsFrom(string id) {
 		SwordData swordData = SwordDataTableObject.Instance.GetParams (id);
 		Name = swordData.Name;
@@ -45,7 +37,7 @@ public class SwordObject : AbstractWeaponObject {
 	}
 
 	public void Slash() {
-		GameManager.Instance.PlayerObject.Play ("swing1");
+		Owner.GetComponent<AbstractCharacterObject>().Play ("swing1");
 		GameObject swingEffect = (GameObject)Instantiate (_swingEffectPrefab, transform);
 		swingEffect.GetComponent<AbstractDamageObject> ().WeaponObject = this;
 

@@ -82,6 +82,8 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 			npcObject.AddComponent<NpcObject> ();
 			npcObject.GetComponent<NpcObject> ().InitChar(0);
 			npcObject.GetComponent<NpcObject> ().SetSortingLayer ("Forward1");
+			npcObject.transform.position = new Vector3 (-4.8f, 0.0f, -0.2f);
+			npcObject.GetComponent<NpcObject> ().InitCharSwordObject ("swd2");
 		}
 	}
 

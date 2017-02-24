@@ -10,6 +10,8 @@ public class AbstractCharacterObject : MonoBehaviour {
 		RIGHT
 	}
 
+	public CharaData charaData = new CharaData();
+
 	[SerializeField]
 	protected GunObject _gunObject; //instantiatedオブジェクト
 	public GunObject GunObject { get { return _gunObject; } set { _gunObject = value; } }
@@ -69,18 +71,20 @@ public class AbstractCharacterObject : MonoBehaviour {
 		//Owerだけ上書き
 		_swordObject.Owner = gameObject;
 
-		//マーカー移動
-		Vector3 markerPos = transform.position;
-		markerPos.x += _swordObject.ReachLength;
-		GameManager.Instance.swordReachMarker.transform.position = markerPos;
+		//自キャラの場合はマーカー移動
+		if (gameObject.GetComponent<PlayerObject> () == null) {
+			Vector3 markerPos = transform.position;
+			markerPos.x += _swordObject.ReachLength;
+			GameManager.Instance.swordReachMarker.transform.position = markerPos;
+		}
 	}
 
 
 	public void Attack() {
-		if (this.SwordObject.CanReachEnemy ()) {
+		if (this.SwordObject != null && this.SwordObject.CanReachEnemy ()) {
 			this.SwordObject.Slash ();
 		}
-		else {
+		else if (this.GunObject != null) {
 			this.GunObject.Fire();
 		}
 	}

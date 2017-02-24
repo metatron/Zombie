@@ -20,7 +20,7 @@ public class CharaData {
 	public float AtkBase { get; private set; }
 	public float atkCrnt = 10.0f;
 
-	//次アタックするのに要する時間
+	//次アタックするのに要する時間（NPCのみ）
 	public float AtkInterval { get; private set; }
 	public float atkIntervalCrnt = 2.0f;
 
