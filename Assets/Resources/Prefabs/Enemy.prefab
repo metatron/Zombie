@@ -96,7 +96,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 72
+  m_Constraints: 124
   m_CollisionDetection: 0
 --- !u!65 &65002819282850304
 BoxCollider:
@@ -121,6 +121,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0037dca8afe3459eb61071601852935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gunObject: {fileID: 0}
+  _swordObject: {fileID: 0}
+  _hp: 3
+  _speed: 100
 --- !u!114 &114891444981271564
 MonoBehaviour:
   m_ObjectHideFlags: 1

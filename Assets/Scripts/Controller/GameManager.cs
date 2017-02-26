@@ -23,7 +23,7 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		_playerObject = playerObj.GetComponent<PlayerObject> ();
 		_playerObject.transform.localPosition = new Vector3 (-4.0f, 0.0f, 0.0f);
 
-		_playerObject.InitChar (0);
+		_playerObject.InitChar ();
 		_playerObject.InitCharGunObject ("Prefabs/Gun01");
 		_playerObject.InitCharSwordObject ("swd2");
 
@@ -79,11 +79,12 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 	public void InitNpcObject() {
 		foreach (CharaData charData  in PlayerData.playerNpcDictionary.Values) {
 			GameObject npcObject = (GameObject)Instantiate(Resources.Load(charData.BodyPrefab));
+
 			npcObject.AddComponent<NpcObject> ();
-			npcObject.GetComponent<NpcObject> ().InitChar(0);
-			npcObject.GetComponent<NpcObject> ().SetSortingLayer ("Forward1");
+			npcObject.GetComponent<NpcObject> ().InitChar("Forward1");
+			npcObject.GetComponent<NpcObject> ().InitCharGunObject ("Prefabs/Gun01");
+			npcObject.GetComponent<NpcObject> ().InitCharSwordObject ("swd1");
 			npcObject.transform.position = new Vector3 (-4.8f, 0.0f, -0.2f);
-			npcObject.GetComponent<NpcObject> ().InitCharSwordObject ("swd2");
 		}
 	}
 

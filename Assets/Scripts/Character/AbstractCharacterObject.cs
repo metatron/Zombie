@@ -24,7 +24,7 @@ public class AbstractCharacterObject : MonoBehaviour {
 		_animator.Play (anim, -1, 0.0f);
 	}
 
-	public void InitChar(int sortingLayer, AbstractCharacterObject.CharDirection dir=AbstractCharacterObject.CharDirection.RIGHT) {
+	public void InitChar(string sortingLayerName = "Default", AbstractCharacterObject.CharDirection dir=AbstractCharacterObject.CharDirection.RIGHT) {
 		//Animatorオブジェクトを見つける
 		_animator = GetComponentInChildren<Animator> ();
 		if (_animator == null) {
@@ -40,6 +40,7 @@ public class AbstractCharacterObject : MonoBehaviour {
 		FaceTo(dir);
 
 		//描画順設定
+		SetSortingLayer (sortingLayerName);
 	}
 
 	public void FaceTo(CharDirection dir) {
@@ -72,7 +73,7 @@ public class AbstractCharacterObject : MonoBehaviour {
 		_swordObject.Owner = gameObject;
 
 		//自キャラの場合はマーカー移動
-		if (gameObject.GetComponent<PlayerObject> () == null) {
+		if (gameObject.GetComponent<PlayerObject> () != null) {
 			Vector3 markerPos = transform.position;
 			markerPos.x += _swordObject.ReachLength;
 			GameManager.Instance.swordReachMarker.transform.position = markerPos;
