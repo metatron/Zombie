@@ -34,6 +34,12 @@ public class CharaData {
 	//バトルの位置。0は参加しない（NPC ONLY）
 	public int BattlePosition { get; set; }
 
+	//セットされている剣のID
+	public string SwordID { get; set; }
+	//セットされている銃のID
+	public string GunID { get; set; }
+
+
 
 	public Gender gender = Gender.Male;
 	public WeaponType favoriteWpn = WeaponType.Sword;

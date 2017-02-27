@@ -17,7 +17,9 @@ public class PlayerData {
 		if (!playerNpcDictionary.ContainsKey ("npc1")) {
 			CharaData chardata = new CharaData ();
 			chardata.BodyPrefab = "Female1";
-			chardata.BattlePosition = 0;
+			chardata.BattlePosition = 1;
+			chardata.SwordID = "swd1";
+			chardata.GunID = "Gun01";
 
 			playerNpcDictionary.Add ("npc1", chardata);
 		}

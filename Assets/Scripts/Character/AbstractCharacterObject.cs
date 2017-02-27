@@ -24,7 +24,8 @@ public class AbstractCharacterObject : MonoBehaviour {
 		_animator.Play (anim, -1, 0.0f);
 	}
 
-	public void InitChar(int sortingLayer = 0, AbstractCharacterObject.CharDirection dir=AbstractCharacterObject.CharDirection.RIGHT) {
+	public void InitChar(CharaData charaData, AbstractCharacterObject.CharDirection dir=AbstractCharacterObject.CharDirection.RIGHT) {
+		this.charaData = charaData;
 		//Animatorオブジェクトを見つける
 		_animator = GetComponentInChildren<Animator> ();
 		if (_animator == null) {
@@ -41,8 +42,8 @@ public class AbstractCharacterObject : MonoBehaviour {
 
 		//描画順設定
 		string sortingLayerName = "Default";
-		if (sortingLayer > 0) {
-			sortingLayerName = "NpcPos" + sortingLayer;
+		if (charaData.BattlePosition > 0) {
+			sortingLayerName = "NpcPos" + charaData.BattlePosition;
 		}
 		SetSortingLayer (sortingLayerName);
 	}
@@ -55,7 +56,7 @@ public class AbstractCharacterObject : MonoBehaviour {
 		}
 	}
 
-	public void SetSortingLayer(int sortingLayerName) {
+	public void SetSortingLayer(string sortingLayerName) {
 		foreach (SpriteRenderer spRenderer in GetComponentsInChildren<SpriteRenderer>()) {
 			spRenderer.sortingLayerName = sortingLayerName;
 		}

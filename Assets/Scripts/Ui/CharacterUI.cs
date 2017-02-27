@@ -8,13 +8,11 @@ public class CharacterUI : MonoBehaviour {
 	public Text numText;
 	public Text nameText;
 
-	private AbstractCharacterObject _charaData;
+	private CharaData _charaData;
 
-	public void InitCharaUI(string atlas, AbstractCharacterObject charData) {
+	public void InitCharaUI(CharaData charData) {
 		_charaData = charData;
-		nameText.text = charData.gameObject.name;
-
-		charImg = charData.gameObject;
+		GameManager.Instance.InitCharObject<NpcObject> (charData);
 	}
 
 	public void SetCharacterImageSize() {
