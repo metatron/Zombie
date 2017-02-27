@@ -31,8 +31,8 @@ public class CharaData {
 	public string BodyPrefab { get; set; }
 
 
-	//バトルに参加するかしないか（NPC ONly）
-	public bool isBattleMode { get; set; }
+	//バトルの位置。0は参加しない（NPC ONLY）
+	public int BattlePosition { get; set; }
 
 
 	public Gender gender = Gender.Male;

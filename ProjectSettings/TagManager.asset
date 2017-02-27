@@ -39,18 +39,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Backward2
+  - name: NpcPos3
     uniqueID: 514219801
     locked: 0
-  - name: Backward1
+  - name: NpcPos4
     uniqueID: 3098926917
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Forward1
+  - name: NpcPos1
     uniqueID: 2102980163
     locked: 0
-  - name: Forward2
+  - name: NpcPos2
     uniqueID: 2790128317
     locked: 0

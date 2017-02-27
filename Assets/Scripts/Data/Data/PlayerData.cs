@@ -16,8 +16,9 @@ public class PlayerData {
 		//TODO テスト的に追加
 		if (!playerNpcDictionary.ContainsKey ("npc1")) {
 			CharaData chardata = new CharaData ();
-			chardata.BodyPrefab = "Prefabs/Characters/Female1";
-			chardata.isBattleMode = true;
+			chardata.BodyPrefab = "Female1";
+			chardata.BattlePosition = 0;
+
 			playerNpcDictionary.Add ("npc1", chardata);
 		}
 	}

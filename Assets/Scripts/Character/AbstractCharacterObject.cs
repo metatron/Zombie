@@ -24,7 +24,7 @@ public class AbstractCharacterObject : MonoBehaviour {
 		_animator.Play (anim, -1, 0.0f);
 	}
 
-	public void InitChar(string sortingLayerName = "Default", AbstractCharacterObject.CharDirection dir=AbstractCharacterObject.CharDirection.RIGHT) {
+	public void InitChar(int sortingLayer = 0, AbstractCharacterObject.CharDirection dir=AbstractCharacterObject.CharDirection.RIGHT) {
 		//Animatorオブジェクトを見つける
 		_animator = GetComponentInChildren<Animator> ();
 		if (_animator == null) {
@@ -40,6 +40,10 @@ public class AbstractCharacterObject : MonoBehaviour {
 		FaceTo(dir);
 
 		//描画順設定
+		string sortingLayerName = "Default";
+		if (sortingLayer > 0) {
+			sortingLayerName = "NpcPos" + sortingLayer;
+		}
 		SetSortingLayer (sortingLayerName);
 	}
 
@@ -51,25 +55,25 @@ public class AbstractCharacterObject : MonoBehaviour {
 		}
 	}
 
-	public void SetSortingLayer(string sortingLayerName) {
+	public void SetSortingLayer(int sortingLayerName) {
 		foreach (SpriteRenderer spRenderer in GetComponentsInChildren<SpriteRenderer>()) {
 			spRenderer.sortingLayerName = sortingLayerName;
 		}
 	}
 
 	public void InitCharGunObject(string gunPrefabPath) {
-		_gunObject = ((GameObject)Instantiate ((GameObject)Resources.Load (gunPrefabPath))).GetComponent<GunObject>();
+		_gunObject = ((GameObject)Instantiate ((GameObject)Resources.Load ("Prefabs/Items/Guns/"+gunPrefabPath))).GetComponent<GunObject>();
 		_gunObject.Owner = gameObject;
 		_gunObject.transform.SetParent (transform);
 		_gunObject.transform.localPosition = Vector3.zero;
 	}
 
-	public void InitCharSwordObject(string gunPrefabPath) {
+	public void InitCharSwordObject(string swordPrefabPath) {
 		//剣の場合はweaponオブジェクトが既にあるのでパラメータのみの受け渡しOwnerだけ設定しておく
 		//パラメータコピー
-		_swordObject.CopyParamsFrom (gunPrefabPath);
+		_swordObject.CopyParamsFrom (swordPrefabPath);
 
-		//Owerだけ上書き
+		//Ower上書き
 		_swordObject.Owner = gameObject;
 
 		//自キャラの場合はマーカー移動
