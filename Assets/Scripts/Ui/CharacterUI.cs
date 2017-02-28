@@ -20,9 +20,10 @@ public class CharacterUI : MonoBehaviour {
 
 	/**
 	 * 
-	 * キャラクターの詳細を開き、装備の確認変更、食事をさせます。
+	 * キャラクターの詳細を開き、装備の確認変更、食事。
 	 * 
 	 */
 	public void OnClickCharUI() {
+		CraftUiController.Instance.statusPanel.GetComponent<StatusPanel> ().InitCharStatus (_charaData);
 	}
 }

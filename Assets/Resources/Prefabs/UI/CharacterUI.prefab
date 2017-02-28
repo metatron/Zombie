@@ -210,8 +210,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: OnClickItemMenu
+      - m_Target: {fileID: 114378070126165240}
+        m_MethodName: OnClickCharUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

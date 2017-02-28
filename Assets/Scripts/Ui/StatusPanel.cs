@@ -5,18 +5,23 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class StatusPanel : MonoBehaviour {
-	private AbstractCharacterObject _charData;
+	private CharaData _charData;
 
 	public Transform MaterialListPos;
-	public Image itemImage;
+	public Image ItemImage;
 
-	public void InitCharStatus(AbstractCharacterObject charData) {
+	//ボタンによってContentの中身を変える。ディフォルトはSword
+	public GameObject content;
+
+	public void InitCharStatus(CharaData charData) {
 		gameObject.SetActive (true);
 		_charData = charData;
 
 		//プレイヤーの場合はPlayerObjectをパネルに登録
 
 		//素材設置
+		ResetContent();
+		CraftUiController.Instance.InitSwordObjButton (content);
 	}
 
 	public void CloseStatusPanel() {
@@ -25,5 +30,30 @@ public class StatusPanel : MonoBehaviour {
 
 
 	public void OnEquiptItem() {
+	}
+
+	public void OnSwordEquipBtn() {
+		
+	}
+
+	public void OnGunEquipBtn() {
+	}
+
+	public void OnFoodBtn() {
+	}
+
+	private void ResetContent() {
+		Transform[] itemUIButtonArray = content.GetComponentsInChildren<Transform> ();
+		int length = itemUIButtonArray.Length;
+		for(int i=0; i<length; i++) {
+			Transform itemUIBtn = itemUIButtonArray [i];
+			//content自身は消さない
+			if (itemUIBtn.name == "Content") {
+				continue;
+			}
+
+			Destroy (itemUIBtn.gameObject);
+		}
+		itemUIButtonArray = null;
 	}
 }

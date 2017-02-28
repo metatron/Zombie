@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using TouchScript;
+using UnityEngine.UI;
 
 public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 	public GameObject craftingPanel;
@@ -31,7 +32,7 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 			_swordDataTableObj.InitData();
 		}
 
-		InitSwordObjButton ();
+		InitSwordObjButton (weaponDataTabViewportContent);
 	}
 
 	public void OnOpenCraftMenuPressed() {
@@ -49,11 +50,11 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 		craftingPanel.SetActive (false);
 	}
 
-	private void InitSwordObjButton() {
+	public void InitSwordObjButton(GameObject content) {
 		foreach (SwordData swordData in _swordDataTableObj.Table.All) {
 			ItemUI initedItemUIObj = (ItemUI)Instantiate (itemUIPrefab);
 			initedItemUIObj.InitItemMenu ("WeaponAtlas", swordData, 1);
-			initedItemUIObj.transform.SetParent (weaponDataTabViewportContent.transform, false);
+			initedItemUIObj.transform.SetParent (content.transform, false);
 			initedItemUIObj.SetItemImageSize ();
 		}
 	}

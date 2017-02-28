@@ -9,6 +9,8 @@ public class CharacterPanel : MonoBehaviour {
 	public GameObject charUIPrefab;
 
 	public void InitCharacterList() {
+		ResetContent ();
+
 		for (int i = 0; i < PlayerData.playerNpcDictionary.Count; i++) {
 			string key = PlayerData.playerNpcDictionary.Keys.ToArray() [i];
 			CharaData charData = PlayerData.playerNpcDictionary [key];
@@ -23,4 +25,19 @@ public class CharacterPanel : MonoBehaviour {
 
 		}
 	}
+
+	private void ResetContent() {
+		CharacterUI[] charaUIButtonArray = content.GetComponentsInChildren<CharacterUI> ();
+		int length = charaUIButtonArray.Length;
+		for(int i=0; i<length; i++) {
+			CharacterUI charaUIBtn = charaUIButtonArray [i];
+			Destroy (charaUIBtn.gameObject);
+		}
+		charaUIButtonArray = null;
+	}
+
+	public void OnCloseCharacterPanel() {
+		gameObject.SetActive (false);
+	}
+
 }
