@@ -40,6 +40,7 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 
 	public void OnOpenCharacterMenuPressed() {
 		characterPanel.SetActive (true);
+		characterPanel.GetComponent<CharacterPanel> ().InitCharacterList ();
 	}
 
 

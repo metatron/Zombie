@@ -10,9 +10,9 @@ public class CharacterUI : MonoBehaviour {
 
 	private CharaData _charaData;
 
-	public void InitCharaUI(CharaData charData) {
+	public void InitCharaUI<T>(CharaData charData) where T: AbstractCharacterObject {
 		_charaData = charData;
-		GameManager.Instance.InitCharObject<NpcObject> (charData);
+//		GameManager.Instance.InitCharObject<T> (charData);
 	}
 
 	public void SetCharacterImageSize() {
