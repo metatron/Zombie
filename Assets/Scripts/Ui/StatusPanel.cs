@@ -23,7 +23,7 @@ public class StatusPanel : MonoBehaviour {
 		ResetContent();
 		CraftUiController.Instance.InitSwordObjButton (content,
 			(AbstractData itemData) => {
-				CraftUiController.Instance.createPanel.GetComponent<CreatePanel> ().InitItemCraftingData (itemData);
+				OnEquiptItem(itemData);
 			}
 		);
 	}
@@ -33,7 +33,7 @@ public class StatusPanel : MonoBehaviour {
 	}
 
 
-	public void OnEquiptItem(AbstractData itemData) {
+	private void OnEquiptItem(AbstractData itemData) {
 		_charData.SwordID = itemData.ID;
 	}
 

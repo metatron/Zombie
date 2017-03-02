@@ -62,9 +62,6 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 			initedItemUIObj.SetItemImageSize ();
 			//ここではクラフトの情報を表示させる。
 			initedItemUIObj._clickItemAction = clickItemAction;
-//			(AbstractData itemData) => {
-//				CraftUiController.Instance.createPanel.GetComponent<CreatePanel> ().InitItemCraftingData (itemData);
-//			};
 		}
 	}
 
