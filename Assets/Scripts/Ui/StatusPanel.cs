@@ -33,7 +33,8 @@ public class StatusPanel : MonoBehaviour {
 	}
 
 
-	public void OnEquiptItem() {
+	public void OnEquiptItem(AbstractData itemData) {
+		_charData.SwordID = itemData.ID;
 	}
 
 	public void OnSwordEquipBtn() {
