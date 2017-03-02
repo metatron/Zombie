@@ -21,7 +21,11 @@ public class StatusPanel : MonoBehaviour {
 
 		//素材設置
 		ResetContent();
-		CraftUiController.Instance.InitSwordObjButton (content);
+		CraftUiController.Instance.InitSwordObjButton (content,
+			(AbstractData itemData) => {
+				CraftUiController.Instance.createPanel.GetComponent<CreatePanel> ().InitItemCraftingData (itemData);
+			}
+		);
 	}
 
 	public void CloseStatusPanel() {

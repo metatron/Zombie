@@ -10,6 +10,11 @@ public class ItemUI : MonoBehaviour {
 
 	private AbstractData _itemData;
 
+	public delegate void ClickItemAction(AbstractData itemData);
+
+	public ClickItemAction _clickItemAction;
+
+
 	public void InitItemMenu(string atlas, AbstractData itemData, int numOwned) {
 		_itemData = itemData;
 		nameText.text = _itemData.Image;
@@ -29,11 +34,15 @@ public class ItemUI : MonoBehaviour {
 
 	/**
 	 * 
-	 * 武器などの場合必要素材などを表示させてクラフトするかどうかを確認。
+	 * クラフト画面での一覧は、武器などの場合必要素材などを表示させてクラフトするかどうかを確認。
+	 * キャラクターステータス画面での一覧でクリックした場合は装備のON/OFF or 食べ物だった場合はたべる。
+	 * 
+	 * クラフト：CraftUiController.InitSwordObjButtonで使用。
 	 * 
 	 * 
 	 */
 	public void OnClickItemMenu() {
-		CraftUiController.Instance.createPanel.GetComponent<CreatePanel> ().InitItemCraftingData (_itemData);
+		_clickItemAction (_itemData);
 	}
+
 }

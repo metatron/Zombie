@@ -32,7 +32,11 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 			_swordDataTableObj.InitData();
 		}
 
-		InitSwordObjButton (weaponDataTabViewportContent);
+		InitSwordObjButton (weaponDataTabViewportContent,
+			(AbstractData itemData) => {
+				CraftUiController.Instance.createPanel.GetComponent<CreatePanel> ().InitItemCraftingData (itemData);
+			}
+		);
 	}
 
 	public void OnOpenCraftMenuPressed() {
@@ -50,12 +54,17 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 		craftingPanel.SetActive (false);
 	}
 
-	public void InitSwordObjButton(GameObject content) {
+	public void InitSwordObjButton(GameObject content, ItemUI.ClickItemAction clickItemAction) {
 		foreach (SwordData swordData in _swordDataTableObj.Table.All) {
 			ItemUI initedItemUIObj = (ItemUI)Instantiate (itemUIPrefab);
 			initedItemUIObj.InitItemMenu ("WeaponAtlas", swordData, 1);
 			initedItemUIObj.transform.SetParent (content.transform, false);
 			initedItemUIObj.SetItemImageSize ();
+			//ここではクラフトの情報を表示させる。
+			initedItemUIObj._clickItemAction = clickItemAction;
+//			(AbstractData itemData) => {
+//				CraftUiController.Instance.createPanel.GetComponent<CreatePanel> ().InitItemCraftingData (itemData);
+//			};
 		}
 	}
 
