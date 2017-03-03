@@ -20,7 +20,7 @@ public class StatusPanel : MonoBehaviour {
 		//プレイヤーの場合はPlayerObjectをパネルに登録
 
 		//素材設置
-		ResetContent();
+		CraftUiController.Instance.ResetContent(content);
 		CraftUiController.Instance.InitSwordObjButton (content,
 			(AbstractData itemData) => {
 				OnEquiptItem(itemData);
@@ -47,18 +47,4 @@ public class StatusPanel : MonoBehaviour {
 	public void OnFoodBtn() {
 	}
 
-	private void ResetContent() {
-		Transform[] itemUIButtonArray = content.GetComponentsInChildren<Transform> ();
-		int length = itemUIButtonArray.Length;
-		for(int i=0; i<length; i++) {
-			Transform itemUIBtn = itemUIButtonArray [i];
-			//content自身は消さない
-			if (itemUIBtn.name == "Content") {
-				continue;
-			}
-
-			Destroy (itemUIBtn.gameObject);
-		}
-		itemUIButtonArray = null;
-	}
 }

@@ -63,7 +63,7 @@ public class CreatePanel : MonoBehaviour {
 		foreach (AbstractData.DataType reqDataType in requirementDict.Keys) {
 			//自分の持ってる数
 			string reqData = Enum.GetName (typeof(AbstractData.DataType), reqDataType);
-			int numOwn = PlayerData.playerItemDictionary[reqData];
+			int numOwn = PlayerData.GetItemNum(reqData);
 			if (numOwn >= requirementDict [reqDataType]) {
 				canCreate &= true;
 			}
@@ -78,15 +78,12 @@ public class CreatePanel : MonoBehaviour {
 			foreach (AbstractData.DataType reqDataType in requirementDict.Keys) {
 				//自分の持ってる数
 				string reqData = Enum.GetName (typeof(AbstractData.DataType), reqDataType);
-				Debug.LogError ("***1" + reqData + ": " + PlayerData.playerItemDictionary [reqData]);
-				PlayerData.playerItemDictionary[reqData] -= requirementDict [reqDataType];
-				Debug.LogError ("***2" + reqData + ": " + PlayerData.playerItemDictionary [reqData]);
+				PlayerData.UseItem(reqData, requirementDict [reqDataType]);
 			}
 
+			Debug.LogError ("********OnCreateItem: " + _itemData.Name);
 			//PlayerDataに追加
 			PlayerData.AddItem(_itemData);
-			Debug.LogError ("***3" + PlayerData.playerItemDictionary [_itemData.ID]);
-
 		}//if
 	}
 }

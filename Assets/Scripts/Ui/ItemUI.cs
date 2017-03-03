@@ -15,10 +15,10 @@ public class ItemUI : MonoBehaviour {
 	public ClickItemAction _clickItemAction;
 
 
-	public void InitItemMenu(string atlas, AbstractData itemData, int numOwned) {
+	public void InitItemMenu(string atlas, AbstractData itemData, string numOwned) {
 		_itemData = itemData;
-		nameText.text = _itemData.Image;
-		numText.text = "" + numOwned;
+		nameText.text = _itemData.Name;
+		numText.text = numOwned;
 
 		itemImg.sprite = GameManager.Instance.GetSpriteFromPath (atlas, itemData.Image);
 	}

@@ -18,6 +18,7 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 
 	void Start() {
 		SwordDataTableObject.Instance.InitData ();
+		PlayerData.InitPlayerData ();
 
 		GameObject playerObj = GameObject.FindGameObjectWithTag ("Player");
 		_playerObject = playerObj.GetComponent<PlayerObject> ();
@@ -26,8 +27,6 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		_playerObject.InitChar (new CharaData());
 		_playerObject.InitCharGunObject ("Gun01");
 		_playerObject.InitCharSwordObject ("swd2");
-
-		PlayerData.InitPlayerData ();
 
 		InitNpcObject ();
 	}

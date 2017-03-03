@@ -32,14 +32,19 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 			_swordDataTableObj.InitData();
 		}
 
+		//初期化
+	}
+
+	public void OnOpenCraftMenuPressed() {
+		//初期化
+		ResetContent(weaponDataTabViewportContent);
 		InitSwordObjButton (weaponDataTabViewportContent,
+			//ボタンが押された時の挙動を追加
 			(AbstractData itemData) => {
 				CraftUiController.Instance.createPanel.GetComponent<CreatePanel> ().InitItemCraftingData (itemData);
 			}
 		);
-	}
 
-	public void OnOpenCraftMenuPressed() {
 		craftingPanel.SetActive (true);
 	}
 
@@ -57,12 +62,43 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 	public void InitSwordObjButton(GameObject content, ItemUI.ClickItemAction clickItemAction) {
 		foreach (SwordData swordData in _swordDataTableObj.Table.All) {
 			ItemUI initedItemUIObj = (ItemUI)Instantiate (itemUIPrefab);
-			initedItemUIObj.InitItemMenu ("WeaponAtlas", swordData, 1);
+			//「使用可能な数」を表示
+			int totalCnt = PlayerData.GetItemNum(swordData.ID);
+			int equippedCnt = PlayerData.TotalEquipedNum (swordData.ID);
+
+			//装備してる数が多い場合は0
+			int count = Mathf.Max (0, (totalCnt - equippedCnt));
+			Debug.LogError (totalCnt + ", " + equippedCnt + ", " + count);
+
+			initedItemUIObj.InitItemMenu ("WeaponAtlas", swordData, "" + count);
 			initedItemUIObj.transform.SetParent (content.transform, false);
 			initedItemUIObj.SetItemImageSize ();
-			//ここではクラフトの情報を表示させる。
+
+			//ボタンを押した際はクラフト、装備、（食べ物の場合は）食べるアクションをとる。
 			initedItemUIObj._clickItemAction = clickItemAction;
 		}
+	}
+
+
+	/**
+	 * 
+	 * content配下にある全てのTransformを消す。
+	 * 
+	 * 
+	 */
+	public void ResetContent(GameObject content) {
+		Transform[] itemUIButtonArray = content.GetComponentsInChildren<Transform> ();
+		int length = itemUIButtonArray.Length;
+		for(int i=0; i<length; i++) {
+			Transform itemUIBtn = itemUIButtonArray [i];
+			//content自身は消さない
+			if (itemUIBtn.name == "Content") {
+				continue;
+			}
+
+			Destroy (itemUIBtn.gameObject);
+		}
+		itemUIButtonArray = null;
 	}
 
 }
