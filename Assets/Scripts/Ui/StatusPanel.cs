@@ -22,6 +22,7 @@ public class StatusPanel : MonoBehaviour {
 		//素材設置
 		CraftUiController.Instance.ResetContent(content);
 		CraftUiController.Instance.InitSwordObjButton (content,
+			//ボタンを押した場合は装備or解除
 			(AbstractData itemData) => {
 				OnEquiptItem(itemData);
 			}
@@ -34,7 +35,19 @@ public class StatusPanel : MonoBehaviour {
 
 
 	private void OnEquiptItem(AbstractData itemData) {
-		_charData.SwordID = itemData.ID;
+		UiController.Instance.OpenDialogPanel ("Equip", null);
+		//持っていた場合解除
+		if (!string.IsNullOrEmpty (_charData.SwordID)) {
+			_charData.SwordID = "";
+			//解除して使用可能にする
+			PlayerData.UnequipItem (itemData.ID);
+		}
+		//装備
+		else {
+			_charData.SwordID = itemData.ID;
+			//ストレージから引く
+			PlayerData.EquipItem(itemData.ID);
+		}
 	}
 
 	public void OnSwordEquipBtn() {
