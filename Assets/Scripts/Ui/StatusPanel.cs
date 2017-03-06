@@ -35,18 +35,26 @@ public class StatusPanel : MonoBehaviour {
 
 
 	private void OnEquiptItem(AbstractData itemData) {
-		UiController.Instance.OpenDialogPanel ("Equip", null);
 		//持っていた場合解除
 		if (!string.IsNullOrEmpty (_charData.SwordID)) {
-			_charData.SwordID = "";
-			//解除して使用可能にする
-			PlayerData.UnequipItem (itemData.ID);
+			UiController.Instance.OpenDialogPanel ("UnEquip " + itemData.Name + "?", 
+				() => {
+					_charData.SwordID = "";
+					//解除して使用可能にする
+					PlayerData.UnequipItem (itemData.ID);
+				}
+			);
 		}
 		//装備
-		else {
-			_charData.SwordID = itemData.ID;
-			//ストレージから引く
-			PlayerData.EquipItem(itemData.ID);
+		else if(PlayerData.GetItemNum(itemData.ID) > 0) {
+			UiController.Instance.OpenDialogPanel ("Equip " + itemData.Name + "?", 
+				() => {
+					_charData.SwordID = itemData.ID;
+					//ストレージから引く
+					PlayerData.EquipItem(itemData.ID);
+				}
+			);
+
 		}
 	}
 

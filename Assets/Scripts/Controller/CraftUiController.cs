@@ -68,7 +68,7 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 
 			//装備してる数が多い場合は0
 			int count = Mathf.Max (0, (totalCnt - equippedCnt));
-			Debug.LogError (totalCnt + ", " + equippedCnt + ", " + count);
+			Debug.LogError (swordData.ID + ", totalCnt: " + totalCnt + ", equippedCnt: " + equippedCnt + ", count: " + count);
 
 			initedItemUIObj.InitItemMenu ("WeaponAtlas", swordData, "" + count);
 			initedItemUIObj.transform.SetParent (content.transform, false);
