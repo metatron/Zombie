@@ -53,7 +53,7 @@ public class StatusPanel : MonoBehaviour {
 			);
 		}
 		//装備
-		else {
+		else if(PlayerData.GetItemNum(itemData.ID) > 0) {
 			UiController.Instance.OpenDialogPanel ("Equip " + itemData.Name + "?", 
 				//OKを押した場合、装備
 				() => {
