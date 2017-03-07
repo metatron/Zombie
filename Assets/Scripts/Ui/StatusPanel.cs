@@ -20,20 +20,11 @@ public class StatusPanel : MonoBehaviour {
 		//プレイヤーの場合はPlayerObjectをパネルに登録
 
 		//素材設置
-		CraftUiController.Instance.ResetContent(content);
-		CraftUiController.Instance.InitSwordObjButton (content,
-			//ボタンを押した場合は装備or解除
-			(AbstractData itemData) => {
-				OnEquiptItem(itemData);
-			}
-		);
+		ResetStatusPanelItems();
 	}
 
 	public void CloseStatusPanel() {
 		gameObject.SetActive (false);
-
-		//数値が変わっていた場合コンテンツリセット
-		CraftUiController.Instance.ResetAllContent();
 	}
 
 
@@ -47,6 +38,8 @@ public class StatusPanel : MonoBehaviour {
 					_charData.SwordID = "";
 					//解除して使用可能にする
 					PlayerData.UnequipItem (itemData.ID);
+					//数値が変わっていた場合コンテンツリセット
+					ResetStatusPanelItems();
 				},
 				//cancelを押した場合何もなし
 				() => {}
@@ -60,12 +53,23 @@ public class StatusPanel : MonoBehaviour {
 					_charData.SwordID = itemData.ID;
 					//ストレージから引く
 					PlayerData.EquipItem (itemData.ID);
+					//数値が変わっていた場合コンテンツリセット
+					ResetStatusPanelItems();
 				},
 				//cancelを押した場合何もなし
-				() => {
-				}
+				() => {}
 			);
 		}
+	}
+
+	private void ResetStatusPanelItems() {
+		CraftUiController.Instance.ResetContent(content);
+		CraftUiController.Instance.InitItemObjButton<SwordData> (content,
+			//ボタンを押した場合は装備or解除
+			(AbstractData itemData) => {
+				OnEquiptItem(itemData);
+			}
+		);
 	}
 
 }

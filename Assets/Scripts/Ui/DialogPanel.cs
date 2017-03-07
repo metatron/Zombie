@@ -12,10 +12,6 @@ public class DialogPanel : MonoBehaviour {
 	public OnButtonAction okBtnAction;
 	public OnButtonAction cancelBtnAction;
 
-	public void CloseDialogPanel() {
-		gameObject.SetActive (false);
-	}
-
 	public void OpenDialogPanel(string text, OnButtonAction okAction, OnButtonAction cancelAction = null) {
 		dialogText.text = text;
 
@@ -34,14 +30,15 @@ public class DialogPanel : MonoBehaviour {
 		if (okBtnAction != null) {
 			okBtnAction ();
 		}
-		CloseDialogPanel ();
+
+		gameObject.SetActive (false);
 	}
 
 	public void OnCancelButton() {
 		if (cancelBtnAction != null) {
 			cancelBtnAction ();
 		}
-		CloseDialogPanel ();
+		gameObject.SetActive (false);
 	}
 
 }

@@ -50,6 +50,9 @@ public class CreatePanel : MonoBehaviour {
 		}
 		itemImage.sprite = null;
 
+		//数値更新
+		CraftUiController.Instance.ResetAllContent();
+
 		gameObject.SetActive (false);
 	}
 
@@ -81,7 +84,6 @@ public class CreatePanel : MonoBehaviour {
 				PlayerData.UseItem(reqData, requirementDict [reqDataType]);
 			}
 
-			Debug.LogError ("********OnCreateItem: " + _itemData.Name);
 			//PlayerDataに追加
 			PlayerData.AddItem(_itemData);
 		}//if

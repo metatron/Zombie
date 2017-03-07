@@ -58,7 +58,8 @@ public class AbstractData {
 		Metal,
 		Wood,
 		Cloth,
-		Weapon,
+		Sword,
+		Gun,
 		Tool
 	}
 

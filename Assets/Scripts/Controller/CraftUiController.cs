@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using TouchScript;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
+
 
 public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 	public GameObject craftingPanel;
@@ -37,7 +40,7 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 	public void OnOpenCraftMenuPressed() {
 		//初期化
 		ResetContent(weaponDataTabViewportContent);
-		InitSwordObjButton (weaponDataTabViewportContent,
+		InitItemObjButton<SwordData> (weaponDataTabViewportContent,
 			//ボタンが押された時の挙動を追加
 			(AbstractData itemData) => {
 				CraftUiController.Instance.createPanel.GetComponent<CreatePanel> ().InitItemCraftingData (itemData);
@@ -58,18 +61,25 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 		craftingPanel.SetActive (false);
 	}
 
-	public void InitSwordObjButton(GameObject content, ItemUI.ClickItemAction clickItemAction) {
-		foreach (SwordData swordData in _swordDataTableObj.Table.All) {
+	public void InitItemObjButton<T>(GameObject content, ItemUI.ClickItemAction clickItemAction) where T: AbstractData {
+		List<AbstractData> itemList = new List<AbstractData>();
+		string atlasName = "WeaponAtlas";
+		if(typeof(T) == typeof(SwordData)) {
+			//List<SwordData>をList<AbstractData>にConvert。
+			itemList = _swordDataTableObj.Table.All.ConvertAll<AbstractData> (x => (AbstractData)x);
+			atlasName = "WeaponAtlas";
+		}
+
+		//ItemUIをInstantiateし、値をセットし、contentに追加。
+		foreach (AbstractData itemData in itemList) {
 			ItemUI initedItemUIObj = (ItemUI)Instantiate (itemUIPrefab);
 			//「使用可能な数」を表示
-			int totalCnt = PlayerData.GetItemNum(swordData.ID);
-			int equippedCnt = PlayerData.TotalEquipedNum (swordData.ID);
+			int totalCnt = PlayerData.GetItemNum(itemData.ID);
+			int equippedCnt = PlayerData.TotalEquipedNum (itemData.ID);
 
-			//装備してる数が多い場合は0
-			int count = Mathf.Max (0, (totalCnt - equippedCnt));
-			Debug.LogError (swordData.ID + ", totalCnt: " + totalCnt + ", equippedCnt: " + equippedCnt + ", count: " + count);
+			Debug.LogError (itemData.ID + ", totalCnt: " + totalCnt + ", equippedCnt: " + equippedCnt);
 
-			initedItemUIObj.InitItemMenu ("WeaponAtlas", swordData, "" + count);
+			initedItemUIObj.InitItemMenu (atlasName, itemData, "" + totalCnt);
 			initedItemUIObj.transform.SetParent (content.transform, false);
 			initedItemUIObj.SetItemImageSize ();
 
@@ -103,7 +113,7 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 	public void ResetAllContent() {
 		//Sword初期化
 		ResetContent(weaponDataTabViewportContent);
-		InitSwordObjButton (weaponDataTabViewportContent,
+		InitItemObjButton<SwordData> (weaponDataTabViewportContent,
 			//ボタンが押された時の挙動を追加
 			(AbstractData itemData) => {
 				CraftUiController.Instance.createPanel.GetComponent<CreatePanel> ().InitItemCraftingData (itemData);
