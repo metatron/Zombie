@@ -31,33 +31,41 @@ public class StatusPanel : MonoBehaviour {
 
 	public void CloseStatusPanel() {
 		gameObject.SetActive (false);
+
+		//数値が変わっていた場合コンテンツリセット
+		CraftUiController.Instance.ResetAllContent();
 	}
 
 
 	private void OnEquiptItem(AbstractData itemData) {
-		UiController.Instance.OpenDialogPanel ("Equip", null);
 		//持っていた場合解除
-		if (!string.IsNullOrEmpty (_charData.SwordID)) {
-			_charData.SwordID = "";
-			//解除して使用可能にする
-			PlayerData.UnequipItem (itemData.ID);
+		if (!string.IsNullOrEmpty (_charData.SwordID) && itemData.ID == _charData.SwordID) {
+			//解除しますかDialog
+			UiController.Instance.OpenDialogPanel ("UnEquip " + itemData.Name + "?", 
+				//OKを押した場合、装備解除
+				() => {
+					_charData.SwordID = "";
+					//解除して使用可能にする
+					PlayerData.UnequipItem (itemData.ID);
+				},
+				//cancelを押した場合何もなし
+				() => {}
+			);
 		}
 		//装備
 		else {
-			_charData.SwordID = itemData.ID;
-			//ストレージから引く
-			PlayerData.EquipItem(itemData.ID);
+			UiController.Instance.OpenDialogPanel ("Equip " + itemData.Name + "?", 
+				//OKを押した場合、装備
+				() => {
+					_charData.SwordID = itemData.ID;
+					//ストレージから引く
+					PlayerData.EquipItem (itemData.ID);
+				},
+				//cancelを押した場合何もなし
+				() => {
+				}
+			);
 		}
-	}
-
-	public void OnSwordEquipBtn() {
-		
-	}
-
-	public void OnGunEquipBtn() {
-	}
-
-	public void OnFoodBtn() {
 	}
 
 }
