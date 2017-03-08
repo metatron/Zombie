@@ -18,6 +18,8 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 
 	void Start() {
 		SwordDataTableObject.Instance.InitData ();
+		CraftItemDataTableObject.Instance.InitData ();
+
 		PlayerData.InitPlayerData ();
 
 		GameObject playerObj = GameObject.FindGameObjectWithTag ("Player");

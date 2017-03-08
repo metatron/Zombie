@@ -8512,7 +8512,9 @@ MonoBehaviour:
   characterPanel: {fileID: 228224671}
   statusPanel: {fileID: 1781933738}
   _swordDataTableObj: {fileID: 533406850}
+  _craftItemDataTableObj: {fileID: 2038217666}
   weaponDataTabViewportContent: {fileID: 349226749}
+  craftItemDataTabViewportContent: {fileID: 62602457}
   itemUIPrefab: {fileID: 114484609377194608, guid: 4393d701e479e44a59a57822dd0e3819,
     type: 2}
 --- !u!4 &1915034903
@@ -9502,6 +9504,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
+--- !u!114 &2038217666 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114224004480268456, guid: c9aa792331bcf464d9637248e1d85384,
+    type: 2}
+  m_PrefabInternal: {fileID: 788249487}
+  m_Script: {fileID: 11500000, guid: d4a7f04897df844aea14a4faec75b33d, type: 3}
 --- !u!1 &2062670066
 GameObject:
   m_ObjectHideFlags: 0

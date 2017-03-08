@@ -16,9 +16,10 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 	public SwordDataTableObject _swordDataTableObj;
 //	public FoodDataTableObject _foodDataTableObj;
 //	public ToolDataTableObject _toolDataTableObj;
-//	public MaterialDataTableObject _materialDataTableObj;
+	public CraftItemDataTableObject _craftItemDataTableObj;
 
 	public GameObject weaponDataTabViewportContent;
+	public GameObject craftItemDataTabViewportContent;
 
 
 	public ItemUI itemUIPrefab;
@@ -34,6 +35,9 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 		if (!_swordDataTableObj.isInitialized()) {
 			_swordDataTableObj.InitData();
 		}
+		if (!_craftItemDataTableObj.isInitialized()) {
+			_craftItemDataTableObj.InitData();
+		}
 
 	}
 
@@ -46,6 +50,15 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 				CraftUiController.Instance.createPanel.GetComponent<CreatePanel> ().InitItemCraftingData (itemData);
 			}
 		);
+
+		ResetContent(craftItemDataTabViewportContent);
+		InitItemObjButton<CraftItemData> (craftItemDataTabViewportContent,
+			//ボタンが押された時の挙動を追加
+			(AbstractData itemData) => {
+				CraftUiController.Instance.createPanel.GetComponent<CreatePanel> ().InitItemCraftingData (itemData);
+			}
+		);
+
 
 		craftingPanel.SetActive (true);
 	}
