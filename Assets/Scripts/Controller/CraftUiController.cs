@@ -43,22 +43,7 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 
 	public void OnOpenCraftMenuPressed() {
 		//初期化
-		ResetContent(weaponDataTabViewportContent);
-		InitItemObjButton<SwordData> (weaponDataTabViewportContent,
-			//ボタンが押された時の挙動を追加
-			(AbstractData itemData) => {
-				CraftUiController.Instance.createPanel.GetComponent<CreatePanel> ().InitItemCraftingData (itemData);
-			}
-		);
-
-		ResetContent(craftItemDataTabViewportContent);
-		InitItemObjButton<CraftItemData> (craftItemDataTabViewportContent,
-			//ボタンが押された時の挙動を追加
-			(AbstractData itemData) => {
-				CraftUiController.Instance.createPanel.GetComponent<CreatePanel> ().InitItemCraftingData (itemData);
-			}
-		);
-
+		ResetAllContent();
 
 		craftingPanel.SetActive (true);
 	}
@@ -77,10 +62,16 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 	public void InitItemObjButton<T>(GameObject content, ItemUI.ClickItemAction clickItemAction) where T: AbstractData {
 		List<AbstractData> itemList = new List<AbstractData>();
 		string atlasName = "WeaponAtlas";
-		if(typeof(T) == typeof(SwordData)) {
+		if (typeof(T) == typeof(SwordData)) {
 			//List<SwordData>をList<AbstractData>にConvert。
 			itemList = _swordDataTableObj.Table.All.ConvertAll<AbstractData> (x => (AbstractData)x);
+			Debug.LogError ("********1: " + itemList.Count);
 			atlasName = "WeaponAtlas";
+		}
+		else if(typeof(T) == typeof(CraftItemData)) { 
+			itemList = _craftItemDataTableObj.Table.All.ConvertAll<AbstractData> (x => (AbstractData)x);
+			atlasName = "ItemAtlas";
+
 		}
 
 		//ItemUIをInstantiateし、値をセットし、contentに追加。
@@ -95,7 +86,6 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 			initedItemUIObj.InitItemMenu (atlasName, itemData, "" + totalCnt);
 			initedItemUIObj.transform.SetParent (content.transform, false);
 			initedItemUIObj.SetItemImageSize ();
-
 			//ボタンを押した際はクラフト、装備、（食べ物の場合は）食べるアクションをとる。
 			initedItemUIObj._clickItemAction = clickItemAction;
 		}
@@ -127,6 +117,15 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 		//Sword初期化
 		ResetContent(weaponDataTabViewportContent);
 		InitItemObjButton<SwordData> (weaponDataTabViewportContent,
+			//ボタンが押された時の挙動を追加
+			(AbstractData itemData) => {
+				CraftUiController.Instance.createPanel.GetComponent<CreatePanel> ().InitItemCraftingData (itemData);
+			}
+		);
+
+		//craftitem初期化
+		ResetContent(craftItemDataTabViewportContent);
+		InitItemObjButton<CraftItemData> (craftItemDataTabViewportContent,
 			//ボタンが押された時の挙動を追加
 			(AbstractData itemData) => {
 				CraftUiController.Instance.createPanel.GetComponent<CreatePanel> ().InitItemCraftingData (itemData);

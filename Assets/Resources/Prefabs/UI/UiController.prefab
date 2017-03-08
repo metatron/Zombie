@@ -131,7 +131,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1573023006794120
 GameObject:
   m_ObjectHideFlags: 1
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f67e16bf89b154704911a9e5933cad4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dialogPanel: {fileID: 1573023006794120}
+  _dialogPanel: {fileID: 1554833386997348}
 --- !u!114 &114458732067868876
 MonoBehaviour:
   m_ObjectHideFlags: 1

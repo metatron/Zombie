@@ -17,8 +17,8 @@ public class CraftItemDataTableObject : SingletonMonoBehaviourFast<CraftItemData
 		}
 	}
 
-	public SwordData GetParams(string id) {
-		return (SwordData)dataDictionary [id];
+	public CraftItemData GetParams(string id) {
+		return (CraftItemData)dataDictionary [id];
 	}
 		
 

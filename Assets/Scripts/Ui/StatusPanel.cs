@@ -29,6 +29,7 @@ public class StatusPanel : MonoBehaviour {
 
 
 	private void OnEquiptItem(AbstractData itemData) {
+		Debug.LogError ("_charData.SwordID: " + _charData.SwordID + ", itemData.ID: " + itemData.ID);
 		//持っていた場合解除
 		if (!string.IsNullOrEmpty (_charData.SwordID) && itemData.ID == _charData.SwordID) {
 			//解除しますかDialog
