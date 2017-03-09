@@ -9,31 +9,31 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1466326816022110}
+  m_RootGameObject: {fileID: 1494584559672376}
   m_IsPrefabParent: 1
---- !u!1 &1466326816022110
+--- !u!1 &1494584559672376
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4595139488471082}
-  - component: {fileID: 212605364349833464}
-  - component: {fileID: 114341883221680946}
+  - component: {fileID: 4393224685099398}
+  - component: {fileID: 212913653504016548}
+  - component: {fileID: 114018707292758750}
   m_Layer: 0
-  m_Name: Gun01
+  m_Name: Gun02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4595139488471082
+--- !u!4 &4393224685099398
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1466326816022110}
+  m_GameObject: {fileID: 1494584559672376}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
@@ -41,12 +41,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114341883221680946
+--- !u!114 &114018707292758750
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1466326816022110}
+  m_GameObject: {fileID: 1494584559672376}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04148ffebe2944312b82acc88ae8defe, type: 3}
@@ -60,12 +60,12 @@ MonoBehaviour:
   maxAmmo: 6
   rapidFireTime: 0.1
   reloadTime: 2
---- !u!212 &212605364349833464
+--- !u!212 &212913653504016548
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1466326816022110}
+  m_GameObject: {fileID: 1494584559672376}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -91,7 +91,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300004, guid: 4cc2ce4757df540d8b66a5f529c37927, type: 3}
+  m_Sprite: {fileID: 21300016, guid: 4cc2ce4757df540d8b66a5f529c37927, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

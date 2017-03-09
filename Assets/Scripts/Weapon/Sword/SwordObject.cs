@@ -45,4 +45,5 @@ public class SwordObject : AbstractWeaponObject {
 		//親をグローバルにしておく
 		swingEffect.transform.SetParent(null);
 	}
+
 }

@@ -39,4 +39,7 @@ public abstract class AbstractWeaponObject : MonoBehaviour {
 		return true;
 	}
 
+	public void DisplaySprite(bool display) {
+		gameObject.GetComponent<SpriteRenderer> ().enabled = display;
+	}
 }

@@ -20,6 +20,9 @@ public class AbstractCharacterObject : MonoBehaviour {
 	protected SwordObject _swordObject; //referredオブジェクト
 	public SwordObject SwordObject { get { return _swordObject; } set { _swordObject = value; } }
 
+	//ここにGunやswordをおく。
+	private GameObject weaponPosObj;
+
 	public void Play(string anim) {
 		_animator.Play (anim, -1, 0.0f);
 	}
@@ -35,7 +38,10 @@ public class AbstractCharacterObject : MonoBehaviour {
 		_animator.Play ("stand");
 
 		//weaponオブジェクトを見つける。（ソード持ってる手のweaponオブジェクト）
-		_swordObject = GameManager.getChildGameObject(gameObject, "weapon").GetComponent<SwordObject>();
+		if (weaponPosObj == null) {
+			weaponPosObj = GameManager.getChildGameObject (gameObject, "weapon");
+		}
+		_swordObject = weaponPosObj.GetComponent<SwordObject>();
 
 		//ディフォルトは右向き
 		FaceTo(dir);
@@ -67,11 +73,20 @@ public class AbstractCharacterObject : MonoBehaviour {
 		_gunObject = ((GameObject)Instantiate ((GameObject)Resources.Load ("Prefabs/Items/Guns/"+gunData.GunPrefab))).GetComponent<GunObject>();
 		_gunObject.Owner = gameObject;
 		//ソードを持ってる手のgameObjectを取得
-		GameObject weaponObj = GameManager.getChildGameObject (gameObject, "weapon");
-		_gunObject.transform.SetParent (weaponObj.transform);
+		if (weaponPosObj == null) {
+			weaponPosObj = GameManager.getChildGameObject (gameObject, "weapon");
+		}
+		_gunObject.transform.SetParent (weaponPosObj.transform);
 		_gunObject.transform.localPosition = Vector3.zero;
 
+		//ポジションとレンダーオーダーを整える。
+		_gunObject.transform.localRotation = Quaternion.Euler( new Vector3(0.0f, 0.0f, 90.0f));
+		_gunObject.GetComponent<SpriteRenderer> ().sortingOrder = 59;
+
 		_gunObject.CopyParamsFrom (gunId);
+
+		//gunをdisable
+		_gunObject.DisplaySprite(false);
 	}
 
 	public void InitCharSwordObject(string swordId) {
@@ -93,10 +108,14 @@ public class AbstractCharacterObject : MonoBehaviour {
 
 	public void Attack() {
 		if (this.SwordObject != null && this.SwordObject.CanReachEnemy ()) {
-			this.SwordObject.Slash ();
+			SwordObject.DisplaySprite (true);
+			GunObject.DisplaySprite (false);
+			SwordObject.Slash ();
 		}
 		else if (this.GunObject != null) {
-			this.GunObject.Fire();
+			SwordObject.DisplaySprite (false);
+			GunObject.DisplaySprite (true);
+			GunObject.Fire();
 		}
 	}
 
