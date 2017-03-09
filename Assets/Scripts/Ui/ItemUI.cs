@@ -42,7 +42,6 @@ public class ItemUI : MonoBehaviour {
 	 * 
 	 */
 	public void OnClickItemMenu() {
-		Debug.LogError ("*******ITEM clicked");
 		_clickItemAction (_itemData);
 	}
 

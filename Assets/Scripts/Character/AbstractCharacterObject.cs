@@ -65,14 +65,16 @@ public class AbstractCharacterObject : MonoBehaviour {
 	public void InitCharGunObject(string gunPrefabPath) {
 		_gunObject = ((GameObject)Instantiate ((GameObject)Resources.Load ("Prefabs/Items/Guns/"+gunPrefabPath))).GetComponent<GunObject>();
 		_gunObject.Owner = gameObject;
-		_gunObject.transform.SetParent (transform);
+		//ソードを持ってる手のgameObjectを取得
+		GameObject weaponObj = GameManager.getChildGameObject (gameObject, "weapon");
+		_gunObject.transform.SetParent (weaponObj.transform);
 		_gunObject.transform.localPosition = Vector3.zero;
 	}
 
-	public void InitCharSwordObject(string swordPrefabPath) {
+	public void InitCharSwordObject(string swordId) {
 		//剣の場合はweaponオブジェクトが既にあるのでパラメータのみの受け渡しOwnerだけ設定しておく
 		//パラメータコピー
-		_swordObject.CopyParamsFrom (swordPrefabPath);
+		_swordObject.CopyParamsFrom (swordId);
 
 		//Ower上書き
 		_swordObject.Owner = gameObject;

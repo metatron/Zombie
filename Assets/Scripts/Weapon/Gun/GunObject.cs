@@ -24,6 +24,8 @@ public class GunObject : AbstractWeaponObject {
 		instBullet.transform.SetParent (transform);
 		instBullet.transform.localPosition = Vector3.zero;
 		instBullet.GetComponent<Rigidbody> ().AddForce (new Vector3 (instBullet.GetComponent<BulletObject>().Velocity, 0.0f, 0.0f));
+		//発射位置を整えた後は親をグローバルに戻す。
+		instBullet.transform.SetParent (null);
 	}
 
 }

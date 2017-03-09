@@ -51,6 +51,11 @@ public class StatusPanel : MonoBehaviour {
 			UiController.Instance.OpenDialogPanel ("Equip " + itemData.Name + "?", 
 				//OKを押した場合、装備
 				() => {
+					//装備がある場合解除
+					if(_charData.SwordID != "") {
+						PlayerData.UnequipItem (_charData.SwordID);
+					}
+
 					_charData.SwordID = itemData.ID;
 					//ストレージから引く
 					PlayerData.EquipItem (itemData.ID);
