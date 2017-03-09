@@ -18,6 +18,7 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 
 	void Start() {
 		SwordDataTableObject.Instance.InitData ();
+		GunDataTableObject.Instance.InitData ();
 		CraftItemDataTableObject.Instance.InitData ();
 
 		PlayerData.InitPlayerData ();
@@ -27,7 +28,7 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		_playerObject.transform.localPosition = new Vector3 (-4.0f, 0.0f, 0.0f);
 
 		_playerObject.InitChar (new CharaData());
-		_playerObject.InitCharGunObject ("Gun01");
+		_playerObject.InitCharGunObject ("gun1");
 		_playerObject.InitCharSwordObject ("swd2");
 
 		InitNpcObject ();

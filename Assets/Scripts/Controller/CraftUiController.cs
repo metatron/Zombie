@@ -14,6 +14,7 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 
 
 	public SwordDataTableObject _swordDataTableObj;
+	public GunDataTableObject _gunDataTableObj;
 //	public FoodDataTableObject _foodDataTableObj;
 //	public ToolDataTableObject _toolDataTableObj;
 	public CraftItemDataTableObject _craftItemDataTableObj;
@@ -34,6 +35,9 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 		//GameManagerでやってるが、Uiが出た段階でInitしてなかった場合Initする。
 		if (!_swordDataTableObj.isInitialized()) {
 			_swordDataTableObj.InitData();
+		}
+		if (!_gunDataTableObj.isInitialized()) {
+			_gunDataTableObj.InitData();
 		}
 		if (!_craftItemDataTableObj.isInitialized()) {
 			_craftItemDataTableObj.InitData();

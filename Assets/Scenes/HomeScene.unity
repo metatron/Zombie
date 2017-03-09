@@ -3654,6 +3654,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c9aa792331bcf464d9637248e1d85384, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &788249488 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114114145600242138, guid: c9aa792331bcf464d9637248e1d85384,
+    type: 2}
+  m_PrefabInternal: {fileID: 788249487}
+  m_Script: {fileID: 11500000, guid: 3b7771eca7e2544bf929180d4ece1fca, type: 3}
 --- !u!1 &800783218
 GameObject:
   m_ObjectHideFlags: 0
@@ -8530,6 +8536,7 @@ MonoBehaviour:
   characterPanel: {fileID: 228224671}
   statusPanel: {fileID: 1781933738}
   _swordDataTableObj: {fileID: 533406850}
+  _gunDataTableObj: {fileID: 788249488}
   _craftItemDataTableObj: {fileID: 2038217666}
   weaponDataTabViewportContent: {fileID: 349226749}
   craftItemDataTabViewportContent: {fileID: 62602457}

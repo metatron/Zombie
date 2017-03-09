@@ -24,7 +24,7 @@ public class CraftItemDataTableObject : SingletonMonoBehaviourFast<CraftItemData
 
 	public bool isInitialized() {
 		//データがない場合はfalse
-		if (_table.All.Count == null || _table.All.Count == 0) {
+		if (_table.All == null || _table.All.Count == 0) {
 			return false;
 		}
 		return true;

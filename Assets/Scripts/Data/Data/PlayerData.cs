@@ -19,7 +19,7 @@ public class PlayerData {
 			chardata.BodyPrefab = "Female1";
 			chardata.BattlePosition = 1;
 			chardata.SwordID = "swd1";
-			chardata.GunID = "Gun01";
+			chardata.GunID = "gun1";
 
 			playerNpcDictionary.Add ("npc1", chardata);
 		}

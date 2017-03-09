@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93657234c55f4448871fbff40b5c88f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _weapon: {fileID: 0}
   velocity: 2000
 --- !u!135 &135529248457653312
 SphereCollider:

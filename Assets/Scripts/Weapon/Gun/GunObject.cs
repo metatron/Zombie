@@ -16,6 +16,14 @@ public class GunObject : AbstractWeaponObject {
 	[SerializeField]
 	private float reloadTime;		//全弾打った後のリロードタイム
 
+	public void CopyParamsFrom(string id) {
+		GunData gunData = GunDataTableObject.Instance.GetParams (id);
+		Name = gunData.Name;
+		Damage = gunData.Damage;
+//		GetComponent<SpriteRenderer> ().sprite = LoadSprite (gunData.Image);
+		_bulletObject = Resources.Load<GameObject> ("Prefabs/Items/Bullets/" + gunData.BulletPrefab).GetComponent<BulletObject>();
+	}
+
 	public void Fire() {
 		Owner.GetComponent<AbstractCharacterObject>().Play ("fire");
 		GameObject instBullet = (GameObject)Instantiate (_bulletObject.gameObject);
