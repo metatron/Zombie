@@ -47,11 +47,7 @@ public class AbstractCharacterObject : MonoBehaviour {
 		FaceTo(dir);
 
 		//描画順設定
-		string sortingLayerName = "Default";
-		if (charaData.BattlePosition > 0) {
-			sortingLayerName = "NpcPos" + charaData.BattlePosition;
-		}
-		SetSortingLayer (sortingLayerName);
+		SetSortingLayer (GetSortingLayerName());
 	}
 
 	public void FaceTo(CharDirection dir) {
@@ -62,7 +58,15 @@ public class AbstractCharacterObject : MonoBehaviour {
 		}
 	}
 
-	public void SetSortingLayer(string sortingLayerName) {
+	private string GetSortingLayerName() {
+		string sortingLayerName = "Default";
+		if (charaData.BattlePosition > 0) {
+			sortingLayerName = "NpcPos" + charaData.BattlePosition;
+		}
+		return sortingLayerName;
+	}
+
+	private void SetSortingLayer(string sortingLayerName) {
 		foreach (SpriteRenderer spRenderer in GetComponentsInChildren<SpriteRenderer>()) {
 			spRenderer.sortingLayerName = sortingLayerName;
 		}
@@ -81,12 +85,14 @@ public class AbstractCharacterObject : MonoBehaviour {
 
 		//ポジションとレンダーオーダーを整える。
 		_gunObject.transform.localRotation = Quaternion.Euler( new Vector3(0.0f, 0.0f, 90.0f));
+		_gunObject.GetComponent<SpriteRenderer> ().sortingLayerName = GetSortingLayerName();
 		_gunObject.GetComponent<SpriteRenderer> ().sortingOrder = 59;
 
 		_gunObject.CopyParamsFrom (gunId);
 
 		//gunをdisable
 		_gunObject.DisplaySprite(false);
+
 	}
 
 	public void InitCharSwordObject(string swordId) {
