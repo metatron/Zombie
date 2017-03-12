@@ -19,7 +19,10 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 //	public ToolDataTableObject _toolDataTableObj;
 	public CraftItemDataTableObject _craftItemDataTableObj;
 
-	public GameObject weaponDataTabViewportContent;
+	public GameObject swordDataTabViewportContent;
+	public GameObject gunDataTabViewportContent;
+	public GameObject foodDataTabViewportContent;
+	public GameObject toolDataTabViewportContent;
 	public GameObject craftItemDataTabViewportContent;
 
 
@@ -69,13 +72,16 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 		if (typeof(T) == typeof(SwordData)) {
 			//List<SwordData>をList<AbstractData>にConvert。
 			itemList = _swordDataTableObj.Table.All.ConvertAll<AbstractData> (x => (AbstractData)x);
-			Debug.LogError ("********1: " + itemList.Count);
+			atlasName = "WeaponAtlas";
+		}
+		else if (typeof(T) == typeof(GunData)) {
+			//List<GunData>をList<AbstractData>にConvert。
+			itemList = _gunDataTableObj.Table.All.ConvertAll<AbstractData> (x => (AbstractData)x);
 			atlasName = "WeaponAtlas";
 		}
 		else if(typeof(T) == typeof(CraftItemData)) { 
 			itemList = _craftItemDataTableObj.Table.All.ConvertAll<AbstractData> (x => (AbstractData)x);
 			atlasName = "ItemAtlas";
-
 		}
 
 		//ItemUIをInstantiateし、値をセットし、contentに追加。
@@ -119,8 +125,17 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 
 	public void ResetAllContent() {
 		//Sword初期化
-		ResetContent(weaponDataTabViewportContent);
-		InitItemObjButton<SwordData> (weaponDataTabViewportContent,
+		ResetContent(swordDataTabViewportContent);
+		InitItemObjButton<SwordData> (swordDataTabViewportContent,
+			//ボタンが押された時の挙動を追加
+			(AbstractData itemData) => {
+				CraftUiController.Instance.createPanel.GetComponent<CreatePanel> ().InitItemCraftingData (itemData);
+			}
+		);
+
+		//Gun初期化
+		ResetContent(gunDataTabViewportContent);
+		InitItemObjButton<GunData> (gunDataTabViewportContent,
 			//ボタンが押された時の挙動を追加
 			(AbstractData itemData) => {
 				CraftUiController.Instance.createPanel.GetComponent<CreatePanel> ().InitItemCraftingData (itemData);

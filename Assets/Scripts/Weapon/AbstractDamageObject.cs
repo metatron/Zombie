@@ -20,6 +20,21 @@ public class AbstractDamageObject : MonoBehaviour {
 		if (enemyObj != null) {
 			CalculateDamage (enemyObj);
 		}
+		//Destroy (gameObject);
+		gameObject.GetComponent<Collider> ().enabled = false;
+
+		//弾は当たった瞬間消す。
+		if(GetType() == typeof(BulletObject)) {
+			Destroy(gameObject);
+		}
+		//剣の場合は数秒後に消す
+		else {
+			StartCoroutine (DestroyEffect());
+		}
+	}
+
+	private IEnumerator DestroyEffect() {
+		yield return new WaitForSeconds (3.0f);
 		Destroy (gameObject);
 	}
 }
