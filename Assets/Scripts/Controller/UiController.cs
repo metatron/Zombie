@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class UiController : SingletonMonoBehaviourFast<UiController> {
 	public GameObject _dialogPanel;
+	public GameObject _mapPanel;
 
 	void Start() {
 		_dialogPanel.SetActive (false);
