@@ -1,0 +1,3 @@
+ID,Name,BG,Spawn1,SpawnBoss
+stg1,Plain,plain,Enemy1|HP:100|SPEED:100,Enemy1|HP:200|SPEED:100
+stg2,Plain,plain,Enemy1|HP:100|SPEED:100,Enemy1|HP:200|SPEED:100

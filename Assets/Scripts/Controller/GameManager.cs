@@ -20,6 +20,7 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		SwordDataTableObject.Instance.InitData ();
 		GunDataTableObject.Instance.InitData ();
 		CraftItemDataTableObject.Instance.InitData ();
+		StageDataTableObject.Instance.InitData ();
 
 		PlayerData.InitPlayerData ();
 
