@@ -10,6 +10,7 @@ public class UiController : SingletonMonoBehaviourFast<UiController> {
 
 	void Start() {
 		_dialogPanel.SetActive (false);
+		_mapPanel.SetActive (false);
 	}
 
 	public void OnHomeButtonPressed() {
@@ -25,5 +26,9 @@ public class UiController : SingletonMonoBehaviourFast<UiController> {
 		_dialogPanel.GetComponent<DialogPanel> ().OpenDialogPanel (text, okAction, cancelAction);
 	}
 
+	public void OpenMapPanel() {
+		_mapPanel.SetActive (true);
+
+	}
 
 }
