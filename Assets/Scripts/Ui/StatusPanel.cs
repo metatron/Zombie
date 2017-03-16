@@ -120,7 +120,7 @@ public class StatusPanel : MonoBehaviour {
 	}
 
 	private void ResetStatusPanelItems<T>() where T: AbstractData {
-		CraftUiController.Instance.ResetContent(content);
+		UiController.Instance.ResetContent(content);
 		CraftUiController.Instance.InitItemObjButton<T> (content,
 			//ボタンを押した場合は装備or解除
 			(AbstractData itemData) => {

@@ -21,6 +21,27 @@ public class UiController : SingletonMonoBehaviourFast<UiController> {
 		TransitionManager.Instance.FadeTo ("Main");
 	}
 
+	/**
+	 * 
+	 * content配下にある全てのTransformを消す。
+	 * 
+	 * 
+	 */
+	public void ResetContent(GameObject content) {
+		Transform[] itemUIButtonArray = content.GetComponentsInChildren<Transform> ();
+		int length = itemUIButtonArray.Length;
+		for(int i=0; i<length; i++) {
+			Transform itemUIBtn = itemUIButtonArray [i];
+			//content自身は消さない
+			if (itemUIBtn.name == "Content") {
+				continue;
+			}
+
+			Destroy (itemUIBtn.gameObject);
+		}
+		itemUIButtonArray = null;
+	}
+
 	public void OpenDialogPanel(string text, DialogPanel.OnButtonAction okAction, DialogPanel.OnButtonAction cancelAction = null) {
 		_dialogPanel.SetActive (true);
 		_dialogPanel.GetComponent<DialogPanel> ().OpenDialogPanel (text, okAction, cancelAction);
@@ -28,7 +49,7 @@ public class UiController : SingletonMonoBehaviourFast<UiController> {
 
 	public void OpenMapPanel() {
 		_mapPanel.SetActive (true);
-
+		_mapPanel.GetComponent<MapPanel> ().InitMapPanel ();
 	}
 
 }

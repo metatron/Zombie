@@ -1,16 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class StageUI : MonoBehaviour {
+	private StageData _stageData;
+	public Text stageName;
 
-	// Use this for initialization
-	void Start () {
-		
+	public void InitStageUI(StageData stageData) {
+		_stageData = stageData;
+		stageName.text = _stageData.Name;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+
 }

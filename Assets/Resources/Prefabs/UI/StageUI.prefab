@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 222645525887794378}
   - component: {fileID: 114750515413831120}
   - component: {fileID: 114682345776972300}
+  - component: {fileID: 114183501920673664}
   m_Layer: 5
   m_Name: StageUI
   m_TagString: Untagged
@@ -46,6 +47,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114183501920673664
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1108664784007468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 006f9f9252cb945c2b4705a5db5671ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageName: {fileID: 114486270795604834}
 --- !u!114 &114486270795604834
 MonoBehaviour:
   m_ObjectHideFlags: 1

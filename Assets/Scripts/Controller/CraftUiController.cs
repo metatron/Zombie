@@ -102,30 +102,11 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 	}
 
 
-	/**
-	 * 
-	 * content配下にある全てのTransformを消す。
-	 * 
-	 * 
-	 */
-	public void ResetContent(GameObject content) {
-		Transform[] itemUIButtonArray = content.GetComponentsInChildren<Transform> ();
-		int length = itemUIButtonArray.Length;
-		for(int i=0; i<length; i++) {
-			Transform itemUIBtn = itemUIButtonArray [i];
-			//content自身は消さない
-			if (itemUIBtn.name == "Content") {
-				continue;
-			}
 
-			Destroy (itemUIBtn.gameObject);
-		}
-		itemUIButtonArray = null;
-	}
 
 	public void ResetAllContent() {
 		//Sword初期化
-		ResetContent(swordDataTabViewportContent);
+		UiController.Instance.ResetContent(swordDataTabViewportContent);
 		InitItemObjButton<SwordData> (swordDataTabViewportContent,
 			//ボタンが押された時の挙動を追加
 			(AbstractData itemData) => {
@@ -134,7 +115,7 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 		);
 
 		//Gun初期化
-		ResetContent(gunDataTabViewportContent);
+		UiController.Instance.ResetContent(gunDataTabViewportContent);
 		InitItemObjButton<GunData> (gunDataTabViewportContent,
 			//ボタンが押された時の挙動を追加
 			(AbstractData itemData) => {
@@ -143,7 +124,7 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 		);
 
 		//craftitem初期化
-		ResetContent(craftItemDataTabViewportContent);
+		UiController.Instance.ResetContent(craftItemDataTabViewportContent);
 		InitItemObjButton<CraftItemData> (craftItemDataTabViewportContent,
 			//ボタンが押された時の挙動を追加
 			(AbstractData itemData) => {
