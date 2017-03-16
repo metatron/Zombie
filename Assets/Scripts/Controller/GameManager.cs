@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityStandardAssets.ImageEffects;
+using UnityEngine.SceneManagement;
+
 
 
 public class GameManager : SingletonMonoBehaviourFast<GameManager> {
@@ -16,12 +18,17 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 
 	private static Dictionary<string, Sprite[]> loadedSpriteDict = new Dictionary<string, Sprite[]>();
 
+	public GameObject CurrentStageObject { get; set; }
+
+
 	void Start() {
+		//データ初期化
 		SwordDataTableObject.Instance.InitData ();
 		GunDataTableObject.Instance.InitData ();
 		CraftItemDataTableObject.Instance.InitData ();
 		StageDataTableObject.Instance.InitData ();
 
+		//プレイヤー初期化
 		PlayerData.InitPlayerData ();
 
 		GameObject playerObj = GameObject.FindGameObjectWithTag ("Player");
@@ -32,7 +39,15 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		_playerObject.InitCharGunObject ("gun2");
 		_playerObject.InitCharSwordObject ("swd2");
 
+		//NPC初期化
 		InitNpcObject ();
+
+		//ステージ初期化
+		Scene scene = SceneManager.GetActiveScene();
+		if (scene.name == "Main") {
+			Debug.LogError ("********************: " + PlayerData.crntStageID);
+			InitStage (PlayerData.crntStageID);
+		}
 	}
 
 	/**
@@ -101,7 +116,15 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 	}
 
 
-
+	public void InitStage(string stageId) {
+		StageData crntStageData = StageDataTableObject.Instance.Table.All.First (stgData => stgData.ID == stageId); //一番最初のだからWhereではなくFirstを使う。Whereは複数
+		if (CurrentStageObject != null) {
+			DestroyImmediate (CurrentStageObject);
+		}
+		CurrentStageObject = (GameObject)Instantiate(Resources.Load("Prefabs/Stages/" + crntStageData.BG));
+		CurrentStageObject.GetComponent<StageObject> ().InitStageObject (crntStageData);
+	}
+		
 
 	public static GameObject getChildGameObject(GameObject fromGameObject, string withName) {
 		Transform[] ts = fromGameObject.transform.GetComponentsInChildren<Transform>(true);

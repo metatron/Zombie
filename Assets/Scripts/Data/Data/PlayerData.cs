@@ -9,6 +9,8 @@ public class PlayerData {
 	//プレイヤーの所持するNPC。<ID, 総数>
 	public static Dictionary<string, CharaData> playerNpcDictionary = new Dictionary<string, CharaData>();
 
+	public static string crntStageID = "stg1";
+
 	public static void InitPlayerData() {
 		_itemOwnedDictionary ["Wood"] = 10;
 		_itemOwnedDictionary ["Metal"] = 10;

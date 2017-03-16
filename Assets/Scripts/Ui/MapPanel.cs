@@ -14,7 +14,20 @@ public class MapPanel : MonoBehaviour {
 		//ItemUIをInstantiateし、値をセットし、contentに追加。
 		foreach (StageData stageData in stageList) {
 			GameObject initedStageUIObj = (GameObject)Instantiate (stageUIPrefab);
-			initedStageUIObj.GetComponent<StageUI> ().InitStageUI (stageData);
+			initedStageUIObj.GetComponent<StageUI> ().InitStageUI (stageData, 
+				(stgData) => {
+					//Dialog表示（ステージ移動しますか？）
+					UiController.Instance.OpenDialogPanel("Goto " + stgData.Name + "?", 
+						//はい（InitStage）
+						()=> {
+							PlayerData.crntStageID = stgData.ID;
+							TransitionManager.Instance.FadeTo ("Main");
+						},
+						//いいえ（ただ消す）
+						()=>{}
+					);
+				}
+			);
 			initedStageUIObj.transform.SetParent (content.transform);
 			initedStageUIObj.GetComponent<RectTransform> ().localScale = Vector3.one;
 			initedStageUIObj.GetComponent<RectTransform> ().localPosition = new Vector3 (0.0f, 0.0f, -10.0f);

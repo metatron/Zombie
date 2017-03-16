@@ -35,6 +35,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4323292063219794}
+  - component: {fileID: 114193211296564160}
   m_Layer: 0
   m_Name: Stage01
   m_TagString: Untagged
@@ -94,3 +95,14 @@ MonoBehaviour:
   totalWaves: 5
   timeBetweenSpawns: 0.5
   spawnLocation: {fileID: 0}
+--- !u!114 &114193211296564160
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1582723202316450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd2d0149652e446cb9c11ad9be19d96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
