@@ -88,7 +88,10 @@ public class Spawner : MonoBehaviour
     /// The location of where to spawn units.
     /// </summary>
     public Transform spawnLocation;
+
     #endregion
+
+	private EnemyData _enemyData;
 
     void Start()
     {
@@ -96,9 +99,23 @@ public class Spawner : MonoBehaviour
         {
             spawnLocation = transform;
         }
-        InstanceManager.ReadyPreSpawn(unitList[(int)unitLevel].transform, totalUnits);
-        StartCoroutine("DoSpawn");
+		if (unitList [(int)unitLevel].transform != null && spawn) {
+			StartSpawning();
+		}
     }
+
+	public void StartSpawning(EnemyData enemyData = null) {
+		_enemyData = enemyData;
+		if (_enemyData == null) {
+			InstanceManager.ReadyPreSpawn (unitList [(int)unitLevel].transform, totalUnits);
+		}
+		else {
+			unitList [(int)unitLevel] = (GameObject)Resources.Load ("Prefabs/Enemies/" + _enemyData.Prefab);
+			InstanceManager.ReadyPreSpawn (unitList [(int)unitLevel].transform, totalUnits);
+		}
+		StartCoroutine ("DoSpawn");
+	}
+
     /// <summary>
     /// Spawns a unit based on the level set.
     /// </summary>
@@ -108,8 +125,12 @@ public class Spawner : MonoBehaviour
         {
             Transform unit = InstanceManager.Spawn(unitList[(int)unitLevel].transform, spawnLocation.position, Quaternion.identity);
 
+			//↓↓↓ここからオリジナルソースコード追加↓↓↓//
+
 			int id = GameManager.Instance.crntEnemyDictionary.Count + 1;
 			GameManager.Instance.crntEnemyDictionary.Add (id.ToString (), unit.gameObject.GetComponent<EnemyObject> ());
+
+			//↑↑↑==========ここまで===========↑↑↑//
 
 			unit.GetComponent<SpawnAI>().SetOwner(this);
             // Increase the total number of enemies spawned and the number of spawned enemies
