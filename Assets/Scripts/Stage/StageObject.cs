@@ -46,21 +46,17 @@ public class StageObject : MonoBehaviour {
 		if (string.IsNullOrEmpty (enemyDataStr)) {
 			return null;
 		}
-		Debug.LogError ("***************************enemyDataStr: " + enemyDataStr);
 
 		string[] stage1Splited = enemyDataStr.Split ('|');
 
 		EnemyData enemy = new EnemyData ();
 		//Enemy Prefab
-		Debug.LogError("@@@@@@@@@@@@@@@@@1: " + stage1Splited [0]);
 		enemy.Prefab = stage1Splited [0];
 		//HP
 		string hpStr = stage1Splited [1].Split(':')[1];
-		Debug.LogError("@@@@@@@@@@@@@@@@@2: " + hpStr);
 		enemy.HP = Int32.Parse (hpStr);
 		//Speed
 		string speedStr = stage1Splited [2].Split(':')[1];
-		Debug.LogError("@@@@@@@@@@@@@@@@@3: " + speedStr);
 		enemy.Speed = float.Parse (speedStr);
 
 		return enemy;

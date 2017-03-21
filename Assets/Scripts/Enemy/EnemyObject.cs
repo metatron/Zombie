@@ -8,10 +8,11 @@ public class EnemyObject : AbstractCharacterObject {
 	public int Hp { get { return _hp; } set {_hp = value; } }
 
 	[SerializeField]
-	private float _speed = 100.0f;
+	private float _speed = 1.0f;
 	public float Speed { get { return _speed; } set {_speed = value; } }
 
-	void Start () {
-		GetComponent<Rigidbody> ().AddForce (new Vector3 (-_speed, 0.0f, 0.0f), ForceMode.Acceleration);
+	void Update() {
+		Debug.LogError ("*****************Speed: " + Speed);
+		transform.Translate (Vector3.right * Speed * -Time.deltaTime);
 	}
 }
