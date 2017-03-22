@@ -12,7 +12,6 @@ public class EnemyObject : AbstractCharacterObject {
 	public float Speed { get { return _speed; } set {_speed = value; } }
 
 	void Update() {
-		Debug.LogError ("*****************Speed: " + Speed);
 		transform.Translate (Vector3.right * Speed * -Time.deltaTime);
 	}
 }

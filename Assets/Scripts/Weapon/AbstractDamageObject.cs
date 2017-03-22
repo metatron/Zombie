@@ -15,7 +15,8 @@ public class AbstractDamageObject : MonoBehaviour {
 		}
 	}
 
-	protected virtual void OnCollisionEnter(Collision other) {
+//	protected virtual void OnCollisionEnter(Collision other) {
+	void OnTriggerEnter(Collider other) {
 		EnemyObject enemyObj = other.gameObject.GetComponent<EnemyObject> ();
 		if (enemyObj != null) {
 			CalculateDamage (enemyObj);

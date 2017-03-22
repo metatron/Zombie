@@ -128,6 +128,8 @@ public class Spawner : MonoBehaviour
 			//↓↓↓ここからオリジナルソースコード追加↓↓↓//
 
 			int id = GameManager.Instance.crntEnemyDictionary.Count + 1;
+			unit.gameObject.GetComponent<EnemyObject> ().Hp = _enemyData.HP;
+			unit.gameObject.GetComponent<EnemyObject> ().Speed = _enemyData.Speed;
 			GameManager.Instance.crntEnemyDictionary.Add (id.ToString (), unit.gameObject.GetComponent<EnemyObject> ());
 
 			//↑↑↑==========ここまで===========↑↑↑//
