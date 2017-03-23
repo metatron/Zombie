@@ -8,6 +8,7 @@ public class StageObject : MonoBehaviour {
 
 	public List<Spawner> spawnerList = new List<Spawner>();
 
+
 	public void InitStageObject(StageData stageData) {
 		_stageData = stageData;
 		transform.localScale = Vector3.one;
@@ -16,24 +17,39 @@ public class StageObject : MonoBehaviour {
 		//Spawner1
 		if(!string.IsNullOrEmpty(stageData.Spawn1)) {
 			EnemyData enemy = ParseEnemyData (stageData.Spawn1);
-			spawnerList[0].StartSpawning (enemy);
 			spawnerList[0].spawn = true;
+			spawnerList[0].StartSpawning (enemy);
 		}
 
 		//Spawner2
 		if(!string.IsNullOrEmpty(stageData.Spawn2)) {
 			EnemyData enemy = ParseEnemyData (stageData.Spawn2);
-			spawnerList[1].StartSpawning (enemy);
 			spawnerList[1].spawn = true;
+			spawnerList[1].StartSpawning (enemy);
 		}
 
 		//Spawner3
 		if(!string.IsNullOrEmpty(stageData.Spawn2)) {
 			EnemyData enemy = ParseEnemyData (stageData.Spawn2);
-			spawnerList[2].StartSpawning (enemy);
 			spawnerList[2].spawn = true;
+			spawnerList[2].StartSpawning (enemy);
 		}
+	}
 
+	void FixedUpdate() {
+		//Spawnerが終ってるかどうか定期的に確認
+		foreach (Spawner spawner in spawnerList) {
+			//終ってたらbossをInit
+			if (spawner.IsFinishedSpawning () && !spawner.IsBossInited) {
+				StartCoroutine(InitBoss());
+				spawner.IsBossInited = true;
+			}
+		}
+	}
+
+	private IEnumerator InitBoss() {
+		yield return new WaitForSeconds (5.0f);
+		Debug.LogError ("**************InitBoss: " +_stageData.SpawnBoss);
 	}
 
 	/**

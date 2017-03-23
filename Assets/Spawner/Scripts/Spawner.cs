@@ -92,6 +92,7 @@ public class Spawner : MonoBehaviour
     #endregion
 
 	private EnemyData _enemyData;
+	public bool IsBossInited = false;
 
     void Start()
     {
@@ -99,12 +100,14 @@ public class Spawner : MonoBehaviour
         {
             spawnLocation = transform;
         }
-		if (unitList [(int)unitLevel].transform != null && spawn) {
-			StartSpawning();
-		}
+
+		//必ずenemyDataを設定させてからSpawnしたい為、コメントアウト
+//		if (unitList [(int)unitLevel].transform != null && spawn) {
+//			StartSpawning();
+//		}
     }
 
-	public void StartSpawning(EnemyData enemyData = null) {
+	public void StartSpawning(EnemyData enemyData ) {
 		_enemyData = enemyData;
 		if (_enemyData == null) {
 			InstanceManager.ReadyPreSpawn (unitList [(int)unitLevel].transform, totalUnits);
@@ -260,12 +263,14 @@ public class Spawner : MonoBehaviour
         {
             switch (spawnType)
             {
-                case SpawnModes.Normal:
-                    if (numberOfUnits < totalUnits)
-                    {
-                        yield return new WaitForSeconds(timeBetweenSpawns);
-                        SpawnUnit();
-                    }
+			case SpawnModes.Normal:
+				if (numberOfUnits < totalUnits) {
+					yield return new WaitForSeconds (timeBetweenSpawns);
+					SpawnUnit ();
+				} 
+				else {
+					spawn = false;
+				}
                     break;
                 case SpawnModes.Once:
                     if (totalSpawnedUnits >= totalUnits)
@@ -384,4 +389,17 @@ public class Spawner : MonoBehaviour
     {
         EnableViaTrigger();
     }
+
+	/**
+	 * 
+	 * 終ったあとはspawnがfalseになっている。
+	 * 
+	 */
+	public bool IsFinishedSpawning() {
+		Debug.LogError ("IsFinishedSpawning: " + totalSpawnedUnits + ", " + spawn);
+		if (totalSpawnedUnits > 0 && !spawn) {
+			return true;			
+		}
+		return false;
+	}
 }
