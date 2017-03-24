@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -116,7 +117,7 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 	}
 
 
-	public void InitStage(string stageId) {
+	private void InitStage(string stageId) {
 		StageData crntStageData = StageDataTableObject.Instance.Table.All.First (stgData => stgData.ID == stageId); //一番最初のだからWhereではなくFirstを使う。Whereは複数
 		if (CurrentStageObject != null) {
 			DestroyImmediate (CurrentStageObject);
@@ -130,5 +131,17 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		Transform[] ts = fromGameObject.transform.GetComponentsInChildren<Transform>(true);
 		foreach (Transform t in ts) if (t.gameObject.name == withName) return t.gameObject;
 		return null;
+	}
+
+	public void InitResult() {
+		UiController.Instance.OpenDialogPanel("Result", ()=>{
+			int stgNum = Int32.Parse(PlayerData.crntStageID.Replace("stg", ""));
+			string nextStgId = "stg"+stgNum;
+			StageData nextStage = StageDataTableObject.Instance.Table.All.First (stgData => stgData.ID == nextStgId);
+			if(nextStage != null) {
+				PlayerData.crntStageID = nextStgId;
+				TransitionManager.Instance.FadeTo ("Main");
+			}
+		});
 	}
 }

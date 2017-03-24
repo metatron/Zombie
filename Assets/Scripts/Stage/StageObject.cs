@@ -41,15 +41,24 @@ public class StageObject : MonoBehaviour {
 		foreach (Spawner spawner in spawnerList) {
 			//終ってたらbossをInit
 			if (spawner.IsFinishedSpawning () && !spawner.IsBossInited) {
-				StartCoroutine(InitBoss());
+				StartCoroutine(InitBoss(spawner));
 				spawner.IsBossInited = true;
 			}
 		}
 	}
 
-	private IEnumerator InitBoss() {
+	private IEnumerator InitBoss(Spawner spawner) {
 		yield return new WaitForSeconds (5.0f);
-		Debug.LogError ("**************InitBoss: " +_stageData.SpawnBoss);
+
+		EnemyData bossEnemyData = ParseEnemyData (_stageData.SpawnBoss);
+		GameObject bossEnemyObj = (GameObject)Instantiate (Resources.Load ("Prefabs/Enemies/" + bossEnemyData.Prefab));
+
+		int id = GameManager.Instance.crntEnemyDictionary.Count + 1;
+		bossEnemyObj.GetComponent<EnemyObject> ().Hp = bossEnemyData.HP;
+		bossEnemyObj.GetComponent<EnemyObject> ().Speed = bossEnemyData.Speed;
+		bossEnemyObj.GetComponent<EnemyObject> ().IsBoss = true;
+
+		bossEnemyObj.transform.position = spawner.transform.position;
 	}
 
 	/**

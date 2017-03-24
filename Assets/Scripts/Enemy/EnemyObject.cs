@@ -11,6 +11,8 @@ public class EnemyObject : AbstractCharacterObject {
 	private float _speed = 1.0f;
 	public float Speed { get { return _speed; } set {_speed = value; } }
 
+	public bool IsBoss = false;
+
 	void Update() {
 		transform.Translate (Vector3.right * Speed * -Time.deltaTime);
 	}

@@ -396,7 +396,6 @@ public class Spawner : MonoBehaviour
 	 * 
 	 */
 	public bool IsFinishedSpawning() {
-		Debug.LogError ("IsFinishedSpawning: " + totalSpawnedUnits + ", " + spawn);
 		if (totalSpawnedUnits > 0 && !spawn) {
 			return true;			
 		}
