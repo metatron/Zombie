@@ -12,7 +12,9 @@ public class AbstractDamageObject : MonoBehaviour {
 		enemyObject.Hp -= (int)System.Math.Ceiling (_weapon.Damage);
 		if (enemyObject.Hp <= 0) {
 			Destroy (enemyObject.gameObject);
-			GameManager.Instance.InitResult ();
+			if (enemyObject.IsBoss) {
+				GameManager.Instance.InitResult ();
+			}
 		}
 	}
 

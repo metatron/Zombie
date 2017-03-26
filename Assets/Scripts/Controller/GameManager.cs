@@ -136,11 +136,16 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 	public void InitResult() {
 		UiController.Instance.OpenDialogPanel("Result", ()=>{
 			int stgNum = Int32.Parse(PlayerData.crntStageID.Replace("stg", ""));
+			stgNum++;
 			string nextStgId = "stg"+stgNum;
-			StageData nextStage = StageDataTableObject.Instance.Table.All.First (stgData => stgData.ID == nextStgId);
+			StageData nextStage = StageDataTableObject.Instance.Table.All.FirstOrDefault(stgData => stgData.ID == nextStgId);
 			if(nextStage != null) {
 				PlayerData.crntStageID = nextStgId;
 				TransitionManager.Instance.FadeTo ("Main");
+			}
+			//なかった場合はMapを開く
+			else {
+				UiController.Instance.OpenMapPanel();
 			}
 		});
 	}

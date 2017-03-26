@@ -147,7 +147,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  totalUnits: 10
+  totalUnits: 10000
   spawnID: 1
   spawn: 0
   spawnType: 0
@@ -155,6 +155,7 @@ MonoBehaviour:
   totalWaves: 1
   timeBetweenSpawns: 0.3
   spawnLocation: {fileID: 0}
+  IsBossInited: 0
 --- !u!114 &114193211296564160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -195,6 +196,7 @@ MonoBehaviour:
   totalWaves: 5
   timeBetweenSpawns: 0.3
   spawnLocation: {fileID: 0}
+  IsBossInited: 0
 --- !u!114 &114730970036670922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -220,3 +222,4 @@ MonoBehaviour:
   totalWaves: 5
   timeBetweenSpawns: 0.3
   spawnLocation: {fileID: 0}
+  IsBossInited: 0

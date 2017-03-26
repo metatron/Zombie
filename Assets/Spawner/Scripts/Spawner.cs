@@ -92,7 +92,7 @@ public class Spawner : MonoBehaviour
     #endregion
 
 	private EnemyData _enemyData;
-	public bool IsBossInited = false;
+	public bool IsBossInited = false; //ボスが排出された際にtrue.trueだと排出はされない。
 
     void Start()
     {
@@ -392,7 +392,8 @@ public class Spawner : MonoBehaviour
 
 	/**
 	 * 
-	 * 終ったあとはspawnがfalseになっている。
+	 * ボス以外の排出が終ったあとはspawnがfalseになっている。
+	 * 
 	 * 
 	 */
 	public bool IsFinishedSpawning() {
@@ -401,4 +402,5 @@ public class Spawner : MonoBehaviour
 		}
 		return false;
 	}
+
 }

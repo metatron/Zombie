@@ -8,6 +8,10 @@ public class StageObject : MonoBehaviour {
 
 	public List<Spawner> spawnerList = new List<Spawner>();
 
+	private float cumulativeTime = 0.0f; //StageObjectが
+
+	private List<DropData> dropDataList = new List<DropData> ();
+
 
 	public void InitStageObject(StageData stageData) {
 		_stageData = stageData;
@@ -34,17 +38,30 @@ public class StageObject : MonoBehaviour {
 			spawnerList[2].spawn = true;
 			spawnerList[2].StartSpawning (enemy);
 		}
+
+		//DropData
+		ParseDropData(stageData.Drops);
 	}
 
 	void FixedUpdate() {
 		//Spawnerが終ってるかどうか定期的に確認
 		foreach (Spawner spawner in spawnerList) {
-			//終ってたらbossをInit
-			if (spawner.IsFinishedSpawning () && !spawner.IsBossInited) {
-				StartCoroutine(InitBoss(spawner));
+			//TimeTillBossが設定されてなくて、ザコ敵の排出が終ってたらbossをInit
+			if (_stageData.TimeTillBoss <= 0 && spawner.IsFinishedSpawning () && !spawner.IsBossInited) {
+				StartCoroutine (InitBoss (spawner));
 				spawner.IsBossInited = true;
 			}
+			//TimeTillBossが設定されていた場合
+			else if (cumulativeTime >= _stageData.TimeTillBoss && !spawner.IsBossInited) {
+				//時間が経過していればボスをInit
+				StartCoroutine (InitBoss (spawner));
+				spawner.IsBossInited = true;
+				//雑魚敵の排出を阻止。
+				spawner.spawn = false;
+			}
 		}
+
+		cumulativeTime += Time.deltaTime;
 	}
 
 	private IEnumerator InitBoss(Spawner spawner) {
@@ -60,6 +77,11 @@ public class StageObject : MonoBehaviour {
 
 		bossEnemyObj.transform.position = spawner.transform.position;
 	}
+
+	public void MakeDrop() {
+		
+	}
+
 
 	/**
 	 * 
@@ -85,5 +107,33 @@ public class StageObject : MonoBehaviour {
 		enemy.Speed = float.Parse (speedStr);
 
 		return enemy;
+	}
+
+
+	/**
+	 * 
+	 * Stage.csvの、Dropsを元に、
+	 * ドロップするアイテムを生成。
+	 * 
+	 * 敵を倒した際、%でアイテムドロップ。
+	 * ステージクリア時に最低1つプレゼント。
+	 * 
+	 */
+	private List<DropData> ParseDropData(string dropDataStr) {
+		if (string.IsNullOrEmpty (dropDataStr)) {
+			return null;
+		}
+
+		string[] dropSplited = dropDataStr.Split ('|');
+
+		foreach(string dropStr in dropSplited) {
+			DropData dropData = DropData ();
+			dropData.ID = dropStr.Split(':')[0];
+			dropData.Percentage = dropStr.Split(':')[1];
+
+			dropDataList.Add (dropData);
+		}
+
+		return dropDataList;
 	}
 }
