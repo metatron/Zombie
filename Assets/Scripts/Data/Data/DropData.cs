@@ -7,6 +7,9 @@ public class DropData {
 	public string ID { get; set; }
 	public float Percentage { get; set; }
 
+	public DropData() {
+	}
+
 	/**
 	 * 
 	 * コピーを作成。

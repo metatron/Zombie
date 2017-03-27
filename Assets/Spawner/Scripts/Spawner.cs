@@ -138,6 +138,8 @@ public class Spawner : MonoBehaviour
 			GameObject stgObj = GameManager.Instance.CurrentStageObject;
 			if (stgObj != null) {
 				DropData dropData = stgObj.GetComponent<StageObject> ().MakeDrop ();
+				if (dropData != null)
+					Debug.LogError ("@@@@@@Set DropData: " + dropData.ID);
 				unit.gameObject.GetComponent<EnemyObject> ().dropData = dropData;
 			}
 

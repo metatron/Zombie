@@ -29,8 +29,11 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		CraftItemDataTableObject.Instance.InitData ();
 		StageDataTableObject.Instance.InitData ();
 
+		Scene scene = SceneManager.GetActiveScene();
 		//プレイヤー初期化
-		PlayerData.InitPlayerData ();
+		if (scene.name == "Main") {
+			PlayerData.InitPlayerData ();
+		}
 
 		GameObject playerObj = GameObject.FindGameObjectWithTag ("Player");
 		_playerObject = playerObj.GetComponent<PlayerObject> ();
@@ -44,7 +47,6 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		InitNpcObject ();
 
 		//ステージ初期化
-		Scene scene = SceneManager.GetActiveScene();
 		if (scene.name == "Main") {
 			Debug.LogError ("********************: " + PlayerData.crntStageID);
 			InitStage (PlayerData.crntStageID);

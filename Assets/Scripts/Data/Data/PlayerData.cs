@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 [System.Serializable]
 public class PlayerData {
@@ -15,6 +16,7 @@ public class PlayerData {
 		_itemOwnedDictionary ["Wood"] = 10;
 		_itemOwnedDictionary ["Metal"] = 10;
 
+
 		//TODO テスト的に追加
 		if (!playerNpcDictionary.ContainsKey ("npc1")) {
 			CharaData chardata = new CharaData ();
@@ -24,10 +26,12 @@ public class PlayerData {
 			chardata.GunID = "gun1";
 
 			playerNpcDictionary.Add ("npc1", chardata);
+
+//			SerializeUtil.XmlSerialize ("char", playerNpcDictionary);
 		}
 	}
 
-	public static void AddItem(AbstractData itemData) {
+	public static int AddItem(AbstractData itemData) {
 		//ない場合は新しく1追加
 		if (!_itemOwnedDictionary.ContainsKey (itemData.ID)) {
 			_itemOwnedDictionary [itemData.ID] = 1;
@@ -35,6 +39,8 @@ public class PlayerData {
 		else {
 			_itemOwnedDictionary [itemData.ID] += 1;
 		}
+
+		return _itemOwnedDictionary [itemData.ID];
 	}
 
 	public static int GetItemNum(string id) {

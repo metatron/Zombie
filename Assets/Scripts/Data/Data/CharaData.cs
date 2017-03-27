@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class CharaData {
 	public enum Gender: int {
 		Male, 
