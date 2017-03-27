@@ -79,7 +79,16 @@ public class StageObject : MonoBehaviour {
 	}
 
 	public void MakeDrop() {
-		
+		int MAX_NUM = 10000;
+		foreach (DropData possibleDrop in dropDataList) {
+			float percent = possibleDrop.Percentage*MAX_NUM;
+			int rand = UnityEngine.Random.Range(0, MAX_NUM);
+
+			if (rand <= (int)(percent)) {
+				//drop
+				return ;
+			}
+		}
 	}
 
 
@@ -127,9 +136,9 @@ public class StageObject : MonoBehaviour {
 		string[] dropSplited = dropDataStr.Split ('|');
 
 		foreach(string dropStr in dropSplited) {
-			DropData dropData = DropData ();
+			DropData dropData = new DropData ();
 			dropData.ID = dropStr.Split(':')[0];
-			dropData.Percentage = dropStr.Split(':')[1];
+			dropData.Percentage = float.Parse(dropStr.Split(':')[1]);
 
 			dropDataList.Add (dropData);
 		}
