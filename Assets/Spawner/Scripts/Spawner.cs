@@ -133,7 +133,16 @@ public class Spawner : MonoBehaviour
 			int id = GameManager.Instance.crntEnemyDictionary.Count + 1;
 			unit.gameObject.GetComponent<EnemyObject> ().Hp = _enemyData.HP;
 			unit.gameObject.GetComponent<EnemyObject> ().Speed = _enemyData.Speed;
+
+			//ドロップの設定
+			GameObject stgObj = GameManager.Instance.CurrentStageObject;
+			if (stgObj != null) {
+				DropData dropData = stgObj.GetComponent<StageObject> ().MakeDrop ();
+				unit.gameObject.GetComponent<EnemyObject> ().dropData = dropData;
+			}
+
 			GameManager.Instance.crntEnemyDictionary.Add (id.ToString (), unit.gameObject.GetComponent<EnemyObject> ());
+
 
 			//↑↑↑==========ここまで===========↑↑↑//
 

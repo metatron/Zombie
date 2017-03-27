@@ -10,11 +10,15 @@ public class StageObject : MonoBehaviour {
 
 	private float cumulativeTime = 0.0f; //StageObjectが
 
+
 	private List<DropData> dropDataList = new List<DropData> ();
 
 
 	public void InitStageObject(StageData stageData) {
 		_stageData = stageData;
+		//ドロップアイテムを初期化
+		ParseDropData (stageData.Drops);
+
 		transform.localScale = Vector3.one;
 		transform.localPosition = Vector3.zero;
 
@@ -39,8 +43,6 @@ public class StageObject : MonoBehaviour {
 			spawnerList[2].StartSpawning (enemy);
 		}
 
-		//DropData
-		ParseDropData(stageData.Drops);
 	}
 
 	void FixedUpdate() {
@@ -78,20 +80,6 @@ public class StageObject : MonoBehaviour {
 		bossEnemyObj.transform.position = spawner.transform.position;
 	}
 
-	public void MakeDrop() {
-		int MAX_NUM = 10000;
-		foreach (DropData possibleDrop in dropDataList) {
-			float percent = possibleDrop.Percentage*MAX_NUM;
-			int rand = UnityEngine.Random.Range(0, MAX_NUM);
-
-			if (rand <= (int)(percent)) {
-				//drop
-				return ;
-			}
-		}
-	}
-
-
 	/**
 	 * 
 	 * Stage.csvの、Spawn#を元に、
@@ -119,6 +107,8 @@ public class StageObject : MonoBehaviour {
 	}
 
 
+
+
 	/**
 	 * 
 	 * Stage.csvの、Dropsを元に、
@@ -128,9 +118,9 @@ public class StageObject : MonoBehaviour {
 	 * ステージクリア時に最低1つプレゼント。
 	 * 
 	 */
-	private List<DropData> ParseDropData(string dropDataStr) {
+	private void ParseDropData(string dropDataStr) {
 		if (string.IsNullOrEmpty (dropDataStr)) {
-			return null;
+			return ;
 		}
 
 		string[] dropSplited = dropDataStr.Split ('|');
@@ -142,7 +132,25 @@ public class StageObject : MonoBehaviour {
 
 			dropDataList.Add (dropData);
 		}
+	}
 
-		return dropDataList;
+	/**
+	 * 
+	 * EnemyをInitする毎にそのEnemyが倒された際に
+	 * ドロップするかを確認。
+	 * 
+	 */
+	public DropData MakeDrop() {
+		int MAX_NUM = 10000;
+		foreach (DropData possibleDrop in dropDataList) {
+			float percent = possibleDrop.Percentage*MAX_NUM;
+			int rand = UnityEngine.Random.Range(0, MAX_NUM);
+
+			if (rand <= (int)(percent)) {
+				//drop
+				return possibleDrop;
+			}
+		}
+		return null;
 	}
 }

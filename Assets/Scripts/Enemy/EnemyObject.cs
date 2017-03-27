@@ -13,6 +13,9 @@ public class EnemyObject : AbstractCharacterObject {
 
 	public bool IsBoss = false;
 
+	//SpawnerでInstantiateされる毎に設定。
+	public DropData dropData;
+
 	void Update() {
 		transform.Translate (Vector3.right * Speed * -Time.deltaTime);
 	}

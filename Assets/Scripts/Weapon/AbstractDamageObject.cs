@@ -11,7 +11,16 @@ public class AbstractDamageObject : MonoBehaviour {
 		Debug.LogError ("_weapon: " + _weapon + ", dmg: " + _weapon.Damage);
 		enemyObject.Hp -= (int)System.Math.Ceiling (_weapon.Damage);
 		if (enemyObject.Hp <= 0) {
+			//ドロップはenemyObjectを破壊する前にコピーしておく。
+			DropData dropData = new DropData(enemyObject.dropData);
+			if (dropData != null) {
+				PlayerData.AddItem (dropData.GetDropItemData ());
+				enemyObject.dropData = null; //メモリの解放
+			}
+
 			Destroy (enemyObject.gameObject);
+
+			//ボスを倒した場合リザルト画面表示
 			if (enemyObject.IsBoss) {
 				GameManager.Instance.InitResult ();
 			}
