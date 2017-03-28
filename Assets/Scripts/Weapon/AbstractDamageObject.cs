@@ -17,6 +17,14 @@ public class AbstractDamageObject : MonoBehaviour {
 				int total = PlayerData.AddItem (dropData.GetDropItemData ());
 				Debug.LogError ("@@@@@@@Dropping: " + dropData.ID + ": " + total);
 				enemyObject.dropData = null; //メモリの解放
+
+				//リザルト画面に必要なので各ドロップをセーブしておく。
+				if (GameManager.Instance.CurrentStageObject.GetComponent<StageObject> ().DropItemNum.ContainsKey (dropData.ID)) {
+					GameManager.Instance.CurrentStageObject.GetComponent<StageObject> ().DropItemNum [dropData.ID]++;
+				}
+				else {
+					GameManager.Instance.CurrentStageObject.GetComponent<StageObject> ().DropItemNum.Add (dropData.ID, 1);
+				}
 			}
 
 			Destroy (enemyObject.gameObject);

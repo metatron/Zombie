@@ -136,7 +136,16 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 	}
 
 	public void InitResult() {
-		UiController.Instance.OpenDialogPanel("Result", ()=>{
+		//ドロップのトータルを表示
+		string dropResult = "";
+		List<DropData> dropList = CurrentStageObject.GetComponent<StageObject> ().DropDataList;
+		foreach (DropData drop in dropList) {
+			if (CurrentStageObject.GetComponent<StageObject> ().DropItemNum.ContainsKey (drop.ID)) {
+				dropResult += drop.ID + ": " + CurrentStageObject.GetComponent<StageObject> ().DropItemNum [drop.ID] + "\n";
+			}
+		}
+			
+		UiController.Instance.OpenDialogPanel("Result\n\n" + dropResult, ()=>{
 			int stgNum = Int32.Parse(PlayerData.crntStageID.Replace("stg", ""));
 			stgNum++;
 			string nextStgId = "stg"+stgNum;

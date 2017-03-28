@@ -12,7 +12,10 @@ public class StageObject : MonoBehaviour {
 
 
 	private List<DropData> dropDataList = new List<DropData> ();
+	public List<DropData> DropDataList { get { return dropDataList; } }
 
+	//クリア後、ドロップの有無を確認する為に必要。追加はAbstractDamageObjectで行う。
+	public Dictionary<string, int> DropItemNum = new Dictionary<string, int>();
 
 	public void InitStageObject(StageData stageData) {
 		_stageData = stageData;
