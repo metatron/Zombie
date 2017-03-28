@@ -119,11 +119,21 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 	}
 
 
-	private void InitStage(string stageId) {
+	public void InitStage(string stageId) {
 		StageData crntStageData = StageDataTableObject.Instance.Table.All.First (stgData => stgData.ID == stageId); //一番最初のだからWhereではなくFirstを使う。Whereは複数
 		if (CurrentStageObject != null) {
 			DestroyImmediate (CurrentStageObject);
 		}
+		//敵があまっていれば削除
+		if(crntEnemyDictionary.Count > 0) {
+			foreach (string enemyId in crntEnemyDictionary.Keys) {
+				if (crntEnemyDictionary [enemyId] != null) {
+					Destroy (crntEnemyDictionary [enemyId].gameObject);
+				}
+			}
+			crntEnemyDictionary.Clear();
+		}
+
 		CurrentStageObject = (GameObject)Instantiate(Resources.Load("Prefabs/Stages/" + crntStageData.BG));
 		CurrentStageObject.GetComponent<StageObject> ().InitStageObject (crntStageData);
 	}

@@ -10,6 +10,7 @@ public class PlayerData {
 	//プレイヤーの所持するNPC。<ID, 総数>
 	public static Dictionary<string, CharaData> playerNpcDictionary = new Dictionary<string, CharaData>();
 
+	//現在の時点のものをセーブするため、GameManagerではなくこちらに設置。
 	public static string crntStageID = "stg1";
 
 	public static void InitPlayerData() {

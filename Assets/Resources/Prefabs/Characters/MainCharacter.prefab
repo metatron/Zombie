@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4622442746093402}
   - component: {fileID: 114954068119298384}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LegRIK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4565994095586062}
   - component: {fileID: 114907728011085636}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FootR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4830379791044440}
   - component: {fileID: 212298244644311946}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: foot_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4831711150453180}
   - component: {fileID: 114601973244426676}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FootL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4770462055391692}
   - component: {fileID: 212676103309696554}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: forarm_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4778004006244480}
   - component: {fileID: 212882456432457740}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: leg_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4250484201756740}
   - component: {fileID: 212366209366301248}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: arm_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4573782039560474}
   - component: {fileID: 114838241239469624}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4859328479183044}
   - component: {fileID: 212787330221835052}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: hair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4789290159443812}
   - component: {fileID: 114174618320565968}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ArmRIK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4605680351516088}
   - component: {fileID: 114838494522122152}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ForarmR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4978040155082624}
   - component: {fileID: 114845205322144140}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ArmR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4666338669744234}
   - component: {fileID: 114859384996995324}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LegLIK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4315322037195512}
   - component: {fileID: 212778884620759754}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: forarm_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4617890358727240}
   - component: {fileID: 114839340236932016}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ArmLIK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4789251072608354}
   - component: {fileID: 114986713509622718}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ForarmL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4198094384124448}
   - component: {fileID: 212915510037559894}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: arm_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 4983072692571170}
   - component: {fileID: 212484304094014934}
   - component: {fileID: 114143189851855298}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,7 +309,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4601285928333900}
   - component: {fileID: 212252681794020146}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: leg_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -326,7 +326,8 @@ GameObject:
   - component: {fileID: 4887925266517492}
   - component: {fileID: 95809323329072024}
   - component: {fileID: 114219033651825642}
-  m_Layer: 0
+  - component: {fileID: 135202960358995936}
+  m_Layer: 10
   m_Name: MainCharacter
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -342,7 +343,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4233341692791292}
   - component: {fileID: 114062212840141606}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LegR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,7 +359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4717513967362632}
   - component: {fileID: 212608275942193922}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: upperbody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -374,7 +375,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4608155109661824}
   - component: {fileID: 212826284927686574}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -390,7 +391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4969445058026386}
   - component: {fileID: 114084760258474256}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ArmL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -406,7 +407,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4912773575265202}
   - component: {fileID: 212897496954063792}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: foot_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -423,7 +424,7 @@ GameObject:
   - component: {fileID: 4293749048076694}
   - component: {fileID: 114146247390556334}
   - component: {fileID: 114448876060380186}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -439,7 +440,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4350057528288624}
   - component: {fileID: 114961306736931260}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LegL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -930,16 +931,16 @@ MonoBehaviour:
     - m_Bone: {fileID: 0}
       m_BoneTransform: {fileID: 4978040155082624}
       solverPosition: {x: 0, y: 0, z: 0}
-      solverRotation: {x: 0, y: 0, z: 0.9989536, w: 0.04573545}
+      solverRotation: {x: 0, y: 0, z: 0.99895364, w: 0.045734495}
       defaultLocalRotation: {x: 0, y: 0, z: 0.99665695, w: 0.08170026}
     - m_Bone: {fileID: 0}
       m_BoneTransform: {fileID: 4605680351516088}
       solverPosition: {x: 0, y: 0, z: 0}
-      solverRotation: {x: 0, y: 0, z: -0.042788386, w: 0.9990842}
+      solverRotation: {x: 0, y: 0, z: -0.042791173, w: 0.99908406}
       defaultLocalRotation: {x: 0, y: 0, z: 0.04236685, w: 0.9991021}
     m_Weight: 1
     m_RestoreDefaultPose: 1
-    targetPosition: {x: -4.6834993, y: 0.3579206, z: 0}
+    targetPosition: {x: -0.14349936, y: 0.3579206, z: 0}
     flip: 1
 --- !u!114 &114219033651825642
 MonoBehaviour:
@@ -952,6 +953,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 326061c065ea843fc9eb1dd4a2724369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charaData:
+    hpCrnt: 10
+    atkCrnt: 10
+    atkIntervalCrnt: 2
+    hanger: 100
+    gender: 0
+    favoriteWpn: 0
   _gunObject: {fileID: 0}
   _swordObject: {fileID: 0}
 --- !u!114 &114448876060380186
@@ -1041,16 +1049,16 @@ MonoBehaviour:
     - m_Bone: {fileID: 0}
       m_BoneTransform: {fileID: 4969445058026386}
       solverPosition: {x: 0, y: 0, z: 0}
-      solverRotation: {x: 0, y: 0, z: -0.9893786, w: 0.14536178}
+      solverRotation: {x: 0, y: 0, z: -0.98937863, w: 0.14536142}
       defaultLocalRotation: {x: 0, y: 0, z: -0.9893791, w: 0.14535798}
     - m_Bone: {fileID: 0}
       m_BoneTransform: {fileID: 4789251072608354}
       solverPosition: {x: 0, y: 0, z: 0}
-      solverRotation: {x: 0, y: 0, z: -0.1397889, w: 0.9901813}
+      solverRotation: {x: 0, y: 0, z: -0.13978805, w: 0.99018145}
       defaultLocalRotation: {x: 0, y: 0, z: -0.13978133, w: 0.9901824}
     m_Weight: 1
     m_RestoreDefaultPose: 1
-    targetPosition: {x: -4.121557, y: 0.41495585, z: 0}
+    targetPosition: {x: 0.41844285, y: 0.41495585, z: 0}
     flip: 1
 --- !u!114 &114845205322144140
 MonoBehaviour:
@@ -1094,16 +1102,16 @@ MonoBehaviour:
     - m_Bone: {fileID: 0}
       m_BoneTransform: {fileID: 4350057528288624}
       solverPosition: {x: 0, y: 0, z: 0}
-      solverRotation: {x: 0, y: 0, z: -0.98415244, w: 0.17732438}
+      solverRotation: {x: 0, y: 0, z: -0.984152, w: 0.17732696}
       defaultLocalRotation: {x: 0, y: 0, z: 0.9770152, w: -0.21317005}
     - m_Bone: {fileID: 0}
       m_BoneTransform: {fileID: 4831711150453180}
       solverPosition: {x: 0, y: 0, z: 0}
-      solverRotation: {x: 0, y: 0, z: 0.04211196, w: 0.9991129}
+      solverRotation: {x: 0, y: 0, z: 0.042105235, w: 0.9991132}
       defaultLocalRotation: {x: 0, y: 0, z: -0.042098496, w: 0.9991135}
     m_Weight: 1
     m_RestoreDefaultPose: 1
-    targetPosition: {x: -4.181211, y: 0.04565376, z: 0}
+    targetPosition: {x: 0.35878894, y: 0.04565376, z: 0}
     flip: 0
 --- !u!114 &114907728011085636
 MonoBehaviour:
@@ -1147,16 +1155,16 @@ MonoBehaviour:
     - m_Bone: {fileID: 0}
       m_BoneTransform: {fileID: 4233341692791292}
       solverPosition: {x: 0, y: 0, z: 0}
-      solverRotation: {x: 0, y: 0, z: 0.9840178, w: 0.17807025}
+      solverRotation: {x: 0, y: 0, z: 0.98401815, w: 0.17806815}
       defaultLocalRotation: {x: 0, y: 0, z: 0.98815596, w: 0.1534532}
     - m_Bone: {fileID: 0}
       m_BoneTransform: {fileID: 4565994095586062}
       solverPosition: {x: 0, y: 0, z: 0}
-      solverRotation: {x: 0, y: 0, z: 0.03308308, w: 0.9994526}
+      solverRotation: {x: 0, y: 0, z: 0.033078577, w: 0.99945277}
       defaultLocalRotation: {x: 0, y: 0, z: -0.032586735, w: 0.9994689}
     m_Weight: 1
     m_RestoreDefaultPose: 1
-    targetPosition: {x: -4.8624835, y: 0.05466625, z: 0}
+    targetPosition: {x: -0.3224837, y: 0.05466625, z: 0}
     flip: 0
 --- !u!114 &114961306736931260
 MonoBehaviour:
@@ -1190,6 +1198,18 @@ MonoBehaviour:
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 0}
   m_AttachedIK: {fileID: 114839340236932016}
+--- !u!135 &135202960358995936
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1766942705781966}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Center: {x: 0, y: 0.56, z: 0}
 --- !u!212 &212252681794020146
 SpriteRenderer:
   m_ObjectHideFlags: 1
