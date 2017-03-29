@@ -21,6 +21,8 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 
 	public GameObject CurrentStageObject { get; set; }
 
+	//ゲームのポーズフラグのON/OFF
+	public bool PauseGame { get; set; } = false;
 
 	void Start() {
 		//データ初期化
@@ -125,6 +127,13 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 			DestroyImmediate (CurrentStageObject);
 		}
 		//敵があまっていれば削除
+		DeleteAllEnemies();
+
+		CurrentStageObject = (GameObject)Instantiate(Resources.Load("Prefabs/Stages/" + crntStageData.BG));
+		CurrentStageObject.GetComponent<StageObject> ().InitStageObject (crntStageData);
+	}
+
+	public void DeleteAllEnemies() {
 		if(crntEnemyDictionary.Count > 0) {
 			foreach (string enemyId in crntEnemyDictionary.Keys) {
 				if (crntEnemyDictionary [enemyId] != null) {
@@ -133,9 +142,6 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 			}
 			crntEnemyDictionary.Clear();
 		}
-
-		CurrentStageObject = (GameObject)Instantiate(Resources.Load("Prefabs/Stages/" + crntStageData.BG));
-		CurrentStageObject.GetComponent<StageObject> ().InitStageObject (crntStageData);
 	}
 		
 

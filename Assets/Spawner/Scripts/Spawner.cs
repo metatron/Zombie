@@ -124,6 +124,10 @@ public class Spawner : MonoBehaviour
     /// </summary>
     private void SpawnUnit()
     {
+		if (GameManager.Instance.PauseGame) {
+			return;
+		}
+
         if (unitList[(int)unitLevel] != null)
         {
             Transform unit = InstanceManager.Spawn(unitList[(int)unitLevel].transform, spawnLocation.position, Quaternion.identity);
