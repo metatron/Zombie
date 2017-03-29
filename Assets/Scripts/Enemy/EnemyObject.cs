@@ -17,6 +17,10 @@ public class EnemyObject : AbstractCharacterObject {
 	public DropData dropData;
 
 	void Update() {
+		if (GameManager.Instance.PauseGame) {
+			return;
+		}
+
 		transform.Translate (Vector3.right * Speed * -Time.deltaTime);
 	}
 }

@@ -41,6 +41,12 @@ public class CharaData {
 	public string GunID { get; set; }
 
 
+	//怪我をしているかどうか
+	private bool _injured = false;
+	public bool Injured { get {return _injured; } set { _injured = value; } }
+
+
+
 
 	public Gender gender = Gender.Male;
 	public WeaponType favoriteWpn = WeaponType.Sword;

@@ -22,7 +22,8 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 	public GameObject CurrentStageObject { get; set; }
 
 	//ゲームのポーズフラグのON/OFF
-	public bool PauseGame { get; set; } = false;
+	private bool _pauseGame = false;
+	public bool PauseGame { get {return _pauseGame; } set { _pauseGame = value; } }
 
 	void Start() {
 		//データ初期化

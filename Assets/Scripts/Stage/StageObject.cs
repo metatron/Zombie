@@ -49,6 +49,10 @@ public class StageObject : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
+		if (GameManager.Instance.PauseGame) {
+			return ;
+		}
+
 		//Spawnerが終ってるかどうか定期的に確認
 		foreach (Spawner spawner in spawnerList) {
 			//TimeTillBossが設定されてなくて、ザコ敵の排出が終ってたらbossをInit

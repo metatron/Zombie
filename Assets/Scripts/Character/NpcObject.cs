@@ -9,6 +9,10 @@ public class NpcObject : AbstractCharacterObject {
 
 
 	void Update() {
+		if (GameManager.Instance.PauseGame) {
+			return;
+		}
+
 		waitTime += Time.deltaTime;
 		if (waitTime >= charaData.atkIntervalCrnt) {
 			Attack ();

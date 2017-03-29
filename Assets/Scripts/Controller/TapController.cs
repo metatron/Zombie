@@ -22,6 +22,10 @@ public class TapController : MonoBehaviour
 
     private void TouchAction(Vector2 position)
     {
+		if (GameManager.Instance.PauseGame) {
+			return ;
+		}
+
 		//Vector3 touchAt = Camera.main.ScreenToWorldPoint(new Vector3(position.x, position.y, 10));
 		GameManager.Instance.PlayerObject.Attack();
     }
