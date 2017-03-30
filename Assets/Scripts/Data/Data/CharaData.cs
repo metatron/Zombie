@@ -14,6 +14,8 @@ public class CharaData {
 		Gun
 	}
 
+	public string Name { get; set; }
+
 	public float HpBase { get; private set; }
 	public float hpCrnt = 10.0f;
 

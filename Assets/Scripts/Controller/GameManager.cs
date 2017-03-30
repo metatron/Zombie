@@ -42,6 +42,7 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		_playerObject = playerObj.GetComponent<PlayerObject> ();
 		_playerObject.transform.localPosition = new Vector3 (-4.0f, 0.0f, 0.0f);
 
+		_playerObject.charaData.Name = "Player";
 		_playerObject.InitChar (new CharaData());
 		_playerObject.InitCharGunObject ("gun2");
 		_playerObject.InitCharSwordObject ("swd2");
@@ -145,12 +146,6 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		}
 	}
 		
-
-	public static GameObject getChildGameObject(GameObject fromGameObject, string withName) {
-		Transform[] ts = fromGameObject.transform.GetComponentsInChildren<Transform>(true);
-		foreach (Transform t in ts) if (t.gameObject.name == withName) return t.gameObject;
-		return null;
-	}
 
 	public void InitResult() {
 		//ドロップのトータルを表示

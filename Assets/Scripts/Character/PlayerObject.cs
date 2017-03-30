@@ -7,14 +7,24 @@ using UnityEngine;
 public class PlayerObject : AbstractCharacterObject {
 	
 	void OnTriggerEnter(Collider other) {
-		Debug.LogError ("Player hit with: " + other.gameObject);
+		//Injured!
+		GameManager.Instance.PauseGame = true;
+
+		CharaData injuredChar = null;
 		//choose NPC to injure.
+		List<CharaData> npcList = PlayerData.GetBattleNpcList();
+		if (npcList.Count > 0) {
+			injuredChar = Utils.RandomElementAt<CharaData> (npcList);
+		} 
 		//if there's no npc, injure player.
+		else {
+			injuredChar = GameManager.Instance.PlayerObject.charaData;
+		}
+		injuredChar.Injured = true;
 
-
-		UiController.Instance.OpenDialogPanel ("", () => {
+		UiController.Instance.OpenDialogPanel (injuredChar.Name + " has Injuered!", () => {
+			GameManager.Instance.PauseGame = false;
+			GameManager.Instance.InitStage(PlayerData.crntStageID);
 		});
-
-		GameManager.Instance.InitStage(PlayerData.crntStageID);
 	}
 }

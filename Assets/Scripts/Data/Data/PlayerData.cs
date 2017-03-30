@@ -21,6 +21,7 @@ public class PlayerData {
 		//TODO テスト的に追加
 		if (!playerNpcDictionary.ContainsKey ("npc1")) {
 			CharaData chardata = new CharaData ();
+			chardata.Name = "Mia";
 			chardata.BodyPrefab = "Female1";
 			chardata.BattlePosition = 1;
 			chardata.SwordID = "swd1";
@@ -112,5 +113,15 @@ public class PlayerData {
 			}
 		}
 		return count;
+	}
+		
+	public static List<CharaData> GetBattleNpcList() {
+		List<CharaData> battleList = new List<CharaData> ();
+		foreach (CharaData charData in playerNpcDictionary.Values) {
+			if (charData.BattlePosition > 0 && !charData.Injured) {
+				battleList.Add (charData);
+			}
+		}
+		return battleList;
 	}
 }

@@ -39,7 +39,7 @@ public class AbstractCharacterObject : MonoBehaviour {
 
 		//weaponオブジェクトを見つける。（ソード持ってる手のweaponオブジェクト）
 		if (weaponPosObj == null) {
-			weaponPosObj = GameManager.getChildGameObject (gameObject, "weapon");
+			weaponPosObj = Utils.getChildGameObject (gameObject, "weapon");
 		}
 		_swordObject = weaponPosObj.GetComponent<SwordObject>();
 
@@ -78,7 +78,7 @@ public class AbstractCharacterObject : MonoBehaviour {
 		_gunObject.Owner = gameObject;
 		//ソードを持ってる手のgameObjectを取得
 		if (weaponPosObj == null) {
-			weaponPosObj = GameManager.getChildGameObject (gameObject, "weapon");
+			weaponPosObj = Utils.getChildGameObject (gameObject, "weapon");
 		}
 		_gunObject.transform.SetParent (weaponPosObj.transform);
 		_gunObject.transform.localPosition = Vector3.zero;
