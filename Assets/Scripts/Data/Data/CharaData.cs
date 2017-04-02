@@ -19,9 +19,8 @@ public class CharaData {
 	public float HpBase { get; private set; }
 	public float hpCrnt = 10.0f;
 
-
-	public float AtkBase { get; private set; }
-	public float atkCrnt = 10.0f;
+	public float MinAtk { get; private set; }
+	public float MaxAtk { get; private set; }
 
 	//次アタックするのに要する時間（NPCのみ）
 	public float AtkInterval { get; private set; }
@@ -47,6 +46,8 @@ public class CharaData {
 	private bool _injured = false;
 	public bool Injured { get {return _injured; } set { _injured = value; } }
 
+
+	public int CurrentExp { set; get; }
 
 
 

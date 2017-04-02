@@ -13,6 +13,9 @@ public class PlayerData {
 	//現在の時点のものをセーブするため、GameManagerではなくこちらに設置。
 	public static string crntStageID = "stg1";
 
+	//未使用のExpPoint。これを使用してきゃらを育てる。
+	public static int unusedExpPoints = 0;
+
 	public static void InitPlayerData() {
 		_itemOwnedDictionary ["Wood"] = 10;
 		_itemOwnedDictionary ["Metal"] = 10;

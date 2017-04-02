@@ -9,8 +9,10 @@ public class AbstractDamageObject : MonoBehaviour {
 
 	public virtual void CalculateDamage(EnemyObject enemyObject) {
 		Debug.LogError ("_weapon: " + _weapon + ", dmg: " + _weapon.Damage);
-		enemyObject.Hp -= (int)System.Math.Ceiling (_weapon.Damage);
-		if (enemyObject.Hp <= 0) {
+		enemyObject.EnemyData.HP -= (int)System.Math.Ceiling (_weapon.Damage);
+
+		//敵が死んだ場合の処理
+		if (enemyObject.EnemyData.HP <= 0) {
 			//ドロップはenemyObjectを破壊する前にコピーしておく。
 			if (enemyObject.dropData != null) {
 				DropData dropData = new DropData(enemyObject.dropData);

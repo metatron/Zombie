@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class EnemyObject : AbstractCharacterObject {
 	[SerializeField]
-	private int _hp = 3;
-	public int Hp { get { return _hp; } set {_hp = value; } }
-
-	[SerializeField]
-	private float _speed = 1.0f;
-	public float Speed { get { return _speed; } set {_speed = value; } }
+	public EnemyData EnemyData { get; set; }
 
 	public bool IsBoss = false;
 
@@ -21,6 +16,6 @@ public class EnemyObject : AbstractCharacterObject {
 			return;
 		}
 
-		transform.Translate (Vector3.right * Speed * -Time.deltaTime);
+		transform.Translate (Vector3.right * EnemyData.Speed * -Time.deltaTime);
 	}
 }

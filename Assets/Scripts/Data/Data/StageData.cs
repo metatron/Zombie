@@ -12,4 +12,13 @@ public class StageData : AbstractData {
 	public string SpawnBoss { get; private set; }
 	public string Drops { get; private set; }
 
+	/**
+	 * 
+	 * stgのIDからInt型を得る。
+	 * 
+	 */
+	public int GetIdInt() {
+		int stgNum = Int32.Parse(ID.Replace("stg", ""));
+		return stgNum;
+	}
 }

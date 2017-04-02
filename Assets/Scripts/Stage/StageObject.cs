@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class StageObject : MonoBehaviour {
 	private StageData _stageData;
+	public StageData StageData { get; }
 
 	public List<Spawner> spawnerList = new List<Spawner>();
 
@@ -80,8 +81,7 @@ public class StageObject : MonoBehaviour {
 		GameObject bossEnemyObj = (GameObject)Instantiate (Resources.Load ("Prefabs/Enemies/" + bossEnemyData.Prefab));
 
 		int id = GameManager.Instance.crntEnemyDictionary.Count + 1;
-		bossEnemyObj.GetComponent<EnemyObject> ().Hp = bossEnemyData.HP;
-		bossEnemyObj.GetComponent<EnemyObject> ().Speed = bossEnemyData.Speed;
+		bossEnemyObj.GetComponent<EnemyObject> ().EnemyData = bossEnemyData;
 		bossEnemyObj.GetComponent<EnemyObject> ().IsBoss = true;
 
 		bossEnemyObj.transform.position = spawner.transform.position;
