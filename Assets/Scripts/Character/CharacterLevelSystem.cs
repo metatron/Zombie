@@ -15,7 +15,7 @@ public class CharacterLevelSystem {
 	 * キャラクターのレベルによるパラメータを取得。（ATK, etc）
 	 * 
 	 */
-	public int CalcLevelParameter(int min, int max, int level, int maxLevel, LevelPattern pattern, bool overEnable = false) {
+	public static int CalcLevelParameter(int min, int max, int level, int maxLevel, LevelPattern pattern, bool overEnable = false) {
 		//上限Lvを無視するパラメータ取得以外(敵は上限Lvを無視して取得する)
 		if(!overEnable){
 			if(level >= maxLevel){

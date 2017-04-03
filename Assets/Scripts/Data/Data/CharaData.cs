@@ -16,6 +16,9 @@ public class CharaData {
 
 	public string Name { get; set; }
 
+	private int _level = 1;
+	public int Level { get {return _level; } set { _level = value; } }
+
 	public float HpBase { get; private set; }
 	public float hpCrnt = 10.0f;
 

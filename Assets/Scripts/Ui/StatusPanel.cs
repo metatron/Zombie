@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,12 @@ public class StatusPanel : MonoBehaviour {
 	//ボタンによってContentの中身を変える。ディフォルトはSword
 	public GameObject content;
 
+	public Text UnusedExpPoint;
+
+	public Text CharLevel;
+	public Text CharExpPoint;
+
+
 	public void InitCharStatus(CharaData charData) {
 		gameObject.SetActive (true);
 		_charData = charData;
@@ -21,6 +28,9 @@ public class StatusPanel : MonoBehaviour {
 
 		//素材設置
 		ResetStatusPanelItems<SwordData>();
+
+		//表示するパラメータのアップデート
+		UpdateCharacterParam ();
 	}
 
 	public void CloseStatusPanel() {
@@ -117,6 +127,48 @@ public class StatusPanel : MonoBehaviour {
 				);
 			}
 		}
+	}
+
+	public void OnLevelUpBtn() {
+		ExperienceData nextExpData = ExperienceDataTableObject.Instance.Table.All.FirstOrDefault (expData => expData.Level == "" + (_charData.Level+1));
+		if (nextExpData == null) {
+			UiController.Instance.OpenDialogPanel ("Level is at its Maximum", 
+				() => {}
+			);
+			return;
+		}
+
+		//次のレベルに必要なExpPointがある
+		if (PlayerData.unusedExpPoints >= nextExpData.Exp) {
+			UiController.Instance.OpenDialogPanel ("Level Up to " + nextExpData.Level, 
+				//レベルアップ
+				() => {
+					PlayerData.unusedExpPoints -= nextExpData.Exp;
+					_charData.Level++;
+					_charData.CurrentExp = nextExpData.Exp;
+
+					UpdateCharacterParam ();
+				},
+				//cancelを押した場合何もなし
+				() => {
+				}
+			);
+		}
+		//足りなかった場合
+		else {
+			UiController.Instance.OpenDialogPanel ("Need More Exp Points!", 
+				() => {}
+			);
+		}
+	}
+
+	private void UpdateCharacterParam() {
+		//プレイヤーのExpPoint表示
+		UnusedExpPoint.text = "Unused ExpPoint: " + PlayerData.unusedExpPoints;
+
+		//キャラクタレベル情報
+		CharLevel.text = "Lv: " + _charData.Level;
+		CharExpPoint.text = "Exp: " + _charData.CurrentExp;
 	}
 
 	private void ResetStatusPanelItems<T>() where T: AbstractData {
