@@ -41,4 +41,56 @@ public class CharacterLevelSystem {
 	}
 
 
+	public CharaData GenerateCharacterData(int rarity) {
+		CharaData genCharData = new CharaData ();
+
+		//攻撃力
+		float minAtk = 1;
+		float maxAtk = 10;
+		switch (rarity) {
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+			minAtk = 1.0f;
+			maxAtk = (float)UnityEngine.Random.Range(10,65);
+			break;
+
+		case 5:
+		case 6:
+		case 7:
+			minAtk = (float)UnityEngine.Random.Range(5,20);
+			maxAtk = (float)UnityEngine.Random.Range(80,100);
+			break;
+
+		case 8:
+			minAtk = (float)UnityEngine.Random.Range(70,80);
+			maxAtk = (float)UnityEngine.Random.Range(100,150);
+			break;
+
+		case 9:
+			minAtk = (float)UnityEngine.Random.Range(150,200);
+			maxAtk = (float)UnityEngine.Random.Range(230,400);
+			break;
+
+		case 10:
+			minAtk = (float)UnityEngine.Random.Range(300,400);
+			maxAtk = (float)UnityEngine.Random.Range(500,700);
+			break;
+		}
+
+		genCharData.MinAtk = minAtk;
+		genCharData.MaxAtk = maxAtk;
+
+		//gender
+		genCharData.gender = (CharaData.Gender)Enum.ToObject(typeof(CharaData.Gender), UnityEngine.Random.Range(0,1));
+
+		//favorite weapon
+		genCharData.favoriteWpn = (CharaData.WeaponType)Enum.ToObject(typeof(CharaData.WeaponType), UnityEngine.Random.Range(0,1));
+
+		genCharData.Name = "";
+
+		return genCharData;
+	}
+
 }

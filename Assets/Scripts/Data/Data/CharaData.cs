@@ -22,8 +22,8 @@ public class CharaData {
 	public float HpBase { get; private set; }
 	public float hpCrnt = 10.0f;
 
-	public float MinAtk { get; private set; }
-	public float MaxAtk { get; private set; }
+	public float MinAtk { get; set; }
+	public float MaxAtk { get; set; }
 
 	//次アタックするのに要する時間（NPCのみ）
 	public float AtkInterval { get; private set; }
