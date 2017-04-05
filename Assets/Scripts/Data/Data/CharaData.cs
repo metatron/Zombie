@@ -22,7 +22,7 @@ public class CharaData {
 	public float HpBase { get; private set; }
 	public float hpCrnt = 10.0f;
 
-	public RarityData.RarityType RarityType { get; set; }
+	public int Rarity { get; set; }
 
 	public float MinAtk { get; set; }
 	public float MaxAtk { get; set; }
