@@ -138,14 +138,16 @@ public class StatusPanel : MonoBehaviour {
 			return;
 		}
 
+		//レアリティによって1 ExpPointの価値が変わる
+		int necessaryExpPoint = nextExpData.Exp * (int)_charData.RarityType;
 		//次のレベルに必要なExpPointがある
-		if (PlayerData.unusedExpPoints >= nextExpData.Exp) {
+		if (PlayerData.unusedExpPoints >= necessaryExpPoint) {
 			UiController.Instance.OpenDialogPanel ("Level Up to " + nextExpData.Level, 
 				//レベルアップ
 				() => {
-					PlayerData.unusedExpPoints -= nextExpData.Exp;
+					PlayerData.unusedExpPoints -= necessaryExpPoint;
 					_charData.Level++;
-					_charData.CurrentExp = nextExpData.Exp;
+					_charData.CurrentExp = necessaryExpPoint;
 
 					UpdateCharacterParam ();
 				},

@@ -29,6 +29,9 @@ public class PlayerData {
 			chardata.BattlePosition = 1;
 			chardata.SwordID = "swd1";
 			chardata.GunID = "gun1";
+			chardata.MinAtk = 1;
+			chardata.MaxAtk = 100;
+			chardata.RarityType = RarityData.RarityType.C;
 
 			playerNpcDictionary.Add ("npc1", chardata);
 
