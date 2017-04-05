@@ -23,15 +23,12 @@ public class PlayerData {
 
 		//TODO テスト的に追加
 		if (!playerNpcDictionary.ContainsKey ("npc1")) {
-			CharaData chardata = new CharaData ();
+			CharaData chardata = CharacterLevelSystem.GenerateCharacterData (1);
 			chardata.Name = "Mia";
 			chardata.BodyPrefab = "Female1";
 			chardata.BattlePosition = 1;
 			chardata.SwordID = "swd1";
 			chardata.GunID = "gun1";
-			chardata.MinAtk = 1;
-			chardata.MaxAtk = 100;
-			chardata.RarityType = RarityData.RarityType.C;
 
 			playerNpcDictionary.Add ("npc1", chardata);
 

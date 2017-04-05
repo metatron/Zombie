@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,11 +16,11 @@ public class CharacterLevelSystem {
 	 * キャラクターのレベルによるパラメータを取得。（ATK, etc）
 	 * 
 	 */
-	public static int CalcLevelParameter(int min, int max, int level, int maxLevel, LevelPattern pattern, bool overEnable = false) {
+	public static int CalcLevelParameter(float min, float max, int level, int maxLevel, LevelPattern pattern = LevelPattern.Normal, bool overEnable = false) {
 		//上限Lvを無視するパラメータ取得以外(敵は上限Lvを無視して取得する)
 		if(!overEnable){
 			if(level >= maxLevel){
-				return max;
+				return (int)max;
 			}
 		}
 
@@ -41,8 +42,12 @@ public class CharacterLevelSystem {
 	}
 
 
-	public CharaData GenerateCharacterData(int rarity) {
+	public static CharaData GenerateCharacterData(int rarity) {
 		CharaData genCharData = new CharaData ();
+
+		//RarityData
+		genCharData.Rarity = rarity; //これはSerialize対象。
+		genCharData.RarityData = RarityDataTableObject.Instance.Table.All.FirstOrDefault (rarityData => rarityData.Rarity == ""+rarity); //こっちはSerializeされない
 
 		//攻撃力
 		float minAtk = 1;

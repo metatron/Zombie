@@ -45,7 +45,8 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		_playerObject.transform.localPosition = new Vector3 (-4.0f, 0.0f, 0.0f);
 
 		_playerObject.charaData.Name = "Player";
-		_playerObject.InitChar (new CharaData());
+		CharaData charData = CharacterLevelSystem.GenerateCharacterData (1);
+		_playerObject.InitChar (charData);
 		_playerObject.InitCharGunObject ("gun2");
 		_playerObject.InitCharSwordObject ("swd2");
 

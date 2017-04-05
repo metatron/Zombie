@@ -9,7 +9,13 @@ public abstract class AbstractWeaponObject : MonoBehaviour {
 
 	[SerializeField]
 	private double _damage = 1.0d;
-	public double Damage { get { return _damage; } set { _damage = value; } }
+	public double Damage { 
+		get { 
+			return _owner.GetComponent<AbstractCharacterObject> ().charaData.CrntAtk () * _damage;
+		} 
+
+		set { _damage = value; } 
+	}
 
 	[SerializeField]
 	private GameObject _owner;

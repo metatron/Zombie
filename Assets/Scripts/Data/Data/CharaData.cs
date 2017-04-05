@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 [System.Serializable]
 public class CharaData {
@@ -22,10 +23,24 @@ public class CharaData {
 	public float HpBase { get; private set; }
 	public float hpCrnt = 10.0f;
 
-	public int Rarity { get; set; }
+	[System.NonSerialized]
+	private RarityData _rarityData;
+	public RarityData RarityData { get { return _rarityData; } set { _rarityData = value; } }
 
-	public float MinAtk { get; set; }
-	public float MaxAtk { get; set; }
+	private int _rarity = 1;
+	public int Rarity { get {return _rarity; } set { _rarity = value; } }
+
+	public float MinAtk { private get; set; }
+	public float MaxAtk { private get; set; }
+
+	public float CrntAtk() {
+		if (_rarityData == null) {
+			_rarityData = RarityDataTableObject.Instance.Table.All.FirstOrDefault (rarityData => rarityData.Rarity == ""+Rarity);
+		}
+
+		float crntAtk = CharacterLevelSystem.CalcLevelParameter(MinAtk, MaxAtk, _level, _rarityData.MaxLevel);
+		return crntAtk;
+	}
 
 	//次アタックするのに要する時間（NPCのみ）
 	public float AtkInterval { get; private set; }
