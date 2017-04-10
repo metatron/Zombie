@@ -10,16 +10,25 @@ public class PlayerData {
 	//プレイヤーの所持するNPC。<ID, 総数>
 	public static Dictionary<string, CharaData> playerNpcDictionary = new Dictionary<string, CharaData>();
 
+	//プレイヤーのキャラデータ
+	public static CharaData playerCharData;
+
 	//現在の時点のものをセーブするため、GameManagerではなくこちらに設置。
 	public static string crntStageID = "stg1";
 
 	//未使用のExpPoint。これを使用してきゃらを育てる。
-	public static int unusedExpPoints = 100000000;
+	public static int unusedExpPoints = 0;
 
 	public static void InitPlayerData() {
+		//保持しているマテリアル
 		_itemOwnedDictionary ["Wood"] = 10;
 		_itemOwnedDictionary ["Metal"] = 10;
 
+		//プレイヤーキャラの初期化
+		playerCharData = CharacterLevelSystem.GenerateCharacterData (1);
+		playerCharData.Name = "Player";
+		playerCharData.SwordID = "swd2";
+		playerCharData.GunID = "gun2";
 
 		//TODO テスト的に追加
 		if (!playerNpcDictionary.ContainsKey ("npc1")) {

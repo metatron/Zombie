@@ -14,6 +14,8 @@ public class EnemyData {
 	 */
 	public int GetExpPoint() {
 		StageData crntStage = GameManager.Instance.CurrentStageObject.GetComponent<StageObject> ().StageData;
-		return (int)Mathf.Max (1, HP*crntStage.GetIdInt() / 10.0f);
+		int point = (int)Mathf.Max (1, HP * crntStage.GetIdInt () / 10.0f);
+		Debug.LogError ("****************Get ExpPoint: " + point);
+		return point;
 	}
 }

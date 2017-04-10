@@ -27,6 +27,9 @@ public class AbstractDamageObject : MonoBehaviour {
 				else {
 					GameManager.Instance.CurrentStageObject.GetComponent<StageObject> ().DropItemNum.Add (dropData.ID, 1);
 				}
+
+				//ExpPoint保存
+				PlayerData.unusedExpPoints += enemyObject.EnemyData.GetExpPoint();
 			}
 
 			Destroy (enemyObject.gameObject);

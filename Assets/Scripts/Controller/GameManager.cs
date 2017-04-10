@@ -36,7 +36,7 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 
 		Scene scene = SceneManager.GetActiveScene();
 		//プレイヤー初期化
-		if (scene.name == "Main") {
+		if (PlayerData.playerCharData == null) {
 			PlayerData.InitPlayerData ();
 		}
 
@@ -44,11 +44,9 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		_playerObject = playerObj.GetComponent<PlayerObject> ();
 		_playerObject.transform.localPosition = new Vector3 (-4.0f, 0.0f, 0.0f);
 
-		_playerObject.charaData.Name = "Player";
-		CharaData charData = CharacterLevelSystem.GenerateCharacterData (1);
-		_playerObject.InitChar (charData);
-		_playerObject.InitCharGunObject ("gun2");
-		_playerObject.InitCharSwordObject ("swd2");
+		_playerObject.InitChar (PlayerData.playerCharData);
+		_playerObject.InitCharGunObject (PlayerData.playerCharData.GunID);
+		_playerObject.InitCharSwordObject (PlayerData.playerCharData.SwordID);
 
 		//NPC初期化
 		InitNpcObject ();

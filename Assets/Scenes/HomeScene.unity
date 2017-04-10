@@ -3384,7 +3384,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 160, y: 312}
+  m_AnchoredPosition: {x: 136, y: 312}
   m_SizeDelta: {x: -380, y: -770}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &579805105
@@ -3419,7 +3419,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'ExpPoint: 00000'
+  m_Text: 'UnsedExpPoint: 00000'
 --- !u!222 &579805106
 CanvasRenderer:
   m_ObjectHideFlags: 0
