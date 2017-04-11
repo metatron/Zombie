@@ -31,18 +31,18 @@ public class PlayerData {
 		playerCharData.GunID = "gun2";
 
 		//TODO テスト的に追加
-		if (!playerNpcDictionary.ContainsKey ("npc1")) {
-			CharaData chardata = CharacterLevelSystem.GenerateCharacterData (1);
-			chardata.Name = "Mia";
-			chardata.BodyPrefab = "Female1";
-			chardata.BattlePosition = 1;
-			chardata.SwordID = "swd1";
-			chardata.GunID = "gun1";
-
-			playerNpcDictionary.Add ("npc1", chardata);
-
-//			SerializeUtil.XmlSerialize ("char", playerNpcDictionary);
-		}
+//		if (!playerNpcDictionary.ContainsKey ("npc1")) {
+//			CharaData chardata = CharacterLevelSystem.GenerateCharacterData (1);
+//			chardata.Name = "Mia";
+//			chardata.BodyPrefab = "Female1";
+//			chardata.BattlePosition = 1;
+//			chardata.SwordID = "swd1";
+//			chardata.GunID = "gun1";
+//
+//			playerNpcDictionary.Add ("npc1", chardata);
+//
+////			SerializeUtil.XmlSerialize ("char", playerNpcDictionary);
+//		}
 	}
 
 	public static int AddItem(AbstractData itemData) {

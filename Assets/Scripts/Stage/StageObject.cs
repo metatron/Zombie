@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class StageObject : MonoBehaviour {
 	private StageData _stageData;
-	public StageData StageData { get; }
+	public StageData StageData { get { return _stageData; } }
 
 	public List<Spawner> spawnerList = new List<Spawner>();
 

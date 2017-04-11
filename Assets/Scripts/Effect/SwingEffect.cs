@@ -15,7 +15,7 @@ public class SwingEffect : AbstractDamageObject {
 
 		Vector3 moveDestPos = GameManager.Instance.swordReachMarker.transform.position;
 		moveDestPos.x -= transform.localScale.x / 2.0f;
-		Debug.LogError ("@@@@@@@markerPos: " + GameManager.Instance.swordReachMarker.transform.position + ", scale: " + transform.localScale.x + ", distPos: " + moveDestPos);
+//		Debug.LogError ("@@@@@@@markerPos: " + GameManager.Instance.swordReachMarker.transform.position + ", scale: " + transform.localScale.x + ", distPos: " + moveDestPos);
 		iTween.MoveTo (gameObject, 
 			iTween.Hash (
 				"position", moveDestPos,

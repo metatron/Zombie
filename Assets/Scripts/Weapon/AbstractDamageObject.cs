@@ -8,16 +8,16 @@ public class AbstractDamageObject : MonoBehaviour {
 	public AbstractWeaponObject WeaponObject { get { return _weapon; } set { _weapon = value; } }
 
 	public virtual void CalculateDamage(EnemyObject enemyObject) {
-		Debug.LogError ("_weapon: " + _weapon + ", dmg: " + _weapon.Damage);
 		enemyObject.EnemyData.HP -= (int)System.Math.Ceiling (_weapon.Damage);
+		Debug.LogError ("weapon: " + _weapon + ", dmg: " + _weapon.Damage + ", enemyHP: " + enemyObject.EnemyData.HP);
 
 		//敵が死んだ場合の処理
 		if (enemyObject.EnemyData.HP <= 0) {
+			Debug.LogError ("@@@enemyObject: " + enemyObject);
 			//ドロップはenemyObjectを破壊する前にコピーしておく。
 			if (enemyObject.dropData != null) {
 				DropData dropData = new DropData(enemyObject.dropData);
 				int total = PlayerData.AddItem (dropData.GetDropItemData ());
-				Debug.LogError ("@@@@@@@Dropping: " + dropData.ID + ": " + total);
 				enemyObject.dropData = null; //メモリの解放
 
 				//リザルト画面に必要なので各ドロップをセーブしておく。
@@ -30,12 +30,15 @@ public class AbstractDamageObject : MonoBehaviour {
 
 				//ExpPoint保存
 				PlayerData.unusedExpPoints += enemyObject.EnemyData.GetExpPoint();
+
+				Debug.LogError ("@@@@@@@Dropping: " + dropData.ID + ": " + total + ", exp added: " + enemyObject.EnemyData.GetExpPoint() + ", unusedExp: " + PlayerData.unusedExpPoints);
 			}
 
+			bool isBoss = enemyObject.IsBoss;
 			Destroy (enemyObject.gameObject);
 
 			//ボスを倒した場合リザルト画面表示
-			if (enemyObject.IsBoss) {
+			if (isBoss) {
 				GameManager.Instance.InitResult ();
 			}
 		}

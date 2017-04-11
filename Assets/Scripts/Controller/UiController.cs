@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityStandardAssets.ImageEffects;
 using UnityEngine.SceneManagement; 
 
@@ -8,9 +9,13 @@ public class UiController : SingletonMonoBehaviourFast<UiController> {
 	public GameObject _dialogPanel;
 	public GameObject _mapPanel;
 
+	public Text UnusedExpPoint;
+
 	void Start() {
 		_dialogPanel.SetActive (false);
 		_mapPanel.SetActive (false);
+
+		UnusedExpPoint.text = "Unused Exp Point:\n" + PlayerData.unusedExpPoints;
 	}
 
 	public void OnHomeButtonPressed() {
