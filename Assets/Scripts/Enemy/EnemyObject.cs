@@ -6,6 +6,9 @@ public class EnemyObject : AbstractCharacterObject {
 	[SerializeField]
 	public EnemyData EnemyData { get; set; }
 
+	//EnemyData.HPをコピーして使用。（EnemyData.HPは実際に使用しない）
+	public int CurrentHP;
+
 	public bool IsBoss = false;
 
 	//SpawnerでInstantiateされる毎に設定。

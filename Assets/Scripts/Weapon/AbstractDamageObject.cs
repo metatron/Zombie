@@ -8,11 +8,11 @@ public class AbstractDamageObject : MonoBehaviour {
 	public AbstractWeaponObject WeaponObject { get { return _weapon; } set { _weapon = value; } }
 
 	public virtual void CalculateDamage(EnemyObject enemyObject) {
-		enemyObject.EnemyData.HP -= (int)System.Math.Ceiling (_weapon.Damage);
+		enemyObject.CurrentHP -= (int)System.Math.Ceiling (_weapon.Damage);
 		Debug.LogError ("weapon: " + _weapon + ", dmg: " + _weapon.Damage + ", enemyHP: " + enemyObject.EnemyData.HP);
 
 		//敵が死んだ場合の処理
-		if (enemyObject.EnemyData.HP <= 0) {
+		if (enemyObject.CurrentHP <= 0) {
 			Debug.LogError ("@@@enemyObject: " + enemyObject);
 			//ドロップはenemyObjectを破壊する前にコピーしておく。
 			if (enemyObject.dropData != null) {
@@ -35,7 +35,7 @@ public class AbstractDamageObject : MonoBehaviour {
 			}
 
 			bool isBoss = enemyObject.IsBoss;
-			Destroy (enemyObject.gameObject);
+			Destroy (enemyObject.gameObject);//, 0.1f);
 
 			//ボスを倒した場合リザルト画面表示
 			if (isBoss) {
@@ -67,4 +67,11 @@ public class AbstractDamageObject : MonoBehaviour {
 		yield return new WaitForSeconds (3.0f);
 		Destroy (gameObject);
 	}
+
+	private IEnumerator DestroyEnemy(EnemyObject enemyObject) {
+		//enemyObject.gameObject.SetActive (false);
+		yield return new WaitForEndOfFrame ();
+		Destroy(enemyObject.gameObject);
+	}
+
 }

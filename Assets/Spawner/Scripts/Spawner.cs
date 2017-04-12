@@ -136,6 +136,9 @@ public class Spawner : MonoBehaviour
 
 			int id = GameManager.Instance.crntEnemyDictionary.Count + 1;
 			unit.gameObject.GetComponent<EnemyObject> ().EnemyData = _enemyData;
+			unit.gameObject.GetComponent<EnemyObject> ().CurrentHP = _enemyData.HP;
+
+			timeBetweenSpawns = _enemyData.Interval;
 
 			//ドロップの設定
 			GameObject stgObj = GameManager.Instance.CurrentStageObject;

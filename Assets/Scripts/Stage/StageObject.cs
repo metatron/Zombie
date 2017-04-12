@@ -110,6 +110,16 @@ public class StageObject : MonoBehaviour {
 		string speedStr = stage1Splited [2].Split(':')[1];
 		enemy.Speed = float.Parse (speedStr);
 
+		//interval
+		if (stage1Splited.Length == 4) {
+			string intervalStr = stage1Splited [3].Split (':') [1];
+			enemy.Interval = float.Parse (intervalStr);
+		}
+		//デフォルトは0.5秒
+		else {
+			enemy.Interval = 0.5f;
+		}
+
 		return enemy;
 	}
 

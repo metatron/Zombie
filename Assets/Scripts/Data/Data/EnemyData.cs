@@ -6,6 +6,7 @@ public class EnemyData {
 	public string Prefab { get; set; }
 	public int HP { get; set; }
 	public float Speed { get; set; }
+	public float Interval { get; set; }
 
 	/**
 	 * 

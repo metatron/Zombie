@@ -11,15 +11,25 @@ public class CharacterPanel : MonoBehaviour {
 	public void InitCharacterList() {
 		ResetContent ();
 
+		//add Player
+		GameObject instantiatedPrefab = (GameObject)Instantiate (charUIPrefab);
+		instantiatedPrefab.GetComponent<CharacterUI> ().InitCharaUI <NpcObject>(GameManager.Instance.PlayerObject.GetComponent<PlayerObject>().charaData);
+		instantiatedPrefab.transform.SetParent (content.transform);
+		instantiatedPrefab.GetComponent<RectTransform>().localScale = Vector3.one;
+		Vector3 tmpPos = instantiatedPrefab.GetComponent<RectTransform>().localPosition;
+		tmpPos.z = -10;
+		instantiatedPrefab.GetComponent<RectTransform>().localPosition = tmpPos;
+
+		//add NPCs
 		for (int i = 0; i < PlayerData.playerNpcDictionary.Count; i++) {
 			string key = PlayerData.playerNpcDictionary.Keys.ToArray() [i];
 			CharaData charData = PlayerData.playerNpcDictionary [key];
 
-			GameObject instantiatedPrefab = (GameObject)Instantiate (charUIPrefab);
+			instantiatedPrefab = (GameObject)Instantiate (charUIPrefab);
 			instantiatedPrefab.GetComponent<CharacterUI> ().InitCharaUI <NpcObject>(charData);
 			instantiatedPrefab.transform.SetParent (content.transform);
 			instantiatedPrefab.GetComponent<RectTransform>().localScale = Vector3.one;
-			Vector3 tmpPos = instantiatedPrefab.GetComponent<RectTransform>().localPosition;
+			tmpPos = instantiatedPrefab.GetComponent<RectTransform>().localPosition;
 			tmpPos.z = -10;
 			instantiatedPrefab.GetComponent<RectTransform>().localPosition = tmpPos;
 
