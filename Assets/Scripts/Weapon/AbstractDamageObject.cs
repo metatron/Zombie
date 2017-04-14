@@ -28,11 +28,13 @@ public class AbstractDamageObject : MonoBehaviour {
 					GameManager.Instance.CurrentStageObject.GetComponent<StageObject> ().DropItemNum.Add (dropData.ID, 1);
 				}
 
-				//ExpPoint保存
-				PlayerData.unusedExpPoints += enemyObject.EnemyData.GetExpPoint();
-
 				Debug.LogError ("@@@@@@@Dropping: " + dropData.ID + ": " + total + ", exp added: " + enemyObject.EnemyData.GetExpPoint() + ", unusedExp: " + PlayerData.unusedExpPoints);
 			}
+
+			//ExpPoint保存
+			PlayerData.unusedExpPoints += enemyObject.EnemyData.GetExpPoint();
+			UiController.Instance.UpdateExpPointTextUI ();
+
 
 			bool isBoss = enemyObject.IsBoss;
 			Destroy (enemyObject.gameObject);//, 0.1f);

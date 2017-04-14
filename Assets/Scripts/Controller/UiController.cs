@@ -15,7 +15,7 @@ public class UiController : SingletonMonoBehaviourFast<UiController> {
 		_dialogPanel.SetActive (false);
 		_mapPanel.SetActive (false);
 
-		UnusedExpPoint.text = "Unused Exp Point:\n" + PlayerData.unusedExpPoints;
+		UpdateExpPointTextUI ();
 	}
 
 	public void OnHomeButtonPressed() {
@@ -55,6 +55,11 @@ public class UiController : SingletonMonoBehaviourFast<UiController> {
 	public void OpenMapPanel() {
 		_mapPanel.SetActive (true);
 		_mapPanel.GetComponent<MapPanel> ().InitMapPanel ();
+	}
+
+
+	public void UpdateExpPointTextUI() {
+		UnusedExpPoint.text = "Unused Exp Point:\n" + PlayerData.unusedExpPoints;
 	}
 
 }
