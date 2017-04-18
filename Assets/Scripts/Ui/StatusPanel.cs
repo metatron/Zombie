@@ -18,6 +18,9 @@ public class StatusPanel : MonoBehaviour {
 
 	public Text CharLevel;
 	public Text CharExpPoint;
+	public Text CharSwdAtkPoint;
+	public Text CharGunAtkPoint;
+	public Text CharHpPoint;
 
 
 	public void InitCharStatus(CharaData charData) {
@@ -171,6 +174,18 @@ public class StatusPanel : MonoBehaviour {
 		//キャラクタレベル情報
 		CharLevel.text = "Lv: " + _charData.Level;
 		CharExpPoint.text = "Exp: " + _charData.CurrentExp;
+
+		CharGunAtkPoint.text = "GUN: 0";
+		if (!string.IsNullOrEmpty (_charData.GunID)) {
+			GunData gunData = GunDataTableObject.Instance.Table.All.FirstOrDefault (tmpData => tmpData.ID == _charData.GunID);
+			CharGunAtkPoint.text = "GUN: " + gunData.Damage + " x " + _charData.CrntAtk();
+		}
+
+		CharSwdAtkPoint.text = "SWD: 0";
+		if (!string.IsNullOrEmpty (_charData.SwordID)) {
+			SwordData swordData = SwordDataTableObject.Instance.Table.All.FirstOrDefault (tmpData => tmpData.ID == _charData.SwordID);
+			CharSwdAtkPoint.text = "SWD: " + swordData.Damage + " x " + _charData.CrntAtk();
+		}
 	}
 
 	private void ResetStatusPanelItems<T>() where T: AbstractData {

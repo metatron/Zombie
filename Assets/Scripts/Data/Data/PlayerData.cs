@@ -17,7 +17,7 @@ public class PlayerData {
 	public static string crntStageID = "stg1";
 
 	//未使用のExpPoint。これを使用してきゃらを育てる。
-	public static int unusedExpPoints = 0;
+	public static int unusedExpPoints = 10000;
 
 	public static void InitPlayerData() {
 		//保持しているマテリアル

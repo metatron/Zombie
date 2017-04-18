@@ -92,7 +92,7 @@ public class Spawner : MonoBehaviour
     #endregion
 
 	private EnemyData _enemyData;
-	public bool IsBossInited = false; //ボスが排出された際にtrue.trueだと排出はされない。
+	public static bool IsBossInited = false; //ボスが排出された際にtrue.trueだと排出はされない。
 
     void Start()
     {

@@ -9,7 +9,7 @@ public class AbstractDamageObject : MonoBehaviour {
 
 	public virtual void CalculateDamage(EnemyObject enemyObject) {
 		enemyObject.CurrentHP -= (int)System.Math.Ceiling (_weapon.Damage);
-		Debug.LogError ("weapon: " + _weapon + ", dmg: " + _weapon.Damage + ", enemyHP: " + enemyObject.EnemyData.HP);
+		Debug.LogError ("weapon: " + _weapon + ", dmg: " + _weapon.Damage + ", enemyHP: " + enemyObject.EnemyData.HP + ", CurrentHP: " + enemyObject.CurrentHP);
 
 		//敵が死んだ場合の処理
 		if (enemyObject.CurrentHP <= 0) {
@@ -37,7 +37,7 @@ public class AbstractDamageObject : MonoBehaviour {
 
 
 			bool isBoss = enemyObject.IsBoss;
-			Destroy (enemyObject.gameObject);//, 0.1f);
+			Destroy (enemyObject.gameObject, 0.05f);
 
 			//ボスを倒した場合リザルト画面表示
 			if (isBoss) {

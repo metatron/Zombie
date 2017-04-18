@@ -42,6 +42,7 @@ public class SwordObject : AbstractWeaponObject {
 		swingEffect.GetComponent<AbstractDamageObject> ().WeaponObject = this;
 
 		swingEffect.transform.localPosition = Vector3.zero;
+		swingEffect.transform.rotation = Quaternion.Euler (Vector3.zero);
 		//親をグローバルにしておく
 		swingEffect.transform.SetParent(null);
 	}

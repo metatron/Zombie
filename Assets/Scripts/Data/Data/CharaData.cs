@@ -20,7 +20,7 @@ public class CharaData {
 	private int _level = 1;
 	public int Level { get {return _level; } set { _level = value; } }
 
-	public float HpBase { get; private set; }
+	public float HpBase { get; set; }
 	public float hpCrnt = 10.0f;
 
 	[System.NonSerialized]
@@ -30,8 +30,8 @@ public class CharaData {
 	private int _rarity = 1;
 	public int Rarity { get {return _rarity; } set { _rarity = value; } }
 
-	public float MinAtk { private get; set; }
-	public float MaxAtk { private get; set; }
+	public float MinAtk { get; set; }
+	public float MaxAtk { get; set; }
 
 	public float CrntAtk() {
 		if (_rarityData == null) {

@@ -20,6 +20,7 @@ public class StageObject : MonoBehaviour {
 
 	public void InitStageObject(StageData stageData) {
 		_stageData = stageData;
+		Spawner.IsBossInited = false;
 		//ドロップアイテムを初期化
 		ParseDropData (stageData.Drops);
 
@@ -57,15 +58,15 @@ public class StageObject : MonoBehaviour {
 		//Spawnerが終ってるかどうか定期的に確認
 		foreach (Spawner spawner in spawnerList) {
 			//TimeTillBossが設定されてなくて、ザコ敵の排出が終ってたらbossをInit
-			if (_stageData.TimeTillBoss <= 0 && spawner.IsFinishedSpawning () && !spawner.IsBossInited) {
+			if (_stageData.TimeTillBoss <= 0 && spawner.IsFinishedSpawning () && !Spawner.IsBossInited) {
 				StartCoroutine (InitBoss (spawner));
-				spawner.IsBossInited = true;
+				Spawner.IsBossInited = true;
 			}
 			//TimeTillBossが設定されていた場合
-			else if (cumulativeTime >= _stageData.TimeTillBoss && !spawner.IsBossInited) {
+			else if (cumulativeTime >= _stageData.TimeTillBoss && !Spawner.IsBossInited) {
 				//時間が経過していればボスをInit
 				StartCoroutine (InitBoss (spawner));
-				spawner.IsBossInited = true;
+				Spawner.IsBossInited = true;
 				//雑魚敵の排出を阻止。
 				spawner.spawn = false;
 			}
@@ -82,9 +83,12 @@ public class StageObject : MonoBehaviour {
 
 		int id = GameManager.Instance.crntEnemyDictionary.Count + 1;
 		bossEnemyObj.GetComponent<EnemyObject> ().EnemyData = bossEnemyData;
+		bossEnemyObj.GetComponent<EnemyObject> ().CurrentHP = bossEnemyData.HP;
 		bossEnemyObj.GetComponent<EnemyObject> ().IsBoss = true;
 
 		bossEnemyObj.transform.position = spawner.transform.position;
+
+		GameManager.Instance.crntEnemyDictionary.Add (id.ToString (), bossEnemyObj.GetComponent<EnemyObject> ());
 	}
 
 	/**

@@ -34,7 +34,7 @@ public class CharacterLevelSystem {
 			break;
 		default:
 			if(maxLevel!=1){
-				x = (level-1)/(maxLevel-1);
+				x = ((float)level-1.0f)/((float)maxLevel-1.0f);
 			}
 			break;
 		}
@@ -96,6 +96,16 @@ public class CharacterLevelSystem {
 		genCharData.Name = "";
 
 		return genCharData;
+	}
+
+	public static void DisplayCharData(AbstractCharacterObject charObj) {
+		CharaData charaData = charObj.charaData;
+		Debug.LogError (
+			"Rarity: " + charaData.Rarity + "\n" + 
+			"Level: " + charaData.Level + "\n" + 
+			"CrntHP/BaseHP: " + charaData.hpCrnt + "/" + charaData.HpBase + "\n" + 
+			"MinAtk/MaxAtk(CrntAtk): " + charaData.MinAtk + "/" + charaData.MaxAtk + "(" + charaData.CrntAtk() + ")" + "\n"
+		);
 	}
 
 }
