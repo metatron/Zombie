@@ -14,6 +14,8 @@ public class StatusPanel : MonoBehaviour {
 	//ボタンによってContentの中身を変える。ディフォルトはSword
 	public GameObject content;
 
+	public Dropdown BattlePositionDropDown;
+
 	public Text UnusedExpPoint;
 
 	public Text CharLevel;

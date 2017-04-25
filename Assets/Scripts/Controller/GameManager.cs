@@ -157,8 +157,16 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 				dropResult += drop.ID + ": " + CurrentStageObject.GetComponent<StageObject> ().DropItemNum [drop.ID] + "\n";
 			}
 		}
+
+		//Npcドロップを表示＆追加
+		string npcResult = "";
+		CharaData dropNpcData = CurrentStageObject.GetComponent<StageObject> ().DropNpcData;
+		if (dropNpcData != null) {
+			PlayerData.AddNpcData (dropNpcData);
+			npcResult = "NPC added! \n MAX ATK: " + dropNpcData.MaxAtk;
+		}
 			
-		UiController.Instance.OpenDialogPanel("Result\n\n" + dropResult, ()=>{
+		UiController.Instance.OpenDialogPanel("Result\n\n" + dropResult + "\n" + npcResult, ()=>{
 			int stgNum = Int32.Parse(PlayerData.crntStageID.Replace("stg", ""));
 			stgNum++;
 			string nextStgId = "stg"+stgNum;
@@ -173,4 +181,6 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 			}
 		});
 	}
+
+
 }

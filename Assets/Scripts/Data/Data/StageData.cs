@@ -11,7 +11,7 @@ public class StageData : AbstractData {
 	public float TimeTillBoss { get; private set; }
 	public string SpawnBoss { get; private set; }	//Enemy01|HP:30|SPEED:1
 	public string Drops { get; private set; }		//Metal:0.01|Wood:0.01
-	public string Npc { get; private set; }			//Rarity:Gender
+	public string Npc { get; private set; }			//Rarity:Percentage:Gender (Percentageはfloat型)
 
 	/**
 	 * 

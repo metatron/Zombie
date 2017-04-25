@@ -18,11 +18,18 @@ public class StageObject : MonoBehaviour {
 	//クリア後、ドロップの有無を確認する為に必要。追加はAbstractDamageObjectで行う。
 	public Dictionary<string, int> DropItemNum = new Dictionary<string, int>();
 
+	//クリア後、Npcがドロップするのであれば表示
+	private CharaData _dropNpcData = null;
+	public CharaData DropNpcData { get { return _dropNpcData; } }
+
 	public void InitStageObject(StageData stageData) {
 		_stageData = stageData;
 		Spawner.IsBossInited = false;
 		//ドロップアイテムを初期化
 		ParseDropData (stageData.Drops);
+
+		//Npcがドロップするかどうか
+		_dropNpcData = ParseDropNpc(stageData.Npc);
 
 		transform.localScale = Vector3.one;
 		transform.localPosition = Vector3.zero;
@@ -171,6 +178,37 @@ public class StageObject : MonoBehaviour {
 				//drop
 				return possibleDrop;
 			}
+		}
+		return null;
+	}
+
+	/**
+	 * 
+	 * ステージクリア時、NPCドロップがあれば
+	 * CharaDataを生成して返す。
+	 * 
+	 * dropNpcStrのフォーマット
+	 * Rarity:Percentage:Gender (Percentageはfloat型)
+	 * 
+	 */
+	private CharaData ParseDropNpc(string dropNpcStr) {
+		if (string.IsNullOrEmpty (dropNpcStr)) {
+			return null;
+		}
+
+		string[] dropSplited = dropNpcStr.Split (':');
+		int rarity = Int32.Parse (dropSplited [0]);
+		float ratio = float.Parse (dropSplited [1]);
+		int gender = Int32.Parse (dropSplited [2]);
+
+		int MAX = 10000;
+		int RATIOLINE = (int)((float)MAX * ratio);
+		int rand = UnityEngine.Random.Range (1, MAX);
+		if (rand <= RATIOLINE) {
+			CharaData genedChar = CharacterLevelSystem.GenerateCharacterData (rarity);
+			genedChar.gender = (CharaData.Gender)Enum.ToObject (typeof(CharaData.Gender), gender);
+
+			return genedChar;
 		}
 		return null;
 	}

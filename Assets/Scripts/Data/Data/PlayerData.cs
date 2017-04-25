@@ -19,6 +19,9 @@ public class PlayerData {
 	//未使用のExpPoint。これを使用してきゃらを育てる。
 	public static int unusedExpPoints = 10000;
 
+	//NPC設置可能な場所
+	public int availableBattlePosition = 0;
+
 	public static void InitPlayerData() {
 		//保持しているマテリアル
 		_itemOwnedDictionary ["Wood"] = 10;
@@ -135,5 +138,10 @@ public class PlayerData {
 			}
 		}
 		return battleList;
+	}
+
+	public static void AddNpcData(CharaData npcData) {
+		string id = "npc" + playerNpcDictionary.Count + 1;
+		playerNpcDictionary.Add (id, npcData);
 	}
 }
