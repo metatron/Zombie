@@ -20,7 +20,7 @@ public class PlayerData {
 	public static int unusedExpPoints = 10000;
 
 	//NPC設置可能な場所
-	public int availableBattlePosition = 0;
+	public static int availableBattlePosition = 0;
 
 	public static void InitPlayerData() {
 		//保持しているマテリアル
