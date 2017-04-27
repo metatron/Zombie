@@ -76,6 +76,9 @@ public class CreatePanel : MonoBehaviour {
 			}
 		}
 
+		//特定のアイテムの作成条件をチェック
+		canCreate = this.canCreateItem();
+
 		//作れるなら素材消費
 		if (canCreate) {
 			foreach (AbstractData.DataType reqDataType in requirementDict.Keys) {
@@ -87,5 +90,26 @@ public class CreatePanel : MonoBehaviour {
 			//PlayerDataに追加
 			PlayerData.AddItem(_itemData);
 		}//if
+	}
+
+
+	/**
+	 * 
+	 * 特定のアイテムだけ作成を制限する。
+	 * 例えばWallは5つまでしか持てない。
+	 * 
+	 */
+	private bool canCreateItem() {
+		//Wallは5つしか持てない
+		if (_itemData.ID.ToLower() == "wall") {
+			if (PlayerData.GetItemNum("Wall") < 5) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		//通常は作成可能
+		return true;
 	}
 }
