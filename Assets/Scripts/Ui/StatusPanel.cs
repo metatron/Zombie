@@ -14,7 +14,7 @@ public class StatusPanel : MonoBehaviour {
 	//ボタンによってContentの中身を変える。ディフォルトはSword
 	public GameObject content;
 
-	public Dropdown BattlePositionDropDown;
+	public BattlePositionController BattlePositionController;
 
 	public Text UnusedExpPoint;
 
@@ -36,6 +36,9 @@ public class StatusPanel : MonoBehaviour {
 
 		//表示するパラメータのアップデート
 		UpdateCharacterParam ();
+
+		//バトルポジションの初期化
+		BattlePositionController.InitButtons(charData);
 	}
 
 	public void CloseStatusPanel() {

@@ -4,6 +4,9 @@ using UnityEngine;
 
 [System.Serializable]
 public class PlayerData {
+	//プレイヤーのCharaData.ID
+	public const string PLAYERID = "player";
+
 	//プレイヤーの所持するアイテムとその数。<ID, 総数>
 	private static Dictionary<string, int> _itemOwnedDictionary = new Dictionary<string, int>();
 
@@ -19,8 +22,9 @@ public class PlayerData {
 	//未使用のExpPoint。これを使用してきゃらを育てる。
 	public static int unusedExpPoints = 10000;
 
-	//NPC設置可能な場所
-//	public static int availableBattlePosition = 0;
+	//NPC設置可能な場所とその有効性 <position, npcID> position = 0はプレイヤーの隣のポジション。トータル11
+	public static Dictionary<int, string> npcBattlePositionDictionary = new Dictionary<int, string>();
+
 
 	public static void InitPlayerData() {
 		//保持しているマテリアル
@@ -29,23 +33,29 @@ public class PlayerData {
 
 		//プレイヤーキャラの初期化
 		playerCharData = CharacterLevelSystem.GenerateCharacterData (1);
+		playerCharData.ID = PLAYERID;
 		playerCharData.Name = "Player";
 		playerCharData.SwordID = "swd2";
 		playerCharData.GunID = "gun2";
 
 		//TODO テスト的に追加
-//		if (!playerNpcDictionary.ContainsKey ("npc1")) {
-//			CharaData chardata = CharacterLevelSystem.GenerateCharacterData (1);
-//			chardata.Name = "Mia";
-//			chardata.BodyPrefab = "Female1";
-//			chardata.BattlePosition = 1;
-//			chardata.SwordID = "swd1";
-//			chardata.GunID = "gun1";
-//
-//			playerNpcDictionary.Add ("npc1", chardata);
-//
-////			SerializeUtil.XmlSerialize ("char", playerNpcDictionary);
-//		}
+		if (playerNpcDictionary.Count == 0) {
+			CharaData chardata = CharacterLevelSystem.GenerateCharacterData (1);
+			chardata.Name = "Mia";
+			chardata.BodyPrefab = "Female1";
+			chardata.BattlePosition = 1;
+			chardata.SwordID = "swd1";
+			chardata.GunID = "gun1";
+
+			playerNpcDictionary.Add (chardata.ID, chardata);
+
+//			SerializeUtil.XmlSerialize ("char", playerNpcDictionary);
+		}
+
+		//バトルポジションの初期化
+		for(int i=0; i<11; i++) {
+			npcBattlePositionDictionary.Add(i, "");
+		}
 	}
 
 	public static int AddItem(AbstractData itemData) {
@@ -141,7 +151,13 @@ public class PlayerData {
 	}
 
 	public static void AddNpcData(CharaData npcData) {
-		string id = "npc" + playerNpcDictionary.Count + 1;
-		playerNpcDictionary.Add (id, npcData);
+		playerNpcDictionary.Add (npcData.ID, npcData);
+	}
+
+
+	//=========================== BattlePosition系ファンクション ===========================//
+
+	public static string getBattlePosNpcId(int pos) {
+		return npcBattlePositionDictionary [pos];
 	}
 }

@@ -1542,6 +1542,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e7ebc1af9aa245f995777327b0b92d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BattlePosBtnList:
+  - {fileID: 386998827}
+  - {fileID: 1088239950}
+  - {fileID: 675272434}
+  - {fileID: 781794955}
+  - {fileID: 1426976070}
+  - {fileID: 2081279517}
+  - {fileID: 844071704}
+  - {fileID: 919114621}
+  - {fileID: 1011762079}
+  - {fileID: 360011415}
+  - {fileID: 726861521}
 --- !u!1 &173998464
 GameObject:
   m_ObjectHideFlags: 0
@@ -4336,7 +4348,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 147503422}
   m_HandleRect: {fileID: 147503421}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -11997,7 +12009,7 @@ MonoBehaviour:
   MaterialListPos: {fileID: 1759346642}
   ItemImage: {fileID: 1801585075}
   content: {fileID: 1414042510}
-  BattlePositionDropDown: {fileID: 0}
+  BattlePositionController: {fileID: 166345600}
   UnusedExpPoint: {fileID: 579805105}
   CharLevel: {fileID: 362023026}
   CharExpPoint: {fileID: 1024160033}

@@ -15,6 +15,8 @@ public class CharaData {
 		Gun
 	}
 
+	public string ID { get; set; }
+
 	public string Name { get; set; }
 
 	private int _level = 1;

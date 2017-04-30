@@ -45,6 +45,9 @@ public class CharacterLevelSystem {
 	public static CharaData GenerateCharacterData(int rarity) {
 		CharaData genCharData = new CharaData ();
 
+		//ID生成
+		genCharData.ID = GenerateNpcID ();
+
 		//RarityData
 		genCharData.Rarity = rarity; //これはSerialize対象。
 		genCharData.RarityData = RarityDataTableObject.Instance.Table.All.FirstOrDefault (rarityData => rarityData.Rarity == ""+rarity); //こっちはSerializeされない
@@ -106,6 +109,10 @@ public class CharacterLevelSystem {
 			"CrntHP/BaseHP: " + charaData.hpCrnt + "/" + charaData.HpBase + "\n" + 
 			"MinAtk/MaxAtk(CrntAtk): " + charaData.MinAtk + "/" + charaData.MaxAtk + "(" + charaData.CrntAtk() + ")" + "\n"
 		);
+	}
+
+	private static string GenerateNpcID() {
+		return "npc" + PlayerData.playerNpcDictionary.Count + 1;
 	}
 
 }
