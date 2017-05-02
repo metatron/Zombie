@@ -157,7 +157,11 @@ public class PlayerData {
 
 	//=========================== BattlePosition系ファンクション ===========================//
 
-	public static string getBattlePosNpcId(int pos) {
+	public static string GetBattlePosNpcId(int pos) {
 		return npcBattlePositionDictionary [pos];
+	}
+
+	public static void SetBattlePosNpcId(int pos, CharaData charData) {
+		npcBattlePositionDictionary.Add (pos, charData.ID);
 	}
 }

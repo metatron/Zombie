@@ -2430,7 +2430,7 @@ GameObject:
   - component: {fileID: 360011418}
   - component: {fileID: 360011417}
   m_Layer: 5
-  m_Name: BattlePosition9
+  m_Name: BattlePosition09
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2494,15 +2494,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1781933740}
-        m_MethodName: OnLevelUpBtn
-        m_Mode: 1
+      - m_Target: {fileID: 166345600}
+        m_MethodName: OnPositionButtonPressed
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 9
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -2742,7 +2742,7 @@ GameObject:
   - component: {fileID: 386998830}
   - component: {fileID: 386998829}
   m_Layer: 5
-  m_Name: BattlePosition0
+  m_Name: BattlePosition00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2806,15 +2806,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1781933740}
-        m_MethodName: OnLevelUpBtn
-        m_Mode: 1
+      - m_Target: {fileID: 166345600}
+        m_MethodName: OnPositionButtonPressed
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 0
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -4855,7 +4855,7 @@ GameObject:
   - component: {fileID: 675272437}
   - component: {fileID: 675272436}
   m_Layer: 5
-  m_Name: BattlePosition2
+  m_Name: BattlePosition02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4919,15 +4919,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1781933740}
-        m_MethodName: OnLevelUpBtn
-        m_Mode: 1
+      - m_Target: {fileID: 166345600}
+        m_MethodName: OnPositionButtonPressed
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 2
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -5346,15 +5346,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1781933740}
-        m_MethodName: OnLevelUpBtn
-        m_Mode: 1
+      - m_Target: {fileID: 166345600}
+        m_MethodName: OnPositionButtonPressed
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 10
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -5682,7 +5682,7 @@ GameObject:
   - component: {fileID: 781794958}
   - component: {fileID: 781794957}
   m_Layer: 5
-  m_Name: BattlePosition3
+  m_Name: BattlePosition03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5746,15 +5746,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1781933740}
-        m_MethodName: OnLevelUpBtn
-        m_Mode: 1
+      - m_Target: {fileID: 166345600}
+        m_MethodName: OnPositionButtonPressed
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 3
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -5968,7 +5968,7 @@ GameObject:
   - component: {fileID: 844071707}
   - component: {fileID: 844071706}
   m_Layer: 5
-  m_Name: BattlePosition6
+  m_Name: BattlePosition06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6032,15 +6032,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1781933740}
-        m_MethodName: OnLevelUpBtn
-        m_Mode: 1
+      - m_Target: {fileID: 166345600}
+        m_MethodName: OnPositionButtonPressed
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 6
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -6343,7 +6343,7 @@ GameObject:
   - component: {fileID: 919114624}
   - component: {fileID: 919114623}
   m_Layer: 5
-  m_Name: BattlePosition7
+  m_Name: BattlePosition07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6407,15 +6407,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1781933740}
-        m_MethodName: OnLevelUpBtn
-        m_Mode: 1
+      - m_Target: {fileID: 166345600}
+        m_MethodName: OnPositionButtonPressed
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 7
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -6961,7 +6961,7 @@ GameObject:
   - component: {fileID: 1011762082}
   - component: {fileID: 1011762081}
   m_Layer: 5
-  m_Name: BattlePosition8
+  m_Name: BattlePosition08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7025,15 +7025,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1781933740}
-        m_MethodName: OnLevelUpBtn
-        m_Mode: 1
+      - m_Target: {fileID: 166345600}
+        m_MethodName: OnPositionButtonPressed
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 8
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -7863,7 +7863,7 @@ GameObject:
   - component: {fileID: 1088239953}
   - component: {fileID: 1088239952}
   m_Layer: 5
-  m_Name: BattlePosition1
+  m_Name: BattlePosition01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7927,15 +7927,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1781933740}
-        m_MethodName: OnLevelUpBtn
-        m_Mode: 1
+      - m_Target: {fileID: 166345600}
+        m_MethodName: OnPositionButtonPressed
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 1
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -9618,7 +9618,7 @@ GameObject:
   - component: {fileID: 1426976073}
   - component: {fileID: 1426976072}
   m_Layer: 5
-  m_Name: BattlePosition4
+  m_Name: BattlePosition04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9682,15 +9682,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1781933740}
-        m_MethodName: OnLevelUpBtn
-        m_Mode: 1
+      - m_Target: {fileID: 166345600}
+        m_MethodName: OnPositionButtonPressed
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 4
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -14033,7 +14033,7 @@ GameObject:
   - component: {fileID: 2081279520}
   - component: {fileID: 2081279519}
   m_Layer: 5
-  m_Name: BattlePosition5
+  m_Name: BattlePosition05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14097,15 +14097,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1781933740}
-        m_MethodName: OnLevelUpBtn
-        m_Mode: 1
+      - m_Target: {fileID: 166345600}
+        m_MethodName: OnPositionButtonPressed
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 5
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
