@@ -42,7 +42,7 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 
 		GameObject playerObj = GameObject.FindGameObjectWithTag ("Player");
 		_playerObject = playerObj.GetComponent<PlayerObject> ();
-		_playerObject.transform.localPosition = new Vector3 (-4.0f, 0.0f, 0.0f);
+		_playerObject.transform.localPosition = new Vector3 (-4.0f, -0.2f, 0.0f);
 
 		_playerObject.InitChar (PlayerData.playerCharData);
 		_playerObject.InitCharGunObject (PlayerData.playerCharData.GunID);
@@ -104,10 +104,21 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 
 	public void InitNpcObject() {
 		foreach (CharaData charData  in PlayerData.playerNpcDictionary.Values) {
-			NpcObject npcObject = InitCharObject<NpcObject> (charData);
+			if (charData.BattlePosition == -1) {
+				continue;
+			}
 
-			if (npcObject.charaData.BattlePosition == 1) {
-				npcObject.transform.position = new Vector3 (-4.8f, 0.0f, -0.2f);
+			NpcObject npcObject = InitCharObject<NpcObject> (charData);
+			//プレイヤーの隣
+			if (npcObject.charaData.BattlePosition == 0) {
+				npcObject.transform.position = new Vector3 (-4.8f, -4.0f, -0.2f);
+			} 
+			//その他のWallのポジションの箇所にセット
+			else {
+				npcObject.transform.position = WallController.Instance.GetWallObject (charData.BattlePosition).transform.position;
+				Vector3 tmpNpcPos = npcObject.transform.position;
+				tmpNpcPos.y = -0.0f;
+				npcObject.transform.position = tmpNpcPos;
 			}
 		}
 	}

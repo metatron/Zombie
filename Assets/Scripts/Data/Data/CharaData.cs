@@ -56,7 +56,8 @@ public class CharaData {
 
 
 	//バトルの位置。0は参加しない（NPC ONLY）
-	public int BattlePosition { get; set; }
+	private int _battlePos = -1;
+	public int BattlePosition { get{ return _battlePos; } set{ _battlePos = value; } }
 
 	//セットされている剣のID
 	public string SwordID { get; set; }
