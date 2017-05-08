@@ -93,6 +93,8 @@ public class CharacterLevelSystem {
 		//gender
 		genCharData.gender = (CharaData.Gender)Enum.ToObject(typeof(CharaData.Gender), UnityEngine.Random.Range(0,1));
 
+		genCharData.BodyPrefab = "Female1";
+
 		//favorite weapon
 		genCharData.favoriteWpn = (CharaData.WeaponType)Enum.ToObject(typeof(CharaData.WeaponType), UnityEngine.Random.Range(0,1));
 
@@ -103,7 +105,12 @@ public class CharacterLevelSystem {
 
 	public static void DisplayCharData(AbstractCharacterObject charObj) {
 		CharaData charaData = charObj.charaData;
+		DisplayCharData (charaData);
+	}
+
+	public static void DisplayCharData(CharaData charaData) {
 		Debug.LogError (
+			"ID: " + charaData.ID + "\n" + 
 			"Rarity: " + charaData.Rarity + "\n" + 
 			"Level: " + charaData.Level + "\n" + 
 			"CrntHP/BaseHP: " + charaData.hpCrnt + "/" + charaData.HpBase + "\n" + 
@@ -112,7 +119,7 @@ public class CharacterLevelSystem {
 	}
 
 	private static string GenerateNpcID() {
-		return "npc" + PlayerData.playerNpcDictionary.Count + 1;
+		return "npc" + (PlayerData.playerNpcDictionary.Count + 1);
 	}
 
 }
