@@ -60,19 +60,31 @@ public class AbstractCharacterObject : MonoBehaviour {
 
 	private string GetSortingLayerName() {
 		string sortingLayerName = "Default";
-		if (charaData.BattlePosition > 0) {
-			sortingLayerName = "NpcPos" + charaData.BattlePosition;
+		//プレイヤーの隣はプレイヤーの手前
+		if (charaData.BattlePosition == 0) {
+			sortingLayerName = "NpcPos1";
+		} 
+		//BattlePosition <= 5の場合は奥
+		else if (charaData.BattlePosition > 0 && charaData.BattlePosition <= 5) {
+			sortingLayerName = "NpcPos3";
 		}
+
+		Debug.LogError (this.name + " - sortingLayerName: " + sortingLayerName + "(BP: " + charaData.BattlePosition);
 		return sortingLayerName;
 	}
 
 	private void SetSortingLayer(string sortingLayerName) {
 		foreach (SpriteRenderer spRenderer in GetComponentsInChildren<SpriteRenderer>()) {
+			Debug.LogError (this.name + " - sortingLayerName: " + sortingLayerName);
 			spRenderer.sortingLayerName = sortingLayerName;
 		}
 	}
 
 	public void InitCharGunObject(string gunId) {
+		if (string.IsNullOrEmpty (gunId)) {
+			return;
+		}
+
 		GunData gunData = GunDataTableObject.Instance.GetParams (gunId);
 		_gunObject = ((GameObject)Instantiate ((GameObject)Resources.Load ("Prefabs/Items/Guns/"+gunData.GunPrefab))).GetComponent<GunObject>();
 		_gunObject.Owner = gameObject;
@@ -96,6 +108,10 @@ public class AbstractCharacterObject : MonoBehaviour {
 	}
 
 	public void InitCharSwordObject(string swordId) {
+		if (string.IsNullOrEmpty (swordId)) {
+			return;
+		}
+
 		//剣の場合はweaponオブジェクトが既にあるのでパラメータのみの受け渡しOwnerだけ設定しておく
 		//パラメータコピー
 		_swordObject.CopyParamsFrom (swordId);

@@ -89,7 +89,6 @@ public class BattlePositionController : MonoBehaviour {
 	 */
 	public void OnResetPositionButtonPressed() {
 		for (int i = 0; i < BattlePosBtnList.Count; i++) {
-			Debug.LogError ("*************1: " + i);
 			//ポジションをリセット
 			PlayerData.UnSetBattlePosNpcId (i);
 			//Playerの横のポジション及び作成したWallの数以下の場合

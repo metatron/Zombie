@@ -111,7 +111,7 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 			NpcObject npcObject = InitCharObject<NpcObject> (charData);
 			//プレイヤーの隣
 			if (npcObject.charaData.BattlePosition == 0) {
-				npcObject.transform.position = new Vector3 (-4.8f, -4.0f, -0.2f);
+				npcObject.transform.position = new Vector3 (-4.7f, -0.4f, -0.2f);
 			} 
 			//その他のWallのポジションの箇所にセット
 			else {
