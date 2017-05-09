@@ -28,6 +28,7 @@ public class StatusPanel : MonoBehaviour {
 	public void InitCharStatus(CharaData charData) {
 		gameObject.SetActive (true);
 		_charData = charData;
+		CharacterLevelSystem.DisplayCharData (_charData);
 
 		//プレイヤーの場合はPlayerObjectをパネルに登録
 

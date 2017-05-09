@@ -38,26 +38,26 @@ public class PlayerData {
 		playerCharData.GunID = "gun2";
 
 		//TODO テスト的に追加
-		if (playerNpcDictionary.Count == 0) {
-			CharaData chardata = CharacterLevelSystem.GenerateCharacterData (1);
-			chardata.Name = "Mia";
-			chardata.BodyPrefab = "Female1";
-			chardata.SwordID = "swd1";
-			chardata.GunID = "gun1";
-
-			playerNpcDictionary.Add (chardata.ID, chardata);
-
-			chardata = CharacterLevelSystem.GenerateCharacterData (1);
-			chardata.Name = "Mia";
-			chardata.BodyPrefab = "Female1";
-			chardata.SwordID = "swd1";
-			chardata.GunID = "gun1";
-
-			playerNpcDictionary.Add (chardata.ID, chardata);
-
-
-//			SerializeUtil.XmlSerialize ("char", playerNpcDictionary);
-		}
+//		if (playerNpcDictionary.Count == 0) {
+//			CharaData chardata = CharacterLevelSystem.GenerateCharacterData (1);
+//			chardata.Name = "Mia";
+//			chardata.BodyPrefab = "Female1";
+//			chardata.SwordID = "swd1";
+//			chardata.GunID = "gun1";
+//
+//			playerNpcDictionary.Add (chardata.ID, chardata);
+//
+//			chardata = CharacterLevelSystem.GenerateCharacterData (1);
+//			chardata.Name = "Mia";
+//			chardata.BodyPrefab = "Female1";
+//			chardata.SwordID = "swd1";
+//			chardata.GunID = "gun1";
+//
+//			playerNpcDictionary.Add (chardata.ID, chardata);
+//
+//
+////			SerializeUtil.XmlSerialize ("char", playerNpcDictionary);
+//		}
 
 	}
 
@@ -173,7 +173,11 @@ public class PlayerData {
 	}
 
 	public static void UnSetBattlePosNpcId(int pos) {
-		CharaData charaData = playerNpcDictionary.Values.FirstOrDefault (tmpCharData => tmpCharData.BattlePosition == pos);
-		charaData.BattlePosition = -1;
+		foreach (CharaData tmpCarData in playerNpcDictionary.Values) {
+			if (tmpCarData.BattlePosition == pos) {
+				tmpCarData.BattlePosition = -1;
+				break;
+			}
+		}
 	}
 }
