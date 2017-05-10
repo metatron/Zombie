@@ -69,13 +69,11 @@ public class AbstractCharacterObject : MonoBehaviour {
 			sortingLayerName = "NpcPos3";
 		}
 
-		Debug.LogError (this.name + " - sortingLayerName: " + sortingLayerName + "(BP: " + charaData.BattlePosition);
 		return sortingLayerName;
 	}
 
 	private void SetSortingLayer(string sortingLayerName) {
 		foreach (SpriteRenderer spRenderer in GetComponentsInChildren<SpriteRenderer>()) {
-			Debug.LogError (this.name + " - sortingLayerName: " + sortingLayerName);
 			spRenderer.sortingLayerName = sortingLayerName;
 		}
 	}

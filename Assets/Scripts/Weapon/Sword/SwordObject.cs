@@ -29,7 +29,6 @@ public class SwordObject : AbstractWeaponObject {
 
 		//敵の半径もリーチ計算に入れる
 		float extX = nearestObject.GetComponent<BoxCollider>().bounds.extents.x;
-		Debug.LogError ("extX: " + extX + ", _reachLength: " + _reachLength + ", distance: " + distance);
 		if (distance <= (_reachLength + extX)) {
 			return true;
 		}

@@ -206,7 +206,6 @@ public class StageObject : MonoBehaviour {
 		int rand = UnityEngine.Random.Range (1, MAX);
 		if (rand <= RATIOLINE) {
 			CharaData genedChar = CharacterLevelSystem.GenerateCharacterData (rarity);
-			CharacterLevelSystem.DisplayCharData (genedChar);
 			genedChar.gender = (CharaData.Gender)Enum.ToObject (typeof(CharaData.Gender), gender);
 
 			return genedChar;
