@@ -131,11 +131,15 @@ public class AbstractCharacterObject : MonoBehaviour {
 	public void Attack() {
 		if (this.SwordObject != null && this.SwordObject.CanReachEnemy ()) {
 			SwordObject.DisplaySprite (true);
-			GunObject.DisplaySprite (false);
+			if (GunObject != null) {
+				GunObject.DisplaySprite (false);
+			}
 			SwordObject.Slash ();
 		}
 		else if (this.GunObject != null) {
-			SwordObject.DisplaySprite (false);
+			if (SwordObject != null) {
+				SwordObject.DisplaySprite (false);
+			}
 			GunObject.DisplaySprite (true);
 			GunObject.Fire();
 		}
