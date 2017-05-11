@@ -11,6 +11,7 @@ public class BattlePositionController : MonoBehaviour {
 
 	private CharaData _charaData;
 
+	//現在NPCを置ける最大箇所
 	private int availablePos;
 
 	public void InitButtons(CharaData charaData) {
@@ -55,6 +56,11 @@ public class BattlePositionController : MonoBehaviour {
 	 * 
 	 */
 	public void OnPositionButtonPressed(string name) {
+		//装備が整っているかチェック
+		if (!isCharEquiped ()) {
+			return ;
+		}
+
 		//既にセットされているかどうか
 		int charCrntPos = _charaData.BattlePosition;
 		//セットされている場合はセットされていた場所を一旦disable
@@ -108,5 +114,21 @@ public class BattlePositionController : MonoBehaviour {
 		button.colors = colors;
 	}
 
+	/**
+	 * 
+	 * 装備がないとポジションできない。
+	 * 
+	 */
+	private bool isCharEquiped() {
+		bool isEquipped = true;
 
+		//キャラの装備状況取得。GunIDとSwordIDの両方装備してなかったらポップアップ
+		if (string.IsNullOrEmpty (_charaData.SwordID) && string.IsNullOrEmpty (_charaData.GunID)) {
+			isEquipped = false;
+
+			UiController.Instance.OpenDialogPanel("Cannot Position NPS\nBecause he/she does not have any Weapons.", ()=>{});
+		}
+
+		return isEquipped;
+	}
 }
