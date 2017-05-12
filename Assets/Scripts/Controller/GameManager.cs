@@ -113,12 +113,15 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 			if (npcObject.charaData.BattlePosition == 0) {
 				npcObject.transform.position = new Vector3 (-4.7f, -0.4f, -0.2f);
 			} 
-			//その他のWallのポジションの箇所にセット
+			//その他のWallのポジションの箇所にセット（バトル画面のみ）
 			else {
-				npcObject.transform.position = WallController.Instance.GetWallObject (charData.BattlePosition).transform.position;
-				Vector3 tmpNpcPos = npcObject.transform.position;
-				tmpNpcPos.y = -0.0f;
-				npcObject.transform.position = tmpNpcPos;
+				Scene scene = SceneManager.GetActiveScene();
+				if (scene.name == "Main") {
+					npcObject.transform.position = WallController.Instance.GetWallObject (charData.BattlePosition).transform.position;
+					Vector3 tmpNpcPos = npcObject.transform.position;
+					tmpNpcPos.y = -0.0f;
+					npcObject.transform.position = tmpNpcPos;
+				}
 			}
 		}
 	}

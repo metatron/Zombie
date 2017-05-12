@@ -127,7 +127,9 @@ public class AbstractCharacterObject : MonoBehaviour {
 
 
 	public void Attack() {
-		if (this.SwordObject != null && this.SwordObject.CanReachEnemy ()) {
+		//Swordオブジェクトはキャラに既に付いているのでNullチェックだけでは装備してるかわからない。
+		//Owner、SwingEffectをチェック
+		if (this.SwordObject != null && SwordObject.SwingEffectPrefab != null && this.SwordObject.CanReachEnemy ()) {
 			SwordObject.DisplaySprite (true);
 			if (GunObject != null) {
 				GunObject.DisplaySprite (false);
