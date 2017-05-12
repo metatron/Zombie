@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class SwingEffect : AbstractDamageObject {
 	void Start () {
+		Vector3 ownerPos = GetOwnerObject ().transform.position;
+		float reachLength = 1000.0f;
+		if (WeaponObject.GetComponent<SwordObject>() != null) {
+			reachLength = WeaponObject.GetComponent<SwordObject> ().ReachLength;
+		}
+		Vector3 moveDestPos = ownerPos;
+		moveDestPos.x += reachLength;
+			
+
 		iTween.ValueTo(gameObject, 
 			iTween.Hash(
 				"from", 1f, 
@@ -13,7 +22,7 @@ public class SwingEffect : AbstractDamageObject {
 				"oncomplete", "EffectCompleted"
 			));
 
-		Vector3 moveDestPos = GameManager.Instance.swordReachMarker.transform.position;
+//		Vector3 moveDestPos = GameManager.Instance.swordReachMarker.transform.position;
 		moveDestPos.x -= transform.localScale.x / 2.0f;
 //		Debug.LogError ("@@@@@@@markerPos: " + GameManager.Instance.swordReachMarker.transform.position + ", scale: " + transform.localScale.x + ", distPos: " + moveDestPos);
 		iTween.MoveTo (gameObject, 

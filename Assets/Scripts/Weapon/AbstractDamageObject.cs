@@ -76,4 +76,8 @@ public class AbstractDamageObject : MonoBehaviour {
 		Destroy(enemyObject.gameObject);
 	}
 
+	protected AbstractCharacterObject GetOwnerObject() {
+		return _weapon.Owner.GetComponent<AbstractCharacterObject>();
+	}
+
 }
