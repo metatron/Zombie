@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 4c9c5255bf8794a45b6fa40fefba0768
-timeCreated: 1487652622
-licenseType: Pro
+timeCreated: 1495116886
+licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: face
@@ -30,6 +30,20 @@ TextureImporter:
     21300046: hair_f1
     21300048: leg_left_f1
     21300050: female1_final
+    21300052: f1_rightleg
+    21300054: f1_face
+    21300056: f1_eyes
+    21300058: f1_leftfoot
+    21300060: f1_rightfoot
+    21300062: f1_rightarmupper
+    21300064: f1_hair
+    21300066: f1_leftshoes
+    21300068: f1_rightshoes
+    21300070: f1_leftarmupper
+    21300072: f1_body
+    21300074: f1_leftarmlower
+    21300076: f1_leftleg
+    21300078: f1_rightarmlower
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -128,8 +142,8 @@ TextureImporter:
       name: foot_l
       rect:
         serializedVersion: 2
-        x: 141
-        y: 143
+        x: 225
+        y: 99
         width: 22
         height: 26
       alignment: 9
@@ -141,8 +155,8 @@ TextureImporter:
       name: forarm_l
       rect:
         serializedVersion: 2
-        x: 141
-        y: 171
+        x: 113
+        y: 143
         width: 15
         height: 30
       alignment: 9
@@ -206,7 +220,7 @@ TextureImporter:
       name: foot_r
       rect:
         serializedVersion: 2
-        x: 0
+        x: 26
         y: 220
         width: 25
         height: 25
@@ -255,111 +269,33 @@ TextureImporter:
       outline: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: foot_right_f1
-      rect:
-        serializedVersion: 2
-        x: 225
-        y: 99
-        width: 28
-        height: 35
-      alignment: 9
-      pivot: {x: 0.50907296, y: 0.8847081}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: leg_right_f1
+      name: f1_rightleg
       rect:
         serializedVersion: 2
         x: 194
         y: 99
         width: 29
         height: 39
-      alignment: 9
-      pivot: {x: 0.7231003, y: 0.8870881}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: forarm_left_f1
-      rect:
-        serializedVersion: 2
-        x: 141
-        y: 203
-        width: 20
-        height: 22
-      alignment: 9
-      pivot: {x: 0.20461807, y: 0.79294103}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: body_f1
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 155
-        width: 36
-        height: 41
-      alignment: 9
-      pivot: {x: 0.4142721, y: 0.123634525}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: arm_left_f1
-      rect:
-        serializedVersion: 2
-        x: 113
-        y: 219
-        width: 23
-        height: 27
-      alignment: 9
-      pivot: {x: 0.13339996, y: 0.6330962}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: face_f1
+      name: f1_face
       rect:
         serializedVersion: 2
         x: 0
         y: 99
         width: 70
         height: 67
-      alignment: 9
-      pivot: {x: 0.4926518, y: 0.077759355}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: chest_f1
-      rect:
-        serializedVersion: 2
-        x: 149
-        y: 73
-        width: 34
-        height: 19
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: lowerbody_f1
-      rect:
-        serializedVersion: 2
-        x: 193
-        y: 59
-        width: 55
-        height: 29
-      alignment: 9
-      pivot: {x: 0.36142606, y: 0.92926157}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: eyes_f1
+      name: f1_eyes
       rect:
         serializedVersion: 2
         x: 99
@@ -367,51 +303,51 @@ TextureImporter:
         width: 48
         height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: arm_right_f1
+      name: f1_leftfoot
       rect:
         serializedVersion: 2
-        x: 27
+        x: 0
         y: 220
         width: 24
-        height: 26
-      alignment: 9
-      pivot: {x: 0.8525138, y: 0.6422307}
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: foot_left_f1
+      name: f1_rightfoot
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 59
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: f1_rightarmupper
       rect:
         serializedVersion: 2
         x: 113
-        y: 181
-        width: 24
-        height: 36
-      alignment: 9
-      pivot: {x: 0.23273213, y: 0.843633}
+        y: 175
+        width: 13
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: forarm_right_f1
-      rect:
-        serializedVersion: 2
-        x: 141
-        y: 227
-        width: 19
-        height: 22
-      alignment: 9
-      pivot: {x: 0.7601688, y: 0.79586446}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: hair_f1
+      name: f1_hair
       rect:
         serializedVersion: 2
         x: 0
@@ -419,20 +355,98 @@ TextureImporter:
         width: 97
         height: 97
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: leg_left_f1
+      name: f1_leftshoes
       rect:
         serializedVersion: 2
-        x: 113
+        x: 72
+        y: 240
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: f1_rightshoes
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 247
+        width: 17
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: f1_leftarmupper
+      rect:
+        serializedVersion: 2
+        x: 130
         y: 143
+        width: 16
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: f1_body
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 155
+        width: 34
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: f1_leftarmlower
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 73
+        width: 11
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: f1_leftleg
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 59
         width: 26
         height: 36
-      alignment: 9
-      pivot: {x: 0.28503272, y: 0.8669646}
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: f1_rightarmlower
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 73
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: -1
