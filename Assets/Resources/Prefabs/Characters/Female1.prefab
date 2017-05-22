@@ -485,6 +485,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4260975557066256}
   - component: {fileID: 114898631546612774}
+  - component: {fileID: 114957252392929820}
   m_Layer: 0
   m_Name: hip
   m_TagString: Untagged
@@ -558,15 +559,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1975564303556094}
-  m_LocalRotation: {x: 0, y: 0, z: -0.9297881, w: 0.36809516}
-  m_LocalPosition: {x: 0.29032454, y: -0.11149591, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.92127, w: 0.3889237}
+  m_LocalPosition: {x: 0.27746472, y: -0.09104458, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4315404529813236}
   - {fileID: 4259292966005238}
   m_Father: {fileID: 4864493904402812}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -136.804}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1214.225}
 --- !u!4 &4219217425091812
 Transform:
   m_ObjectHideFlags: 1
@@ -637,7 +638,7 @@ Transform:
   - {fileID: 4293219900512392}
   m_Father: {fileID: 4864493904402812}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180.127}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 540.127}
 --- !u!4 &4293219900512392
 Transform:
   m_ObjectHideFlags: 1
@@ -657,14 +658,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1158520395885658}
-  m_LocalRotation: {x: 0, y: 0, z: -0.17517664, w: 0.984537}
+  m_LocalRotation: {x: 0, y: 0, z: -0.16266252, w: 0.98668176}
   m_LocalPosition: {x: 0.19999999, y: 0.00000008940697, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4945347812182060}
   m_Father: {fileID: 4188262191875446}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -20.178001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -18.723001}
 --- !u!4 &4321882657147458
 Transform:
   m_ObjectHideFlags: 1
@@ -739,8 +740,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1862872213234246}
-  m_LocalRotation: {x: 0, y: 0, z: 0.102470666, w: 0.9947361}
-  m_LocalPosition: {x: 0.33000016, y: 0.000000008614734, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.10247123, w: 0.994736}
+  m_LocalPosition: {x: 0.33000365, y: 0.0000000088475645, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4862669263819656}
@@ -1023,7 +1024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.19999999
+  m_Length: 0.20000005
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4315404529813236}
   m_AttachedIK: {fileID: 114719838128995334}
@@ -1117,12 +1118,12 @@ MonoBehaviour:
     - m_Bone: {fileID: 0}
       m_BoneTransform: {fileID: 4188262191875446}
       solverPosition: {x: 0, y: 0, z: 0}
-      solverRotation: {x: 0, y: 0, z: -0.9297881, w: 0.36809516}
+      solverRotation: {x: 0, y: 0, z: -0.92126995, w: 0.38892367}
       defaultLocalRotation: {x: 0, y: 0, z: -0.92978805, w: 0.3680953}
     - m_Bone: {fileID: 0}
       m_BoneTransform: {fileID: 4315404529813236}
       solverPosition: {x: 0, y: 0, z: 0}
-      solverRotation: {x: 0, y: 0, z: -0.17517664, w: 0.984537}
+      solverRotation: {x: 0, y: 0, z: -0.16266252, w: 0.98668176}
       defaultLocalRotation: {x: 0, y: 0, z: -0.17517704, w: 0.984537}
     m_Weight: 1
     m_RestoreDefaultPose: 1
@@ -1140,7 +1141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.33000028
+  m_Length: 0.33000377
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4526262460042918}
   m_AttachedIK: {fileID: 0}
@@ -1261,6 +1262,18 @@ MonoBehaviour:
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4864493904402812}
   m_AttachedIK: {fileID: 0}
+--- !u!114 &114957252392929820
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1942694962370706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 533669fe702b5414cbcdd5a5efeb8e36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Poses: []
 --- !u!114 &114958297085567770
 MonoBehaviour:
   m_ObjectHideFlags: 1

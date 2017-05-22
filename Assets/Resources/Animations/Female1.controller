@@ -92,7 +92,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: swing
+  m_Name: swing1
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -147,7 +147,7 @@ AnimatorStateMachine:
     m_Position: {x: 324, y: 72, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102717574417242916}
-    m_Position: {x: 330, y: -11, z: 0}
+    m_Position: {x: 312, y: -36, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102831295458872236}
     m_Position: {x: 336, y: 180, z: 0}
