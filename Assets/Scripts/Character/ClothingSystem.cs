@@ -17,4 +17,5 @@ public class ClothingSystem : MonoBehaviour {
 
 	//服を置くベースとなるボーンのリスト
 	public List<GameObject> BodyBaseList = new List<GameObject>();
+
 }
