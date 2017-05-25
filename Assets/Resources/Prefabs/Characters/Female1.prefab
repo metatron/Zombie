@@ -116,6 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4084972081850442}
   - component: {fileID: 95763055040418484}
+  - component: {fileID: 114832904482690572}
   m_Layer: 0
   m_Name: Female1
   m_TagString: Untagged
@@ -198,7 +199,7 @@ GameObject:
   - component: {fileID: 4027491422713114}
   - component: {fileID: 212158109765283884}
   m_Layer: 0
-  m_Name: f1_hair
+  m_Name: fc1_hair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -262,7 +263,7 @@ GameObject:
   - component: {fileID: 4593482196548518}
   - component: {fileID: 212186479046713348}
   m_Layer: 0
-  m_Name: f1_eyes
+  m_Name: fc1_eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1294,7 +1295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.20000005
+  m_Length: 0.2
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4315404529813236}
   m_AttachedIK: {fileID: 114719838128995334}
@@ -1358,7 +1359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.23000015
+  m_Length: 0.23000008
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4219217425091812}
   m_AttachedIK: {fileID: 114835313261549952}
@@ -1443,7 +1444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.28000015
+  m_Length: 0.28000018
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4353365545510256}
   m_AttachedIK: {fileID: 114150169188704798}
@@ -1463,6 +1464,27 @@ MonoBehaviour:
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 0}
   m_AttachedIK: {fileID: 114150169188704798}
+--- !u!114 &114832904482690572
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1192864254611502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 089f5f0128d3f429fa30476196eec808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BodyBaseList:
+  - {fileID: 1862872213234246}
+  - {fileID: 1348574727553182}
+  - {fileID: 1975564303556094}
+  - {fileID: 1269074443467352}
+  - {fileID: 1942694962370706}
+  - {fileID: 1912522296987114}
+  - {fileID: 1670492618483252}
+  - {fileID: 1594378747950752}
+  - {fileID: 1223889086728938}
 --- !u!114 &114835313261549952
 MonoBehaviour:
   m_ObjectHideFlags: 1
