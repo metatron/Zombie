@@ -43,7 +43,8 @@ public class ClothExporterEditor : EditorWindow {
 			childObject.name + "," + 
 			childObject.name + "," + 
 			childObject.localPosition.x + "|" + childObject.localPosition.y + "|" + childObject.localPosition.z + "," + 
-			childObject.localRotation.x + "|" + childObject.localRotation.y + "|" + childObject.localRotation.z + "\n";
+			childObject.localRotation.x + "|" + childObject.localRotation.y + "|" + childObject.localRotation.z + "," + 
+			childObject.GetComponent<SpriteRenderer>().sortingOrder + "\n";
 		}
 
 

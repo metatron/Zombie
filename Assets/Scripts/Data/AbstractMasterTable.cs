@@ -28,7 +28,7 @@ public class AbstractMasterTable<T> where T : AbstractData, new() {
 		// header
 		headerElements = lines[0].Split(',');
 		lines.RemoveAt(0); // header
-		Debug.LogError ("filePath: " + filePath + ", headerElements count: " + (headerElements.Length) + ", lines count: " + lines.Count);
+		Debug.Log ("filePath: " + filePath + ", headerElements count: " + (headerElements.Length) + ", lines count: " + lines.Count);
 
 		// body
 		masters = new List<T>();

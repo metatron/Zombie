@@ -33,6 +33,7 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		StageDataTableObject.Instance.InitData ();
 		RarityDataTableObject.Instance.InitData ();
 		ExperienceDataTableObject.Instance.InitData ();
+		ClothDataTableObject.Instance.InitData ();
 
 		Scene scene = SceneManager.GetActiveScene();
 		//プレイヤー初期化
@@ -41,12 +42,14 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		}
 
 		GameObject playerObj = GameObject.FindGameObjectWithTag ("Player");
-		_playerObject = playerObj.GetComponent<PlayerObject> ();
-		_playerObject.transform.localPosition = new Vector3 (-4.0f, -0.2f, 0.0f);
+		if (playerObj != null) {
+			_playerObject = playerObj.GetComponent<PlayerObject> ();
+			_playerObject.transform.localPosition = new Vector3 (-4.0f, -0.2f, 0.0f);
 
-		_playerObject.InitChar (PlayerData.playerCharData);
-		_playerObject.InitCharGunObject (PlayerData.playerCharData.GunID);
-		_playerObject.InitCharSwordObject (PlayerData.playerCharData.SwordID);
+			_playerObject.InitChar (PlayerData.playerCharData);
+			_playerObject.InitCharGunObject (PlayerData.playerCharData.GunID);
+			_playerObject.InitCharSwordObject (PlayerData.playerCharData.SwordID);
+		}
 
 		//NPC初期化
 		InitNpcObject ();

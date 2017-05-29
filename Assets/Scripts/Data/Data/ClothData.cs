@@ -7,6 +7,7 @@ public class ClothData : AbstractData {
 	public string GroupID { get; set; }
 	public string Position { get; set; }
 	public string Rotation { get; set; }
+	public int OrderInLayer { get; set; }
 
 	public Vector3 GetPositionVec() {
 		string[] parsedPos = Position.Split ('|');
