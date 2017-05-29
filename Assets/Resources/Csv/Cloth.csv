@@ -1,2 +1,12 @@
-ID,GroupID,Name,Image,Position
-fc1_body,
+ID,GroupID,Name,Image,Position,Rotation
+fc1_rightarm,fc1,fc1_rightarm,fc1_rightarm,0.102866|-0.003692824|0,0|0|-0.7773128
+fc1_leftarm,fc1,fc1_leftarm,fc1_leftarm,0.1108838|0.02209276|0,0|0|0.4724122
+fc1_eyes,fc1,fc1_eyes,fc1_eyes,-0.07|-0.091|0,0|0|0
+fc1_hair,fc1,fc1_hair,fc1_hair,-0.046|-0.012|0,0|0|0
+fc1_body,fc1,fc1_body,fc1_body,0.1366915|0.001598439|0,0|0|-0.6282547
+fc1_chest,fc1,fc1_chest,fc1_chest,0.1442105|0.02367703|0,0|0|-0.6282547
+fc1_lefttightslower,fc1,fc1_lefttightslower,fc1_lefttightslower,0.1065457|0.04732966|0,0|0|0.5354014
+fc1_leftightsupper,fc1,fc1_leftightsupper,fc1_leftightsupper,0.1943374|0.06415159|0,0|0|0.8141097
+fc1_righttightslower,fc1,fc1_righttightslower,fc1_righttightslower,0.09992717|0.06235408|0,0|0|-0.7671092
+fc1_righttightsupper,fc1,fc1_righttightsupper,fc1_righttightsupper,0.237488|0.07953251|0,0|0|-0.883346
+fc1_lowerbody,fc1,fc1_lowerbody,fc1_lowerbody,-0.01503734|-0.06322356|0,0|0|-0.7071067
