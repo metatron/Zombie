@@ -63,7 +63,7 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		else if (scene.name == "CharacterTest") {
 			GameObject femaleObj = GameObject.Find ("Female1");
 			Debug.LogError ("*****1");
-			femaleObj.GetComponent<ClothingSystem> ().SetBodyParts (ClothingSystem.BaseParts.HAIR, "fc1");
+			femaleObj.GetComponent<ClothingSystem> ().SetBodyParts (ClothingSystem.ClothParts.HAIR, "fc1");
 			Debug.LogError ("*****2");
 		}
 

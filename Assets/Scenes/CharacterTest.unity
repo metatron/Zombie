@@ -1465,7 +1465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 089f5f0128d3f429fa30476196eec808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BodyBaseList:
+  BaseObjList:
   - {fileID: 385325785}
   - {fileID: 568880266}
   - {fileID: 28032917}

@@ -17,11 +17,11 @@ public class ClothData : AbstractData {
 			return Vector3.zero;
 		}
 
-		double x = double.Parse (parsedPos [0]);
-		double y = double.Parse (parsedPos [1]);
-		double z = double.Parse (parsedPos [2]);
-		Debug.LogError ("@@@@@@@@@@@@@@@@@@@@@1: " + (float)x + ", " + (float)y + ", " + (float)z);
-		return new Vector3((float)x, (float)y, (float)z);
+		float x = (float)double.Parse (parsedPos [0]);
+		float y = (float)double.Parse (parsedPos [1]);
+		float z = (float)double.Parse (parsedPos [2]);
+		Debug.LogError ("@@@@@@@@@@@@@@@@@@@@@1: " + x + ", " + y + ", " + z);
+		return new Vector3(x, y, z);
 	}
 
 	public Vector3 GetRotationVec() {
@@ -32,11 +32,11 @@ public class ClothData : AbstractData {
 			return Vector3.zero;
 		}
 
-		double x = double.Parse (parsedRot [0]);
-		double y = double.Parse (parsedRot [1]);
-		double z = double.Parse (parsedRot [2]);
-		Debug.LogError ("@@@@@@@@@@@@@@@@@@@@@2: " + (float)x + ", " + (float)y + ", " + (float)z);
-		return new Vector3((float)x, (float)y, (float)z);
+		float x = (float)double.Parse (parsedRot [0]);
+		float y = (float)double.Parse (parsedRot [1]);
+		float z = (float)double.Parse (parsedRot [2]);
+		Debug.LogError ("@@@@@@@@@@@@@@@@@@@@@2: " + x + ", " + y + ", " + z);
+		return new Vector3(x, y, z);
 	}
 
 
