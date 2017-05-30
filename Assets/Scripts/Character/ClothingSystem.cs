@@ -26,13 +26,19 @@ public class ClothingSystem : MonoBehaviour {
 
 	public void SetBodyParts(BaseParts type, string id) {
 		string ID = GetClothingID (type, id);
+		Debug.LogError ("####1: " + ID);
 		ClothData clothData = ClothDataTableObject.Instance.Table.All.FirstOrDefault(itemData => itemData.ID == ID);
+		Debug.LogError ("####2: " + clothData.Image);
 		GameObject clothObj = new GameObject ();
 		clothObj.transform.SetParent (transform);
+		Debug.LogError ("####3: " + clothObj.name);
 		clothObj.AddComponent<SpriteRenderer> ().sprite = GameManager.Instance.GetSpriteFromPath("ClothAtlas", ID);
+		Debug.LogError ("####4: " + clothObj.GetComponent<SpriteRenderer>());
 		clothObj.transform.localScale = Vector3.one;
 		clothObj.transform.localRotation = Quaternion.Euler (clothData.GetRotationVec ());
+		Debug.LogError ("####5: " + clothObj.transform.localRotation);
 		clothObj.transform.localPosition = clothData.GetPositionVec ();
+		Debug.LogError ("####6: " + clothObj.transform.localPosition);
 	}
 
 	public static string GetClothingID(BaseParts type, string id) {
