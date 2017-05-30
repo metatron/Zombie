@@ -17,7 +17,11 @@ public class ClothData : AbstractData {
 			return Vector3.zero;
 		}
 
-		return new Vector3(float.Parse(parsedPos[0]+"f"), float.Parse(parsedPos[1]+"f"), float.Parse(parsedPos[2]+"f"));
+		double x = double.Parse (parsedPos [0]);
+		double y = double.Parse (parsedPos [1]);
+		double z = double.Parse (parsedPos [2]);
+		Debug.LogError ("@@@@@@@@@@@@@@@@@@@@@1: " + (float)x + ", " + (float)y + ", " + (float)z);
+		return new Vector3((float)x, (float)y, (float)z);
 	}
 
 	public Vector3 GetRotationVec() {
@@ -28,7 +32,11 @@ public class ClothData : AbstractData {
 			return Vector3.zero;
 		}
 
-		return new Vector3(float.Parse(parsedRot[0]+"f"), float.Parse(parsedRot[1]+"f"), float.Parse(parsedRot[2]+"f"));
+		double x = double.Parse (parsedRot [0]);
+		double y = double.Parse (parsedRot [1]);
+		double z = double.Parse (parsedRot [2]);
+		Debug.LogError ("@@@@@@@@@@@@@@@@@@@@@2: " + (float)x + ", " + (float)y + ", " + (float)z);
+		return new Vector3((float)x, (float)y, (float)z);
 	}
 
 
