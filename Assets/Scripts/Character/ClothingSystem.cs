@@ -36,11 +36,10 @@ public class ClothingSystem : MonoBehaviour {
 	//服を置くベースとなるボーンのリスト
 	public List<GameObject> BaseObjList = new List<GameObject>();
 
-	public void SetBodyParts(ClothParts type, string id) {
+	public void SetBodyParts(ClothParts type, string id, Color? color = null) {
 		string ID = GetClothingID (type, id);
 		Debug.LogError ("####1: " + ID);
 		ClothData clothData = ClothDataTableObject.Instance.Table.All.FirstOrDefault(itemData => itemData.ID == ID);
-		Debug.LogError ("####2: " + clothData.Image);
 
 		GameObject clothObj = new GameObject ();
 		clothObj.name = ID;
@@ -51,6 +50,30 @@ public class ClothingSystem : MonoBehaviour {
 		case ClothParts.EYES:
 			baseObj = BaseObjList [(int)BaseObj.HEAD];
 			break;
+		case ClothParts.BODY:
+			baseObj = BaseObjList [(int)BaseObj.SPINE];
+			break;
+		case ClothParts.ARM_L:
+			baseObj = BaseObjList [(int)BaseObj.ARM_L];
+			break;
+		case ClothParts.ARM_R:
+			baseObj = BaseObjList [(int)BaseObj.ARM_R];
+			break;
+		case ClothParts.HIP:
+			baseObj = BaseObjList [(int)BaseObj.HIP];
+			break;
+		case ClothParts.LEG_UPPER_L:
+			baseObj = BaseObjList [(int)BaseObj.LEG_UPPER_L];
+			break;
+		case ClothParts.LEG_UPPER_R:
+			baseObj = BaseObjList [(int)BaseObj.LEG_UPPER_R];
+			break;
+		case ClothParts.LEG_LOWER_L:
+			baseObj = BaseObjList [(int)BaseObj.LEG_LOWER_L];
+			break;
+		case ClothParts.LEG_LOWER_R:
+			baseObj = BaseObjList [(int)BaseObj.LEG_LOWER_R];
+			break;
 		default:
 			baseObj = BaseObjList [(int)BaseObj.HIP];
 			break;
@@ -58,13 +81,12 @@ public class ClothingSystem : MonoBehaviour {
 
 		clothObj.transform.SetParent (baseObj.transform);
 		clothObj.AddComponent<SpriteRenderer> ().sprite = GameManager.Instance.GetSpriteFromPath("ClothAtlas", ID);
+		clothObj.GetComponent<SpriteRenderer> ().sortingOrder = clothData.OrderInLayer;
+		clothObj.GetComponent<SpriteRenderer> ().color = color ?? Color.white;
 
-		Debug.LogError ("####4: " + clothObj.GetComponent<SpriteRenderer>());
 		clothObj.transform.localScale = Vector3.one;
 		clothObj.transform.localRotation = Quaternion.Euler (clothData.GetRotationVec ());
-		Debug.LogError ("####5: " + clothObj.transform.localRotation);
 		clothObj.transform.localPosition = clothData.GetPositionVec ();
-		Debug.LogError ("####6: " + clothObj.transform.localPosition);
 	}
 
 	public static string GetClothingID(ClothParts type, string id) {

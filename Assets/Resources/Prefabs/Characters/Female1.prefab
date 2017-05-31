@@ -673,12 +673,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1289563060424450}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.046, y: -0.012, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7046705, w: 0.7095347}
+  m_LocalPosition: {x: 0.29193512, y: 0.063281514, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4862669263819656}
-  m_RootOrder: 1
+  m_Father: {fileID: 4526262460042918}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4084972081850442
 Transform:
@@ -960,6 +960,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4862669263819656}
+  - {fileID: 4593482196548518}
+  - {fileID: 4027491422713114}
   m_Father: {fileID: 4864493904402812}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 11.7630005}
@@ -969,12 +971,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358389223919302}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.07, y: -0.091, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7046705, w: 0.7095347}
+  m_LocalPosition: {x: 0.21277192, y: 0.08673754, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4862669263819656}
-  m_RootOrder: 0
+  m_Father: {fileID: 4526262460042918}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4595906372570358
 Transform:
@@ -1092,9 +1094,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0.7046705, w: 0.70953476}
   m_LocalPosition: {x: 0.30425113, y: 0.017365167, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4593482196548518}
-  - {fileID: 4027491422713114}
+  m_Children: []
   m_Father: {fileID: 4526262460042918}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1475,16 +1475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 089f5f0128d3f429fa30476196eec808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BodyBaseList:
-  - {fileID: 1862872213234246}
-  - {fileID: 1348574727553182}
-  - {fileID: 1975564303556094}
-  - {fileID: 1269074443467352}
-  - {fileID: 1942694962370706}
-  - {fileID: 1912522296987114}
-  - {fileID: 1670492618483252}
-  - {fileID: 1594378747950752}
-  - {fileID: 1223889086728938}
+  BaseObjList: []
 --- !u!114 &114835313261549952
 MonoBehaviour:
   m_ObjectHideFlags: 1

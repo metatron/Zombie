@@ -37,13 +37,13 @@ public class ClothExporterEditor : EditorWindow {
 			if (!childObject.name.Contains (groupId)) {
 				continue;
 			}
-
+			Vector3 eulerAngles = childObject.localRotation.eulerAngles;
 			csvText += childObject.name + "," + 
 			groupId + "," + 
 			childObject.name + "," + 
 			childObject.name + "," + 
-			childObject.localPosition.x + "f|" + childObject.localPosition.y + "f|" + childObject.localPosition.z + "f," + 
-			childObject.localRotation.x + "f|" + childObject.localRotation.y + "f|" + childObject.localRotation.z + "f," + 
+			childObject.localPosition.x + "|" + childObject.localPosition.y + "|" + childObject.localPosition.z + "," + 
+				eulerAngles.x + "|" + eulerAngles.y + "|" + eulerAngles.z + "," + 
 			childObject.GetComponent<SpriteRenderer>().sortingOrder + "\n";
 		}
 

@@ -62,9 +62,16 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		//キャラチェック
 		else if (scene.name == "CharacterTest") {
 			GameObject femaleObj = GameObject.Find ("Female1");
-			Debug.LogError ("*****1");
-			femaleObj.GetComponent<ClothingSystem> ().SetBodyParts (ClothingSystem.ClothParts.HAIR, "fc1");
-			Debug.LogError ("*****2");
+			femaleObj.GetComponent<ClothingSystem> ().SetBodyParts (ClothingSystem.ClothParts.HAIR, "fc1", Color.black);
+			femaleObj.GetComponent<ClothingSystem> ().SetBodyParts (ClothingSystem.ClothParts.EYES, "fc1", Color.black);
+//			femaleObj.GetComponent<ClothingSystem> ().SetBodyParts (ClothingSystem.ClothParts.ARM_L, "fc1", Color.black);
+//			femaleObj.GetComponent<ClothingSystem> ().SetBodyParts (ClothingSystem.ClothParts.ARM_R, "fc1", Color.black);
+			femaleObj.GetComponent<ClothingSystem> ().SetBodyParts (ClothingSystem.ClothParts.BODY, "fc1", Color.black);
+			femaleObj.GetComponent<ClothingSystem> ().SetBodyParts (ClothingSystem.ClothParts.HIP, "fc1", Color.black);
+//			femaleObj.GetComponent<ClothingSystem> ().SetBodyParts (ClothingSystem.ClothParts.LEG_UPPER_L, "fc1", Color.black);
+//			femaleObj.GetComponent<ClothingSystem> ().SetBodyParts (ClothingSystem.ClothParts.LEG_UPPER_R, "fc1", Color.black);
+//			femaleObj.GetComponent<ClothingSystem> ().SetBodyParts (ClothingSystem.ClothParts.LEG_LOWER_L, "fc1", Color.black);
+//			femaleObj.GetComponent<ClothingSystem> ().SetBodyParts (ClothingSystem.ClothParts.LEG_LOWER_R, "fc1", Color.black);
 		}
 
 	}
