@@ -74,6 +74,9 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.LEG_LOWER_L, "fc1", Color.black);
 			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.LEG_LOWER_R, "fc1", Color.black);
 			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.SHOES, "fc1", Color.white);
+
+			//
+			ClothingSystem.AutoClothGenerator(CharaData.Gender.Female);
 		}
 	}
 

@@ -145,4 +145,18 @@ public class ClothingSystem : MonoBehaviour {
 		Debug.LogError ("Error getting ClothData ID: " + id + ", Type: " + type);
 		return "";
 	}
+
+	public static void AutoClothGenerator(CharaData.Gender gender = CharaData.Gender.Male) {
+		List<string> groupIdList = ClothDataTableObject.Instance.GetGroupIdList (gender);
+
+
+
+		//髪、目決め
+		string groupId = groupIdList[UnityEngine.Random.Range(0, groupIdList.Count)];
+		List<ClothData> clothDataList = ClothDataTableObject.Instance.GetClothListByGroupId (groupId);
+		ClothData hairData = clothDataList.FirstOrDefault (tmpClothData => tmpClothData.ID == groupId + "_hair");
+
+		Debug.LogError ("@@@@@@@@@@@@@@@" + hairData.ID);
+
+	}
 }
