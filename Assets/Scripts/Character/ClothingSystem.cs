@@ -9,13 +9,15 @@ public class ClothingSystem : MonoBehaviour {
 		HAIR,			//0
 		EYES,
 		BODY,
+		CHEST,
 		ARM_L,
 		ARM_R,
-		HIP,			//5
+		HIP,			//6
 		LEG_UPPER_L,    
 		LEG_UPPER_R,
 		LEG_LOWER_L,
-		LEG_LOWER_R,	//9
+		LEG_LOWER_R,	//10
+		SHOES,
 
 
 		NONE = 9999
@@ -36,10 +38,34 @@ public class ClothingSystem : MonoBehaviour {
 	//服を置くベースとなるボーンのリスト
 	public List<GameObject> BaseObjList = new List<GameObject>();
 
-	public void SetBodyParts(ClothParts type, string id, Color? color = null) {
+	//靴
+	public List<SpriteRenderer> ShoesList = new List<SpriteRenderer>();
+
+	/**
+	 * 
+	 * 服をセットする。
+	 * 指定しない限りその部分は裸。
+	 * 靴はidは関係ない。
+	 * 
+	 * ClothDataTableに登録されてないと表示されません。
+	 * 
+	 */
+	public void SetClothParts(ClothParts type, string id, Color? color = null) {
+		if (type == ClothParts.SHOES) {
+			foreach (SpriteRenderer shoe in ShoesList) {
+				shoe.color = color ?? Color.white;
+			}
+			return;
+		}
+
+		//データベースからデータを読み込み。
 		string ID = GetClothingID (type, id);
-		Debug.LogError ("####1: " + ID);
 		ClothData clothData = ClothDataTableObject.Instance.Table.All.FirstOrDefault(itemData => itemData.ID == ID);
+
+		if (clothData == null) {
+			Debug.LogError ("ERROR Cloth does not exists. TYPE: " + type + ", id: " + id);
+			return;
+		}
 
 		GameObject clothObj = new GameObject ();
 		clothObj.name = ID;
@@ -51,6 +77,7 @@ public class ClothingSystem : MonoBehaviour {
 			baseObj = BaseObjList [(int)BaseObj.HEAD];
 			break;
 		case ClothParts.BODY:
+		case ClothParts.CHEST:
 			baseObj = BaseObjList [(int)BaseObj.SPINE];
 			break;
 		case ClothParts.ARM_L:
@@ -97,6 +124,8 @@ public class ClothingSystem : MonoBehaviour {
 			return id + "_eyes";
 		case ClothParts.BODY:
 			return id + "_body";
+		case ClothParts.CHEST:
+			return id + "_chest";
 		case ClothParts.ARM_L:
 			return id + "_leftarm";
 		case ClothParts.ARM_R:
