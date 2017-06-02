@@ -116,47 +116,56 @@ public class ClothingSystem : MonoBehaviour {
 		clothObj.transform.localPosition = clothData.GetPositionVec ();
 	}
 
-	public static string GetClothingID(ClothParts type, string id) {
+	public static string GetClothingID(ClothParts type, string groupId) {
 		switch (type) {
 		case ClothParts.HAIR:
-			return id + "_hair";
+			return groupId + "_hair";
 		case ClothParts.EYES:
-			return id + "_eyes";
+			return groupId + "_eyes";
 		case ClothParts.BODY:
-			return id + "_body";
+			return groupId + "_body";
 		case ClothParts.CHEST:
-			return id + "_chest";
+			return groupId + "_chest";
 		case ClothParts.ARM_L:
-			return id + "_leftarm";
+			return groupId + "_leftarm";
 		case ClothParts.ARM_R:
-			return id + "_rightarm";
+			return groupId + "_rightarm";
 		case ClothParts.HIP:
-			return id + "_lowerbody";
+			return groupId + "_lowerbody";
 		case ClothParts.LEG_UPPER_L:
-			return id + "_leftightsupper";
+			return groupId + "_leftightsupper";
 		case ClothParts.LEG_UPPER_R:
-			return id + "_righttightsupper";
+			return groupId + "_righttightsupper";
 		case ClothParts.LEG_LOWER_L:
-			return id + "_lefttightslower";
+			return groupId + "_lefttightslower";
 		case ClothParts.LEG_LOWER_R:
-			return id + "_righttightslower";
+			return groupId + "_righttightslower";
 		}
 
-		Debug.LogError ("Error getting ClothData ID: " + id + ", Type: " + type);
+		Debug.LogError ("Error getting ClothData ID: " + groupId + ", Type: " + type);
 		return "";
 	}
 
 	public static void AutoClothGenerator(CharaData.Gender gender = CharaData.Gender.Male) {
+		RandomGenClothParts (ClothParts.HAIR, gender);
+	}
+
+	private static ClothData RandomGenClothParts(ClothParts type, CharaData.Gender gender) {
+		//ジェンダー別のGroupIDリスト取得
 		List<string> groupIdList = ClothDataTableObject.Instance.GetGroupIdList (gender);
 
+		//服のグループIDを取得
+		int rnd = UnityEngine.Random.Range(0, groupIdList.Count);
+		string groupId = groupIdList[rnd];
 
+		//服のIDを取得
+		string clothId = GetClothingID (type, groupId);
 
-		//髪、目決め
-		string groupId = groupIdList[UnityEngine.Random.Range(0, groupIdList.Count)];
-		List<ClothData> clothDataList = ClothDataTableObject.Instance.GetClothListByGroupId (groupId);
-		ClothData hairData = clothDataList.FirstOrDefault (tmpClothData => tmpClothData.ID == groupId + "_hair");
+		//ClothDataを取得
+		ClothData clothData = ClothDataTableObject.Instance.GetParams (clothId);
 
-		Debug.LogError ("@@@@@@@@@@@@@@@" + hairData.ID);
+		Debug.LogError ("@@@@@@@@@@@: " + clothData.ID);
 
+		return clothData;
 	}
 }

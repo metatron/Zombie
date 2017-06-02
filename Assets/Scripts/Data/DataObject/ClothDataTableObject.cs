@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class ClothDataTableObject : SingletonMonoBehaviourFast<ClothDataTableObject> {
 	private ClothDataTable _table = new ClothDataTable();
@@ -43,19 +44,13 @@ public class ClothDataTableObject : SingletonMonoBehaviourFast<ClothDataTableObj
 			if (!clothListByGroupId.ContainsKey (data.GroupID)) {
 				List<ClothData> groupClothDataList = new List<ClothData> ();
 				groupClothDataList.Add (data);
+				clothListByGroupId.Add (data.GroupID, groupClothDataList);
 			} 
 			//GroupIDが存在した場合はdata.IDがClothリストに存在しなかった場合はリストに追加
 			else {
-				List<ClothData> groupClothDataList = clothListByGroupId [data.GroupID];
-				bool included = false;
-				foreach (ClothData clothData in groupClothDataList) {
-					if (clothData.ID == data.ID) {
-						included = true;
-						break;
-					}
-				}
-				if (!included) {
-					groupClothDataList.Add (data);
+				ClothData foundCloth = clothListByGroupId [data.GroupID].FirstOrDefault (tmpClothData => tmpClothData.ID == data.ID);
+				if (foundCloth == null) {
+					clothListByGroupId [data.GroupID].Add (data);
 				}
 			}
 		}
