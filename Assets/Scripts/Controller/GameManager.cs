@@ -62,21 +62,21 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		//キャラチェック
 		else if (scene.name == "CharacterTest") {
 			GameObject femaleObj = GameObject.Find ("Female1");
-			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.HAIR, "fc1");
-			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.EYES, "fc1", Color.red);
-			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.ARM_L, "fc1", Color.black);
-			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.ARM_R, "fc1", Color.black);
+//			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.HAIR, "fc1");
+//			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.EYES, "fc1", Color.red);
+//			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.ARM_L, "fc1", Color.black);
+//			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.ARM_R, "fc1", Color.black);
 //			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.BODY, "fc1", Color.black);
-			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.CHEST, "fc1", Color.black);
-			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.HIP, "fc1", Color.black);
-			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.LEG_UPPER_L, "fc1", Color.black);
-			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.LEG_UPPER_R, "fc1", Color.black);
-			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.LEG_LOWER_L, "fc1", Color.black);
-			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.LEG_LOWER_R, "fc1", Color.black);
-			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.SHOES, "fc1", Color.white);
+//			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.CHEST, "fc1", Color.black);
+//			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.HIP, "fc1", Color.black);
+//			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.LEG_UPPER_L, "fc1", Color.black);
+//			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.LEG_UPPER_R, "fc1", Color.black);
+//			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.LEG_LOWER_L, "fc1", Color.black);
+//			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.LEG_LOWER_R, "fc1", Color.black);
+//			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.SHOES, "fc1", Color.white);
 
 			//
-			ClothingSystem.AutoClothGenerator(CharaData.Gender.Female);
+			ClothingSystem.AutoClothGenerator(femaleObj.GetComponent<ClothingSystem> (), CharaData.Gender.Female);
 		}
 	}
 

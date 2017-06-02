@@ -41,6 +41,18 @@ public class ClothingSystem : MonoBehaviour {
 	//靴
 	public List<SpriteRenderer> ShoesList = new List<SpriteRenderer>();
 
+	private static List<Color> ColorList = new List<Color> () {
+		Color.white,
+		Color.red,
+		Color.blue,
+		Color.black,
+		Color.cyan,
+		Color.gray,
+		Color.green,
+		Color.yellow,
+		Color.magenta
+	};
+
 	/**
 	 * 
 	 * 服をセットする。
@@ -146,8 +158,72 @@ public class ClothingSystem : MonoBehaviour {
 		return "";
 	}
 
-	public static void AutoClothGenerator(CharaData.Gender gender = CharaData.Gender.Male) {
-		RandomGenClothParts (ClothParts.HAIR, gender);
+
+	/**
+	 * 
+	 * キャラオブジェクトと性別を元に、
+	 * 服の形と色をランダムに決める。
+	 * 
+	 * 返り値はセーブ用のデータ文字列。
+	 * <箇所>@<服グループID>@<R>&<G>&<B>|
+	 * 
+	 * ex)
+	 * hair@GroupID@r&g&b|eye@GroupID@r&g&b|....
+	 * 
+	 * 
+	 */
+	public static string AutoClothGenerator(ClothingSystem CharacterObject, CharaData.Gender gender = CharaData.Gender.Male) {
+		//髪
+		Color rndColor = RandomGenColor();
+		ClothData clothData = RandomGenClothParts (ClothParts.HAIR, gender);
+		CharacterObject.SetClothParts (ClothingSystem.ClothParts.HAIR, clothData.GroupID, rndColor);
+		string clothDataStr = ClothParts.HAIR + "@" + clothData.GroupID + "@" + rndColor.r + "&" + rndColor.g + "&" + rndColor.b + "|";
+
+		//目
+		rndColor = RandomGenColor();
+		clothData = RandomGenClothParts (ClothParts.EYES, gender);
+		CharacterObject.SetClothParts (ClothingSystem.ClothParts.EYES, clothData.GroupID, rndColor);
+		clothDataStr += ClothParts.EYES + "@" + clothData.GroupID + "@" + rndColor.r + "&" + rndColor.g + "&" + rndColor.b + "|";
+
+		//胸
+		if (gender == CharaData.Gender.Female) {
+			rndColor = RandomGenColor ();
+			clothData = RandomGenClothParts (ClothParts.CHEST, gender);
+			CharacterObject.SetClothParts (ClothingSystem.ClothParts.CHEST, clothData.GroupID, rndColor);
+			clothDataStr += ClothParts.CHEST + "@" + clothData.GroupID + "@" + rndColor.r + "&" + rndColor.g + "&" + rndColor.b + "|";
+		}
+
+		//服
+		rndColor = RandomGenColor ();
+		clothData = RandomGenClothParts (ClothParts.BODY, gender);
+		CharacterObject.SetClothParts (ClothingSystem.ClothParts.BODY, clothData.GroupID, rndColor);
+		clothDataStr += ClothParts.BODY + "@" + clothData.GroupID + "@" + rndColor.r + "&" + rndColor.g + "&" + rndColor.b + "|";
+
+		//腕
+		rndColor = RandomGenColor();
+		clothData = RandomGenClothParts (ClothParts.ARM_L, gender);
+		CharacterObject.SetClothParts (ClothingSystem.ClothParts.ARM_L, clothData.GroupID, rndColor);
+		CharacterObject.SetClothParts (ClothingSystem.ClothParts.ARM_R, clothData.GroupID, rndColor);
+		clothDataStr += "ARM@" + clothData.GroupID + "@" + rndColor.r + "&" + rndColor.g + "&" + rndColor.b + "|";
+
+		//腰
+		rndColor = RandomGenColor();
+		clothData = RandomGenClothParts (ClothParts.HIP, gender);
+		CharacterObject.SetClothParts (ClothingSystem.ClothParts.HIP, clothData.GroupID, rndColor);
+		clothDataStr += ClothParts.HIP + "@" + clothData.GroupID + "@" + rndColor.r + "&" + rndColor.g + "&" + rndColor.b + "|";
+
+		//足
+		rndColor = RandomGenColor();
+		clothData = RandomGenClothParts (ClothParts.LEG_UPPER_L, gender);
+		CharacterObject.SetClothParts (ClothingSystem.ClothParts.LEG_UPPER_L, clothData.GroupID, rndColor);
+		CharacterObject.SetClothParts (ClothingSystem.ClothParts.LEG_UPPER_R, clothData.GroupID, rndColor);
+		CharacterObject.SetClothParts (ClothingSystem.ClothParts.LEG_LOWER_L, clothData.GroupID, rndColor);
+		CharacterObject.SetClothParts (ClothingSystem.ClothParts.LEG_LOWER_R, clothData.GroupID, rndColor);
+		clothDataStr += "LEG@" + clothData.GroupID + "@" + rndColor.r + "&" + rndColor.g + "&" + rndColor.b;
+
+		Debug.LogError (clothDataStr);
+
+		return clothDataStr;
 	}
 
 	private static ClothData RandomGenClothParts(ClothParts type, CharaData.Gender gender) {
@@ -161,11 +237,19 @@ public class ClothingSystem : MonoBehaviour {
 		//服のIDを取得
 		string clothId = GetClothingID (type, groupId);
 
-		//ClothDataを取得
+		//ClothDataを取得（あるかどうか確認)
 		ClothData clothData = ClothDataTableObject.Instance.GetParams (clothId);
 
-		Debug.LogError ("@@@@@@@@@@@: " + clothData.ID);
+		if (clothData != null) {
+			return clothData;
+		}
 
-		return clothData;
+		return null;
 	}
+
+	private static Color RandomGenColor() {
+		int rnd = UnityEngine.Random.Range (0, ColorList.Count);
+		return ColorList [rnd];
+	}
+
 }
