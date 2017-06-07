@@ -39,7 +39,11 @@ public class BattlePositionController : MonoBehaviour {
 
 				//自分が設置されていたら色変化
 				if (npcID == charaData.ID) {
-					SetDisableButtonColor (BattlePosBtnList [i].GetComponent<Button> (), new Color(0.0f, 0.0f, 1.0f, 0.3f));
+					SetDisableButtonColor (BattlePosBtnList [i].GetComponent<Button> (), new Color (0.0f, 0.0f, 1.0f, 0.3f));
+				}
+				//自分以外の場合は灰色
+				else {
+					SetDisableButtonColor (BattlePosBtnList [i].GetComponent<Button> (), new Color (0.8f, 0.8f, 0.8f, 0.5f));
 				}
 			} 
 
