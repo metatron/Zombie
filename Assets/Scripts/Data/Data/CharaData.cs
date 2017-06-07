@@ -54,6 +54,9 @@ public class CharaData {
 	//体の見た目
 	public string BodyPrefab { get; set; }
 
+	//服
+	public string ClothDataStr { get; set;}
+
 
 	//バトルの位置。0は参加しない（NPC ONLY）
 	private int _battlePos = -1;

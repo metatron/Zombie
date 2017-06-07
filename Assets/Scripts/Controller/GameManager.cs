@@ -75,8 +75,9 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 //			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.LEG_LOWER_R, "fc1", Color.black);
 //			femaleObj.GetComponent<ClothingSystem> ().SetClothParts (ClothingSystem.ClothParts.SHOES, "fc1", Color.white);
 
-			//
-			ClothingSystem.AutoClothGenerator(femaleObj.GetComponent<ClothingSystem> (), CharaData.Gender.Female);
+			string dataStr = ClothingSystem.AutoClothGenerator (CharaData.Gender.Female);//, femaleObj.GetComponent<ClothingSystem> ());
+//			string dataStr = "HAIR@fc1@0.719169&0.447556&0.4697548|EYES@fc1@0.7424355&0.2206098&0.7012246|CHEST@fc1@0.03907001&0.8151758&0.9653349|BODY@fc1@0.6807265&0.6312014&0.2544544|ARM_L@fc1@0.269041&0.2703423&0.1016339|ARM_R@fc1@0.269041&0.2703423&0.1016339|HIP@fc1@0.7930905&0.9369744&0.877869|LEG_UPPER_L@fc1@0.8081599&0.3799738&0.527169|LEG_UPPER_R@fc1@0.8081599&0.3799738&0.527169|LEG_LOWER_L@fc1@0.8081599&0.3799738&0.527169|LEG_LOWER_R@fc1@0.8081599&0.3799738&0.527169";
+			femaleObj.GetComponent<ClothingSystem> ().SetClothPartsByStringData (dataStr);
 		}
 	}
 

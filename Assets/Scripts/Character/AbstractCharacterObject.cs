@@ -43,6 +43,11 @@ public class AbstractCharacterObject : MonoBehaviour {
 		}
 		_swordObject = weaponPosObj.GetComponent<SwordObject>();
 
+		//服を着せる
+		if (GetComponent<ClothingSystem> () != null) {
+			GetComponent<ClothingSystem> ().SetClothPartsByStringData (charaData.ClothDataStr);
+		}
+
 		//ディフォルトは右向き
 		FaceTo(dir);
 

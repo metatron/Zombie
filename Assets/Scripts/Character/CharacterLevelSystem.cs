@@ -42,7 +42,7 @@ public class CharacterLevelSystem {
 	}
 
 
-	public static CharaData GenerateCharacterData(int rarity) {
+	public static CharaData GenerateCharacterData(int rarity, int gender = -1) {
 		CharaData genCharData = new CharaData ();
 
 		//ID生成
@@ -91,9 +91,17 @@ public class CharacterLevelSystem {
 		genCharData.MaxAtk = maxAtk;
 
 		//gender
-		genCharData.gender = (CharaData.Gender)Enum.ToObject(typeof(CharaData.Gender), UnityEngine.Random.Range(0,1));
+		if (gender >= 0) {
+			genCharData.gender = (CharaData.Gender)Enum.ToObject(typeof(CharaData.Gender), gender);
+		} 
+		else {
+			genCharData.gender = (CharaData.Gender)Enum.ToObject (typeof(CharaData.Gender), UnityEngine.Random.Range (0, 1));
+		}
 
 		genCharData.BodyPrefab = "Female1";
+
+		//服を生成
+		genCharData.ClothDataStr = ClothingSystem.AutoClothGenerator(genCharData.gender);
 
 		//favorite weapon
 		genCharData.favoriteWpn = (CharaData.WeaponType)Enum.ToObject(typeof(CharaData.WeaponType), UnityEngine.Random.Range(0,1));

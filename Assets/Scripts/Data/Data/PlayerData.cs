@@ -31,7 +31,7 @@ public class PlayerData {
 		_itemOwnedDictionary ["Metal"] = 10;
 
 		//プレイヤーキャラの初期化
-		playerCharData = CharacterLevelSystem.GenerateCharacterData (1);
+		playerCharData = CharacterLevelSystem.GenerateCharacterData (1, (int)CharaData.Gender.Male);
 		playerCharData.ID = PLAYERID;
 		playerCharData.Name = "Player";
 		playerCharData.SwordID = "swd2";
@@ -39,7 +39,7 @@ public class PlayerData {
 
 		//TODO テスト的に追加
 		if (playerNpcDictionary.Count == 0) {
-			CharaData chardata = CharacterLevelSystem.GenerateCharacterData (1);
+			CharaData chardata = CharacterLevelSystem.GenerateCharacterData (1, (int)CharaData.Gender.Female);
 			chardata.Name = "Mia";
 			chardata.BodyPrefab = "Female1";
 			chardata.SwordID = "swd1";
@@ -47,7 +47,7 @@ public class PlayerData {
 
 			playerNpcDictionary.Add (chardata.ID, chardata);
 
-			chardata = CharacterLevelSystem.GenerateCharacterData (1);
+			chardata = CharacterLevelSystem.GenerateCharacterData (1, (int)CharaData.Gender.Female);
 			chardata.Name = "Mia";
 			chardata.BodyPrefab = "Female1";
 			chardata.SwordID = "";
