@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 45276423adf824b098b32cd3138dff9b
-timeCreated: 1496120004
+timeCreated: 1496982476
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -15,6 +15,14 @@ TextureImporter:
     21300016: fc1_leftightsupper
     21300018: fc1_hair
     21300020: fc1_eyes
+    21300022: fc2_rightarm
+    21300024: fc2_lefttightslower
+    21300026: fc2_leftarm
+    21300028: fc2_leftightsupper
+    21300030: fc2_righttightslower
+    21300032: fc2_righttightsupper
+    21300034: fc2_body
+    21300036: fc2_lowerbody
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -100,8 +108,8 @@ TextureImporter:
       name: fc1_chest
       rect:
         serializedVersion: 2
-        x: 57
-        y: 99
+        x: 187
+        y: 0
         width: 34
         height: 17
       alignment: 0
@@ -113,8 +121,8 @@ TextureImporter:
       name: fc1_righttightsupper
       rect:
         serializedVersion: 2
-        x: 99
-        y: 105
+        x: 223
+        y: 0
         width: 25
         height: 22
       alignment: 0
@@ -140,7 +148,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 137
-        y: 58
+        y: 92
         width: 23
         height: 31
       alignment: 0
@@ -165,8 +173,8 @@ TextureImporter:
       name: fc1_lefttightslower
       rect:
         serializedVersion: 2
-        x: 99
-        y: 71
+        x: 137
+        y: 26
         width: 24
         height: 32
       alignment: 0
@@ -192,7 +200,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 137
-        y: 26
+        y: 60
         width: 24
         height: 30
       alignment: 0
@@ -204,8 +212,8 @@ TextureImporter:
       name: fc1_leftightsupper
       rect:
         serializedVersion: 2
-        x: 187
-        y: 0
+        x: 211
+        y: 26
         width: 25
         height: 21
       alignment: 0
@@ -234,6 +242,110 @@ TextureImporter:
         y: 0
         width: 48
         height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: fc2_rightarm
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 26
+        width: 17
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: fc2_lefttightslower
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 26
+        width: 23
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: fc2_leftarm
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 26
+        width: 21
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: fc2_leftightsupper
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 58
+        width: 25
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: fc2_righttightslower
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 99
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: fc2_righttightsupper
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 81
+        width: 25
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: fc2_body
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 71
+        width: 32
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: fc2_lowerbody
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 99
+        width: 40
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

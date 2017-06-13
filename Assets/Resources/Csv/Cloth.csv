@@ -10,3 +10,11 @@ fc1_leftightsupper,fc1,fc1_leftightsupper,fc1_leftightsupper,0.1943374|0.0641515
 fc1_righttightslower,fc1,fc1_righttightslower,fc1_righttightslower,0.09992717|0.06235408|0,0|0|100.19,17
 fc1_righttightsupper,fc1,fc1_righttightsupper,fc1_righttightsupper,0.239|0.074|0,0|0|124.0973,17
 fc1_lowerbody,fc1,fc1_lowerbody,fc1_lowerbody,0.008|-0.061|0,0|0|270,33
+fc2_rightarm,fc2,fc2_rightarm,fc2_rightarm,0.118|-0.001|0,0|0|102.0303,11
+fc2_leftarm,fc2,fc2_leftarm,fc2_leftarm,0.138|-0.008|0,0|0|56.38204,41
+fc2_body,fc2,fc2_body,fc2_body,0.153|-0.011|0,0|0|282.1571,21
+fc2_lefttightslower,fc2,fc2_lefttightslower,fc2_lefttightslower,0.1069214|0.05046959|0,0|0|64.74227,32
+fc2_leftightsupper,fc2,fc2_leftightsupper,fc2_leftightsupper,0.186|0.063|0,0|0|108.9989,32
+fc2_righttightslower,fc2,fc2_righttightslower,fc2_righttightslower,0.096|0.073|0,0|0|100.19,17
+fc2_righttightsupper,fc2,fc2_righttightsupper,fc2_righttightsupper,0.232|0.078|0,0|0|124.0973,17
+fc2_lowerbody,fc2,fc2_lowerbody,fc2_lowerbody,0.018|0|0,0|0|273.9828,33

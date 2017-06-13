@@ -16,7 +16,7 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 	public SwordDataTableObject _swordDataTableObj;
 	public GunDataTableObject _gunDataTableObj;
 //	public FoodDataTableObject _foodDataTableObj;
-//	public ToolDataTableObject _toolDataTableObj;
+	public ToolItemDataTableObject _toolDataTableObj;
 	public CraftItemDataTableObject _craftItemDataTableObj;
 
 	public GameObject swordDataTabViewportContent;
@@ -41,6 +41,9 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 		}
 		if (!_gunDataTableObj.isInitialized()) {
 			_gunDataTableObj.InitData();
+		}
+		if (!_toolDataTableObj.isInitialized()) {
+			_toolDataTableObj.InitData();
 		}
 		if (!_craftItemDataTableObj.isInitialized()) {
 			_craftItemDataTableObj.InitData();
@@ -78,6 +81,10 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 			//List<GunData>をList<AbstractData>にConvert。
 			itemList = _gunDataTableObj.Table.All.ConvertAll<AbstractData> (x => (AbstractData)x);
 			atlasName = "WeaponAtlas";
+		}
+		else if(typeof(T) == typeof(ToolItemData)) { 
+			itemList = _toolDataTableObj.Table.All.ConvertAll<AbstractData> (x => (AbstractData)x);
+			atlasName = "ItemAtlas";
 		}
 		else if(typeof(T) == typeof(CraftItemData)) { 
 			itemList = _craftItemDataTableObj.Table.All.ConvertAll<AbstractData> (x => (AbstractData)x);
@@ -117,6 +124,15 @@ public class CraftUiController : SingletonMonoBehaviourFast<CraftUiController> {
 		//Gun初期化
 		UiController.Instance.ResetContent(gunDataTabViewportContent);
 		InitItemObjButton<GunData> (gunDataTabViewportContent,
+			//ボタンが押された時の挙動を追加
+			(AbstractData itemData) => {
+				CraftUiController.Instance.createPanel.GetComponent<CreatePanel> ().InitItemCraftingData (itemData);
+			}
+		);
+
+		//toolitem初期化
+		UiController.Instance.ResetContent(toolDataTabViewportContent);
+		InitItemObjButton<ToolItemData> (toolDataTabViewportContent,
 			//ボタンが押された時の挙動を追加
 			(AbstractData itemData) => {
 				CraftUiController.Instance.createPanel.GetComponent<CreatePanel> ().InitItemCraftingData (itemData);

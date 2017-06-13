@@ -110,5 +110,36 @@ public class ClothDataTableObject : SingletonMonoBehaviourFast<ClothDataTableObj
 		return femaleGroupIdList;
 	}
 
+	/**
+	 * 
+	 * type別にグループIDのリストを選出。
+	 * TODO: スピード
+	 * 
+	 * 
+	 */
+	public List<string> GetGroupIdList(CharaData.Gender gender, ClothingSystem.ClothParts type) {
+		string searchGroup = "mc";
+		if (gender == CharaData.Gender.Female) {
+			searchGroup = "fc";
+		}
+
+		List<string> groupList = new List<string> ();
+		foreach (ClothData data in _table.All) {
+			//男女で区別
+			if (!data.Name.Contains (searchGroup)) {
+				continue;
+			}
+
+			//探してるtypeかどうかチェック
+			string searchingID = ClothingSystem.GetClothingID (type, data.GroupID);
+			if (data.ID != searchingID) {
+				continue;
+			}
+
+			groupList.Add (data.GroupID);
+		}
+
+		return groupList;
+	}
 
 }

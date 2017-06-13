@@ -286,14 +286,12 @@ public class ClothingSystem : MonoBehaviour {
 			clothDataStr = clothDataStr.Substring (0, clothDataStr.Length - 1);
 		}
 
-		Debug.LogError (clothDataStr);
-
 		return clothDataStr;
 	}
 
 	private static ClothData RandomGenClothParts(ClothParts type, CharaData.Gender gender) {
 		//ジェンダー別のGroupIDリスト取得
-		List<string> groupIdList = ClothDataTableObject.Instance.GetGroupIdList (gender);
+		List<string> groupIdList = ClothDataTableObject.Instance.GetGroupIdList (gender, type);
 
 		if (groupIdList.Count == 0) {
 			return null;

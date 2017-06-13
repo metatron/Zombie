@@ -8,6 +8,7 @@ using UnityEditor;
 public class ClothExporterEditor : EditorWindow {
 
 	private GameObject dataCharacterAsset;
+	private string groupId = "fc1";
 
 	[MenuItem ("Zombie/ClothExporterEditor")]
 	static void Init() {
@@ -20,11 +21,12 @@ public class ClothExporterEditor : EditorWindow {
 	}
 
 	void OnGUI() {
+
 		//Load data from file
 		dataCharacterAsset = Selection.activeGameObject;
 
-		string groupId = EditorGUILayout.TextField("Cloth name ID: ", "fc1");
-
+		groupId = EditorGUILayout.TextField("Cloth name ID: ", groupId);
+		Debug.LogError ("*****groupId: " + groupId);
 		if (dataCharacterAsset == null) {
 			return;
 		}
@@ -56,6 +58,5 @@ public class ClothExporterEditor : EditorWindow {
 		areaTextStyle.stretchHeight = true;
 		areaTextStyle.stretchWidth = true;
 		GUI.TextArea(new Rect(10, 50, 600, 500), csvText, areaTextStyle);
-
 	}
 }

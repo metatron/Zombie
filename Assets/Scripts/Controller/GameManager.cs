@@ -34,6 +34,7 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		RarityDataTableObject.Instance.InitData ();
 		ExperienceDataTableObject.Instance.InitData ();
 		ClothDataTableObject.Instance.InitData ();
+		ToolItemDataTableObject.Instance.InitData ();
 
 		Scene scene = SceneManager.GetActiveScene();
 		//プレイヤー初期化
