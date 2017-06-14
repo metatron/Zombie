@@ -62,4 +62,12 @@ public class UiController : SingletonMonoBehaviourFast<UiController> {
 		UnusedExpPoint.text = "Unused Exp Point:\n" + PlayerData.unusedExpPoints;
 	}
 
+	public GameObject GetHeadThumbnail(CharaData charData) {
+		GameObject headObj = (GameObject)Instantiate((GameObject)Resources.Load ("Prefabs/UI/CharThumbnail")) as GameObject;
+
+		return headObj;
+	}
+
+
+
 }

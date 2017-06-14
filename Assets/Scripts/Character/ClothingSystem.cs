@@ -4,6 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/**
+ * 
+ * キャラクタの服を自動生成したり、stringデータから服を生成したりする。
+ * 
+ * 
+ * 
+ * 
+ */
 public class ClothingSystem : MonoBehaviour {
 	public enum ClothParts : int {
 		HAIR,			//0

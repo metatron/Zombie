@@ -79,5 +79,4 @@ public class CharaData {
 
 	public Gender gender = Gender.Male;
 	public WeaponType favoriteWpn = WeaponType.Sword;
-
 }
