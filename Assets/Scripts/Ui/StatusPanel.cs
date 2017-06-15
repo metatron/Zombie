@@ -30,7 +30,10 @@ public class StatusPanel : MonoBehaviour {
 		_charData = charData;
 		CharacterLevelSystem.DisplayCharData (_charData);
 
-		//プレイヤーの場合はPlayerObjectをパネルに登録
+		//サムネイル準備
+		GameObject thumbnailObj = UiController.Instance.GetCharThumbnail(charData);
+		thumbnailObj.transform.SetParent (ItemImage.transform);
+		thumbnailObj.transform.localPosition = Vector3.zero;
 
 		//素材設置
 		ResetStatusPanelItems<SwordData>();
