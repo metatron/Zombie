@@ -10,6 +10,7 @@ public class StatusPanel : MonoBehaviour {
 
 	public Transform MaterialListPos;
 	public Image ItemImage;
+	private GameObject thumbnailObj;
 
 	//ボタンによってContentの中身を変える。ディフォルトはSword
 	public GameObject content;
@@ -31,9 +32,10 @@ public class StatusPanel : MonoBehaviour {
 		CharacterLevelSystem.DisplayCharData (_charData);
 
 		//サムネイル準備
-		GameObject thumbnailObj = UiController.Instance.GetCharThumbnail(charData);
+		thumbnailObj = UiController.Instance.GetCharThumbnail(charData);
 		thumbnailObj.transform.SetParent (ItemImage.transform);
-		thumbnailObj.transform.localPosition = Vector3.zero;
+		thumbnailObj.transform.localPosition = new Vector3(0, -28.0f, 0);
+		thumbnailObj.transform.localScale = new Vector3(40.0f, 40.0f, 40.0f);
 
 		//素材設置
 		ResetStatusPanelItems<SwordData>();
@@ -46,6 +48,9 @@ public class StatusPanel : MonoBehaviour {
 	}
 
 	public void CloseStatusPanel() {
+		//サムネ破棄
+		UiController.Instance.ResetContent(thumbnailObj);
+
 		gameObject.SetActive (false);
 	}
 

@@ -167,25 +167,20 @@ public class ClothingSystem : MonoBehaviour {
 		//各パーツに切り分け (clothPartsDataStrList[#] = hair@GroupID@r&g&b)
 		string[] clothPartsDataStrList = clothDataStr.Split ('|');
 		for (int i = 0; i < clothPartsDataStrList.Length; i++) {
-			Debug.LogError ("################1: " + clothPartsDataStrList[i]);
 			//"|"でsplitして空あはいっているかも
 			if (clothPartsDataStrList [i].Length == 0) {
 				continue;
 			}
-			Debug.LogError ("################2: " + clothPartsDataStrList[i]);
 
 			//パーツのタイプ、グループID、rgb情報に切り分け
 			string[] typeGroupIdRgbList = clothPartsDataStrList[i].Split('@');
 			ClothParts clothType = (ClothParts)Enum.Parse (typeof(ClothParts), typeGroupIdRgbList [0], true);
-			Debug.LogError ("################3: " + clothType);
 
-			//HEAD, EYE以外はcontinue;
-			if (clothType != ClothParts.EYES && clothType != ClothParts.HAIR) {
-				continue;
-			}
-
-			Debug.LogError ("################4: " + clothPartsDataStrList[i]);
-
+			//TODO: 軽くするためになんかする。。
+//			//HEAD, EYE以外はcontinue;
+//			if (clothType != ClothParts.EYES && clothType != ClothParts.HAIR) {
+//				continue;
+//			}
 
 			string groupId = typeGroupIdRgbList [1];
 			//色情報切り分け (double型）
@@ -197,6 +192,14 @@ public class ClothingSystem : MonoBehaviour {
 
 
 			thumbnailObj.GetComponent<ClothingSystem>().SetClothParts (clothType, groupId, clothColor);
+			thumbnailObj.gameObject.layer = 5; //UI
+
+			//UIのsortingLayerがDefaultのため、thumbnailのsortingLayerをNpcPos1にセット
+			SpriteRenderer[] sprites = thumbnailObj.GetComponentsInChildren<SpriteRenderer>();
+			foreach (SpriteRenderer sprite in sprites) {
+				sprite.gameObject.layer = 5;
+				sprite.sortingLayerName = "NpcPos1";
+			}
 		}
 
 	}

@@ -207,6 +207,7 @@ public class StageObject : MonoBehaviour {
 		if (rand <= RATIOLINE) {
 			CharaData genedChar = CharacterLevelSystem.GenerateCharacterData (rarity);
 			genedChar.gender = (CharaData.Gender)Enum.ToObject (typeof(CharaData.Gender), gender);
+			genedChar.ClothDataStr = ClothingSystem.AutoClothGenerator(genedChar.gender);
 
 			return genedChar;
 		}
