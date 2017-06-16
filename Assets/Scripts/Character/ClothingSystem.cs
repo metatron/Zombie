@@ -125,30 +125,6 @@ public class ClothingSystem : MonoBehaviour {
 	}
 
 
-	private static void SetClothParts4Thumbnail(ClothParts type, string id, Color color, GameObject baseObj) {
-		//データベースからデータを読み込み。
-		string ID = GetClothingID (type, id);
-		ClothData clothData = ClothDataTableObject.Instance.Table.All.FirstOrDefault(itemData => itemData.ID == ID);
-
-		if (clothData == null) {
-			Debug.LogError ("ERROR Cloth does not exists. TYPE: " + type + ", id: " + id);
-			return;
-		}
-
-		GameObject clothObj = new GameObject ();
-		clothObj.name = ID;
-
-		clothObj.transform.SetParent (baseObj.transform);
-		clothObj.AddComponent<SpriteRenderer> ().sprite = GameManager.Instance.GetSpriteFromPath("ClothAtlas", ID);
-		clothObj.GetComponent<SpriteRenderer> ().sortingOrder = clothData.OrderInLayer;
-		clothObj.GetComponent<SpriteRenderer> ().color = color;
-
-		clothObj.transform.localScale = Vector3.one;
-		clothObj.transform.localRotation = Quaternion.Euler (clothData.GetRotationVec ());
-		clothObj.transform.localPosition = clothData.GetPositionVec ();
-	}
-
-
 	/**
 	 * 
 	 * hair@GroupID@r&g&b|eye@GroupID@r&g&b|....
@@ -219,7 +195,8 @@ public class ClothingSystem : MonoBehaviour {
 			float b = (float)double.Parse (rgbStrList [2]);
 			Color clothColor = new Color (r, g, b);
 
-			SetClothParts4Thumbnail (clothType, groupId, clothColor, thumbnailObj);
+
+			thumbnailObj.GetComponent<ClothingSystem>().SetClothParts (clothType, groupId, clothColor);
 		}
 
 	}

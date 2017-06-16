@@ -63,9 +63,9 @@ public class UiController : SingletonMonoBehaviourFast<UiController> {
 	}
 
 	public GameObject GetCharThumbnail(CharaData charData) {
-		GameObject headObj = (GameObject)Instantiate((GameObject)Resources.Load ("Prefabs/UI/CharThumbnail")) as GameObject;
-		ClothingSystem.SetCharThumbnail (charData.ClothDataStr, headObj);
-		return headObj;
+		GameObject thumbnailObj = (GameObject)Instantiate((GameObject)Resources.Load ("Prefabs/Characters/Female1")) as GameObject;
+		ClothingSystem.SetCharThumbnail (charData.ClothDataStr, thumbnailObj);
+		return thumbnailObj;
 	}
 
 
