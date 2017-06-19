@@ -13,6 +13,16 @@ public class CharacterUI : MonoBehaviour {
 	public void InitCharaUI<T>(CharaData charData) where T: AbstractCharacterObject {
 		_charaData = charData;
 //		GameManager.Instance.InitCharObject<T> (charData);
+
+		if (string.IsNullOrEmpty (charData.ClothDataStr)) {
+			return;
+		}
+
+		GameObject thumbnailObj = UiController.Instance.GetCharThumbnail(charData);
+		thumbnailObj.transform.SetParent (charImg.transform);
+		thumbnailObj.transform.localPosition = new Vector3(0, -28.0f, 0);
+		thumbnailObj.transform.localScale = new Vector3(40.0f, 40.0f, 40.0f);
+
 	}
 
 	public void SetCharacterImageSize() {

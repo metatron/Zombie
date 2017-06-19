@@ -44,6 +44,7 @@ public class PlayerData {
 			chardata.BodyPrefab = "Female1";
 			chardata.SwordID = "swd1";
 			chardata.GunID = "";
+			Debug.LogError ("NPC1: " + chardata.ClothDataStr);
 
 			playerNpcDictionary.Add (chardata.ID, chardata);
 
@@ -52,6 +53,7 @@ public class PlayerData {
 			chardata.BodyPrefab = "Female1";
 			chardata.SwordID = "";
 			chardata.GunID = "gun1";
+			Debug.LogError ("NPC1: " + chardata.ClothDataStr);
 
 			playerNpcDictionary.Add (chardata.ID, chardata);
 
