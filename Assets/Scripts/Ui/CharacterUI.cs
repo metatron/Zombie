@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CharacterUI : MonoBehaviour {
-	public GameObject charImg;
 	public Text numText;
 	public Text nameText;
 
@@ -19,9 +18,12 @@ public class CharacterUI : MonoBehaviour {
 		}
 
 		GameObject thumbnailObj = UiController.Instance.GetCharThumbnail(charData);
-		thumbnailObj.transform.SetParent (charImg.transform);
+		thumbnailObj.transform.SetParent (gameObject.transform);
 		thumbnailObj.transform.localPosition = new Vector3(0, -28.0f, 0);
 		thumbnailObj.transform.localScale = new Vector3(40.0f, 40.0f, 40.0f);
+
+		//UIがの上にサムネが来てしまうので対処
+		UiController.Instance.characterThumbnailList.Add(thumbnailObj);
 
 	}
 
@@ -35,5 +37,10 @@ public class CharacterUI : MonoBehaviour {
 	 */
 	public void OnClickCharUI() {
 		CraftUiController.Instance.statusPanel.GetComponent<StatusPanel> ().InitCharStatus (_charaData);
+
+		//開いた際にサムネのレイヤーを変える
+		foreach (GameObject thumbnail in UiController.Instance.characterThumbnailList) {
+			Utils.ChangeSpriteRendererLayer (thumbnail, 0); //0: Default
+		}
 	}
 }

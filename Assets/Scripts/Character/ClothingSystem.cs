@@ -192,14 +192,9 @@ public class ClothingSystem : MonoBehaviour {
 
 
 			thumbnailObj.GetComponent<ClothingSystem>().SetClothParts (clothType, groupId, clothColor);
-			thumbnailObj.gameObject.layer = 5; //UI
 
 			//UIのsortingLayerがDefaultのため、thumbnailのsortingLayerをNpcPos1にセット
-			SpriteRenderer[] sprites = thumbnailObj.GetComponentsInChildren<SpriteRenderer>();
-			foreach (SpriteRenderer sprite in sprites) {
-				sprite.gameObject.layer = 5;
-				sprite.sortingLayerName = "NpcPos1";
-			}
+			Utils.ChangeSpriteRendererLayer(thumbnailObj, 5, "NpcPos1"); //UI: 5
 		}
 
 	}

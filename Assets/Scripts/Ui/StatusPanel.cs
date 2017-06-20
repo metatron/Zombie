@@ -51,6 +51,11 @@ public class StatusPanel : MonoBehaviour {
 		//サムネ破棄
 		UiController.Instance.ResetContent(thumbnailObj);
 
+		//CharacterPanel側のサムネを復活
+		foreach (GameObject thumbnail in UiController.Instance.characterThumbnailList) {
+			Utils.ChangeSpriteRendererLayer (thumbnail, 5); //5: UI
+		}
+
 		gameObject.SetActive (false);
 	}
 

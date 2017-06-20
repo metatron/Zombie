@@ -11,6 +11,9 @@ public class UiController : SingletonMonoBehaviourFast<UiController> {
 
 	public Text UnusedExpPoint;
 
+	//CharacterPanelのサムネ。（UIの上に来てしまうやつの対処
+	public List<GameObject> characterThumbnailList = new List<GameObject>();
+
 	void Start() {
 		_dialogPanel.SetActive (false);
 		_mapPanel.SetActive (false);
