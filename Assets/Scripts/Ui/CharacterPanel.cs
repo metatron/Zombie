@@ -48,6 +48,9 @@ public class CharacterPanel : MonoBehaviour {
 
 	public void OnCloseCharacterPanel() {
 		gameObject.SetActive (false);
+
+		//取っておいたサムネをすべて破棄
+		UiController.Instance.ResetCharThumbnail();
 	}
 
 }

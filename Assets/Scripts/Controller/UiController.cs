@@ -71,6 +71,11 @@ public class UiController : SingletonMonoBehaviourFast<UiController> {
 		return thumbnailObj;
 	}
 
-
+	public void ResetCharThumbnail() {
+		foreach (GameObject thumbnail in characterThumbnailList) {
+			Destroy (thumbnail);
+		}
+		characterThumbnailList.Clear ();
+	}
 
 }
