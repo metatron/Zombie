@@ -28,6 +28,20 @@ public class GUITabController : MonoBehaviour {
 				if (optionals.selectedTab.GetComponent<Button> () != null) {
 					optionals.selectedTab.GetComponent<Button> ().interactable = !b;
 					tab.gameObject.GetComponent<Button> ().interactable = b;
+
+					//ボタンの子オブジェクトのImageも半透明にする
+					float alpha = 1.0f;
+					if (!tab.gameObject.GetComponent<Button> ().interactable) {
+						alpha = 0.5f;
+					}
+
+					UnityEngine.UI.Image[] childImageArray = optionals.selectedTab.GetComponentsInChildren<UnityEngine.UI.Image>();
+					foreach (UnityEngine.UI.Image childImage in childImageArray) {
+						if (optionals.selectedTab.gameObject == childImage.gameObject) {
+							continue;
+						}
+						childImage.color = new Color (childImage.color.r, childImage.color.g, childImage.color.b, alpha);
+					}
 				}
 				//Buttonがない場合みせなくする
 				else {
