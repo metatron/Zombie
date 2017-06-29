@@ -30,12 +30,12 @@ public class CreatePanel : MonoBehaviour {
 		imgSize.x = 100;
 		itemImage.GetComponent<RectTransform> ().sizeDelta = imgSize;
 
-		//素材設置
-		Dictionary<AbstractData.DataType, int> requirementDict = _itemData.ParseRequirementStr ();
-		foreach (AbstractData.DataType dataType in requirementDict.Keys) {
-			int value = requirementDict [dataType];
+		//素材設置<ID, 数>
+		Dictionary<string, int> requirementDict = _itemData.ParseRequirementStr ();
+		foreach (string id in requirementDict.Keys) {
+			int value = requirementDict [id];
 			MaterialItem materialItem = (MaterialItem)Instantiate (materialItemPrefab);
-			materialItem.materialNum.text = dataType + " x" + value;
+			materialItem.materialNum.text = id + " x" + value;
 			materialItem.transform.SetParent (MaterialListPos);
 			materialItem.transform.localPosition = Vector3.zero;
 			materialItem.transform.localScale = Vector3.one;
@@ -58,16 +58,15 @@ public class CreatePanel : MonoBehaviour {
 
 
 	public void OnCreateItem() {
-		//作成に必要なもの
-		Dictionary<AbstractData.DataType, int> requirementDict = _itemData.ParseRequirementStr ();
+		//作成に必要なもの<ID, 数>
+		Dictionary<string, int> requirementDict = _itemData.ParseRequirementStr ();
 
 		//作れるかチェック
 		bool canCreate = true;
-		foreach (AbstractData.DataType reqDataType in requirementDict.Keys) {
+		foreach (string reqDataId in requirementDict.Keys) {
 			//自分の持ってる数
-			string reqData = Enum.GetName (typeof(AbstractData.DataType), reqDataType);
-			int numOwn = PlayerData.GetItemNum(reqData);
-			if (numOwn >= requirementDict [reqDataType]) {
+			int numOwn = PlayerData.GetItemNum(reqDataId);
+			if (numOwn >= requirementDict [reqDataId]) {
 				canCreate &= true;
 			}
 			//数が足りないのでbreak;
@@ -81,10 +80,9 @@ public class CreatePanel : MonoBehaviour {
 
 		//作れるなら素材消費
 		if (canCreate) {
-			foreach (AbstractData.DataType reqDataType in requirementDict.Keys) {
+			foreach (string reqDataId in requirementDict.Keys) {
 				//自分の持ってる数
-				string reqData = Enum.GetName (typeof(AbstractData.DataType), reqDataType);
-				PlayerData.UseItem(reqData, requirementDict [reqDataType]);
+				PlayerData.UseItem(reqDataId, requirementDict [reqDataId]);
 			}
 
 			//PlayerDataに追加
@@ -102,7 +100,7 @@ public class CreatePanel : MonoBehaviour {
 	private bool canCreateItem() {
 		//Wallは5つしか持てない
 		if (_itemData.ID.ToLower() == "wall") {
-			if (PlayerData.GetItemNum("Wall") < 5) {
+			if (PlayerData.GetItemNum("wall") < 5) {
 				return true;
 			} else {
 				return false;

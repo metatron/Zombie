@@ -53,42 +53,33 @@ public class AbstractMasterTable<T> where T : AbstractData, new() {
 
 
 public class AbstractData {
-	public enum DataType : int {
-		Material,
-		Metal,
-		Wood,
-		Cloth,
-		Sword,
-		Gun,
-		Tool
-	}
-
 	//プロジェクト毎に変更する値
 	public string ID { get; protected set; }
 	public string Name { get; protected set; }
 	public string Image { get; protected set; }
 	//exp: 
 	//Sword1
-	//Metal:3|Wood:1
+	//metal:3|wood:1
 	public string RequirementStr { get; private set; }
 
 	/**
 	 * 
-	 * RequirementStrをDataTypeずつの数に分けてDictionaryに纏めて返す。
+	 * RequirementStrをIDずつの数に分けてDictionaryに纏めて返す。
 	 * 
 	 */
-	public Dictionary<AbstractData.DataType, int> ParseRequirementStr() {
+	public Dictionary<string, int> ParseRequirementStr() {
 		if (RequirementStr == null || RequirementStr == "" || RequirementStr.Length == 0) {
 			return null;
 		}
-		Dictionary<AbstractData.DataType, int> requirementDict = new Dictionary<AbstractData.DataType, int> ();
+		//<ID, 数>
+		Dictionary<string, int> requirementDict = new Dictionary<string, int> ();
 
 		string[] requirementList = RequirementStr.Split ('|');
 		foreach (string requirementNumStr in requirementList) {
 			string[] requirementNum = requirementNumStr.Split (':');
-			AbstractData.DataType type = (AbstractData.DataType)Enum.Parse (typeof(AbstractData.DataType), requirementNum [0], true);
+			string id = requirementNum [0];
 			int num = Int32.Parse (requirementNum [1]);
-			requirementDict.Add (type, num);
+			requirementDict.Add (id, num);
 		}
 
 		return requirementDict;

@@ -17,7 +17,7 @@ public class BattlePositionController : MonoBehaviour {
 	public void InitButtons(CharaData charaData) {
 		_charaData = charaData;
 		//0はプレイヤーのとなり。1からWallの場所となるため+1
-		availablePos = PlayerData.GetItemNum ("Wall") + 1;
+		availablePos = PlayerData.GetItemNum ("wall") + 1;
 
 		for (int i=0; i<BattlePosBtnList.Count; i++) {
 			//playerだった場合は全部disable

@@ -1,5 +1,4 @@
 ID,Name,Image,RequirementStr
-Wood,Wood,wood,
-Metal,Metal,steel,
-Fuel,Fuel,gas,
-Wall,Wall,wall,Metal:1|wood:3
+wood,Wood,wood,
+metal,Metal,steel,
+fuel,Fuel,gas,

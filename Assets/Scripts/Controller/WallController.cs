@@ -12,7 +12,7 @@ public class WallController : SingletonMonoBehaviourFast<WallController> {
 
 	public void InitWallObjects() {
 		//0はプレイヤーの隣。常にON状態
-		int totalWallNum = PlayerData.GetItemNum ("Wall") + 1;
+		int totalWallNum = PlayerData.GetItemNum ("wall") + 1;
 		for (int i=0; i<totalWallNum; i++) {
 			GameObject wallObject = WallObjects [i];
 			wallObject.SetActive (true);

@@ -27,8 +27,8 @@ public class PlayerData {
 
 	public static void InitPlayerData() {
 		//保持しているマテリアル
-		_itemOwnedDictionary ["Wood"] = 10;
-		_itemOwnedDictionary ["Metal"] = 10;
+		_itemOwnedDictionary ["wood"] = 10;
+		_itemOwnedDictionary ["metal"] = 10;
 
 		//プレイヤーキャラの初期化
 		playerCharData = CharacterLevelSystem.GenerateCharacterData (1, (int)CharaData.Gender.Male);
@@ -85,6 +85,7 @@ public class PlayerData {
 	public static bool UseItem(string id, int num) {
 		//持ってないとエラー
 		if(!_itemOwnedDictionary.ContainsKey(id)) {
+			Debug.LogError ("Player does not have item: " + id);
 			return false;
 		}
 

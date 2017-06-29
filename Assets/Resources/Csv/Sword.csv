@@ -1,3 +1,3 @@
 ID,Name,Damage,ReachLength,Image,SwingEffect,RequirementStr
-swd1,Knife,1,1.5,sword1,SwordSwing1,Metal:3|wood:1
-swd2,Battle Knife,1.5,3,butcher,SwordSwing1,Metal:5|wood:1
+swd1,Knife,1,1.5,sword1,SwordSwing1,metal:3|wood:1
+swd2,Battle Knife,1.5,3,butcher,SwordSwing1,metal:5|wood:1
