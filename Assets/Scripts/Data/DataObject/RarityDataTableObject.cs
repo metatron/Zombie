@@ -18,7 +18,10 @@ public class RarityDataTableObject : SingletonMonoBehaviourFast<RarityDataTableO
 	}
 
 	public RarityData GetParams(string id) {
-		return (RarityData)dataDictionary [id];
+		if (dataDictionary.ContainsKey (id)) {
+			return (RarityData)dataDictionary [id];
+		}
+		return null;
 	}
 		
 

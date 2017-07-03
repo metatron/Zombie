@@ -26,7 +26,10 @@ public class ClothDataTableObject : SingletonMonoBehaviourFast<ClothDataTableObj
 	}
 
 	public ClothData GetParams(string id) {
-		return (ClothData)dataDictionary [id];
+		if (dataDictionary.ContainsKey (id)) {
+			return (ClothData)dataDictionary [id];
+		}
+		return null;
 	}
 		
 

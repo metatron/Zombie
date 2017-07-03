@@ -18,7 +18,10 @@ public class CraftItemDataTableObject : SingletonMonoBehaviourFast<CraftItemData
 	}
 
 	public CraftItemData GetParams(string id) {
-		return (CraftItemData)dataDictionary [id];
+		if (dataDictionary.ContainsKey (id)) {
+			return (CraftItemData)dataDictionary [id];
+		}
+		return null;
 	}
 		
 

@@ -18,7 +18,10 @@ public class SwordDataTableObject : SingletonMonoBehaviourFast<SwordDataTableObj
 	}
 
 	public SwordData GetParams(string id) {
-		return (SwordData)dataDictionary [id];
+		if (dataDictionary.ContainsKey (id)) {
+			return (SwordData)dataDictionary [id];
+		}
+		return null;
 	}
 		
 

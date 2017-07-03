@@ -18,7 +18,10 @@ public class ToolItemDataTableObject : SingletonMonoBehaviourFast<ToolItemDataTa
 	}
 
 	public ToolItemData GetParams(string id) {
-		return (ToolItemData)dataDictionary [id];
+		if (dataDictionary.ContainsKey (id)) {
+			return (ToolItemData)dataDictionary [id];
+		}
+		return null;
 	}
 		
 

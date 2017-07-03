@@ -19,7 +19,10 @@ public class GunDataTableObject : SingletonMonoBehaviourFast<GunDataTableObject>
 	}
 
 	public GunData GetParams(string id) {
-		return (GunData)dataDictionary [id];
+		if (dataDictionary.ContainsKey (id)) {
+			return (GunData)dataDictionary [id];
+		}
+		return null;
 	}
 		
 

@@ -35,6 +35,7 @@ public class CreatePanel : MonoBehaviour {
 		foreach (string id in requirementDict.Keys) {
 			int value = requirementDict [id];
 			MaterialItem materialItem = (MaterialItem)Instantiate (materialItemPrefab);
+			materialItem.SetUpMaterialItem (id);
 			materialItem.materialNum.text = id + " x" + value;
 			materialItem.transform.SetParent (MaterialListPos);
 			materialItem.transform.localPosition = Vector3.zero;

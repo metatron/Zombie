@@ -18,7 +18,10 @@ public class StageDataTableObject : SingletonMonoBehaviourFast<StageDataTableObj
 	}
 
 	public StageData GetParams(string id) {
-		return (StageData)dataDictionary [id];
+		if (dataDictionary.ContainsKey (id)) {
+			return (StageData)dataDictionary [id];
+		}
+		return null;
 	}
 		
 

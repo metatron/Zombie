@@ -125,6 +125,34 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		return sp;
 	}
 
+	public Sprite GetSpriteFromID(string id) {
+		//Search Sword Items
+		AbstractData searchingData = SwordDataTableObject.Instance.GetParams (id);
+		if (searchingData != null) {
+			return GetSpriteFromPath("WeaponAtlas", searchingData.Image);
+		}
+
+		//Search Gun Items
+		searchingData = GunDataTableObject.Instance.GetParams (id);
+		if (searchingData != null) {
+			return GetSpriteFromPath("WeaponAtlas", searchingData.Image);
+		}
+
+		//Search Tool Items
+		searchingData = ToolItemDataTableObject.Instance.GetParams (id);
+		if (searchingData != null) {
+			return GetSpriteFromPath("ItemAtlas", searchingData.Image);
+		}
+
+		//Search Material Items
+		searchingData = CraftItemDataTableObject.Instance.GetParams (id);
+		if (searchingData != null) {
+			return GetSpriteFromPath("ItemAtlas", searchingData.Image);
+		}
+
+		return null;
+	}
+
 
 	public void InitNpcObject() {
 		foreach (CharaData charData  in PlayerData.playerNpcDictionary.Values) {
