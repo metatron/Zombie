@@ -69,9 +69,13 @@ public class AbstractCharacterObject : MonoBehaviour {
 		if (charaData.BattlePosition == 0) {
 			sortingLayerName = "NpcPos1";
 		} 
-		//BattlePosition <= 5の場合は奥
-		else if (charaData.BattlePosition > 0 && charaData.BattlePosition <= 5) {
+		//BattlePosition <= MAX_WALL_NUM/2の場合は奥
+		else if (charaData.BattlePosition > 0 && charaData.BattlePosition <= (WallController.MAX_WALL_NUM / 2)) {
 			sortingLayerName = "NpcPos3";
+		}
+		//6以上10以下
+		else if (charaData.BattlePosition > (WallController.MAX_WALL_NUM / 2) && charaData.BattlePosition <= WallController.MAX_WALL_NUM) {
+			sortingLayerName = "NpcPos2";
 		}
 
 		return sortingLayerName;

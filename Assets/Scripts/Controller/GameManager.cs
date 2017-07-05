@@ -169,10 +169,9 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 			else {
 				Scene scene = SceneManager.GetActiveScene();
 				if (scene.name == "Main") {
-					npcObject.transform.position = WallController.Instance.GetWallObject (charData.BattlePosition).transform.position;
-					Vector3 tmpNpcPos = npcObject.transform.position;
-					tmpNpcPos.y = -0.0f;
-					npcObject.transform.position = tmpNpcPos;
+					Transform wallObj = WallController.Instance.GetWallObject (charData.BattlePosition).transform;
+					npcObject.transform.SetParent (wallObj);
+					npcObject.transform.localPosition = Vector3.zero;
 				}
 			}
 		}

@@ -101,7 +101,7 @@ public class CreatePanel : MonoBehaviour {
 	private bool canCreateItem() {
 		//Wallは5つしか持てない
 		if (_itemData.ID.ToLower() == "wall") {
-			if (PlayerData.GetItemNum("wall") < 5) {
+			if (PlayerData.GetItemNum("wall") < WallController.MAX_WALL_NUM) {
 				return true;
 			} else {
 				return false;

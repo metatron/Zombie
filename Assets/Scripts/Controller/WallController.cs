@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WallController : SingletonMonoBehaviourFast<WallController> {
+	public static int MAX_WALL_NUM = 10;
 
 	public List<GameObject> WallObjects = new List<GameObject>();
 
