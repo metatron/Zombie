@@ -171,7 +171,7 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 				if (scene.name == "Main") {
 					Transform wallObj = WallController.Instance.GetWallObject (charData.BattlePosition).transform;
 					npcObject.transform.SetParent (wallObj);
-					npcObject.transform.localPosition = Vector3.zero;
+					npcObject.transform.localPosition = new Vector3(0.0f, -0.3f, 0.0f);
 				}
 			}
 		}
