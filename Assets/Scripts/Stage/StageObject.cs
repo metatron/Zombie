@@ -169,13 +169,18 @@ public class StageObject : MonoBehaviour {
 	 * 
 	 */
 	public DropData MakeDrop() {
-		int MAX_NUM = 10000;
+		int total = 0;
 		foreach (DropData possibleDrop in dropDataList) {
-			float percent = possibleDrop.Percentage*MAX_NUM;
-			int rand = UnityEngine.Random.Range(0, MAX_NUM);
+			total += (int)possibleDrop.Percentage;
+		}
 
-			if (rand <= (int)(percent)) {
-				//drop
+		int rand = UnityEngine.Random.Range(0, total);
+
+		int index = 0;
+		foreach (DropData possibleDrop in dropDataList) {
+			index += (int)possibleDrop.Percentage;
+
+			if (rand <= index) {
 				return possibleDrop;
 			}
 		}

@@ -20,6 +20,7 @@ public class MapPanel : MonoBehaviour {
 					UiController.Instance.OpenDialogPanel("Goto " + stgData.Name + "?", 
 						//はい（InitStage）
 						()=> {
+							CloseMapPanel();
 							PlayerData.crntStageID = stgData.ID;
 							TransitionManager.Instance.FadeTo ("Main");
 						},
