@@ -23,7 +23,7 @@ public class StatusPanel : MonoBehaviour {
 	public Text CharExpPoint;
 	public Text CharSwdAtkPoint;
 	public Text CharGunAtkPoint;
-	public Text CharHpPoint;
+	public Text CharAtkPoint;
 
 
 	public void InitCharStatus(CharaData charData) {
@@ -169,7 +169,7 @@ public class StatusPanel : MonoBehaviour {
 				() => {
 					PlayerData.unusedExpPoints -= necessaryExpPoint;
 					_charData.Level++;
-					_charData.CurrentExp = necessaryExpPoint;
+					_charData.CurrentExp += necessaryExpPoint;
 
 					UpdateCharacterParam ();
 				},
@@ -186,24 +186,26 @@ public class StatusPanel : MonoBehaviour {
 		}
 	}
 
-	private void UpdateCharacterParam() {
+	public void UpdateCharacterParam() {
 		//プレイヤーのExpPoint表示
 		UnusedExpPoint.text = "Unused ExpPoint: " + PlayerData.unusedExpPoints;
 
 		//キャラクタレベル情報
 		CharLevel.text = "Lv: " + _charData.Level;
 		CharExpPoint.text = "Exp: " + _charData.CurrentExp;
+		CharAtkPoint.text = "Atk: " + _charData.CrntAtk();
 
-		CharGunAtkPoint.text = "GUN: 0";
+		CharGunAtkPoint.text = "GUN: Not Equiped";
 		if (!string.IsNullOrEmpty (_charData.GunID)) {
-			GunData gunData = GunDataTableObject.Instance.Table.All.FirstOrDefault (tmpData => tmpData.ID == _charData.GunID);
-			CharGunAtkPoint.text = "GUN: " + gunData.Damage + " x " + _charData.CrntAtk();
+//			GunData gunData = GunDataTableObject.Instance.Table.All.FirstOrDefault (tmpData => tmpData.ID == _charData.GunID);
+			GunData gunData = GunDataTableObject.Instance.GetParams(_charData.GunID);
+			CharGunAtkPoint.text = "GUN: x" + gunData.Damage;
 		}
 
-		CharSwdAtkPoint.text = "SWD: 0";
+		CharSwdAtkPoint.text = "SWD: Not Equiped";
 		if (!string.IsNullOrEmpty (_charData.SwordID)) {
 			SwordData swordData = SwordDataTableObject.Instance.Table.All.FirstOrDefault (tmpData => tmpData.ID == _charData.SwordID);
-			CharSwdAtkPoint.text = "SWD: " + swordData.Damage + " x " + _charData.CrntAtk();
+			CharSwdAtkPoint.text = "SWD: x" + swordData.Damage;
 		}
 	}
 
@@ -215,6 +217,7 @@ public class StatusPanel : MonoBehaviour {
 				OnEquiptItem<T>(itemData);
 			}
 		);
+		UpdateCharacterParam();
 	}
 
 }
