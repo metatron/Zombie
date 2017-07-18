@@ -20,9 +20,29 @@ public class MapPanel : MonoBehaviour {
 					UiController.Instance.OpenDialogPanel("Goto " + stgData.Name + "?", 
 						//はい（InitStage）
 						()=> {
-							CloseMapPanel();
-							PlayerData.crntStageID = stgData.ID;
-							TransitionManager.Instance.FadeTo ("Main");
+							//ハンガーレベル調査。
+							//死にそうな人がいればワーニング。
+							List<CharaData> hungryCharList = GameManager.Instance.CheckHungerLevel();
+							if(hungryCharList.Count > 0) {
+								UiController.Instance.OpenDialogPanel2("There are some hungry characters.\nGoing to battle will kill these characters.\nAre you sure?", 
+									//はい
+									() => {
+										//画面切り替え
+										CloseMapPanel();
+										PlayerData.crntStageID = stgData.ID;
+										TransitionManager.Instance.FadeTo ("Main");
+									},
+									//いいえ
+									() => {}
+								);
+							}
+
+							//誰も腹減ってない
+							else {
+								CloseMapPanel();
+								PlayerData.crntStageID = stgData.ID;
+								TransitionManager.Instance.FadeTo ("Main");
+							}
 						},
 						//いいえ（ただ消す）
 						()=>{}

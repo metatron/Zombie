@@ -20,7 +20,7 @@ public class PlayerObject : AbstractCharacterObject {
 		else {
 			injuredChar = GameManager.Instance.PlayerObject.charaData;
 		}
-		injuredChar.Injured = true;
+		injuredChar.IsDead = true;
 
 		UiController.Instance.OpenDialogPanel (injuredChar.Name + " has Injuered!", () => {
 			GameManager.Instance.PauseGame = false;

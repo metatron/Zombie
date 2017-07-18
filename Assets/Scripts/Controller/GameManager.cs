@@ -25,6 +25,10 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 	private bool _pauseGame = false;
 	public bool PauseGame { get {return _pauseGame; } set { _pauseGame = value; } }
 
+	//ステージセレクト時、ハンガーレベルが0のもの（ステージを始めたら死亡
+	private List<CharaData> _deadMenList = new List<CharaData>();
+	public List<CharaData> DeadMenList { get { return _deadMenList; } set { _deadMenList = value; } }
+
 	void Start() {
 		//データ初期化
 		SwordDataTableObject.Instance.InitData ();
@@ -156,7 +160,7 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 
 	public void InitNpcObject() {
 		foreach (CharaData charData  in PlayerData.playerNpcDictionary.Values) {
-			if (charData.BattlePosition == -1) {
+			if (charData.BattlePosition == -1 || charData.IsDead) {
 				continue;
 			}
 
@@ -199,6 +203,9 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 
 		CurrentStageObject = (GameObject)Instantiate(Resources.Load("Prefabs/Stages/" + crntStageData.BG));
 		CurrentStageObject.GetComponent<StageObject> ().InitStageObject (crntStageData);
+
+		//バトル参加してるキャラのハンガーレベル調整
+		ChangeHungerLevel();
 	}
 
 	public void DeleteAllEnemies() {
@@ -245,6 +252,87 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 				UiController.Instance.OpenMapPanel();
 			}
 		});
+	}
+
+
+	/**
+	 * 
+	 * ハンガーレベル調整
+	 * バトル参加: -20pt
+	 * その他: -10pt
+	 * 
+	 */
+	private void ChangeHungerLevel() {
+		//プレイヤーは必ず参加なので-20.
+		PlayerData.playerCharData.hunger -= 20.0f;
+		//最低0.0f
+		PlayerData.playerCharData.hunger = Mathf.Max (0.0f, PlayerData.playerCharData.hunger);
+
+		//NPC
+		foreach (CharaData charData in PlayerData.playerNpcDictionary.Values) {
+			//バトル参加
+			if (charData.BattlePosition > 0) {
+				charData.hunger -= 20.0f;
+			}
+			//その他
+			else {
+				charData.hunger -= 10.0f;
+			}
+
+			//最低0.0f
+			charData.hunger = Mathf.Max (0.0f, charData.hunger);
+		}
+	}
+
+	/**
+	 * 
+	 * 戦闘開始時にチェック。
+	 * hungerWarningListに値が存在すればワーニングを出す。
+	 * 
+	 * 
+	 */
+	public List<CharaData> CheckHungerLevel() {
+		List<CharaData> hungerWarningList = new List<CharaData> ();
+
+		//player check.
+		if (PlayerData.playerCharData.hunger <= 0.0f) {
+			hungerWarningList.Add (PlayerData.playerCharData);
+		}
+
+		//npc check
+		foreach (CharaData charData in PlayerData.playerNpcDictionary.Values) {
+			if (charData.hunger <= 0.0f) {
+				hungerWarningList.Add (charData);
+			}
+		}
+
+		return hungerWarningList;
+	}
+
+	/**
+	 *
+	 * ステージクリア時にハンガーレベルが0の奴らを殺す。
+	 * 死んだキャラクターのリストを返す。
+	 * 
+	 */
+	public List<CharaData> KillHungeryCharas() {
+		List<CharaData> killedCharaList = new List<CharaData> ();
+
+		//player check.
+		if (PlayerData.playerCharData.hunger <= 0.0f) {
+			PlayerData.playerCharData.IsDead = true;
+			killedCharaList.Add (PlayerData.playerCharData);
+		}
+
+		//npc check
+		foreach (CharaData charData in PlayerData.playerNpcDictionary.Values) {
+			if (charData.hunger <= 0.0f) {
+				charData.IsDead = true;
+				killedCharaList.Add (charData);
+			}
+		}
+
+		return killedCharaList;
 	}
 
 

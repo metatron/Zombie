@@ -88,6 +88,9 @@ public class CreatePanel : MonoBehaviour {
 
 			//PlayerDataに追加
 			PlayerData.AddItem(_itemData);
+
+			//NotifyUiで表示
+			UiController.Instance.NotifyPop("created " + _itemData.Name + " x1");
 		}//if
 	}
 

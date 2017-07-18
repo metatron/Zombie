@@ -49,7 +49,7 @@ public class CharaData {
 	public float atkIntervalCrnt = 2.0f;
 
 	//空腹度
-	public float hanger = 100.0f;
+	public float hunger = 100.0f;
 
 	//体の見た目
 	public string BodyPrefab { get; set; }
@@ -68,9 +68,9 @@ public class CharaData {
 	public string GunID { get; set; }
 
 
-	//怪我をしているかどうか
-	private bool _injured = false;
-	public bool Injured { get {return _injured; } set { _injured = value; } }
+	//怪我、飢餓をしているかどうか
+	private bool _isdead = false;
+	public bool IsDead { get {return _isdead; } set { _isdead = value; } }
 
 
 	public int CurrentExp { set; get; }
