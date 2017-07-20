@@ -40,6 +40,7 @@ public class AbstractDamageObject : MonoBehaviour {
 			Destroy (enemyObject.gameObject, 0.05f);
 
 			//ボスを倒した場合リザルト画面表示
+			//その後、ハンガーレベルが0の奴を殺す。
 			if (isBoss) {
 				GameManager.Instance.InitResult ();
 			}

@@ -237,8 +237,16 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 			PlayerData.AddNpcData (dropNpcData);
 			npcResult = "NPC added! \n MAX ATK: " + dropNpcData.MaxAtk;
 		}
-			
+
+
+		//ハンガーレベルが0になってるやつを死亡させる。
+		List<CharaData> killedCharList = KillHungeryCharas();
+
+		//ステージクリア情報表示
 		UiController.Instance.OpenDialogPanel("Result\n\n" + dropResult + "\n" + npcResult, ()=>{
+			//死亡キャラがいれば表示
+
+			//OKボタンでステージ移動。
 			int stgNum = Int32.Parse(PlayerData.crntStageID.Replace("stg", ""));
 			stgNum++;
 			string nextStgId = "stg"+stgNum;
