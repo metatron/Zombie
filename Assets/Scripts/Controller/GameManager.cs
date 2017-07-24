@@ -241,23 +241,38 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 
 		//ハンガーレベルが0になってるやつを死亡させる。
 		List<CharaData> killedCharList = KillHungeryCharas();
+		string killedResultStr = "";
+		if (killedCharList.Count > 0) {
+			foreach (CharaData deadChar in killedCharList) {
+				killedResultStr += deadChar.Name + " is DEAD by hunger...\n";
+			}
+		}
 
 		//ステージクリア情報表示
 		UiController.Instance.OpenDialogPanel("Result\n\n" + dropResult + "\n" + npcResult, ()=>{
-			//死亡キャラがいれば表示
-
-			//OKボタンでステージ移動。
-			int stgNum = Int32.Parse(PlayerData.crntStageID.Replace("stg", ""));
-			stgNum++;
-			string nextStgId = "stg"+stgNum;
-			StageData nextStage = StageDataTableObject.Instance.Table.All.FirstOrDefault(stgData => stgData.ID == nextStgId);
-			if(nextStage != null) {
-				PlayerData.crntStageID = nextStgId;
-				TransitionManager.Instance.FadeTo ("Main");
+			//死亡キャラがいれば表示してホームに戻る。
+			if(killedCharList.Count > 0) {
+				UiController.Instance.OpenDialogPanel2(killedResultStr, ()=>{
+					TransitionManager.Instance.FadeTo ("HomeScene");
+				},
+				()=>{}
+				);
 			}
-			//なかった場合はMapを開く
+			//死亡がない場合ステージを進める
 			else {
-				UiController.Instance.OpenMapPanel();
+				//OKボタンでステージ移動。
+				int stgNum = Int32.Parse(PlayerData.crntStageID.Replace("stg", ""));
+				stgNum++;
+				string nextStgId = "stg"+stgNum;
+				StageData nextStage = StageDataTableObject.Instance.Table.All.FirstOrDefault(stgData => stgData.ID == nextStgId);
+				if(nextStage != null) {
+					PlayerData.crntStageID = nextStgId;
+					TransitionManager.Instance.FadeTo ("Main");
+				}
+				//なかった場合はMapを開く
+				else {
+					UiController.Instance.OpenMapPanel();
+				}
 			}
 		});
 	}
