@@ -6,6 +6,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+#if UNITY_5_6_OR_NEWER
+using UnityEngine.Rendering;
+#endif
 
 namespace Anima2D
 {
@@ -25,14 +28,18 @@ namespace Anima2D
 
 			GameObject result = GameObject.Instantiate(original) as GameObject;
 
-			List<Component> components = new List<Component>();
-			result.GetComponentsInChildren<Component>(false,components);
+			List<Behaviour> behaviours = new List<Behaviour>();
+			result.GetComponentsInChildren<Behaviour>(false,behaviours);
 
-			foreach(Component component in components)
+			foreach(Behaviour behaviour in behaviours)
 			{
-				if(component as Behaviour && (component as Ik2D) == null)
+				if(!(behaviour is Ik2D) 
+#if UNITY_5_6_OR_NEWER
+					&& !(behaviour is SortingGroup)
+#endif
+				)
 				{
-					(component as Behaviour).enabled = false;
+					behaviour.enabled = false;
 				}
 			}
 

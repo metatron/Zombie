@@ -10,25 +10,22 @@ Material:
   m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
+  disabledShaderPasses: []
   m_SavedProperties:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TexEnvs:
-    - first:
-        name: _MainTex
-      second:
+    - _MainTex:
         m_Texture: {fileID: 2800000, guid: dd105a39e474c4706aba36b8be4febd9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - first:
-        name: PixelSnap
-      second: 0
+    - PixelSnap: 0
     m_Colors:
-    - first:
-        name: _Color
-      second: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!43 &4360534
 Mesh:
   m_ObjectHideFlags: 1
@@ -2302,105 +2299,90 @@ MonoBehaviour:
   m_BindPoses:
   - bindPose:
       e00: -0.590587
-      e01: 0.80697405
+      e01: -0.80697405
       e02: 0
-      e03: 0
-      e10: -0.80697405
+      e03: -0.53321975
+      e10: 0.80697405
       e11: -0.590587
       e12: 0
-      e13: 0
+      e13: 0.27615497
       e20: 0
       e21: 0
       e22: 1
       e23: 0
-      e30: -0.53321975
-      e31: 0.27615497
+      e30: 0
+      e31: 0
       e32: 0
       e33: 1
     boneLength: 1.7649586
-    path: 5370696e652f4e65636b2f486561642f52696768745f686169725f7461696c5f31
-    name: 52696768745f686169725f7461696c5f31
-    color:
-      r: 1
-      g: 0
-      b: 0
-      a: 1
+    path: Spine/Neck/Head/Right_hair_tail_1
+    name: Right_hair_tail_1
+    color: {r: 1, g: 0, b: 0, a: 1}
     zOrder: 0
   - bindPose:
       e00: -0.6008654
-      e01: 0.79935026
+      e01: -0.79935026
       e02: 0
-      e03: 0
-      e10: -0.79935026
+      e03: -2.3015234
+      e10: 0.79935026
       e11: -0.6008654
       e12: 0
-      e13: 0
+      e13: 0.2467226
       e20: 0
       e21: 0
       e22: 1
       e23: 0
-      e30: -2.3015234
-      e31: 0.2467226
+      e30: 0
+      e31: 0
       e32: 0
       e33: 1
     boneLength: 1.7682302
-    path: 5370696e652f4e65636b2f486561642f52696768745f686169725f7461696c5f312f52696768745f686169725f7461696c5f32
-    name: 52696768745f686169725f7461696c5f32
-    color:
-      r: 1
-      g: 0.75
-      b: 0
-      a: 1
+    path: Spine/Neck/Head/Right_hair_tail_1/Right_hair_tail_2
+    name: Right_hair_tail_2
+    color: {r: 1, g: 0.75, b: 0, a: 1}
     zOrder: 1
   - bindPose:
       e00: -0.3087435
-      e01: 0.9511454
+      e01: -0.9511454
       e02: 0
-      e03: 0
-      e10: -0.9511454
+      e03: -3.7691045
+      e10: 0.9511454
       e11: -0.3087435
       e12: 0
-      e13: 0
+      e13: 1.5548683
       e20: 0
       e21: 0
       e22: 1
       e23: 0
-      e30: -3.7691045
-      e31: 1.5548683
+      e30: 0
+      e31: 0
       e32: 0
       e33: 1
     boneLength: 1
-    path: 5370696e652f4e65636b2f486561642f52696768745f686169725f7461696c5f312f52696768745f686169725f7461696c5f322f52696768745f686169725f7461696c5f33
-    name: 52696768745f686169725f7461696c5f33
-    color:
-      r: 0.5
-      g: 1
-      b: 0
-      a: 1
+    path: Spine/Neck/Head/Right_hair_tail_1/Right_hair_tail_2/Right_hair_tail_3
+    name: Right_hair_tail_3
+    color: {r: 0.5, g: 1, b: 0, a: 1}
     zOrder: 2
   - bindPose:
       e00: 0.9996026
-      e01: 0.028191233
+      e01: -0.028191233
       e02: 0
-      e03: 0
-      e10: -0.028191233
+      e03: 0.17222872
+      e10: 0.028191233
       e11: 0.9996026
       e12: 0
-      e13: 0
+      e13: 0.5524591
       e20: 0
       e21: 0
       e22: 1
       e23: 0
-      e30: 0.17222872
-      e31: 0.5524591
+      e30: 0
+      e31: 0
       e32: 0
       e33: 1
     boneLength: 0.61
-    path: 5370696e652f4e65636b2f48656164
-    name: 48656164
-    color:
-      r: 0
-      g: 1
-      b: 0.25
-      a: 1
+    path: Spine/Neck/Head
+    name: Head
+    color: {r: 0, g: 1, b: 0.25, a: 1}
     zOrder: 0
+  m_Blendshapes: []

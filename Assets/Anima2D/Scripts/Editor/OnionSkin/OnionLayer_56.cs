@@ -1,20 +1,34 @@
-﻿#if UNITY_5_0 || UNITY_5_1 || UNITY_5_2 || UNITY_5_3 || UNITY_5_4 || UNITY_5_5
+﻿#if UNITY_5_6_OR_NEWER
 using UnityEngine;
 using UnityEditor;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Rendering;
 
 namespace Anima2D
 {
 	public class OnionLayerGameObjectCreationPolicy : PreviewGameObjectCreationPolicy
 	{
 		public OnionLayerGameObjectCreationPolicy(GameObject go) : base(go) {}
+
+		public override GameObject Create()
+		{
+			GameObject l_instance = base.Create();
+
+			if(!l_instance.GetComponent<SortingGroup>())
+			{
+				l_instance.AddComponent<SortingGroup>();
+			}
+
+			return l_instance;
+		}
 	}
 
 	public class OnionLayer
 	{
 		GameObject m_PreviewInstance;
+		SortingGroup m_SourceSortingGroup;
 		Renderer[] m_Renderers;
 		MaterialCache[] m_MaterialCache;
 		
@@ -27,6 +41,8 @@ namespace Anima2D
 
 		public void SetPreviewInstance(GameObject previewInstance, GameObject sourceGameObject)
 		{
+			m_SourceSortingGroup = sourceGameObject.GetComponent<SortingGroup>();
+
 			if(m_PreviewInstance != previewInstance)
 			{
 				Destroy();
@@ -38,8 +54,9 @@ namespace Anima2D
 					InitializeRenderers();
 				}
 			}
-		}
 
+		}
+		
 		public void Destroy()
 		{
 			if(m_MaterialCache != null)
@@ -58,55 +75,29 @@ namespace Anima2D
 		
 		void InitializeRenderers()
 		{
-			Renderer[] l_renderers = m_PreviewInstance.GetComponentsInChildren<Renderer>();
-			
-			List<string> l_sortingLayerNames = new List<string>(l_renderers.Length);
-			
-			foreach(Renderer l_renderer in l_renderers)
+			renderers = m_PreviewInstance.GetComponentsInChildren<Renderer>(true);
+
+			if(!m_SourceSortingGroup)
 			{
-				l_sortingLayerNames.Add(l_renderer.sortingLayerName);
-			}
-			
-			//Find the deepest used layer
-			List<string> editorSortingLayers = EditorExtra.GetSortingLayerNames();
-			
-			int deepestLayerIndex = int.MaxValue;
-			
-			foreach(string layerName in l_sortingLayerNames)
-			{
-				int index = editorSortingLayers.IndexOf(layerName);
+				List<string> editorSortingLayers = EditorExtra.GetSortingLayerNames();
 				
-				if(index < deepestLayerIndex)
+				//Sort renderers front to back taking sorting layer and sorting order into account
+				List< KeyValuePair<Renderer, double> > l_renderersOrder = new List< KeyValuePair<Renderer, double> >();
+				
+				for(int i = 0; i < renderers.Length; ++i)
 				{
-					deepestLayerIndex = index;
+					Renderer l_renderer = renderers[i];
+					int l_sortingOrder = l_renderer.sortingOrder;
+					int l_layerIndex = editorSortingLayers.IndexOf(l_renderer.sortingLayerName);
+
+					l_renderersOrder.Add(new KeyValuePair<Renderer, double>(l_renderer,(l_layerIndex * 2.0) + (l_sortingOrder / (double)32767)));
 				}
-			}
-			
-			string deepestLayer = "Default";
-			
-			if(deepestLayerIndex >= 0 && deepestLayerIndex < editorSortingLayers.Count)
-			{
-				deepestLayer = editorSortingLayers[deepestLayerIndex];
-			}
-			
-			//Sort renderers front to back taking sorting layer and sorting order into account
-			//Set deepest layer to all renderers and calculate the sorting order
-			List< KeyValuePair<Renderer, double> > l_renderersOrder = new List< KeyValuePair<Renderer, double> >();
-			
-			for(int i = 0; i < l_renderers.Length; ++i)
-			{
-				Renderer l_renderer = l_renderers[i];
-				int l_sortingOrder = l_renderer.sortingOrder;
-				int l_layerIndex = editorSortingLayers.IndexOf(l_renderer.sortingLayerName);
 				
-				l_renderer.sortingLayerName = deepestLayer;
-				l_renderersOrder.Add(new KeyValuePair<Renderer, double>(l_renderer,(l_layerIndex * 2.0) + (l_sortingOrder / (double)32767)));
+				l_renderersOrder = l_renderersOrder.OrderByDescending( (s) => s.Value ).ToList();
+				
+				//Store renderers in order
+				renderers = l_renderersOrder.ConvertAll( s => s.Key ).ToArray();
 			}
-			
-			l_renderersOrder = l_renderersOrder.OrderByDescending( (s) => s.Value ).ToList();
-			
-			//Store renderers in order
-			renderers = l_renderersOrder.ConvertAll( s => s.Key ).ToArray();
 			
 			//Create temp materials for non sprite renderers
 			List<MaterialCache> l_materialCacheList = new List<MaterialCache>();
@@ -121,15 +112,19 @@ namespace Anima2D
 		
 		public void SetDepth(int depth)
 		{
-			int l_order = 0;
-			
-			if(renderers != null)
+			SortingGroup instanceSG = m_PreviewInstance.GetComponent<SortingGroup>();
+
+			if(m_SourceSortingGroup)
 			{
-				foreach(Renderer renderer in renderers)
-				{
-					renderer.sortingOrder = -(depth * renderers.Length * 2) - l_order;
-					l_order++;
-				}
+				instanceSG.sortingLayerID = m_SourceSortingGroup.sortingLayerID;
+				instanceSG.sortingOrder = m_SourceSortingGroup.sortingOrder - depth;
+			}
+			else if(renderers != null && renderers.Length > 0)
+			{
+				Renderer lastRenderer = renderers[renderers.Length-1];
+
+				instanceSG.sortingLayerID = lastRenderer.sortingLayerID;
+				instanceSG.sortingOrder = lastRenderer.sortingOrder - depth;
 			}
 		}
 		
@@ -138,7 +133,7 @@ namespace Anima2D
 			if(m_PreviewInstance && clip)
 			{
 				clip.SampleAnimation(m_PreviewInstance, AnimationWindowExtra.FrameToTime(frame));
-
+				
 				IkUtils.UpdateIK(m_PreviewInstance,"",false);
 			}
 		}

@@ -40,9 +40,11 @@ public class SkinnedMeshCombiner : MonoBehaviour
 	void Start()
 	{        
 		Vector3 l_position = transform.position;
+		Quaternion l_rotation = transform.rotation;
 		Vector3 l_scale = transform.localScale;
 
 		transform.position = Vector3.zero;
+		transform.rotation = Quaternion.identity;
 		transform.localScale = Vector3.one;
 
 		List<Transform> bones = new List<Transform>();        
@@ -124,6 +126,7 @@ public class SkinnedMeshCombiner : MonoBehaviour
 		combinedSkinnedRenderer.materials = spriteMeshInstances[0].sharedMaterials;
 
 		transform.position = l_position;
+		transform.rotation = l_rotation;
 		transform.localScale = l_scale;
 	}
 

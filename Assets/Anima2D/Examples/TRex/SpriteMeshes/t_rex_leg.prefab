@@ -10,25 +10,22 @@ Material:
   m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
+  disabledShaderPasses: []
   m_SavedProperties:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TexEnvs:
-    - first:
-        name: _MainTex
-      second:
+    - _MainTex:
         m_Texture: {fileID: 2800000, guid: 726d2784a87b044f182b7487b3b8ebb8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - first:
-        name: PixelSnap
-      second: 0
+    - PixelSnap: 0
     m_Colors:
-    - first:
-        name: _Color
-      second: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!43 &4378686
 Mesh:
   m_ObjectHideFlags: 1
@@ -1712,108 +1709,93 @@ MonoBehaviour:
   m_BindPoses:
   - bindPose:
       e00: 0.23610723
-      e01: 0.9717272
+      e01: -0.9717272
       e02: 0
-      e03: 0
-      e10: -0.9717272
+      e03: 0.1278139
+      e10: 0.9717272
       e11: 0.23610723
       e12: 0
-      e13: 0
+      e13: -0.08668606
       e20: 0
       e21: 0
       e22: 1
       e23: 0
-      e30: 0.1278139
-      e31: -0.08668606
+      e30: 0
+      e31: 0
       e32: 0
       e33: 1
     boneLength: 1.0396696
-    path: 5570706572204c65672052
-    name: 5570706572204c65672052
-    color:
-      r: 1
-      g: 0
-      b: 0
-      a: 1
+    path: Upper Leg R
+    name: Upper Leg R
+    color: {r: 1, g: 0, b: 0, a: 1}
     zOrder: 1
   - bindPose:
       e00: -0.6325957
-      e01: 0.7744824
+      e01: -0.7744824
       e02: 0
-      e03: 0
-      e10: -0.7744824
+      e03: -0.48091576
+      e10: 0.7744824
       e11: -0.6325957
       e12: 0
-      e13: 0
+      e13: -0.7795607
       e20: 0
       e21: 0
       e22: 1
       e23: 0
-      e30: -0.48091576
-      e31: -0.7795607
+      e30: 0
+      e31: 0
       e32: 0
       e33: 1
     boneLength: 1.0811356
-    path: 5570706572204c656720522f4c65672052
-    name: 4c65672052
-    color:
-      r: 1
-      g: 0.75
-      b: 0
-      a: 1
+    path: Upper Leg R/Leg R
+    name: Leg R
+    color: {r: 1, g: 0.75, b: 0, a: 1}
     zOrder: 2
   - bindPose:
       e00: 0.5037039
-      e01: 0.8638766
+      e01: -0.8638766
       e02: 0
-      e03: 0
-      e10: -0.8638766
+      e03: -1.2775
+      e10: 0.8638766
       e11: 0.5037039
       e12: 0
-      e13: 0
+      e13: 1.1898371
       e20: 0
       e21: 0
       e22: 1
       e23: 0
-      e30: -1.2775
-      e31: 1.1898371
+      e30: 0
+      e31: 0
       e32: 0
       e33: 1
     boneLength: 0.47120592
-    path: 5570706572204c656720522f4c656720522f466f6f742052
-    name: 466f6f742052
-    color:
-      r: 0.5
-      g: 1
-      b: 0
-      a: 1
+    path: Upper Leg R/Leg R/Foot R
+    name: Foot R
+    color: {r: 0.5, g: 1, b: 0, a: 1}
     zOrder: 3
   - bindPose:
       e00: 0.9999165
-      e01: -0.012940437
+      e01: 0.012940437
       e02: 0
-      e03: 0
-      e10: 0.012940437
+      e03: 0.17433459
+      e10: -0.012940437
       e11: 0.9999165
       e12: 0
-      e13: 0
+      e13: 2.1079113
       e20: 0
       e21: 0
       e22: 1
       e23: 0
-      e30: 0.17433459
-      e31: 2.1079113
+      e30: 0
+      e31: 0
       e32: 0
       e33: 1
     boneLength: 0.33
-    path: 5570706572204c656720522f4c656720522f466f6f7420522f46696e676572732052
-    name: 46696e676572732052
-    color:
-      r: 0
-      g: 1
-      b: 0.25
-      a: 1
+    path: Upper Leg R/Leg R/Foot R/Fingers R
+    name: Fingers R
+    color: {r: 0, g: 1, b: 0.25, a: 1}
     zOrder: 4
+  m_Blendshapes: []
 --- !u!114 &11433392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2673,108 +2655,93 @@ MonoBehaviour:
   m_BindPoses:
   - bindPose:
       e00: 0.23610723
-      e01: 0.9717272
+      e01: -0.9717272
       e02: 0
-      e03: 0
-      e10: -0.9717272
+      e03: 0.1278139
+      e10: 0.9717272
       e11: 0.23610723
       e12: 0
-      e13: 0
+      e13: -0.08668606
       e20: 0
       e21: 0
       e22: 1
       e23: 0
-      e30: 0.1278139
-      e31: -0.08668606
+      e30: 0
+      e31: 0
       e32: 0
       e33: 1
     boneLength: 1.0396696
-    path: 5570706572204c65672052
-    name: 5570706572204c65672052
-    color:
-      r: 1
-      g: 0
-      b: 0
-      a: 1
+    path: Upper Leg R
+    name: Upper Leg R
+    color: {r: 1, g: 0, b: 0, a: 1}
     zOrder: 1
   - bindPose:
       e00: -0.6325957
-      e01: 0.7744824
+      e01: -0.7744824
       e02: 0
-      e03: 0
-      e10: -0.7744824
+      e03: -0.48091576
+      e10: 0.7744824
       e11: -0.6325957
       e12: 0
-      e13: 0
+      e13: -0.7795607
       e20: 0
       e21: 0
       e22: 1
       e23: 0
-      e30: -0.48091576
-      e31: -0.7795607
+      e30: 0
+      e31: 0
       e32: 0
       e33: 1
     boneLength: 1.0811356
-    path: 5570706572204c656720522f4c65672052
-    name: 4c65672052
-    color:
-      r: 1
-      g: 0.75
-      b: 0
-      a: 1
+    path: Upper Leg R/Leg R
+    name: Leg R
+    color: {r: 1, g: 0.75, b: 0, a: 1}
     zOrder: 2
   - bindPose:
       e00: 0.5037039
-      e01: 0.8638766
+      e01: -0.8638766
       e02: 0
-      e03: 0
-      e10: -0.8638766
+      e03: -1.2775
+      e10: 0.8638766
       e11: 0.5037039
       e12: 0
-      e13: 0
+      e13: 1.1898371
       e20: 0
       e21: 0
       e22: 1
       e23: 0
-      e30: -1.2775
-      e31: 1.1898371
+      e30: 0
+      e31: 0
       e32: 0
       e33: 1
     boneLength: 0.47120592
-    path: 5570706572204c656720522f4c656720522f466f6f742052
-    name: 466f6f742052
-    color:
-      r: 0.5
-      g: 1
-      b: 0
-      a: 1
+    path: Upper Leg R/Leg R/Foot R
+    name: Foot R
+    color: {r: 0.5, g: 1, b: 0, a: 1}
     zOrder: 3
   - bindPose:
       e00: 0.9999165
-      e01: -0.012940437
+      e01: 0.012940437
       e02: 0
-      e03: 0
-      e10: 0.012940437
+      e03: 0.17433459
+      e10: -0.012940437
       e11: 0.9999165
       e12: 0
-      e13: 0
+      e13: 2.1079113
       e20: 0
       e21: 0
       e22: 1
       e23: 0
-      e30: 0.17433459
-      e31: 2.1079113
+      e30: 0
+      e31: 0
       e32: 0
       e33: 1
     boneLength: 0.33
-    path: 5570706572204c656720522f4c656720522f466f6f7420522f46696e676572732052
-    name: 46696e676572732052
-    color:
-      r: 0
-      g: 1
-      b: 0.25
-      a: 1
+    path: Upper Leg R/Leg R/Foot R/Fingers R
+    name: Fingers R
+    color: {r: 0, g: 1, b: 0.25, a: 1}
     zOrder: 4
+  m_Blendshapes: []
 --- !u!114 &11458550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3717,107 +3684,91 @@ MonoBehaviour:
   bindPoses:
   - bindPose:
       e00: 0.23610723
-      e01: 0.9717272
+      e01: -0.9717272
       e02: 0
-      e03: 0
-      e10: -0.9717272
+      e03: 0.1278139
+      e10: 0.9717272
       e11: 0.23610723
       e12: 0
-      e13: 0
+      e13: -0.08668606
       e20: 0
       e21: 0
       e22: 1
       e23: 0
-      e30: 0.1278139
-      e31: -0.08668606
+      e30: 0
+      e31: 0
       e32: 0
       e33: 1
     boneLength: 1.0396696
-    path: 5570706572204c65672052
-    name: 5570706572204c65672052
-    color:
-      r: 1
-      g: 0
-      b: 0
-      a: 1
+    path: Upper Leg R
+    name: Upper Leg R
+    color: {r: 1, g: 0, b: 0, a: 1}
     zOrder: 1
   - bindPose:
       e00: -0.6325957
-      e01: 0.7744824
+      e01: -0.7744824
       e02: 0
-      e03: 0
-      e10: -0.7744824
+      e03: -0.48091576
+      e10: 0.7744824
       e11: -0.6325957
       e12: 0
-      e13: 0
+      e13: -0.7795607
       e20: 0
       e21: 0
       e22: 1
       e23: 0
-      e30: -0.48091576
-      e31: -0.7795607
+      e30: 0
+      e31: 0
       e32: 0
       e33: 1
     boneLength: 1.0811356
-    path: 5570706572204c656720522f4c65672052
-    name: 4c65672052
-    color:
-      r: 1
-      g: 0.75
-      b: 0
-      a: 1
+    path: Upper Leg R/Leg R
+    name: Leg R
+    color: {r: 1, g: 0.75, b: 0, a: 1}
     zOrder: 2
   - bindPose:
       e00: 0.5037039
-      e01: 0.8638766
+      e01: -0.8638766
       e02: 0
-      e03: 0
-      e10: -0.8638766
+      e03: -1.2775
+      e10: 0.8638766
       e11: 0.5037039
       e12: 0
-      e13: 0
+      e13: 1.1898371
       e20: 0
       e21: 0
       e22: 1
       e23: 0
-      e30: -1.2775
-      e31: 1.1898371
+      e30: 0
+      e31: 0
       e32: 0
       e33: 1
     boneLength: 0.47120592
-    path: 5570706572204c656720522f4c656720522f466f6f742052
-    name: 466f6f742052
-    color:
-      r: 0.5
-      g: 1
-      b: 0
-      a: 1
+    path: Upper Leg R/Leg R/Foot R
+    name: Foot R
+    color: {r: 0.5, g: 1, b: 0, a: 1}
     zOrder: 3
   - bindPose:
       e00: 0.9999165
-      e01: -0.012940437
+      e01: 0.012940437
       e02: 0
-      e03: 0
-      e10: 0.012940437
+      e03: 0.17433459
+      e10: -0.012940437
       e11: 0.9999165
       e12: 0
-      e13: 0
+      e13: 2.1079113
       e20: 0
       e21: 0
       e22: 1
       e23: 0
-      e30: 0.17433459
-      e31: 2.1079113
+      e30: 0
+      e31: 0
       e32: 0
       e33: 1
     boneLength: 0.33
-    path: 5570706572204c656720522f4c656720522f466f6f7420522f46696e676572732052
-    name: 46696e676572732052
-    color:
-      r: 0
-      g: 1
-      b: 0.25
-      a: 1
+    path: Upper Leg R/Leg R/Foot R/Fingers R
+    name: Fingers R
+    color: {r: 0, g: 1, b: 0.25, a: 1}
     zOrder: 4
 --- !u!1001 &100100000
 Prefab:

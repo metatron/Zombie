@@ -53,6 +53,9 @@ public class AbstractCharacterObject : MonoBehaviour {
 
 		//描画順設定
 		SetSortingLayer (GetSortingLayerName());
+
+		//キャラの状態アイコンの表示
+		CheckStatusUi();
 	}
 
 	public void FaceTo(CharDirection dir) {
@@ -154,5 +157,31 @@ public class AbstractCharacterObject : MonoBehaviour {
 		}
 	}
 
+
+	private void CheckStatusUi() {
+		GameObject statusUiObj = null;
+		CharStatusUi.CharStatusType statusType = CharStatusUi.CharStatusType.NONE;
+
+		//check hunger level
+		if (charaData.hunger < 50.0f) {
+			statusUiObj = ((GameObject)Instantiate ((GameObject)Resources.Load ("Prefabs/Ui/CharStatusUi")));
+
+			statusType = CharStatusUi.CharStatusType.HUNGER;
+			statusUiObj.transform.SetParent (transform);
+			statusUiObj.transform.localPosition = new Vector3 (0.0f, 2.2f, 0.0f);
+			//warning
+			if (charaData.hunger > 20.0f) {
+				statusUiObj.GetComponent<SpriteRenderer> ().color = Color.yellow;
+			}
+			//critical
+			else {
+				statusUiObj.GetComponent<SpriteRenderer> ().color = Color.red;
+			}
+		}
+
+		if (statusUiObj != null) {
+			statusUiObj.GetComponent<CharStatusUi> ().InitCharStatusUi (statusType, GetSortingLayerName ());
+		}
+	}
 
 }

@@ -450,25 +450,33 @@ namespace Anima2D
 						
 						if(spriteMesh && spriteMeshData && spriteMesh.sprite && spriteMeshData.vertices.Length > 0)
 						{
-							SerializedProperty spriteProp = null;
-							int i = 0;
-							string name = "";
-							
-							while(i < textureImporterSprites.arraySize && name != spriteMesh.sprite.name)
+							if(textureImporter.spriteImportMode == SpriteImportMode.Multiple)
 							{
-								spriteProp = textureImporterSprites.GetArrayElementAtIndex(i);
-								name = spriteProp.FindPropertyRelative("m_Name").stringValue;
+								SerializedProperty spriteProp = null;
+								int i = 0;
+								string name = "";
 								
-								++i;
-							}
-							
-							if(name == spriteMesh.sprite.name)
-							{
-								Rect textureRect = SpriteMeshUtils.CalculateSpriteRect(spriteMesh,5);
-								spriteProp.FindPropertyRelative("m_Rect").rectValue = textureRect;
-								spriteProp.FindPropertyRelative("m_Alignment").intValue = 9;
-								spriteProp.FindPropertyRelative("m_Pivot").vector2Value = Vector2.Scale(spriteMeshData.pivotPoint - textureRect.position, new Vector2(1f / textureRect.size.x,1f / textureRect.size.y));
-								textureImporter.userData = textureImporter.assetTimeStamp.ToString();
+								while(i < textureImporterSprites.arraySize && name != spriteMesh.sprite.name)
+								{
+									spriteProp = textureImporterSprites.GetArrayElementAtIndex(i);
+									name = spriteProp.FindPropertyRelative("m_Name").stringValue;
+									
+									++i;
+								}
+								
+								if(name == spriteMesh.sprite.name)
+								{
+									Rect textureRect = SpriteMeshUtils.CalculateSpriteRect(spriteMesh,5);
+									spriteProp.FindPropertyRelative("m_Rect").rectValue = textureRect;
+									spriteProp.FindPropertyRelative("m_Alignment").intValue = 9;
+									spriteProp.FindPropertyRelative("m_Pivot").vector2Value = Vector2.Scale(spriteMeshData.pivotPoint - textureRect.position, new Vector2(1f / textureRect.size.x, 1f / textureRect.size.y));
+								}
+							}else{
+								int width = 0;
+								int height = 0;
+								SpriteMeshUtils.GetSpriteTextureSize(spriteMesh.sprite,ref width,ref height);
+								textureImporterSO.FindProperty("m_Alignment").intValue = 9;
+								textureImporterSO.FindProperty("m_SpritePivot").vector2Value = Vector2.Scale(spriteMeshData.pivotPoint, new Vector2(1f / width, 1f / height));
 							}
 						}
 					}

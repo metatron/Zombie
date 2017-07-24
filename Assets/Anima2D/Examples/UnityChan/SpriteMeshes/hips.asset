@@ -10,25 +10,22 @@ Material:
   m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
+  disabledShaderPasses: []
   m_SavedProperties:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TexEnvs:
-    - first:
-        name: _MainTex
-      second:
+    - _MainTex:
         m_Texture: {fileID: 2800000, guid: dd105a39e474c4706aba36b8be4febd9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - first:
-        name: PixelSnap
-      second: 0
+    - PixelSnap: 0
     m_Colors:
-    - first:
-        name: _Color
-      second: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!43 &4357086
 Mesh:
   m_ObjectHideFlags: 1
@@ -983,79 +980,68 @@ MonoBehaviour:
   m_BindPoses:
   - bindPose:
       e00: -0.12818415
-      e01: 0.99175066
+      e01: -0.99175066
       e02: 0
-      e03: 0
-      e10: -0.99175066
+      e03: -0.012342036
+      e10: 0.99175066
       e11: -0.12818415
       e12: 0
-      e13: 0
+      e13: 0.53133345
       e20: 0
       e21: 0
       e22: 1
       e23: 0
-      e30: -0.012342036
-      e31: 0.53133345
+      e30: 0
+      e31: 0
       e32: 0
       e33: 1
     boneLength: 1.3484554
-    path: 5269676874204c6567
-    name: 5269676874204c6567
-    color:
-      r: 1
-      g: 0
-      b: 0
-      a: 1
+    path: Right Leg
+    name: Right Leg
+    color: {r: 1, g: 0, b: 0, a: 1}
     zOrder: 2
   - bindPose:
       e00: -0.003151141
-      e01: 0.9999951
+      e01: -0.9999951
       e02: 0
-      e03: 0
-      e10: -0.9999951
+      e03: -0.04368401
+      e10: 0.9999951
       e11: -0.003151141
       e12: 0
-      e13: 0
+      e13: -0.51714945
       e20: 0
       e21: 0
       e22: 1
       e23: 0
-      e30: -0.04368401
-      e31: -0.51714945
+      e30: 0
+      e31: 0
       e32: 0
       e33: 1
     boneLength: 1.3373371
-    path: 4c656674204c6567
-    name: 4c656674204c6567
-    color:
-      r: 1
-      g: 0.75
-      b: 0
-      a: 1
+    path: Left Leg
+    name: Left Leg
+    color: {r: 1, g: 0.75, b: 0, a: 1}
     zOrder: 0
   - bindPose:
       e00: -0.07984471
-      e01: -0.99680734
+      e01: 0.99680734
       e02: 0
-      e03: 0
-      e10: 0.99680734
+      e03: 0.0148017695
+      e10: -0.99680734
       e11: -0.07984471
       e12: 0
-      e13: 0
+      e13: 0.04661879
       e20: 0
       e21: 0
       e22: 1
       e23: 0
-      e30: 0.0148017695
-      e31: 0.04661879
+      e30: 0
+      e31: 0
       e32: 0
       e33: 1
     boneLength: 1.2235701
     path: 
-    name: 48697073
-    color:
-      r: 0.5
-      g: 1
-      b: 0
-      a: 1
+    name: Hips
+    color: {r: 0.5, g: 1, b: 0, a: 1}
     zOrder: 0
+  m_Blendshapes: []

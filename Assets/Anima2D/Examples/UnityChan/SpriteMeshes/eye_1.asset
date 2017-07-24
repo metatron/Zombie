@@ -10,25 +10,22 @@ Material:
   m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
+  disabledShaderPasses: []
   m_SavedProperties:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TexEnvs:
-    - first:
-        name: _MainTex
-      second:
+    - _MainTex:
         m_Texture: {fileID: 2800000, guid: dd105a39e474c4706aba36b8be4febd9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - first:
-        name: PixelSnap
-      second: 0
+    - PixelSnap: 0
     m_Colors:
-    - first:
-        name: _Color
-      second: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!43 &4336696
 Mesh:
   m_ObjectHideFlags: 1
@@ -386,27 +383,24 @@ MonoBehaviour:
   m_BindPoses:
   - bindPose:
       e00: 0.9996026
-      e01: 0.028191233
+      e01: -0.028191233
       e02: 0
-      e03: 0
-      e10: -0.028191233
+      e03: 0.051771972
+      e10: 0.028191233
       e11: 0.9996026
       e12: 0
-      e13: 0
+      e13: 0.008229427
       e20: 0
       e21: 0
       e22: 1
       e23: 0
-      e30: 0.051771972
-      e31: 0.008229427
+      e30: 0
+      e31: 0
       e32: 0
       e33: 1
     boneLength: 0.4
-    path: 5370696e652f4e65636b2f486561642f72696768745f657965
-    name: 72696768745f657965
-    color:
-      r: 1
-      g: 0
-      b: 0
-      a: 1
+    path: Spine/Neck/Head/right_eye
+    name: right_eye
+    color: {r: 1, g: 0, b: 0, a: 1}
     zOrder: 0
+  m_Blendshapes: []
