@@ -14,6 +14,7 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 	public PlayerObject PlayerObject { get {return _playerObject; } set { _playerObject = value; } }
 
 	public Dictionary<string, EnemyObject> crntEnemyDictionary = new Dictionary<string, EnemyObject> ();
+	public Dictionary<string, NpcObject> crntNpcDictionary = new Dictionary<string, NpcObject> ();
 
 	public GameObject swordReachMarker;
 
@@ -178,6 +179,12 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 					npcObject.transform.localPosition = new Vector3(0.0f, -0.3f, 0.0f);
 				}
 			}
+
+			//検索しやすいようにDictに保管
+			if (!crntNpcDictionary.ContainsKey (charData.ID)) {
+				Debug.LogError ("@@@@@@@@@npcId add: " + charData.ID);
+				crntNpcDictionary.Add (charData.ID, npcObject);
+			}
 		}
 	}
 
@@ -290,6 +297,8 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		PlayerData.playerCharData.hunger -= 20.0f;
 		//最低0.0f
 		PlayerData.playerCharData.hunger = Mathf.Max (0.0f, PlayerData.playerCharData.hunger);
+		//ビジュアル化
+		CheckStatusUi (PlayerData.playerCharData, _playerObject.transform);
 
 		//NPC
 		foreach (CharaData charData in PlayerData.playerNpcDictionary.Values) {
@@ -304,6 +313,12 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 
 			//最低0.0f
 			charData.hunger = Mathf.Max (0.0f, charData.hunger);
+
+			//ビジュアル化
+			if(crntNpcDictionary.ContainsKey(charData.ID)) {
+				Debug.LogError ("crntNpcDictionary.ContainsKey(charData.ID: " + charData.ID);
+				CheckStatusUi (charData, crntNpcDictionary[charData.ID].transform);
+			}
 		}
 	}
 
@@ -358,5 +373,34 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		return killedCharaList;
 	}
 
+	private void CheckStatusUi(CharaData charaData, Transform parentTr) {
+		if (parentTr == null) {
+			return ;
+		}
 
+		GameObject statusUiObj = null;
+		CharStatusUi.CharStatusType statusType = CharStatusUi.CharStatusType.NONE;
+
+		Debug.LogError ("@@@@@@@@@hunger level: " + charaData.ID + ", " + charaData.hunger + ", " + parentTr);
+		//check hunger level
+		if (charaData.hunger <= 50.0f) {
+			statusUiObj = ((GameObject)Instantiate ((GameObject)Resources.Load ("Prefabs/Ui/CharStatusUi")));
+
+			statusType = CharStatusUi.CharStatusType.HUNGER;
+			statusUiObj.transform.SetParent (parentTr);
+			statusUiObj.transform.localPosition = new Vector3 (0.0f, 2.2f, 0.0f);
+			//warning
+			if (charaData.hunger > 20.0f) {
+				statusUiObj.GetComponent<SpriteRenderer> ().color = Color.yellow;
+			}
+			//critical
+			else {
+				statusUiObj.GetComponent<SpriteRenderer> ().color = Color.red;
+			}
+		}
+
+		if (statusUiObj != null) {
+			statusUiObj.GetComponent<CharStatusUi> ().InitCharStatusUi (statusType, "NpcPos2");
+		}
+	}
 }
