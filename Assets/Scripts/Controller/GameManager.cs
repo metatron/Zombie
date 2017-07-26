@@ -302,8 +302,8 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 
 		//NPC
 		foreach (CharaData charData in PlayerData.playerNpcDictionary.Values) {
-			//バトル参加
-			if (charData.BattlePosition > 0) {
+			//バトル参加（0はプレイヤーの隣）
+			if (charData.BattlePosition >= 0) {
 				charData.hunger -= 20.0f;
 			}
 			//その他
@@ -316,7 +316,6 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 
 			//ビジュアル化
 			if(crntNpcDictionary.ContainsKey(charData.ID)) {
-				Debug.LogError ("crntNpcDictionary.ContainsKey(charData.ID: " + charData.ID);
 				CheckStatusUi (charData, crntNpcDictionary[charData.ID].transform);
 			}
 		}
