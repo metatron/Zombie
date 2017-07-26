@@ -261,25 +261,41 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 			if(killedCharList.Count > 0) {
 				UiController.Instance.OpenDialogPanel2(killedResultStr, ()=>{
 					TransitionManager.Instance.FadeTo ("HomeScene");
-				},
-				()=>{}
+				}
 				);
 			}
 			//死亡がない場合ステージを進める
 			else {
-				//OKボタンでステージ移動。
-				int stgNum = Int32.Parse(PlayerData.crntStageID.Replace("stg", ""));
-				stgNum++;
-				string nextStgId = "stg"+stgNum;
-				StageData nextStage = StageDataTableObject.Instance.Table.All.FirstOrDefault(stgData => stgData.ID == nextStgId);
-				if(nextStage != null) {
-					PlayerData.crntStageID = nextStgId;
-					TransitionManager.Instance.FadeTo ("Main");
+				//ハンガーレベル調査。
+				//死にそうな人がいればワーニング。
+				List<CharaData> hungryCharList = GameManager.Instance.CheckHungerLevel();
+				if(hungryCharList.Count > 0) {
+					UiController.Instance.OpenDialogPanel2("There are some hungry characters.\nGoing to battle will kill these characters.\nAre you sure?", 
+						//はい
+						() => {
+							//OKボタンでステージ移動。
+							int stgNum = Int32.Parse(PlayerData.crntStageID.Replace("stg", ""));
+							stgNum++;
+							string nextStgId = "stg"+stgNum;
+							StageData nextStage = StageDataTableObject.Instance.Table.All.FirstOrDefault(stgData => stgData.ID == nextStgId);
+							if(nextStage != null) {
+								PlayerData.crntStageID = nextStgId;
+								TransitionManager.Instance.FadeTo ("Main");
+							}
+							//なかった場合はMapを開く
+							else {
+								UiController.Instance.OpenMapPanel();
+							}
+						},
+						//いいえ
+						() => {
+							TransitionManager.Instance.FadeTo ("HomeScene");
+						}
+					);
 				}
-				//なかった場合はMapを開く
-				else {
-					UiController.Instance.OpenMapPanel();
-				}
+
+
+
 			}
 		});
 	}
