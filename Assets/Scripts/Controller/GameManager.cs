@@ -317,6 +317,7 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 	/**
 	 * 
 	 * ハンガーレベル調整
+	 * ハンガーレベルが0になってるやつは死亡させてObjectをDestroyする。
 	 * バトル参加: -20pt
 	 * その他: -10pt
 	 * 
@@ -326,7 +327,7 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		Dictionary<string, CharaData> killedCharDict = KillHungeryCharas();
 
 		//飢餓で死んだリストに入っていなければハンガーレベル低下
-		if (killedCharDict [PlayerData.playerCharData.ID] == null) {
+		if (!killedCharDict.ContainsKey(PlayerData.playerCharData.ID)) {
 			//プレイヤーは必ず参加なので-20.
 			PlayerData.playerCharData.hunger -= 20.0f;
 			//最低0.0f
@@ -343,7 +344,7 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 
 		//NPC
 		foreach (CharaData charData in PlayerData.playerNpcDictionary.Values) {
-			if (killedCharDict [PlayerData.playerCharData.ID] != null) {
+			if (!killedCharDict.ContainsKey(charData.ID)) {
 
 				//バトル参加（0はプレイヤーの隣）
 				if (charData.BattlePosition >= 0) {
@@ -365,6 +366,7 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 			//死んでたらDestroy
 			else {
 				if (crntNpcDictionary [charData.ID] != null) {
+					crntNpcDictionary.Remove (charData.ID);
 					Destroy (crntNpcDictionary [charData.ID].gameObject);
 				}
 			}

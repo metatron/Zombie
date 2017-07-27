@@ -13,7 +13,6 @@ public class AbstractDamageObject : MonoBehaviour {
 
 		//敵が死んだ場合の処理
 		if (enemyObject.CurrentHP <= 0) {
-			Debug.LogError ("@@@enemyObject: " + enemyObject);
 			//ドロップはenemyObjectを破壊する前にコピーしておく。
 			if (enemyObject.dropData != null) {
 				DropData dropData = new DropData(enemyObject.dropData);
@@ -28,7 +27,7 @@ public class AbstractDamageObject : MonoBehaviour {
 					GameManager.Instance.CurrentStageObject.GetComponent<StageObject> ().DropItemNum.Add (dropData.ID, 1);
 				}
 
-				Debug.LogError ("@@@@@@@Dropping: " + dropData.ID + ": " + total + ", exp added: " + enemyObject.EnemyData.GetExpPoint() + ", unusedExp: " + PlayerData.unusedExpPoints);
+//				Debug.LogError ("@@@@@@@Dropping: " + dropData.ID + ": " + total + ", exp added: " + enemyObject.EnemyData.GetExpPoint() + ", unusedExp: " + PlayerData.unusedExpPoints);
 			}
 
 			//ExpPoint保存
