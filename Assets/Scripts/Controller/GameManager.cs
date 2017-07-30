@@ -9,12 +9,16 @@ using UnityEngine.SceneManagement;
 
 
 public class GameManager : SingletonMonoBehaviourFast<GameManager> {
+	//バトル参加時のエナジー
+	public const float BATTLE_REQUIRED_ENERGY = 20.0f;
+	//バトル非参加時のエナジー
+	public const float NONEBATTLE_REQUIRED_ENERGY = 10.0f;
+
 	[SerializeField]
 	private PlayerObject _playerObject;
 	public PlayerObject PlayerObject { get {return _playerObject; } set { _playerObject = value; } }
 
 	public Dictionary<string, EnemyObject> crntEnemyDictionary = new Dictionary<string, EnemyObject> ();
-	public Dictionary<string, NpcObject> crntNpcDictionary = new Dictionary<string, NpcObject> ();
 
 	public GameObject swordReachMarker;
 
@@ -179,12 +183,6 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 					npcObject.transform.localPosition = new Vector3(0.0f, -0.3f, 0.0f);
 				}
 			}
-
-			//検索しやすいようにDictに保管
-			if (!crntNpcDictionary.ContainsKey (charData.ID)) {
-				Debug.LogError ("@@@@@@@@@npcId add: " + charData.ID);
-				crntNpcDictionary.Add (charData.ID, npcObject);
-			}
 		}
 	}
 
@@ -246,70 +244,51 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		}
 
 
-		//ハンガーレベルが0になってるやつを死亡させる。
-//		Dictionary<string, CharaData> killedCharList = KillHungeryCharas();
-//		string killedResultStr = "";
-//		if (killedCharList.Count > 0) {
-//			foreach (CharaData deadChar in killedCharList.Values) {
-//				killedResultStr += deadChar.Name + " is DEAD by hunger...\n";
-//			}
-//		}
-
 		//ステージクリア情報表示
 		UiController.Instance.OpenDialogPanel("Result\n\n" + dropResult + "\n" + npcResult, ()=>{
-//			//死亡キャラがいれば表示してホームに戻る。
-//			if(killedCharList.Count > 0) {
-//				UiController.Instance.OpenDialogPanel2(killedResultStr, ()=>{
-//					TransitionManager.Instance.FadeTo ("HomeScene");
-//				}
-//				);
-//			}
-//			//死亡がない場合ステージを進める
-//			else {
-				//ハンガーレベル調査。
-				//死にそうな人がいればワーニング。
-				List<CharaData> hungryCharList = GameManager.Instance.CheckHungerLevel(true);
-				if(hungryCharList.Count > 0) {
-					UiController.Instance.OpenDialogPanel2("There are some hungry characters.\nGoing to battle will kill these characters.\nAre you sure?", 
-						//はい
-						() => {
-							//OKボタンでステージ移動。
-							int stgNum = Int32.Parse(PlayerData.crntStageID.Replace("stg", ""));
-							stgNum++;
-							string nextStgId = "stg"+stgNum;
-							StageData nextStage = StageDataTableObject.Instance.Table.All.FirstOrDefault(stgData => stgData.ID == nextStgId);
-							if(nextStage != null) {
-								PlayerData.crntStageID = nextStgId;
-								TransitionManager.Instance.FadeTo ("Main");
-							}
-							//なかった場合はMapを開く
-							else {
-								UiController.Instance.OpenMapPanel();
-							}
-						},
-						//いいえ
-						() => {
-							TransitionManager.Instance.FadeTo ("HomeScene");
+			//ハンガーレベル調査。
+			//死にそうな人がいればワーニング。
+			List<CharaData> hungryCharList = GameManager.Instance.CheckHungerLevel(true);
+			if(hungryCharList.Count > 0) {
+				UiController.Instance.OpenDialogPanel2("There are some hungry characters.\nGoing to battle will kill these characters.\nAre you sure?", 
+					//はい
+					() => {
+						//OKボタンでステージ移動。
+						int stgNum = Int32.Parse(PlayerData.crntStageID.Replace("stg", ""));
+						stgNum++;
+						string nextStgId = "stg"+stgNum;
+						StageData nextStage = StageDataTableObject.Instance.Table.All.FirstOrDefault(stgData => stgData.ID == nextStgId);
+						if(nextStage != null) {
+							PlayerData.crntStageID = nextStgId;
+							TransitionManager.Instance.FadeTo ("Main");
 						}
-					);
+						//なかった場合はMapを開く
+						else {
+							UiController.Instance.OpenMapPanel();
+						}
+					},
+					//いいえ
+					() => {
+						TransitionManager.Instance.FadeTo ("HomeScene");
+					}
+				);
+			}
+			//ハンガーレベル = 0がない
+			else {
+				//ステージ移動。
+				int stgNum = Int32.Parse(PlayerData.crntStageID.Replace("stg", ""));
+				stgNum++;
+				string nextStgId = "stg"+stgNum;
+				StageData nextStage = StageDataTableObject.Instance.Table.All.FirstOrDefault(stgData => stgData.ID == nextStgId);
+				if(nextStage != null) {
+					PlayerData.crntStageID = nextStgId;
+					TransitionManager.Instance.FadeTo ("Main");
 				}
-				//ハンガーレベル = 0がない
+				//なかった場合はMapを開く
 				else {
-					//ステージ移動。
-					int stgNum = Int32.Parse(PlayerData.crntStageID.Replace("stg", ""));
-					stgNum++;
-					string nextStgId = "stg"+stgNum;
-					StageData nextStage = StageDataTableObject.Instance.Table.All.FirstOrDefault(stgData => stgData.ID == nextStgId);
-					if(nextStage != null) {
-						PlayerData.crntStageID = nextStgId;
-						TransitionManager.Instance.FadeTo ("Main");
-					}
-					//なかった場合はMapを開く
-					else {
-						UiController.Instance.OpenMapPanel();
-					}
+					UiController.Instance.OpenMapPanel();
 				}
-//			}
+			}
 		});
 	}
 
@@ -318,8 +297,8 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 	 * 
 	 * ハンガーレベル調整
 	 * ハンガーレベルが0になってるやつは死亡させてObjectをDestroyする。
-	 * バトル参加: -20pt
-	 * その他: -10pt
+	 * バトル参加: -BATTLE_REQUIRED_ENERGY pt
+	 * その他: -NONEBATTLE_REQUIRED_ENERGY pt
 	 * 
 	 */
 	private void ChangeHungerLevel() {
@@ -329,11 +308,11 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		//飢餓で死んだリストに入っていなければハンガーレベル低下
 		if (!killedCharDict.ContainsKey(PlayerData.playerCharData.ID)) {
 			//プレイヤーは必ず参加なので-20.
-			PlayerData.playerCharData.hunger -= 20.0f;
+			PlayerData.playerCharData.hunger -= BATTLE_REQUIRED_ENERGY;
 			//最低0.0f
 			PlayerData.playerCharData.hunger = Mathf.Max (0.0f, PlayerData.playerCharData.hunger);
 			//ビジュアル化
-			CheckStatusUi (PlayerData.playerCharData, _playerObject.transform);
+			CheckStatusUi (PlayerData.playerCharData);
 		}
 		//死んでたらDestroy
 		else {
@@ -348,26 +327,25 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 
 				//バトル参加（0はプレイヤーの隣）
 				if (charData.BattlePosition >= 0) {
-					charData.hunger -= 20.0f;
+					charData.hunger -= BATTLE_REQUIRED_ENERGY;
 				}
 			//その他
 			else {
-					charData.hunger -= 10.0f;
+					charData.hunger -= NONEBATTLE_REQUIRED_ENERGY;
 				}
 
 				//最低0.0f
 				charData.hunger = Mathf.Max (0.0f, charData.hunger);
 
 				//ビジュアル化
-				if (crntNpcDictionary.ContainsKey (charData.ID)) {
-					CheckStatusUi (charData, crntNpcDictionary [charData.ID].transform);
+				if (charData.charaObject != null) {
+					CheckStatusUi (charData);
 				}
 			}
 			//死んでたらDestroy
 			else {
-				if (crntNpcDictionary [charData.ID] != null) {
-					crntNpcDictionary.Remove (charData.ID);
-					Destroy (crntNpcDictionary [charData.ID].gameObject);
+				if (charData.charaObject != null) {
+					Destroy (charData.charaObject);
 				}
 			}
 		}
@@ -384,10 +362,10 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 	public List<CharaData> CheckHungerLevel(bool checkNextStage=false) {
 		List<CharaData> hungerWarningList = new List<CharaData> ();
 
-		//checkNextStageがONの場合20を引いた値でチェック。
+		//checkNextStageがONの場合BATTLE_REQUIRED_ENERGYを引いた値でチェック。
 		float usingHungerPnt = 0;
 		if (checkNextStage) {
-			usingHungerPnt = 20;
+			usingHungerPnt = BATTLE_REQUIRED_ENERGY;
 		}
 
 		//player check.
@@ -433,21 +411,21 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		return killedCharaList;
 	}
 
-	private void CheckStatusUi(CharaData charaData, Transform parentTr) {
-		if (parentTr == null) {
+	private void CheckStatusUi(CharaData charaData) {
+		if (charaData.charaObject == null) {
 			return ;
 		}
 
 		GameObject statusUiObj = null;
 		CharStatusUi.CharStatusType statusType = CharStatusUi.CharStatusType.NONE;
 
-		Debug.LogError ("@@@@@@@@@hunger level: " + charaData.ID + ", " + charaData.hunger + ", " + parentTr);
+		Debug.LogError ("@@@@@@@@@hunger level: " + charaData.ID + ", " + charaData.hunger + ", " + charaData.charaObject.transform);
 		//check hunger level
 		if (charaData.hunger <= 50.0f) {
 			statusUiObj = ((GameObject)Instantiate ((GameObject)Resources.Load ("Prefabs/Ui/CharStatusUi")));
 
 			statusType = CharStatusUi.CharStatusType.HUNGER;
-			statusUiObj.transform.SetParent (parentTr);
+			statusUiObj.transform.SetParent (charaData.charaObject.transform);
 			statusUiObj.transform.localPosition = new Vector3 (0.0f, 2.2f, 0.0f);
 			//warning
 			if (charaData.hunger > 20.0f) {

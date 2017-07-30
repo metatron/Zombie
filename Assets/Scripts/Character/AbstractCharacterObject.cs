@@ -29,6 +29,8 @@ public class AbstractCharacterObject : MonoBehaviour {
 
 	public void InitChar(CharaData charaData, AbstractCharacterObject.CharDirection dir=AbstractCharacterObject.CharDirection.RIGHT) {
 		this.charaData = charaData;
+		this.charaData.charaObject = gameObject;
+
 		//Animatorオブジェクトを見つける
 		_animator = GetComponentInChildren<Animator> ();
 		if (_animator == null) {

@@ -59,6 +59,10 @@ public class UiController : SingletonMonoBehaviourFast<UiController> {
 		_dialogPanel.GetComponent<DialogPanel> ().OpenDialogPanel (text, okAction, cancelAction);
 	}
 
+	public void ForceCloseDialogPanel() {
+		_dialogPanel.SetActive (false);
+	}
+
 	/**
 	 * 
 	 * DialogPanel1の後チェック等が走る場合に使用。
@@ -69,6 +73,11 @@ public class UiController : SingletonMonoBehaviourFast<UiController> {
 		_dialogPanel2.SetActive (true);
 		_dialogPanel2.GetComponent<DialogPanel> ().OpenDialogPanel (text, okAction, cancelAction);
 	}
+
+	public void ForceCloseDialogPanel2() {
+		_dialogPanel2.SetActive (false);
+	}
+
 
 
 	public void OpenMapPanel() {

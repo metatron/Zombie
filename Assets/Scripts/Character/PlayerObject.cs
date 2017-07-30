@@ -22,9 +22,37 @@ public class PlayerObject : AbstractCharacterObject {
 		}
 		injuredChar.IsDead = true;
 
+		Debug.LogError ("*******1: " + other);
 		UiController.Instance.OpenDialogPanel (injuredChar.Name + " has Injuered!", () => {
 			GameManager.Instance.PauseGame = false;
-			GameManager.Instance.InitStage(PlayerData.crntStageID);
+			//全員おっちんだらホームへ。
+			if(IsAllCharaDead()) {
+				//TODO 遷移後も他の敵に当たってしまうため敵は全消し。
+				Destroy(other.gameObject);
+
+				TransitionManager.Instance.FadeTo ("HomeScene");
+			}
+			//そうでないならキャラObjをDestroy
+			else {
+				Destroy(injuredChar.charaObject);
+			}
 		});
+	}
+
+	public bool IsAllCharaDead() {
+		bool isAllDead = true;
+		//プレイヤーチェック
+		isAllDead &= PlayerData.playerCharData.IsDead;
+
+		//バトルに参加しているNPCチェック
+		foreach (CharaData npcData in PlayerData.playerNpcDictionary.Values) {
+			if (npcData.BattlePosition < 0) {
+				continue;
+			}
+
+			isAllDead &= npcData.IsDead;
+		}
+
+		return isAllDead;
 	}
 }
