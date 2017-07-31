@@ -22,7 +22,6 @@ public class PlayerObject : AbstractCharacterObject {
 		}
 		injuredChar.IsDead = true;
 
-		Debug.LogError ("*******1: " + other);
 		UiController.Instance.OpenDialogPanel (injuredChar.Name + " has Injuered!", () => {
 			GameManager.Instance.PauseGame = false;
 			//全員おっちんだらホームへ。
