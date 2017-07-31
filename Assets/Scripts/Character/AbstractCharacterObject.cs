@@ -65,7 +65,7 @@ public class AbstractCharacterObject : MonoBehaviour {
 		}
 	}
 
-	private string GetSortingLayerName() {
+	public string GetSortingLayerName() {
 		string sortingLayerName = "Default";
 		//プレイヤーの隣はプレイヤーの手前
 		if (charaData.BattlePosition == 0) {

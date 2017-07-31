@@ -317,7 +317,8 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		//死んでたらDestroy
 		else {
 			if (_playerObject != null) {
-				Destroy (_playerObject.gameObject);
+				//Destroy (_playerObject.gameObject);
+				DeathEffect(_playerObject.gameObject);
 			}
 		}
 
@@ -345,7 +346,8 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 			//死んでたらDestroy
 			else {
 				if (charData.charaObject != null) {
-					Destroy (charData.charaObject);
+					//Destroy (charData.charaObject);
+					DeathEffect(charData.charaObject);
 				}
 			}
 		}
@@ -440,5 +442,20 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		if (statusUiObj != null) {
 			statusUiObj.GetComponent<CharStatusUi> ().InitCharStatusUi (statusType, "NpcPos2");
 		}
+	}
+
+	public void DeathEffect(GameObject deadObject) {
+		Vector3 deadPos = new Vector3 (deadObject.transform.position.x, deadObject.transform.position.y, deadObject.transform.position.z);
+		GameObject graveObj = (GameObject)Instantiate (Resources.Load ("Prefabs/Effect/Grave") as GameObject);
+		graveObj.transform.position = deadPos;
+
+		//sortingLayer調査
+		AbstractCharacterObject charObj = deadObject.GetComponent<AbstractCharacterObject>();
+		if (charObj != null) {
+			graveObj.GetComponent<SpriteRenderer> ().sortingLayerName = charObj.GetSortingLayerName();
+		}
+
+		Destroy (deadObject);
+
 	}
 }
