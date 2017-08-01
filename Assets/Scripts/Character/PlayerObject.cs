@@ -22,18 +22,35 @@ public class PlayerObject : AbstractCharacterObject {
 		}
 		injuredChar.IsDead = true;
 
+		//一旦ポーズ
+		GameManager.Instance.PauseGame = true;
+
+		//誰がやられたかポップアップで知らせる。
 		UiController.Instance.OpenDialogPanel (injuredChar.Name + " has Injuered!", () => {
 			GameManager.Instance.PauseGame = false;
+			if(injuredChar.charaObject != null) {
+				GameManager.Instance.DeathEffect(injuredChar.charaObject);
+			}
+
 			//全員おっちんだらホームへ。
 			if(IsAllCharaDead()) {
 				//TODO 遷移後も他の敵に当たってしまうため敵は全消し。
+				GameManager.Instance.DeleteAllEnemies();
 				Destroy(other.gameObject);
 
 				TransitionManager.Instance.FadeTo ("HomeScene");
 			}
-			//そうでないならキャラObjをDestroy
+			//何人か生存
 			else {
-				Destroy(injuredChar.charaObject);
+				//現存する敵を右に少し追いやる（「間」が欲しい）
+				foreach(EnemyObject enemyObj in GameManager.Instance.crntEnemyDictionary.Values) {
+					if(enemyObj == null) {
+						continue;
+					}
+					Vector3 reposVec = enemyObj.transform.localPosition;
+					reposVec.x += 5.0f;
+					enemyObj.transform.localPosition = reposVec;
+				}
 			}
 		});
 	}

@@ -149,7 +149,7 @@ public class PlayerData {
 	public static List<CharaData> GetBattleNpcList() {
 		List<CharaData> battleList = new List<CharaData> ();
 		foreach (CharaData charData in playerNpcDictionary.Values) {
-			if (charData.BattlePosition > 0 && !charData.IsDead) {
+			if (charData.BattlePosition >= 0 && !charData.IsDead) {
 				battleList.Add (charData);
 			}
 		}
