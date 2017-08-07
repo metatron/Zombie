@@ -29,7 +29,7 @@ public class PlayerObject : AbstractCharacterObject {
 		UiController.Instance.OpenDialogPanel (injuredChar.Name + " has Injuered!", () => {
 			GameManager.Instance.PauseGame = false;
 			if(injuredChar.charaObject != null) {
-				GameManager.Instance.DeathEffect(injuredChar.charaObject);
+				GameManager.Instance.DeathEffect(injuredChar);
 			}
 
 			//全員おっちんだらホームへ。

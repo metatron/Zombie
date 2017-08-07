@@ -31,6 +31,12 @@ public class AbstractCharacterObject : MonoBehaviour {
 		this.charaData = charaData;
 		this.charaData.charaObject = gameObject;
 
+		//死んでたらお墓表示
+		if (charaData.IsDead) {
+			GameManager.Instance.DeathEffect (charaData);
+			return;
+		}
+
 		//Animatorオブジェクトを見つける
 		_animator = GetComponentInChildren<Animator> ();
 		if (_animator == null) {
@@ -90,7 +96,7 @@ public class AbstractCharacterObject : MonoBehaviour {
 	}
 
 	public void InitCharGunObject(string gunId) {
-		if (string.IsNullOrEmpty (gunId)) {
+		if (charaData.IsDead || string.IsNullOrEmpty (gunId)) {
 			return;
 		}
 
@@ -117,7 +123,7 @@ public class AbstractCharacterObject : MonoBehaviour {
 	}
 
 	public void InitCharSwordObject(string swordId) {
-		if (string.IsNullOrEmpty (swordId)) {
+		if (charaData.IsDead || string.IsNullOrEmpty (swordId)) {
 			return;
 		}
 

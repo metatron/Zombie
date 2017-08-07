@@ -57,8 +57,12 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 			_playerObject.transform.localPosition = new Vector3 (-4.0f, -0.2f, 0.0f);
 
 			_playerObject.InitChar (PlayerData.playerCharData);
-			_playerObject.InitCharGunObject (PlayerData.playerCharData.GunID);
-			_playerObject.InitCharSwordObject (PlayerData.playerCharData.SwordID);
+
+			//InitCharで消える可能性があるためnullチェック。
+			if (_playerObject != null) {
+				_playerObject.InitCharGunObject (PlayerData.playerCharData.GunID);
+				_playerObject.InitCharSwordObject (PlayerData.playerCharData.SwordID);
+			}
 		}
 
 		//NPC初期化
@@ -318,7 +322,7 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		else {
 			if (_playerObject != null) {
 				//Destroy (_playerObject.gameObject);
-				DeathEffect(_playerObject.gameObject);
+				DeathEffect(PlayerData.playerCharData);
 			}
 		}
 
@@ -347,9 +351,16 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 			else {
 				if (charData.charaObject != null) {
 					//Destroy (charData.charaObject);
-					DeathEffect(charData.charaObject);
+					DeathEffect(charData);
 				}
 			}
+		}
+
+		//全員死んでたらWarningを出してHomeに戻す
+		if (IsAllDead ()) {
+			UiController.Instance.OpenDialogPanel("EveryBody is DEAD...", ()=>{
+				TransitionManager.Instance.FadeTo ("HomeScene");
+			});
 		}
 	}
 
@@ -444,7 +455,12 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		}
 	}
 
-	public void DeathEffect(GameObject deadObject) {
+	public void DeathEffect(CharaData charData) {
+		GameObject deadObject = charData.charaObject;
+		if (deadObject == null) {
+			return;
+		}
+
 		Vector3 deadPos = new Vector3 (deadObject.transform.position.x, deadObject.transform.position.y, deadObject.transform.position.z);
 		GameObject graveObj = (GameObject)Instantiate (Resources.Load ("Prefabs/Effect/Grave") as GameObject);
 		graveObj.transform.position = deadPos;
@@ -456,6 +472,24 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		}
 
 		Destroy (deadObject);
+
+	}
+
+	public bool IsAllDead() {
+		bool isAllDead = false;
+		//player check.
+		if (PlayerData.playerCharData.IsDead) {
+			isAllDead |= true;
+		}
+
+		//npc check
+		foreach (CharaData charData in PlayerData.playerNpcDictionary.Values) {
+			if (charData.IsDead) {
+				isAllDead |= true;
+			}
+		}
+
+		return isAllDead;
 
 	}
 }
