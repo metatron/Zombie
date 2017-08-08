@@ -30,7 +30,17 @@ public class UiController : SingletonMonoBehaviourFast<UiController> {
 	}
 
 	public void OnBattleButtonPressed() {
-		TransitionManager.Instance.FadeTo ("Main");
+		if (GameManager.Instance.CheckHungerLevel (true).Count > 0) {
+			UiController.Instance.OpenDialogPanel ("There are some hungery characters.\nGoing to Battle will kill them.\nAre you sure?", 
+				() => {
+					TransitionManager.Instance.FadeTo ("Main");
+				},
+				() => {}
+			);
+		} 
+		else {
+			TransitionManager.Instance.FadeTo ("Main");
+		}
 	}
 
 	/**

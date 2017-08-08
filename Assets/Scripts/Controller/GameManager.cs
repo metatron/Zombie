@@ -306,38 +306,34 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 	 * 
 	 */
 	private void ChangeHungerLevel() {
-		//ハンガーレベルが0になってるやつを死亡させる。
-		Dictionary<string, CharaData> killedCharDict = KillHungeryCharas();
+		//ハンガーレベルが0になるやつ取得
+//		List<CharaData> willbDeadCharList = CheckHungerLevel(true);
 
-		//飢餓で死んだリストに入っていなければハンガーレベル低下
-		if (!killedCharDict.ContainsKey(PlayerData.playerCharData.ID)) {
+		//飢餓で死ぬリストに入っていなければハンガーレベル低下
+//		CharaData checkingChar = willbDeadCharList.Where( data => data.ID == PlayerData.playerCharData.ID).FirstOrDefault();
+		if (!PlayerData.playerCharData.IsDead) {
 			//プレイヤーは必ず参加なので-20.
 			PlayerData.playerCharData.hunger -= BATTLE_REQUIRED_ENERGY;
 			//最低0.0f
 			PlayerData.playerCharData.hunger = Mathf.Max (0.0f, PlayerData.playerCharData.hunger);
+			Debug.LogError ("after playerCharData.hunger: " + PlayerData.playerCharData.hunger);
 			//ビジュアル化
 			CheckStatusUi (PlayerData.playerCharData);
-		}
-		//死んでたらDestroy
-		else {
-			if (_playerObject != null) {
-				//Destroy (_playerObject.gameObject);
-				DeathEffect(PlayerData.playerCharData);
-			}
 		}
 
 		//NPC
 		foreach (CharaData charData in PlayerData.playerNpcDictionary.Values) {
-			if (!killedCharDict.ContainsKey(charData.ID)) {
-
+			//飢餓で死ぬリストに入っていなければハンガーレベル低下
+			if (!charData.IsDead) {
 				//バトル参加（0はプレイヤーの隣）
 				if (charData.BattlePosition >= 0) {
 					charData.hunger -= BATTLE_REQUIRED_ENERGY;
 				}
-			//その他
-			else {
+				//バトル不参加
+				else {
 					charData.hunger -= NONEBATTLE_REQUIRED_ENERGY;
 				}
+				Debug.LogError ("after npcCharData.hunger: " + charData.hunger);
 
 				//最低0.0f
 				charData.hunger = Mathf.Max (0.0f, charData.hunger);
@@ -347,14 +343,10 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 					CheckStatusUi (charData);
 				}
 			}
-			//死んでたらDestroy
-			else {
-				if (charData.charaObject != null) {
-					//Destroy (charData.charaObject);
-					DeathEffect(charData);
-				}
-			}
 		}
+
+		//0になったやつらをころす
+		KillHungeryCharas();
 
 		//全員死んでたらWarningを出してHomeに戻す
 		if (IsAllDead ()) {
@@ -402,7 +394,7 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 	 * 死んだキャラクターのリストを返す。
 	 * 
 	 */
-	public Dictionary<string, CharaData> KillHungeryCharas() {
+	private Dictionary<string, CharaData> KillHungeryCharas() {
 		Dictionary<string, CharaData> killedCharaList = new Dictionary<string, CharaData> ();
 
 		//player check.
@@ -410,6 +402,11 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 			PlayerData.playerCharData.hunger = 0.0f; //念のため0.0fに戻す
 			PlayerData.playerCharData.IsDead = true;
 			killedCharaList.Add (PlayerData.playerCharData.ID, PlayerData.playerCharData);
+
+			if (_playerObject != null) {
+				//Destroy (_playerObject.gameObject);
+				DeathEffect(PlayerData.playerCharData);
+			}
 		}
 
 		//npc check
@@ -418,6 +415,11 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 				charData.hunger = 0.0f; //念のため0.0fに戻す
 				charData.IsDead = true;
 				killedCharaList.Add (charData.ID, charData);
+
+				if (charData.charaObject != null) {
+					//Destroy (charData.charaObject);
+					DeathEffect(charData);
+				}
 			}
 		}
 
@@ -432,7 +434,6 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		GameObject statusUiObj = null;
 		CharStatusUi.CharStatusType statusType = CharStatusUi.CharStatusType.NONE;
 
-		Debug.LogError ("@@@@@@@@@hunger level: " + charaData.ID + ", " + charaData.hunger + ", " + charaData.charaObject.transform);
 		//check hunger level
 		if (charaData.hunger <= 50.0f) {
 			statusUiObj = ((GameObject)Instantiate ((GameObject)Resources.Load ("Prefabs/Ui/CharStatusUi")));
@@ -484,7 +485,7 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 
 		//npc check
 		foreach (CharaData charData in PlayerData.playerNpcDictionary.Values) {
-			if (charData.IsDead) {
+			if (charData.BattlePosition >=0 && charData.IsDead) {
 				isAllDead |= true;
 			}
 		}
