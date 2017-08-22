@@ -169,26 +169,44 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 
 	public void InitNpcObject() {
 		foreach (CharaData charData  in PlayerData.playerNpcDictionary.Values) {
-			if (charData.BattlePosition == -1 || charData.IsDead) {
+			//死んでた場合はInitCharObjectの中でヨロシクやってくれる
+			if (charData.BattlePosition == -1) {
 				continue;
 			}
 
-			NpcObject npcObject = InitCharObject<NpcObject> (charData);
-			//プレイヤーの隣
-			if (npcObject.charaData.BattlePosition == 0) {
-				npcObject.transform.position = new Vector3 (-4.7f, -0.4f, -0.2f);
-			} 
-			//その他のWallのポジションの箇所にセット（バトル画面のみ）
-			else {
-				Scene scene = SceneManager.GetActiveScene();
-				if (scene.name == "Main") {
-					Transform wallObj = WallController.Instance.GetWallObject (charData.BattlePosition).transform;
-					npcObject.transform.SetParent (wallObj);
-					npcObject.transform.localPosition = new Vector3(0.0f, -0.3f, 0.0f);
-				}
-			}
+			InitCharObject<NpcObject> (charData);
+			SetPositionByBattlePos (charData);
 		}
 	}
+
+	private void SetPositionByBattlePos(CharaData charData) {
+		charData.charaObject.transform.position = GetPositionByBattlePos (charData);
+	}
+
+	private Vector3 GetPositionByBattlePos(CharaData charData) {
+		if (charData.ID == PlayerData.PLAYERID) {
+			return new Vector3 (-4.0f, 0.0f, 0.0f);
+		}
+
+		//プレイヤーの隣
+		if (charData.BattlePosition == 0) {
+			return new Vector3 (-4.7f, -0.4f, -0.2f);
+		} 
+		//その他のWallのポジションの箇所にセット（バトル画面のみ）
+		else {
+			Scene scene = SceneManager.GetActiveScene();
+			if (scene.name == "Main") {
+				Vector3 wallObjPos = WallController.Instance.GetWallObject (charData.BattlePosition).transform.position;
+				wallObjPos.y -= 0.4f;
+				return wallObjPos;
+			}
+		}
+
+		//TODO それ以外の場合をどうするか。。？
+		Debug.LogError("GetPositionByBattlePos, scene: " + SceneManager.GetActiveScene().name + ", charID: " + charData.ID + ", BattlePosition: " + charData.BattlePosition);
+		return Vector3.zero;
+	}
+
 
 	public T InitCharObject<T>(CharaData charData) where T: AbstractCharacterObject {
 		GameObject charObject = (GameObject)Instantiate(Resources.Load("Prefabs/Characters/" + charData.BodyPrefab));
@@ -462,14 +480,15 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 			return;
 		}
 
-		Vector3 deadPos = new Vector3 (deadObject.transform.position.x, deadObject.transform.position.y, deadObject.transform.position.z);
+//		Vector3 deadPos = new Vector3 (deadObject.transform.position.x, deadObject.transform.position.y, deadObject.transform.position.z);
+		Vector3 deadPos = this.GetPositionByBattlePos(charData);
 		GameObject graveObj = (GameObject)Instantiate (Resources.Load ("Prefabs/Effect/Grave") as GameObject);
 		graveObj.transform.position = deadPos;
 
 		//sortingLayer調査
 		AbstractCharacterObject charObj = deadObject.GetComponent<AbstractCharacterObject>();
 		if (charObj != null) {
-			graveObj.GetComponent<SpriteRenderer> ().sortingLayerName = charObj.GetSortingLayerName();
+			graveObj.GetComponentInChildren<SpriteRenderer> ().sortingLayerName = charObj.GetSortingLayerName();
 		}
 
 		Destroy (deadObject);
@@ -477,16 +496,18 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 	}
 
 	public bool IsAllDead() {
-		bool isAllDead = false;
+		bool isAllDead = true;
 		//player check.
-		if (PlayerData.playerCharData.IsDead) {
-			isAllDead |= true;
+		if (!PlayerData.playerCharData.IsDead) {
+			return false;
 		}
 
 		//npc check
 		foreach (CharaData charData in PlayerData.playerNpcDictionary.Values) {
-			if (charData.BattlePosition >=0 && charData.IsDead) {
-				isAllDead |= true;
+			if (charData.BattlePosition >= 0) {
+				if (!charData.IsDead) {
+					return false;
+				}
 			}
 		}
 

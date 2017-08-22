@@ -101,8 +101,21 @@ public class UiController : SingletonMonoBehaviourFast<UiController> {
 	}
 
 	public GameObject GetCharThumbnail(CharaData charData) {
-		GameObject thumbnailObj = (GameObject)Instantiate((GameObject)Resources.Load ("Prefabs/Characters/Female1")) as GameObject;
-		ClothingSystem.SetCharThumbnail (charData.ClothDataStr, thumbnailObj);
+		string prefabPath = "Prefabs/Characters/Female1";
+		if (charData.IsDead) {
+			prefabPath = "Prefabs/Effect/Grave";
+		}
+
+		GameObject thumbnailObj = (GameObject)Instantiate ((GameObject)Resources.Load (prefabPath)) as GameObject;
+
+		if (!charData.IsDead) {
+			ClothingSystem.SetCharThumbnail (charData.ClothDataStr, thumbnailObj);
+		}
+		//死んでたらsortingLayerをかえるだけ
+		else {
+			Utils.ChangeSpriteRendererLayer(thumbnailObj, 5, "NpcPos1"); //UI: 5
+		}
+
 		return thumbnailObj;
 	}
 

@@ -13,7 +13,7 @@ public class CharacterPanel : MonoBehaviour {
 
 		//add Player
 		GameObject instantiatedPrefab = (GameObject)Instantiate (charUIPrefab);
-		instantiatedPrefab.GetComponent<CharacterUI> ().InitCharaUI <NpcObject>(GameManager.Instance.PlayerObject.GetComponent<PlayerObject>().charaData);
+		instantiatedPrefab.GetComponent<CharacterUI> ().InitCharaUI <NpcObject>(PlayerData.playerCharData);
 		instantiatedPrefab.transform.SetParent (content.transform);
 		instantiatedPrefab.GetComponent<RectTransform>().localScale = Vector3.one;
 		Vector3 tmpPos = instantiatedPrefab.GetComponent<RectTransform>().localPosition;
