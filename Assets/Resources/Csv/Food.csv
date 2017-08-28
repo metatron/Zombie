@@ -1,0 +1,4 @@
+ID,Name,Image,RecoverRatio,RequirementStr
+potato,Potato,potato,0.1,
+water,Water,water,0.1,
+mashp,Mash Potato,mashp,0.3,potato:2|water:1

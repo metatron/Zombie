@@ -2149,6 +2149,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 261663027}
+--- !u!114 &269661024 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114531758424796672, guid: c9aa792331bcf464d9637248e1d85384,
+    type: 2}
+  m_PrefabInternal: {fileID: 788249487}
+  m_Script: {fileID: 11500000, guid: 9ae0061f97c51415ea9f08ccc3ab2961, type: 3}
 --- !u!1 &286120807
 GameObject:
   m_ObjectHideFlags: 0
@@ -13332,6 +13338,7 @@ MonoBehaviour:
   statusPanel: {fileID: 1781933738}
   _swordDataTableObj: {fileID: 533406850}
   _gunDataTableObj: {fileID: 1653620093}
+  _foodDataTableObj: {fileID: 269661024}
   _toolDataTableObj: {fileID: 1704548110}
   _craftItemDataTableObj: {fileID: 2038217666}
   swordDataTabViewportContent: {fileID: 349226749}

@@ -44,6 +44,7 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 		ExperienceDataTableObject.Instance.InitData ();
 		ClothDataTableObject.Instance.InitData ();
 		ToolItemDataTableObject.Instance.InitData ();
+		FoodDataTableObject.Instance.InitData ();
 
 		Scene scene = SceneManager.GetActiveScene();
 		//プレイヤー初期化
@@ -159,6 +160,12 @@ public class GameManager : SingletonMonoBehaviourFast<GameManager> {
 
 		//Search Material Items
 		searchingData = CraftItemDataTableObject.Instance.GetParams (id);
+		if (searchingData != null) {
+			return GetSpriteFromPath("ItemAtlas", searchingData.Image);
+		}
+
+		//Search Food Items
+		searchingData = FoodDataTableObject.Instance.GetParams (id);
 		if (searchingData != null) {
 			return GetSpriteFromPath("ItemAtlas", searchingData.Image);
 		}
