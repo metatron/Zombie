@@ -29,6 +29,7 @@ public class PlayerData {
 		//保持しているマテリアル
 		_itemOwnedDictionary ["wood"] = 100;
 		_itemOwnedDictionary ["metal"] = 100;
+		_itemOwnedDictionary ["potato"] = 100;
 
 		//プレイヤーキャラの初期化
 		playerCharData = CharacterLevelSystem.GenerateCharacterData (1, (int)CharaData.Gender.Male);

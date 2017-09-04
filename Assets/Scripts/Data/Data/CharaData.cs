@@ -48,6 +48,7 @@ public class CharaData {
 	public float AtkInterval { get; private set; }
 	public float atkIntervalCrnt = 2.0f;
 
+	public const float HUNGER_MAX = 100.0f;
 	//空腹度
 	public float hunger = 100.0f;
 

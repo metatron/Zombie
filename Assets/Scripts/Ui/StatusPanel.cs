@@ -67,6 +67,10 @@ public class StatusPanel : MonoBehaviour {
 		ResetStatusPanelItems<GunData>();
 	}
 
+	public void OnFoodItem() {
+		ResetStatusPanelItems<FoodData>();
+	}
+
 
 	private void OnEquiptItem<T>(AbstractData itemData) where T: AbstractData {
 		Debug.LogError ("itemData.ID: " + itemData.ID);
@@ -151,6 +155,46 @@ public class StatusPanel : MonoBehaviour {
 		}
 	}
 
+	private void OnUseItem<T>(AbstractData itemData) where T: AbstractData {
+		Debug.LogError ("itemData.ID: " + itemData.ID);
+		//============= Foodの消費 =============//
+		if (typeof(T) == typeof(FoodData)) {
+			//最初数チェック
+			int crntNum = PlayerData.GetItemNum (itemData.ID);
+			if (crntNum <= 0) {
+				UiController.Instance.OpenDialogPanel ("Don't have " + itemData.Name + ".", 
+					() => {}
+				);
+
+				return ;
+			}
+
+			//満腹だった場合は消費しない
+			if (_charData.hunger >= 100.0f) {
+				UiController.Instance.OpenDialogPanel ("Don't need to eat now.", 
+					() => {}
+				);
+
+				return ;
+			}
+				
+
+			//消費して回復
+			float recoverVal = CharaData.HUNGER_MAX*((FoodData)itemData).RecoverRatio;
+			float tmpHungerLv = recoverVal + _charData.hunger;
+			UiController.Instance.OpenDialogPanel ("Do you want to use " + itemData.Name + "?", 
+				//YES
+				() => {
+					PlayerData.UseItem(itemData.ID, 1);
+					_charData.hunger = Mathf.Min (CharaData.HUNGER_MAX, tmpHungerLv);
+					//数値が変わっていた場合コンテンツリセット
+					ResetStatusPanelItems<T> ();
+				}, 
+				()=> {}
+			);
+		}//Use Food
+	}
+
 	public void OnLevelUpBtn() {
 		ExperienceData nextExpData = ExperienceDataTableObject.Instance.Table.All.FirstOrDefault (expData => expData.Level == "" + (_charData.Level+1));
 		if (nextExpData == null) {
@@ -214,7 +258,15 @@ public class StatusPanel : MonoBehaviour {
 		CraftUiController.Instance.InitItemObjButton<T> (content,
 			//ボタンを押した場合は装備or解除
 			(AbstractData itemData) => {
-				OnEquiptItem<T>(itemData);
+				//装備品
+				if (typeof(T) == typeof(GunData) || typeof(T) == typeof(SwordData)) {
+					OnEquiptItem<T>(itemData);
+				}
+				//消耗品
+				else if(typeof(T) == typeof(FoodData)) {
+					OnUseItem<T>(itemData);
+				}
+					
 			}
 		);
 		UpdateCharacterParam();
